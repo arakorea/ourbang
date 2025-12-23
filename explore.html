@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ourbang — 공간 둘러보기</title>
+  <meta name="description" content="ourbang 샘플 공간을 둘러보세요. 첫 번째 공간을 ourbang 안에서 전체 화면으로 경험할 수 있습니다." />
+  <style>
+    :root{
+      --bg:#070A12;
+      --panel:#0B1020;
+      --text:#FFFFFF;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --accent:#6EE7F0;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(110,231,240,.12), transparent 60%),
+                  radial-gradient(800px 400px at 20% 30%, rgba(127, 111, 255, .10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      letter-spacing:-0.2px;
+    }
+    a{color:inherit}
+    .container{max-width:1080px;margin:0 auto;padding:0 22px}
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(7,10,18,.55);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:30px;height:30px;border-radius:10px;
+      background: linear-gradient(135deg, rgba(110,231,240,.95), rgba(127,111,255,.85));
+      box-shadow: 0 0 0 1px rgba(255,255,255,.15) inset;
+    }
+    .brand b{font-size:16px;letter-spacing:-0.3px}
+    nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:10px;
+    }
+    nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+
+    main{padding:34px 0 70px}
+    .pageTitle{margin:22px 0 10px;font-size: clamp(26px, 3vw, 40px); letter-spacing:-0.6px}
+    .pageLead{margin:0 0 22px; color:var(--muted); max-width: 78ch}
+    .hint{font-size:12.5px;color:var(--muted2)}
+    .topActions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 24px}
+
+    .btn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:11px 14px;
+      border-radius:14px;
+      font-size:14.5px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.16)}
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(110,231,240,.20), rgba(127,111,255,.18));
+      border-color: rgba(110,231,240,.35);
+    }
+    .btnPrimary:hover{border-color: rgba(110,231,240,.55)}
+    .btnGhost{background:transparent}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+      margin-top: 18px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.02) inset;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      color:rgba(255,255,255,.82);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+    }
+    .badgeLive{
+      border-color: rgba(110,231,240,.30);
+      background: rgba(110,231,240,.10);
+    }
+    .badgeSoon{
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.70);
+    }
+    .thumb{
+      height:140px;
+      border-radius: calc(var(--radius) - 4px);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(240px 140px at 60% 30%, rgba(110,231,240,.14), transparent 55%),
+        radial-gradient(220px 160px at 20% 70%, rgba(127,111,255,.12), transparent 55%),
+        rgba(0,0,0,.18);
+      margin:12px 0 14px;
+    }
+    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:-0.2px}
+    .card p{margin:0 0 14px; color:var(--muted); font-size:14px}
+    .cardActions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .divider{height:1px;background:var(--border);margin:18px 0}
+
+    footer{
+      padding:34px 0 0;
+      color:var(--muted2);
+      border-top:1px solid var(--border);
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.86);
+      display:none;
+      z-index:9999;
+    }
+    .modal.open{display:block}
+    .modalInner{
+      position:absolute; inset:0;
+      background:#000;
+    }
+    .closeBtn{
+      position:absolute;
+      top:16px; right:16px;
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color:#fff;
+      cursor:pointer;
+      z-index:10001;
+      font-size:20px;
+      line-height:44px;
+      text-align:center;
+    }
+    .closeBtn:hover{background: rgba(255,255,255,.12)}
+    .loading{
+      position:absolute; inset:0;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:10px;
+      color:rgba(255,255,255,.75);
+      z-index:10000;
+      pointer-events:none;
+    }
+    .spinner{
+      width:26px;height:26px;
+      border:2px solid rgba(255,255,255,.25);
+      border-top-color: rgba(255,255,255,.85);
+      border-radius:50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    iframe{width:100%;height:100%;border:0}
+
+    @media (max-width: 860px){
+      nav ul{display:none}
+      .grid{grid-template-columns:1fr}
+      .thumb{height:130px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="./index.html" aria-label="ourbang 홈으로">
+        <span class="logo" aria-hidden="true"></span>
+        <b>ourbang</b>
+      </a>
+      <nav aria-label="상단 메뉴">
+        <ul>
+          <li><a href="./index.html#what">개념</a></li>
+          <li><a href="./explore.html" style="color: var(--text); background: rgba(255,255,255,.06);">공간 둘러보기</a></li>
+          <li><a href="./index.html#data">데이터</a></li>
+          <li><a href="./index.html#credits">크레딧</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="pageTitle">공간 둘러보기</h1>
+    <p class="pageLead">
+      지금은 ourbang의 <b>첫 번째 공간</b>으로 경험을 시작합니다.
+      앞으로 다양한 실제 공간이 이 목록에 추가됩니다.
+    </p>
+
+    <div class="topActions">
+      <button class="btn btnPrimary" id="openFirstSpace" type="button">첫 번째 공간 열기 →</button>
+      <a class="btn btnGhost" href="./index.html">index로 돌아가기</a>
+      <span class="hint">첫 번째 공간은 ourbang 안에서 전체 화면으로 열립니다.</span>
+    </div>
+
+    <div class="grid" aria-label="공간 목록">
+      <article class="card">
+        <span class="badge badgeLive">● LIVE</span>
+        <div class="thumb" aria-hidden="true"></div>
+        <h3>ourbang의 첫 번째 공간</h3>
+        <p>공간으로 사람을 이해한다는 생각을 처음으로 구현한 ourbang의 시작점입니다. (가상 공간 / 개념 시연용)</p>
+        <div class="cardActions">
+          <button class="btn btnPrimary openSpaceBtn" type="button">이 공간 들어가기 →</button>
+          <span class="hint">외부로 이동하지 않습니다.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="badge badgeSoon">COMING SOON</span>
+        <div class="thumb" aria-hidden="true"></div>
+        <h3>Creator Studio (예정)</h3>
+        <p>작업 흐름과 도구가 드러나는 창작 공간. 공개 준비 중입니다.</p>
+        <div class="cardActions">
+          <button class="btn" type="button" disabled aria-disabled="true" style="opacity:.55; cursor:not-allowed;">곧 공개됩니다</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="badge badgeSoon">COMING SOON</span>
+        <div class="thumb" aria-hidden="true"></div>
+        <h3>Living Space (예정)</h3>
+        <p>일상 속 선택이 쌓인 생활 공간. 동의 기반 공개 모델로 준비 중입니다.</p>
+        <div class="cardActions">
+          <button class="btn" type="button" disabled aria-disabled="true" style="opacity:.55; cursor:not-allowed;">곧 공개됩니다</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="hint">
+      * 본 페이지는 샘플(데모) 환경입니다. 실서비스에서는 익명화/집계 및 동의 기반 공개 원칙을 유지합니다.
+    </p>
+
+    <footer>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+        <div><b>ourbang</b> · Through spaces, not posts.</div>
+        <div>© <span id="year"></span> ourbang. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<div class="modal" id="spaceModal" role="dialog" aria-modal="true" aria-label="첫 번째 공간 보기" aria-hidden="true">
+  <div class="modalInner">
+    <button class="closeBtn" id="closeSpaceBtn" type="button" aria-label="첫 번째 공간 닫기">×</button>
+    <div class="loading" id="spaceLoading" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <div>첫 번째 공간을 여는 중입니다…</div>
+    </div>
+    <iframe
+      id="spaceFrame"
+      title="ourbang 첫 번째 공간"
+      src=""
+      allow="autoplay; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  const SPACE_URL = "https://3d.cobenef.com/ara_korea/#autoplay&flipmouse";
+
+  const modal = document.getElementById("spaceModal");
+  const frame = document.getElementById("spaceFrame");
+  const loading = document.getElementById("spaceLoading");
+  const closeBtn = document.getElementById("closeSpaceBtn");
+  const openBtns = [
+    document.getElementById("openFirstSpace"),
+    ...document.querySelectorAll(".openSpaceBtn")
+  ].filter(Boolean);
+
+  let lastFocused = null;
+
+  function lockScroll(lock){
+    document.body.style.overflow = lock ? "hidden" : "";
+  }
+
+  function openSpace(){
+    lastFocused = document.activeElement;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    lockScroll(true);
+    loading.style.display = "flex";
+    frame.src = SPACE_URL;
+    closeBtn.focus();
+  }
+
+  function closeSpace(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    lockScroll(false);
+    frame.src = "";
+    loading.style.display = "flex";
+    if(lastFocused && typeof lastFocused.focus === "function"){
+      lastFocused.focus();
+    }
+  }
+
+  openBtns.forEach(btn => btn.addEventListener("click", openSpace));
+  closeBtn.addEventListener("click", closeSpace);
+
+  window.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && modal.classList.contains("open")){
+      closeSpace();
+    }
+  });
+
+  frame.addEventListener("load", () => {
+    loading.style.display = "none";
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
