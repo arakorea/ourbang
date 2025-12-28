@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ourbang — Mirror</title>
+  <meta name="description" content="ourbang은 Scan(LiDAR/Camera), Create(가상공간 제작), Mirror(지속 동기화) 방식으로 공간을 웹에서 탐색 가능한 디지털 공간으로 전환합니다." />
+
+  <meta property="og:title" content="ourbang" />
+  <meta property="og:description" content="Scan · Create · Mirror — 공간을 디지털 자산으로" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/og/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/images/brand/favicon.png" />
+
+  <link rel="preload" as="image" href="assets/images/preview/hero-room.jpg" />
+  <link rel="preload" as="image" href="assets/images/preview/explore-shot.jpg" />
+  <link rel="preload" as="image" href="assets/images/preview/scan-shot.jpg" />
+
+  <style>
+:root{
+      --bg:#07090f;
+      --panel: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --brand: #7cc6ff;
+      --brand2:#4ee0c2;
+      --shadow: 0 20px 80px rgba(0,0,0,.45);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+        radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+        radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Top bar */
+    .topbar{
+      position: sticky; top:0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
+    .brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+    .brand .name{display:flex; flex-direction:column; line-height:1.05}
+    .brand .name strong{font-size:18px; letter-spacing:.2px}
+    .brand .name span{font-size:12px; color: var(--muted2)}
+
+    .menu{display:flex; align-items:center; gap:18px}
+    .menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
+    .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+
+    .actions{display:flex; align-items:center; gap:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
+      border-color: rgba(124,198,255,.28);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
+
+    @media (max-width: 980px){
+      .menu{display:none}
+      .brand{min-width:auto}
+    }
+
+    /* Hero */
+    .hero{padding: 56px 0 22px;}
+    .heroGrid{display:grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: stretch;}
+    @media (max-width: 980px){ .heroGrid{grid-template-columns:1fr; gap:18px} }
+
+    .pill{display:inline-flex; align-items:center; gap:10px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 13px; width: fit-content;}
+    .dot{width:8px; height:8px; border-radius:999px; background: linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow: 0 0 0 4px rgba(124,198,255,.12);}
+    h1{margin: 16px 0 10px; font-size: 52px; line-height: 1.04; letter-spacing: -1px;}
+    @media (max-width: 520px){ h1{font-size: 38px} }
+    .lead{margin: 0 0 18px; max-width: 640px; color: var(--muted); font-size: 16px; line-height: 1.7;}
+    .heroBtns{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px}
+    .note{margin-top: 12px; color: rgba(255,255,255,.45); font-size: 12.5px; line-height: 1.5}
+
+    /* Preview card */
+    .previewCard{position: relative; border-radius: var(--radius2); overflow:hidden; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); box-shadow: var(--shadow); min-height: 360px;}
+    .previewBg{position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(7,9,15,.22), rgba(7,9,15,.72)), url("assets/images/preview/hero-room.jpg"); background-size: cover; background-position: center; transform: scale(1.03);}
+    .previewInner{position: relative; height:100%; padding: 18px; display:flex; flex-direction:column; justify-content:space-between;}
+    .tag{font-size: 12px; color: rgba(255,255,255,.78); padding: 8px 10px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); border-radius: 999px; backdrop-filter: blur(10px); width: fit-content;}
+    .previewTop{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .previewCTA{display:flex; align-items:center; gap:10px; padding: 9px 11px; border-radius: 999px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); color: rgba(255,255,255,.85); font-size: 13px; backdrop-filter: blur(10px);}
+    .previewCTA:hover{background: rgba(0,0,0,.28)}
+    .kv{display:grid; grid-template-columns: 110px 1fr; gap: 10px; align-items:center; padding: 12px 12px; background: rgba(0,0,0,.20); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; backdrop-filter: blur(10px);}
+    .kv div:first-child{color: rgba(255,255,255,.62); font-size: 12px}
+    .kv div:last-child{color: rgba(255,255,255,.88); font-size: 13px; text-align:right}
+
+    /* Sections */
+    .section{padding: 18px 0 44px}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+    @media (max-width: 980px){ .cards{grid-template-columns:1fr} }
+    .card{border-radius: var(--radius); border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); padding: 16px 16px; box-shadow: 0 12px 40px rgba(0,0,0,.24);}
+    .card .k{display:flex; align-items:center; gap:10px; color: rgba(255,255,255,.78); font-size: 12px; letter-spacing:.2px}
+    .card .k .miniDot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.72)}
+    .card h3{margin:10px 0 6px; font-size: 16px}
+    .card p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.6}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:7px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.18); color:rgba(255,255,255,.78); font-size:12px}
+    .badge b{color:rgba(255,255,255,.92); font-weight:600}
+
+    /* Gallery */
+    .galleryHead{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px}
+    .galleryTitle{margin:0; font-size:22px; letter-spacing:-.2px}
+    .galleryLead{margin:0; color:var(--muted); line-height:1.7; max-width:760px}
+    .galleryGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+    @media (max-width: 980px){ .galleryGrid{grid-template-columns:1fr} }
+    .shot{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    .shot .img{
+      width:100%;
+      aspect-ratio: 16/9;
+      background-size: cover;
+      background-position:center;
+      filter: saturate(1.02) contrast(1.02);
+    }
+    .shot .body{padding: 14px;}
+    .shot h4{margin:0 0 6px; font-size:15px}
+    .shot p{margin:0; color: var(--muted); font-size: 13px; line-height:1.6}
+
+    .foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
+    .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .mutelink{color: rgba(255,255,255,.60)}
+    .mutelink:hover{color: rgba(255,255,255,.85)}
+  </style>
+
+  <!-- cache bust -->
+  <link rel="stylesheet" href="assets/css/site.css?v=10" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html">
+          <img src="assets/images/brand/ourbang-logo.png" alt="ourbang logo" onerror="this.style.display='none'">
+          <div class="name">
+            <strong>ourbang</strong>
+            <span>space, scanned, created &amp; mirrored</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Primary">
+          <a href="#concept">Concept</a>
+          <a href="#modes">Modes</a>
+          <a href="mirror.html">Mirror</a>
+          <a href="#gallery">Gallery</a>
+          <a href="vision.html">Vision</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn" href="explore.html">Explore</a>
+          <a class="btn primary" href="#modes">Start</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <!-- HERO -->
+  <section class="hero" id="mirror">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div>
+          <div class="pill"><span class="dot"></span> Mirror — Operational Sync</div>
+          <h1>Mirror<br/>Keep Your Space in Sync<br/>with Reality</h1>
+          <p class="lead">
+            Mirror는 공간을 한 번 기록하는 기능이 아니라, 변화가 발생한 지점만을 감지·동기화하여
+            디지털 공간을 항상 ‘지금’의 상태로 유지하는 운영형 업데이트 레이어입니다.
+          </p>
+          <div class="heroBtns">
+            <a class="btn primary" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Request">Start a Mirror Pilot</a>
+            <a class="btn" href="#how">See how it works</a>
+          </div>
+        </div>
+
+        <div class="previewCard" aria-label="Mirror Preview">
+          <div class="previewBg" style="background-image:url('assets/images/gallery/mirror-sync.png')"></div>
+          <div class="previewInner">
+            <div class="previewTop">
+              <span class="tag">Delta Update</span>
+              <a class="previewCTA" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Request">Pilot →</a>
+            </div>
+            <div class="kv">
+              <div>Focus</div><div>Changed areas only</div>
+              <div>Output</div><div>Explore-ready link</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT'S DIFFERENT -->
+      <section class="section" id="how" aria-label="How Mirror Works">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Not a 3D rebuild. A continuous update layer.</h2>
+            <p class="galleryLead">전체 재구축이 아니라, 운영에 의미 있는 ‘변경분(Delta)’만 반영합니다.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Step 1</div>
+            <h3>Detect</h3>
+            <p>CCTV / LiDAR 기반으로 공간의 변화 이벤트를 감지합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Input</b> Sensors</span>
+              <span class="badge"><b>Signal</b> Change</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Step 2</div>
+            <h3>Identify</h3>
+            <p>QR 또는 Object ID로 변경된 대상(제품/오브젝트)을 식별합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Key</b> QR</span>
+              <span class="badge"><b>Mapping</b> Product ID</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Step 3</div>
+            <h3>Update</h3>
+            <p>전체를 다시 만들지 않고, 바뀐 요소만 반영(Delta Update)합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Scope</b> Local</span>
+              <span class="badge"><b>Mode</b> Delta</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:14px">
+          결과는 Explore에서 링크 형태로 공유되며, 운영·협업·이력 관리에 바로 사용됩니다.
+        </div>
+      </section>
+
+      <!-- WHERE IT FITS -->
+      <section class="section" aria-label="Designed for Operational Spaces">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Designed for operational spaces</h2>
+            <p class="galleryLead">기술보다 ‘현장 운영’에서 바로 쓰이는 장면을 중심으로 설계합니다.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Scenario</div>
+            <h3>Retail</h3>
+            <p>상품 진열/프로모션 존이 바뀌면, 변경 구간만 반영하여 본사·매장·파트너가 같은 상태를 봅니다.</p>
+          </div>
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Scenario</div>
+            <h3>Exhibition / Showroom</h3>
+            <p>설치물 교체/동선 변경을 업데이트하고, 변경 이력을 운영 기록으로 남깁니다.</p>
+          </div>
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Scenario</div>
+            <h3>Facility</h3>
+            <p>장비/구역 변경을 추적하고, 운영 담당자가 최신 상태를 공유 가능한 링크로 관리합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILOT -->
+      <section class="section" aria-label="Mirror Pilot">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Start small. Prove value. Scale later.</h2>
+            <p class="galleryLead">Pilot은 도입이 아니라, ‘가치가 생기는 지점’부터 검증하는 실험입니다.</p>
+          </div>
+          <a class="btn primary" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Request">Request a Pilot</a>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Pilot</div>
+            <h3>Scope</h3>
+            <p>공간 내 변경 빈도가 높은 구역 1곳(또는 1–2존)부터 시작합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Area</b> 1–2 zones</span>
+              <span class="badge"><b>Focus</b> Delta</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Pilot</div>
+            <h3>Timeline</h3>
+            <p>2–4주 내에 “변경 반영 → 공유 → 운영” 흐름이 유효한지 판단합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Time</b> 2–4 weeks</span>
+              <span class="badge"><b>Decision</b> Go / No-go</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> Deliverable</div>
+            <h3>Output</h3>
+            <p>Explore 링크 1개 + 변경 반영 로그(간단 리포트)로 결과를 제공합니다.</p>
+            <div class="ctaRow">
+              <span class="badge"><b>Link</b> Explore</span>
+              <span class="badge"><b>Report</b> Summary</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTIONAL CONCEPT DIAGRAM (quiet) -->
+      <section class="section" aria-label="Mirror Concept Diagram">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Concept diagram</h2>
+            <p class="galleryLead">텍스트는 페이지에서, 다이어그램은 구조만 보여줍니다.</p>
+          </div>
+        </div>
+
+        <figure class="conceptFigure" style="max-width:980px; margin:0 auto">
+          <img
+            src="assets/images/diagram/mirror-concept-en.png"
+            alt="Mirror concept diagram"
+            loading="lazy"
+            style="width:100%; height:auto; display:block"
+          />
+          <figcaption class="conceptCaption">
+            CCTV · LiDAR · Change Detection · QR Identification · Mirror Engine · Delta Update · Explore
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="section" aria-label="Contact">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Ready to pilot?</h2>
+            <p class="galleryLead">Mirror Pilot 문의: info@akenm.com</p>
+          </div>
+          <a class="btn primary" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Request">Start a Mirror Pilot</a>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="footRow">
+        <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap">
+          <a class="mutelink" href="index.html">Home</a>
+          <a class="mutelink" href="explore.html">Explore</a>
+          <a class="mutelink" href="scan.html">Scan</a>
+          <a class="mutelink" href="vision.html">Vision</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+<script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
