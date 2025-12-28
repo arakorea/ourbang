@@ -49,10 +49,7 @@
       background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px;
-    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:12px; min-width:220px}
     .brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))}
     .brand .name{display:flex; flex-direction:column; line-height:1.05}
@@ -76,6 +73,7 @@
       cursor:pointer;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       user-select:none;
+      white-space:nowrap;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
     .btn.primary{
@@ -90,110 +88,32 @@
     }
 
     .hero{padding: 56px 0 22px;}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr; gap:18px}
-    }
+    .heroGrid{display:grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: stretch;}
+    @media (max-width: 980px){ .heroGrid{grid-template-columns:1fr; gap:18px} }
 
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 13px;
-      width: fit-content;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 0 0 4px rgba(124,198,255,.12);
-    }
+    .pill{display:inline-flex; align-items:center; gap:10px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 13px; width: fit-content;}
+    .dot{width:8px; height:8px; border-radius:999px; background: linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow: 0 0 0 4px rgba(124,198,255,.12);}
     h1{margin: 16px 0 10px; font-size: 52px; line-height: 1.04; letter-spacing: -1px;}
     @media (max-width: 520px){ h1{font-size: 38px} }
     .lead{margin: 0 0 18px; max-width: 640px; color: var(--muted); font-size: 16px; line-height: 1.7;}
     .heroBtns{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px}
     .note{margin-top: 12px; color: rgba(255,255,255,.45); font-size: 12.5px; line-height: 1.5}
 
-    .previewCard{
-      position: relative;
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      min-height: 360px;
-    }
-    .previewBg{
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(180deg, rgba(7,9,15,.22), rgba(7,9,15,.70)),
-        url("assets/images/preview/hero-room.jpg?v=20251228");
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.03);
-      filter: saturate(1.02) contrast(1.02);
-    }
-    .previewInner{
-      position: relative;
-      height:100%;
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .tag{
-      font-size: 12px;
-      color: rgba(255,255,255,.78);
-      padding: 8px 10px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      border-radius: 999px;
-      backdrop-filter: blur(10px);
-      width: fit-content;
-    }
+    .previewCard{position: relative; border-radius: var(--radius2); overflow:hidden; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); box-shadow: var(--shadow); min-height: 360px;}
+    .previewBg{position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(7,9,15,.22), rgba(7,9,15,.70)), url("assets/images/preview/hero-room.jpg?v=20251228"); background-size: cover; background-position: center; transform: scale(1.03);}
+    .previewInner{position: relative; height:100%; padding: 18px; display:flex; flex-direction:column; justify-content:space-between;}
+    .tag{font-size: 12px; color: rgba(255,255,255,.78); padding: 8px 10px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); border-radius: 999px; backdrop-filter: blur(10px); width: fit-content;}
     .previewTop{display:flex; align-items:center; justify-content:space-between; gap:12px}
-    .previewCTA{
-      display:flex; align-items:center; gap:10px;
-      padding: 9px 11px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      color: rgba(255,255,255,.85);
-      font-size: 13px;
-      backdrop-filter: blur(10px);
-    }
+    .previewCTA{display:flex; align-items:center; gap:10px; padding: 9px 11px; border-radius: 999px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); color: rgba(255,255,255,.85); font-size: 13px; backdrop-filter: blur(10px);}
     .previewCTA:hover{background: rgba(0,0,0,.28)}
-    .kv{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap: 10px;
-      align-items:center;
-      padding: 12px 12px;
-      background: rgba(0,0,0,.20);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-    }
+    .kv{display:grid; grid-template-columns: 110px 1fr; gap: 10px; align-items:center; padding: 12px 12px; background: rgba(0,0,0,.20); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; backdrop-filter: blur(10px);}
     .kv div:first-child{color: rgba(255,255,255,.62); font-size: 12px}
     .kv div:last-child{color: rgba(255,255,255,.88); font-size: 13px; text-align:right}
 
     .section{padding: 18px 0 44px}
     .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
     @media (max-width: 980px){ .cards{grid-template-columns:1fr} }
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 16px 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.24);
-    }
+    .card{border-radius: var(--radius); border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); padding: 16px 16px; box-shadow: 0 12px 40px rgba(0,0,0,.24);}
     .card .k{display:flex; align-items:center; gap:10px; color: rgba(255,255,255,.78); font-size: 12px; letter-spacing:.2px}
     .card .k .miniDot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.72)}
     .card h3{margin:10px 0 6px; font-size: 16px}
@@ -202,12 +122,21 @@
     .badge{display:inline-flex; align-items:center; gap:8px; padding:7px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.18); color:rgba(255,255,255,.78); font-size:12px}
     .badge b{color:rgba(255,255,255,.92); font-weight:600}
 
-    .foot{
-      padding: 22px 0 40px;
-      color: rgba(255,255,255,.45);
-      font-size: 12px;
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
+    /* Live demo section */
+    .demoGrid{display:grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items:stretch; margin-top: 14px;}
+    @media (max-width: 980px){ .demoGrid{grid-template-columns:1fr} }
+    .panel{border-radius: var(--radius2); overflow:hidden; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); box-shadow: var(--shadow);}
+    .panelHeader{display:flex; justify-content:space-between; align-items:center; gap:10px; padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,.07);}
+    .panelBody{padding: 14px;}
+    .embedWrap{position:relative; width:100%; aspect-ratio: 16/9; border-radius: 18px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);}
+    iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+    .hint{margin-top:10px; color: rgba(255,255,255,.55); font-size:12.5px; line-height:1.5}
+    .list{display:grid; gap:12px}
+    .list .item{border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px; background: rgba(0,0,0,.18);}
+    .list .item h4{margin:0 0 6px; font-size:14px}
+    .list .item p{margin:0; color: var(--muted); font-size:13px; line-height:1.6;}
+
+    .foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
     .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
     .mutelink{color: rgba(255,255,255,.60)}
     .mutelink:hover{color: rgba(255,255,255,.85)}
@@ -229,7 +158,7 @@
         <nav class="menu" aria-label="Primary">
           <a href="#concept">Concept</a>
           <a href="#modes">Modes</a>
-          <a href="#preview">Preview</a>
+          <a href="#live">Live</a>
           <a href="#faq">FAQ</a>
         </nav>
 
@@ -256,7 +185,7 @@
             <div class="heroBtns">
               <a class="btn primary" href="explore.html">지금 탐색하기 (Explore)</a>
               <a class="btn" href="#modes">세 가지 방식 보기</a>
-              <a class="btn" href="vision.html">Vision</a>
+              <a class="btn" href="#live">라이브 데모</a>
             </div>
 
             <div class="note">
@@ -306,7 +235,7 @@
               <p>스캔 없이 ‘처음부터’ 가상공간을 제작합니다. 쇼룸/전시/브랜드 월드(예: arakorea.shop)처럼 상업적 연출에 최적화됩니다.</p>
               <div class="ctaRow">
                 <span class="badge"><b>Output</b> Digital-native</span>
-                <a class="btn" href="vision.html">제작 방식</a>
+                <a class="btn primary" href="https://arakorea.shop" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </div>
 
@@ -316,9 +245,57 @@
               <p>상업 시설은 고정 센서(CCTV/고정형 LiDAR)로 변화가 지속적으로 반영되는 디지털 미러 공간을 목표로 합니다. ‘전체 재스캔’이 아니라 ‘변경분 동기화’가 핵심입니다.</p>
               <div class="ctaRow">
                 <span class="badge"><b>Use</b> Retail · Facility</span>
-                <a class="btn primary" href="vision.html">미러 비전</a>
+                <a class="btn" href="vision.html">미러 비전</a>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="section" id="live" aria-label="Live demo">
+          <div class="pill"><span class="dot"></span> Live Demo — Create 공간 레퍼런스</div>
+          <h2 style="margin:12px 0 8px; font-size:22px; letter-spacing:-.2px">가상공간을 바로 체험해보세요</h2>
+          <p style="margin:0; color:var(--muted); line-height:1.7; max-width:860px">
+            아래 데모는 ourbang의 Create 결과물(디지털 네이티브 공간)의 예시입니다. 임베드가 차단될 경우, 새 창으로 열어 확인합니다.
+          </p>
+
+          <div class="demoGrid">
+            <section class="panel" aria-label="Embedded live demo">
+              <div class="panelHeader">
+                <div class="tag">Embedded Demo</div>
+                <a class="btn primary" href="https://arakorea.shop" target="_blank" rel="noopener">새 창으로 열기</a>
+              </div>
+              <div class="panelBody">
+                <div class="embedWrap">
+                  <iframe src="https://3d.cobenef.com/ara_korea/#autoplay&flipmouse" title="ourbang create space demo" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+                </div>
+                <div class="hint">
+                  임베드가 비어 보이면 외부 서비스 정책(iframe 제한)일 수 있습니다. 이 경우 “새 창으로 열기”로 확인하세요.
+                </div>
+              </div>
+            </section>
+
+            <aside class="panel" aria-label="Demo notes">
+              <div class="panelHeader">
+                <div class="tag">What this proves</div>
+                <a class="btn" href="explore.html">Explore 페이지</a>
+              </div>
+              <div class="panelBody">
+                <div class="list">
+                  <div class="item">
+                    <h4>상업적 ‘연출’이 가능한 공간</h4>
+                    <p>스캔 없이도 브랜드 쇼룸·전시·스토어를 제작해 링크로 공유할 수 있습니다.</p>
+                  </div>
+                  <div class="item">
+                    <h4>Explore 결과물의 기준점</h4>
+                    <p>우리의 제품은 ‘입력(Scan/Create/Mirror)’이 달라도, 결과를 동일한 Explore 경험으로 통합합니다.</p>
+                  </div>
+                  <div class="item">
+                    <h4>다음 단계</h4>
+                    <p>공간 단위 메타데이터(권한·이력·공유·크레딧)를 탐색 UI 위에 덧씌우는 구조로 확장합니다.</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 
