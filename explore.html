@@ -112,32 +112,36 @@
     .mutelink{color: rgba(255,255,255,.60)}
     .mutelink:hover{color: rgba(255,255,255,.85)}
   </style>
+  <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="index.html">
-          <img src="assets/images/brand/ourbang-logo.png" alt="ourbang logo" onerror="this.style.display='none'">
-          <div class="name">
-            <strong>ourbang</strong>
-            <span>space, scanned, created &amp; mirrored</span>
-          </div>
-        </a>
-
-        <nav class="menu" aria-label="Primary">
-          <a href="index.html#modes">Modes</a>
-          <a href="scan.html">Scan</a>
-          <a href="vision.html">Vision</a>
-        </nav>
-
-        <div style="display:flex; gap:10px; align-items:center">
-          <a class="btn" href="index.html">Home</a>
-          <a class="btn primary" href="https://arakorea.shop" target="_blank" rel="noopener">Open arakorea.shop</a>
+<header class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <img src="assets/images/brand/ourbang-logo.png" alt="ourbang logo" onerror="this.style.display='none'">
+        <div class="name">
+          <strong>ourbang</strong>
+          <span>space, scanned, created &amp; mirrored</span>
         </div>
+      </a>
+
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html#concept">Concept</a>
+        <a href="index.html#modes">Modes</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="vision.html">Vision</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center">
+        <a class="btn" href="explore.html">Explore</a>
+        <a class="btn primary" href="index.html#modes">Start</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
+  
 
   <main>
     <section class="hero">
@@ -194,18 +198,19 @@
     </section>
 
     <footer class="foot">
-      <div class="wrap">
-        <div class="footRow">
-          <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-          <div style="display:flex; gap:14px; flex-wrap:wrap">
-            <a class="mutelink" href="index.html">Home</a>
-            <a class="mutelink" href="scan.html">Scan</a>
-            <a class="mutelink" href="vision.html">Vision</a>
-          </div>
-        </div>
+  <div class="wrap">
+    <div class="footRow">
+      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap">
+        <a class="mutelink" href="index.html">Home</a>
+        <a class="mutelink" href="explore.html">Explore</a>
+        <a class="mutelink" href="scan.html">Scan</a>
+        <a class="mutelink" href="vision.html">Vision</a>
       </div>
-    </footer>
-  </main>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script></main>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
