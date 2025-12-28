@@ -137,6 +137,58 @@ a{color:inherit; text-decoration:none}
 }
 
 
+/* Unified Buttons (Global) */
+a.btn, .btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.88) !important;
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
+  backdrop-filter: none !important;
+}
+
+a.btn:hover, .btn:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.32) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+a.btn:active, .btn:active{
+  transform: none !important;
+}
+
+a.btn:focus-visible, .btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
+
+/* Primary buttons should not be green anywhere */
+a.btn.primary, .btn.primary{
+  background: transparent !important;
+  border-color: rgba(255,255,255,.28) !important;
+  color: rgba(255,255,255,.95) !important;
+  box-shadow: none !important;
+}
+
+a.btn.primary:hover, .btn.primary:hover{
+  background: rgba(255,255,255,.10) !important;
+  border-color: rgba(255,255,255,.40) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+/* Remove hover motion from common CTA wrappers */
+.ctaRow a, .heroBtns a, .actions a{
+  transform: none !important;
+}
+
+
 /* Unified Navigation (Header) */
 .topbar .menu a,
 .topbar .actions a.btn{
@@ -151,29 +203,23 @@ a{color:inherit; text-decoration:none}
   transform: none !important;
   transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
 }
-
 .topbar .menu a:hover,
 .topbar .actions a.btn:hover{
   background: rgba(255,255,255,.08) !important;
   border-color: rgba(255,255,255,.32) !important;
   color: rgba(255,255,255,1) !important;
 }
-
 .topbar .menu a:focus-visible,
 .topbar .actions a.btn:focus-visible{
   outline: 2px solid rgba(255,255,255,.55) !important;
   outline-offset: 3px !important;
 }
-
-/* Remove any bounce/lift animations for nav */
 .topbar .menu a:hover,
 .topbar .actions a.btn:hover,
 .topbar .menu a:active,
 .topbar .actions a.btn:active{
   transform: none !important;
 }
-
-/* Make "primary" look consistent in header (no green) */
 .topbar .actions a.btn.primary,
 .topbar .actions a.btn.primary:hover{
   background: transparent !important;
