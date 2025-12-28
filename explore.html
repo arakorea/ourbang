@@ -2,331 +2,345 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ourbang Explore — Virtual space experience</title>
-  <meta name="description" content="ourbang Explore: 웹에서 설치 없이 가상 공간을 탐색합니다." />
-  <meta name="theme-color" content="#0b0f17" />
-  <meta property="og:title" content="ourbang Explore" />
-  <meta property="og:description" content="설치 없이 웹에서 공간을 탐색하는 경험." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ourbang — Explore</title>
+  <meta name="description" content="ourbang Explore — 스캔된 공간을 웹에서 탐색합니다." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ourbang — Explore" />
+  <meta property="og:description" content="Explore-ready digital space" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/og/og-cover.jpg" />
-  <link rel="icon" href="assets/images/brand/favicon.png" />
+  <meta property="og:image" content="assets/images/og/og-cover.jpg?v=20251228" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/brand/favicon.png?v=20251228" />
+
   <style>
     :root{
-      --bg:#070A10; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.68); --muted2:rgba(255,255,255,.55);
-      --line:rgba(255,255,255,.10); --shadow:0 20px 80px rgba(0,0,0,.55); --shadow2:0 12px 40px rgba(0,0,0,.40);
-      --radius:18px; --radius2:24px; --max:1160px; --cta:rgba(255,255,255,.92); --ctaText:#0b0f17;
+      --bg:#07090f;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --brand: #7cc6ff;
+      --brand2:#4ee0c2;
+      --shadow: 0 20px 80px rgba(0,0,0,.45);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1180px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,.10), transparent 60%),
-                  radial-gradient(900px 500px at 85% 20%, rgba(255,255,255,.07), transparent 60%),
-                  radial-gradient(1000px 700px at 40% 90%, rgba(255,255,255,.06), transparent 60%),
-                  var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+        radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+        radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
+        var(--bg);
       overflow-x:hidden;
-      letter-spacing:-.2px;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .nav{
-      position:sticky; top:0; z-index:50;
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position: sticky; top:0; z-index: 20;
       backdrop-filter: blur(14px);
-      background: rgba(7,10,16,.55);
-      border-bottom:1px solid var(--line);
+      background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px}
-    .brand{display:flex; align-items:center; gap:10px; min-width:170px}
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.10));
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:700; color:rgba(255,255,255,.92);
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px;
     }
-    .name{display:flex; flex-direction:column; line-height:1.1}
-    .name strong{font-size:15px}
-    .name span{font-size:12px; color:var(--muted2)}
-    .nav-links{display:flex; align-items:center; gap:14px}
-    .nav-links a{
-      font-size:13px; color:var(--muted);
-      padding:10px 12px; border-radius:999px; border:1px solid transparent;
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:220px;
     }
-    .nav-links a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.04)}
-    .nav-cta{display:flex; align-items:center; gap:10px; min-width:170px; justify-content:flex-end}
+    .brand img{
+      width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
+    }
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.05;
+    }
+    .brand .name strong{font-size:18px; letter-spacing:.2px}
+    .brand .name span{font-size:12px; color: var(--muted2)}
+    .menu{display:flex; align-items:center; gap:18px}
+    .menu a{
+      font-size:14px; color: var(--muted);
+      padding:10px 10px; border-radius: 12px;
+    }
+    .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+    .actions{display:flex; align-items:center; gap:10px}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px; border-radius:999px; border:1px solid var(--line);
-      background: rgba(255,255,255,.04); color:var(--text);
-      font-size:13px; line-height:1; cursor:pointer; user-select:none; white-space:nowrap;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor:pointer;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16)}
-    .btn.primary{background:var(--cta); color:var(--ctaText); border-color:transparent; box-shadow:0 14px 45px rgba(255,255,255,.12); font-weight:700}
-    .btn.primary:hover{transform: translateY(-1px); filter:brightness(.98)}
-    .page{padding:52px 0 22px}
-    .badge{
-      display:inline-flex; gap:10px; align-items:center; padding:9px 12px; border-radius:999px;
-      border:1px solid var(--line); background: rgba(255,255,255,.04); color:var(--muted); font-size:12px;
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
+      border-color: rgba(124,198,255,.28);
     }
-    .dot{width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.9); box-shadow:0 0 0 3px rgba(255,255,255,.12)}
-    h1{margin:16px 0 10px; font-size:44px; line-height:1.08; letter-spacing:-.8px}
-    .lead{margin:0; color:var(--muted); font-size:16px; line-height:1.65; max-width:68ch}
-    .section{padding:34px 0}
-    .section-header{display:flex; justify-content:space-between; align-items:flex-end; gap:18px; margin-bottom:16px}
-    .section-header h2{margin:0; font-size:20px; letter-spacing:-.4px}
-    .section-header p{margin:0; color:var(--muted); font-size:13px; line-height:1.6; max-width:70ch}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
-    .card{border-radius:var(--radius); border:1px solid var(--line); background: rgba(255,255,255,.04); box-shadow:var(--shadow2); padding:16px}
-    .card h3{margin:0 0 8px; font-size:15px; letter-spacing:-.2px}
-    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.65}
-    .hero-split{display:grid; grid-template-columns: 1.05fr .95fr; gap:18px; align-items:start}
-    .shot{border-radius:var(--radius2); border:1px solid var(--line); background: rgba(255,255,255,.04); overflow:hidden; box-shadow:var(--shadow)}
-    .shot .img{aspect-ratio: 16/10; background-size:cover; background-position:center; border-bottom:1px solid var(--line)}
-    .shot .cap{padding:14px 14px 16px}
-    .shot strong{display:block; font-size:14px; margin-bottom:6px}
-    .shot span{display:block; color:var(--muted); font-size:13px; line-height:1.6}
-    .cta{
-      border-radius:var(--radius2); border:1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      box-shadow:var(--shadow); padding:22px;
-      display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
+
+    @media (max-width: 980px){
+      .brand{min-width:auto}
+      .menu{display:none}
     }
-    .cta h3{margin:0 0 6px; font-size:16px}
-    .cta p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
-    .cta-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    footer{padding:36px 0 56px; border-top:1px solid var(--line); margin-top:46px; color:var(--muted2); font-size:12px}
-    .foot{display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap}
-    .col{display:grid; gap:8px; min-width:220px}
-    .col a{color:var(--muted)}
-    .col a:hover{color:var(--text)}
-    .smallline{color:var(--muted2)}
-    details{border-radius:14px; border:1px solid var(--line); background: rgba(255,255,255,.03); padding:12px 14px}
-    summary{
-      cursor:pointer; font-weight:650; color:rgba(255,255,255,.90); font-size:13px; list-style:none;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+
+    .hero{
+      padding: 44px 0 22px;
     }
-    summary::-webkit-details-marker{display:none}
-    .chev{width:18px; height:18px; border-radius:8px; background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
-          display:flex; align-items:center; justify-content:center; transition: transform .15s ease}
-    details[open] .chev{transform:rotate(180deg)}
-    details p{margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.7}
-    .faq{display:grid; gap:10px}
-    .kpi{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px}
-    .kpi .card{padding:14px}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:999px; border:1px solid var(--line);
-          background: rgba(255,255,255,.04); color:var(--muted); font-size:12px}
-    .list{margin:0; padding-left:18px; color:var(--muted); font-size:13px; line-height:1.7}
-    .list li{margin:6px 0}
-    @media (max-width:960px){
-      .nav-links{display:none}
-      .hero-split{grid-template-columns:1fr}
-      h1{font-size:38px}
-      .grid-3,.kpi,.grid-2{grid-template-columns:1fr}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
     }
-</style>
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 4px rgba(124,198,255,.12);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+    }
+    @media (max-width: 520px){ h1{font-size: 34px} }
+    .lead{
+      margin: 0 0 14px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
+
+    .panel{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      min-height: 360px;
+      position: relative;
+    }
+    .panelBg{
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(180deg, rgba(7,9,15,.22), rgba(7,9,15,.72)),
+        url("assets/images/preview/explore-shot.jpg?v=20251228");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+    }
+    .panelInner{
+      position:relative;
+      height:100%;
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      padding: 8px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      width: fit-content;
+    }
+    .metaRow{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 96px 1fr;
+      gap: 10px;
+      align-items:center;
+      padding: 12px 12px;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .kv div:first-child{color: rgba(255,255,255,.62); font-size: 12px}
+    .kv div:last-child{color: rgba(255,255,255,.88); font-size: 13px; text-align:right}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 18px 0 44px;
+    }
+    @media (max-width: 980px){ .cards{grid-template-columns:1fr} }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 16px 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.24);
+    }
+    .card .k{display:flex; align-items:center; gap:10px; color: rgba(255,255,255,.78); font-size: 12px; letter-spacing:.2px}
+    .card .k .miniDot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.72)}
+    .card h3{margin:10px 0 6px; font-size: 16px}
+    .card p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.6}
+
+    .foot{
+      padding: 22px 0 40px;
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .mutelink{color: rgba(255,255,255,.60)}
+    .mutelink:hover{color: rgba(255,255,255,.85)}
+  </style>
 </head>
 <body>
-
-  <div class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="ourbang home">
-          <div class="logo">o</div>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html">
+          <img src="assets/images/brand/ourbang-logo.png?v=20251228" alt="ourbang logo" onerror="this.style.display='none'">
           <div class="name">
             <strong>ourbang</strong>
-            <span>space, scanned & experienced</span>
+            <span>space, scanned &amp; experienced</span>
           </div>
         </a>
 
-        <nav class="nav-links" aria-label="Primary">
+        <nav class="menu" aria-label="Primary">
           <a href="index.html#concept">Concept</a>
           <a href="index.html#how">How it works</a>
-          <a href="explore.html">Explore</a>
-          <a href="scan.html">Scan</a>
-          <a href="vision.html">Vision</a>
+          <a href="index.html#faq">FAQ</a>
         </nav>
 
-        <div class="nav-cta">
-          <a class="btn primary" href="explore.html">Explore</a>
-          <a class="btn" href="scan.html">Scan a Space</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<main class="page">
-  <div class="container">
-    <div class="hero-split">
-      <div>
-        <div class="badge"><span class="dot"></span><span>Explore — 링크 하나로 들어가는 공간 경험</span></div>
-        <h1>설치 없이,<br/>웹에서 공간을 탐색합니다.</h1>
-        <p class="lead">
-          Explore는 ourbang의 핵심 데모입니다. 사용자는 링크 하나로 공간에 들어가
-          구조를 이해하고 분위기를 경험합니다. 지금 단계에서는 “공간 경험의 설득력”을 검증합니다.
-        </p>
-
-        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn primary" href="#spaces">데모 공간 보기</a>
-          <a class="btn" href="scan.html">내 공간 스캔하기</a>
-          <a class="btn" href="vision.html">비전 보기</a>
-        </div>
-
-        <div class="kpi">
-          <div class="card">
-            <h3 style="margin:0 0 6px;">즉시 이해</h3>
-            <p style="margin:0;">첫 화면에서 공간 구조가 파악되도록 설계합니다.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px;">설치 0</h3>
-            <p style="margin:0;">웹 기반 경험으로 진입 장벽을 최소화합니다.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px;">확장 가능</h3>
-            <p style="margin:0;">공유·기록·거래로 이어질 수 있는 단위를 전제합니다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="shot" aria-label="Explore preview">
-        <div class="img" style='background-image:url("assets/images/preview/explore-shot.jpg");'></div>
-        <div class="cap">
-          <strong>Explore Preview</strong>
-          <span>현재는 이미지/콘셉트 기반 데모입니다. 향후 3D/인터랙션으로 확장됩니다.</span>
-          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-            <span class="pill">Room-first</span>
-            <span class="pill">Realistic tone</span>
-            <span class="pill">Link share</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section id="spaces" class="section">
-      <div class="section-header">
-        <div>
-          <h2>Demo Spaces</h2>
-          <p>아래 카드들은 “공간 단위”의 예시입니다. 실제 데모 링크가 준비되면 카드 버튼만 연결하면 됩니다.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Personal Room</h3>
-          <p>개인 공간을 기록하고, 재현하고, 필요하면 공유하는 사용 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn" href="scan.html">Scan guide</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Studio / Workspace</h3>
-          <p>작업실/스튜디오를 “경험 가능한 포트폴리오”로 전환하는 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn" href="vision.html">Why it matters</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Shop / Pop-up</h3>
-          <p>상업 공간을 온라인에서 먼저 경험하게 하고, 방문/구매로 연결하는 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn primary" href="scan.html">Start scanning</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2>What makes Explore convincing</h2>
-          <p>기술 구현보다 “보는 사람이 납득하는 구조”가 먼저입니다.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Scene clarity</h3>
-          <p>한 장면에서 무엇을 봐야 하는지 명확해야 합니다. 불필요한 요소를 제거합니다.</p>
-        </div>
-        <div class="card">
-          <h3>Navigation language</h3>
-          <p>이동/확대/정보 확인의 언어를 고정합니다. 사용자가 학습하지 않아도 됩니다.</p>
-        </div>
-        <div class="card">
-          <h3>Share-ready</h3>
-          <p>링크 공유만으로 경험이 전달돼야 합니다. 홍보/협업/거래로 이어지는 기본 조건입니다.</p>
-        </div>
-      </div>
-
-      <div class="cta" style="margin-top:14px;">
-        <div>
-          <h3>다음은 Scan입니다</h3>
-          <p>공간을 만들 수 있어야 Explore가 반복됩니다. 스캔 방법을 짧고 명확하게 고정하겠습니다.</p>
-        </div>
-        <div class="cta-actions">
+        <div class="actions">
           <a class="btn" href="index.html">Home</a>
           <a class="btn primary" href="scan.html">Scan a Space</a>
         </div>
       </div>
-    </section>
-  </div>
-</main>
+    </div>
+  </header>
 
-  <footer>
-    <div class="container">
-      <div class="foot">
-        <div class="col">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <div class="logo" style="width:30px;height:30px;border-radius:11px;">o</div>
-            <div>
-              <div style="font-weight:800;color:rgba(255,255,255,0.92);">ourbang</div>
-              <div class="smallline">space, scanned & experienced</div>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="pill"><span class="dot"></span> Explore — 스캔된 공간을 “경험”으로 확인합니다</div>
+        <h1>웹에서 탐색 가능한<br/>디지털 공간 프리뷰</h1>
+        <p class="lead">
+          실제 서비스에서는 스캔/촬영 후 생성된 결과물을 이 화면에서 확인합니다.
+          지금은 MVP 데모로, “탐색 화면에 무엇이 있어야 하는지”를 먼저 고정합니다.
+        </p>
+
+        <div class="heroGrid">
+          <div class="panel" aria-label="Explore preview panel">
+            <div class="panelBg" role="img" aria-label="explore background"></div>
+            <div class="panelInner">
+              <div class="metaRow">
+                <div class="tag">Preview</div>
+                <div class="tag">Explore UI</div>
+              </div>
+
+              <div style="display:grid; gap:10px">
+                <div class="kv"><div>Entry</div><div>Link / QR / Invite</div></div>
+                <div class="kv"><div>Controls</div><div>Pan / Zoom / Points</div></div>
+                <div class="kv"><div>Next</div><div>Share · Save · Credit</div></div>
+              </div>
             </div>
           </div>
-          <div class="smallline">© <span id="year"></span> ourbang. All rights reserved.</div>
+
+          <div class="panel" aria-label="Specification panel" style="min-height:360px; background:rgba(255,255,255,.03)">
+            <div style="padding:18px; height:100%; display:flex; flex-direction:column; gap:14px">
+              <div class="tag">What you can show</div>
+              <div class="card" style="box-shadow:none; background:rgba(255,255,255,.03)">
+                <div class="k"><span class="miniDot"></span> Scene</div>
+                <h3>공간 구조 + 동선</h3>
+                <p>방/가구의 배치, 공간의 흐름, 포인트(관심 지점)를 한 눈에 이해하도록 설계합니다.</p>
+              </div>
+              <div class="card" style="box-shadow:none; background:rgba(255,255,255,.03)">
+                <div class="k"><span class="miniDot"></span> Metadata</div>
+                <h3>공간 단위 관리</h3>
+                <p>소유/권한, 촬영/생성 이력, 공유 링크, 향후 거래/크레딧 연동을 전제한 구조입니다.</p>
+              </div>
+              <div class="card" style="box-shadow:none; background:rgba(255,255,255,.03)">
+                <div class="k"><span class="miniDot"></span> Actions</div>
+                <h3>다음 행동 유도</h3>
+                <p>“스캔하기 → 생성 → 검수 → 공개”의 흐름을 UI로 분리해 파트너가 쉽게 이해하게 합니다.</p>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:auto">
+                <a class="btn primary" href="scan.html">스캔 방법 보기</a>
+                <a class="btn" href="vision.html">비전 보기</a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="col">
-          <div style="font-weight:700; color: rgba(255,255,255,0.88);">Pages</div>
-          <a href="index.html">Home</a>
-          <a href="explore.html">Explore</a>
-          <a href="scan.html">Scan</a>
-          <a href="vision.html">Vision</a>
-        </div>
+        <section class="cards" aria-label="Explore highlights">
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> POINT</div>
+            <h3>탐색 가능한 링크</h3>
+            <p>웹에서 즉시 열리는 공유 링크/QR을 중심으로 경험을 설계합니다.</p>
+          </div>
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> TRUST</div>
+            <h3>결과물의 일관성</h3>
+            <p>모델 생성/후처리 품질이 달라도, 탐색 UI의 구조는 흔들리지 않게 합니다.</p>
+          </div>
+          <div class="card">
+            <div class="k"><span class="miniDot"></span> EXTEND</div>
+            <h3>기록·거래 확장</h3>
+            <p>공간 단위를 “자산”으로 확장하는 길을 열어둡니다(크레딧/거래/인증).</p>
+          </div>
+        </section>
+      </div>
+    </section>
 
-        <div class="col">
-          <div style="font-weight:700; color: rgba(255,255,255,0.88);">Project</div>
-          <a href="index.html#concept">Concept</a>
-          <a href="index.html#how">How it works</a>
-          <a href="index.html#faq">FAQ</a>
+    <footer class="foot">
+      <div class="wrap">
+        <div class="footRow">
+          <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap">
+            <a class="mutelink" href="index.html">Home</a>
+            <a class="mutelink" href="scan.html">Scan</a>
+            <a class="mutelink" href="vision.html">Vision</a>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-
+    </footer>
+  </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
