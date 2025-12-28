@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ourbang Explore — Virtual space experience</title>
-  <meta name="description" content="ourbang Explore: 웹에서 설치 없이 가상 공간을 탐색합니다." />
+  <title>ourbang Scan — Create a digital space</title>
+  <meta name="description" content="ourbang Scan: LiDAR 또는 카메라로 공간을 촬영해 디지털 공간 경험을 만듭니다." />
   <meta name="theme-color" content="#0b0f17" />
-  <meta property="og:title" content="ourbang Explore" />
-  <meta property="og:description" content="설치 없이 웹에서 공간을 탐색하는 경험." />
+  <meta property="og:title" content="ourbang Scan" />
+  <meta property="og:description" content="공간을 만들기 위한 가장 단순한 안내." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/images/og/og-cover.jpg" />
   <link rel="icon" href="assets/images/brand/favicon.png" />
@@ -153,8 +153,8 @@
         </nav>
 
         <div class="nav-cta">
-          <a class="btn primary" href="explore.html">Explore</a>
-          <a class="btn" href="scan.html">Scan a Space</a>
+          <a class="btn" href="explore.html">Explore</a>
+          <a class="btn primary" href="scan.html">Scan a Space</a>
         </div>
       </div>
     </div>
@@ -164,83 +164,89 @@
   <div class="container">
     <div class="hero-split">
       <div>
-        <div class="badge"><span class="dot"></span><span>Explore — 링크 하나로 들어가는 공간 경험</span></div>
-        <h1>설치 없이,<br/>웹에서 공간을 탐색합니다.</h1>
+        <div class="badge"><span class="dot"></span><span>Scan — 누구나 따라할 수 있는 공간 생성 흐름</span></div>
+        <h1>LiDAR든 카메라든,<br/>시작은 “촬영”입니다.</h1>
         <p class="lead">
-          Explore는 ourbang의 핵심 데모입니다. 사용자는 링크 하나로 공간에 들어가
-          구조를 이해하고 분위기를 경험합니다. 지금 단계에서는 “공간 경험의 설득력”을 검증합니다.
+          Scan 페이지는 사용자가 “무엇을 하면 되는지”를 즉시 이해하도록 구성합니다.
+          지금 단계에서는 자동화보다 <strong>가이드의 명확성</strong>이 핵심입니다.
         </p>
 
         <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn primary" href="#spaces">데모 공간 보기</a>
-          <a class="btn" href="scan.html">내 공간 스캔하기</a>
+          <a class="btn primary" href="#steps">촬영 가이드</a>
+          <a class="btn" href="explore.html">Explore 보기</a>
           <a class="btn" href="vision.html">비전 보기</a>
         </div>
 
         <div class="kpi">
           <div class="card">
-            <h3 style="margin:0 0 6px;">즉시 이해</h3>
-            <p style="margin:0;">첫 화면에서 공간 구조가 파악되도록 설계합니다.</p>
+            <h3 style="margin:0 0 6px;">입력 단순화</h3>
+            <p style="margin:0;">사용자는 촬영만, 결과는 ourbang이 정리합니다.</p>
           </div>
           <div class="card">
-            <h3 style="margin:0 0 6px;">설치 0</h3>
-            <p style="margin:0;">웹 기반 경험으로 진입 장벽을 최소화합니다.</p>
+            <h3 style="margin:0 0 6px;">품질 기준</h3>
+            <p style="margin:0;">빛/동선/중복샷 기준을 고정해 결과 일관성을 만듭니다.</p>
           </div>
           <div class="card">
-            <h3 style="margin:0 0 6px;">확장 가능</h3>
-            <p style="margin:0;">공유·기록·거래로 이어질 수 있는 단위를 전제합니다.</p>
+            <h3 style="margin:0 0 6px;">확장 로드맵</h3>
+            <p style="margin:0;">자동 정합·텍스처·3D 생성은 단계적으로 통합합니다.</p>
           </div>
         </div>
       </div>
 
-      <div class="shot" aria-label="Explore preview">
-        <div class="img" style='background-image:url("assets/images/preview/explore-shot.jpg");'></div>
+      <div class="shot" aria-label="Scan preview">
+        <div class="img" style='background-image:url("assets/images/preview/scan-shot.jpg");'></div>
         <div class="cap">
-          <strong>Explore Preview</strong>
-          <span>현재는 이미지/콘셉트 기반 데모입니다. 향후 3D/인터랙션으로 확장됩니다.</span>
+          <strong>Scan Preview</strong>
+          <span>촬영 가이드는 짧고 명확해야 합니다. “실패하지 않는 촬영”이 목표입니다.</span>
           <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-            <span class="pill">Room-first</span>
-            <span class="pill">Realistic tone</span>
-            <span class="pill">Link share</span>
+            <span class="pill">LiDAR ready</span>
+            <span class="pill">Camera fallback</span>
+            <span class="pill">Quality checklist</span>
           </div>
         </div>
       </div>
     </div>
 
-    <section id="spaces" class="section">
+    <section id="steps" class="section">
       <div class="section-header">
         <div>
-          <h2>Demo Spaces</h2>
-          <p>아래 카드들은 “공간 단위”의 예시입니다. 실제 데모 링크가 준비되면 카드 버튼만 연결하면 됩니다.</p>
+          <h2>촬영 가이드</h2>
+          <p>LiDAR 사용 가능 여부에 따라 두 가지 경로로 안내합니다. 둘 다 목표는 동일합니다: “Explore-ready 결과”</p>
         </div>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-2">
         <div class="card">
-          <h3>Personal Room</h3>
-          <p>개인 공간을 기록하고, 재현하고, 필요하면 공유하는 사용 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn" href="scan.html">Scan guide</a>
-          </div>
+          <h3>Option A — LiDAR 스캔</h3>
+          <p style="margin-bottom:10px;">iPhone/iPad LiDAR 환경이라면, 스캔 정확도와 속도를 확보할 수 있습니다.</p>
+          <ul class="list">
+            <li>공간을 천천히 한 바퀴(벽면을 따라) 이동</li>
+            <li>바닥/천장도 간헐적으로 포함</li>
+            <li>거울/유리 등 반사면은 각도를 바꿔 보완</li>
+            <li>스캔 중 갑작스러운 이동(점프) 금지</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3>Studio / Workspace</h3>
-          <p>작업실/스튜디오를 “경험 가능한 포트폴리오”로 전환하는 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn" href="vision.html">Why it matters</a>
-          </div>
+          <h3>Option B — 카메라 촬영</h3>
+          <p style="margin-bottom:10px;">LiDAR가 없어도 가능합니다. 핵심은 “중복샷”과 “동선 규칙”입니다.</p>
+          <ul class="list">
+            <li>한 지점에서 8~12장(원형으로) 촬영</li>
+            <li>다음 지점으로 이동 시 30~40% 겹치게 촬영</li>
+            <li>흔들림 방지(가능하면 1x 렌즈 고정)</li>
+            <li>어두운 구역은 조명 켜고 촬영</li>
+          </ul>
         </div>
+      </div>
 
-        <div class="card">
-          <h3>Shop / Pop-up</h3>
-          <p>상업 공간을 온라인에서 먼저 경험하게 하고, 방문/구매로 연결하는 시나리오.</p>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#" aria-disabled="true" onclick="return false;">Demo (soon)</a>
-            <a class="btn primary" href="scan.html">Start scanning</a>
-          </div>
+      <div class="cta" style="margin-top:14px;">
+        <div>
+          <h3>업로드/제출은 다음 단계에서 연결됩니다</h3>
+          <p>현재 MVP는 흐름 검증이 목적입니다. 제출 폼(드라이브/링크/업로드)은 다음 이터레이션에서 추가합니다.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" href="explore.html">Explore</a>
+          <a class="btn primary" href="index.html">Home</a>
         </div>
       </div>
     </section>
@@ -248,35 +254,50 @@
     <section class="section">
       <div class="section-header">
         <div>
-          <h2>What makes Explore convincing</h2>
-          <p>기술 구현보다 “보는 사람이 납득하는 구조”가 먼저입니다.</p>
+          <h2>품질 체크리스트</h2>
+          <p>이 체크리스트만 지키면 “결과물 퀄리티 편차”가 급격히 줄어듭니다.</p>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="card">
-          <h3>Scene clarity</h3>
-          <p>한 장면에서 무엇을 봐야 하는지 명확해야 합니다. 불필요한 요소를 제거합니다.</p>
+          <h3>Light</h3>
+          <p>가능한 한 균일한 조명. 역광/강한 그림자 최소화.</p>
         </div>
         <div class="card">
-          <h3>Navigation language</h3>
-          <p>이동/확대/정보 확인의 언어를 고정합니다. 사용자가 학습하지 않아도 됩니다.</p>
+          <h3>Overlap</h3>
+          <p>사진 간 겹침(30~40%) 유지. 공백 구간이 생기지 않게.</p>
         </div>
         <div class="card">
-          <h3>Share-ready</h3>
-          <p>링크 공유만으로 경험이 전달돼야 합니다. 홍보/협업/거래로 이어지는 기본 조건입니다.</p>
+          <h3>Stability</h3>
+          <p>흔들림 없는 촬영. 빠른 회전/줌 변경 금지.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-header">
+        <div>
+          <h2>FAQ</h2>
+          <p>사용자가 멈칫하는 지점을 미리 제거합니다.</p>
         </div>
       </div>
 
-      <div class="cta" style="margin-top:14px;">
-        <div>
-          <h3>다음은 Scan입니다</h3>
-          <p>공간을 만들 수 있어야 Explore가 반복됩니다. 스캔 방법을 짧고 명확하게 고정하겠습니다.</p>
-        </div>
-        <div class="cta-actions">
-          <a class="btn" href="index.html">Home</a>
-          <a class="btn primary" href="scan.html">Scan a Space</a>
-        </div>
+      <div class="faq">
+        <details>
+          <summary>정확히 몇 장을 찍어야 하나요? <span class="chev">⌄</span></summary>
+          <p>공간 크기에 따라 다르지만, “지점당 8~12장 + 지점 간 30~40% 중복”을 기준으로 잡으면 충분합니다.</p>
+        </details>
+
+        <details>
+          <summary>사람이 찍히면 안 되나요? <span class="chev">⌄</span></summary>
+          <p>가능하면 피하는 것이 좋습니다. 움직이는 대상은 결과 품질을 떨어뜨릴 수 있습니다(특히 카메라 기반).</p>
+        </details>
+
+        <details>
+          <summary>다음 단계는 무엇인가요? <span class="chev">⌄</span></summary>
+          <p>제출(업로드/링크) 흐름과 결과 확인(Explore 연결)을 통합하고, 자동화/정합/3D 생성은 점진적으로 도입합니다.</p>
+        </details>
       </div>
     </section>
   </div>
