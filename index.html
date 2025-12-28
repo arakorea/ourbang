@@ -6,23 +6,20 @@
   <title>ourbang — space, scanned, created &amp; mirrored</title>
   <meta name="description" content="ourbang은 Scan(LiDAR/Camera), Create(가상공간 제작), Mirror(지속 동기화) 방식으로 공간을 웹에서 탐색 가능한 디지털 공간으로 전환합니다." />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="ourbang" />
   <meta property="og:description" content="Scan · Create · Mirror — 공간을 디지털 자산으로" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/images/og/og-cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/images/brand/favicon.png" />
 
-  <!-- Preload key images (optional) -->
   <link rel="preload" as="image" href="assets/images/preview/hero-room.jpg" />
   <link rel="preload" as="image" href="assets/images/preview/explore-shot.jpg" />
   <link rel="preload" as="image" href="assets/images/preview/scan-shot.jpg" />
 
   <style>
-    :root{
+:root{
       --bg:#07090f;
       --panel: rgba(255,255,255,.06);
       --text: rgba(255,255,255,.92);
@@ -163,7 +160,9 @@
     .mutelink{color: rgba(255,255,255,.60)}
     .mutelink:hover{color: rgba(255,255,255,.85)}
   </style>
-  <link rel="stylesheet" href="assets/css/site.css" />
+
+  <!-- cache bust -->
+  <link rel="stylesheet" href="assets/css/site.css?v=5" />
 </head>
 
 <body>
@@ -195,6 +194,7 @@
   </header>
 
   <main>
+    <!-- Concept / Hero -->
     <section class="hero" id="concept">
       <div class="wrap">
         <div class="heroGrid">
@@ -211,348 +211,110 @@
               <a class="btn" href="scan.html">Scan 흐름 보기</a>
               <a class="btn" href="vision.html">Vision</a>
             </div>
-
-            <div class="note">
-              현재 버전은 “개념과 사용자 흐름”을 고정하는 데모입니다. 업로드/자동 생성/거래·크레딧은 다음 단계에서 통합합니다.
-            </div>
           </div>
 
-          <div class="previewCard" aria-label="Preview card">
-            <div class="previewBg" role="img" aria-label="room preview background"></div>
+          <div class="previewCard" aria-label="Preview">
+            <div class="previewBg"></div>
             <div class="previewInner">
               <div class="previewTop">
-                <div class="tag">Preview</div>
-                <a class="previewCTA" href="explore.html" aria-label="Explore preview">
-                  Open Explore <span aria-hidden="true">→</span>
-                </a>
+                <span class="tag">See Beyond Reality</span>
+                <a class="previewCTA" href="explore.html">Explore →</a>
               </div>
-
-              <div style="display:grid; gap:10px">
-                <div class="kv"><div>Output</div><div>Explore-ready digital space</div></div>
-                <div class="kv"><div>Inputs</div><div>Scan · Create · Mirror</div></div>
-                <div class="kv"><div>Use</div><div>Share · Manage · (Credit/Trade)</div></div>
-                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
-                  <span class="tag">실사 톤</span>
-                  <span class="tag">설치 없이 웹</span>
-                  <span class="tag">공간 단위</span>
-                </div>
+              <div class="kv">
+                <div>Output</div><div>Web Explore (shareable)</div>
+                <div>Input</div><div>Scan · Create · Mirror</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Modes -->
         <section class="section" id="modes" aria-label="Modes">
           <div class="cards">
             <div class="card">
-              <div class="k"><span class="miniDot"></span> MODE</div>
+              <div class="k"><span class="miniDot"></span> Mode</div>
               <h3>Scan</h3>
-              <p>LiDAR 또는 카메라로 현실 공간을 수집해 디지털 공간으로 전환합니다. 개인/소형 공간부터 시작해 운영 품질을 고정합니다.</p>
+              <p>LiDAR/Camera 기반 입력 흐름. 촬영 → 업로드 → 검수 → 공유.</p>
               <div class="ctaRow">
-                <span class="badge"><b>Input</b> LiDAR · Camera</span>
-                <a class="btn" href="scan.html">스캔 가이드</a>
+                <a class="btn" href="scan.html">Scan 페이지로</a>
               </div>
             </div>
 
             <div class="card">
-              <div class="k"><span class="miniDot"></span> MODE</div>
+              <div class="k"><span class="miniDot"></span> Mode</div>
               <h3>Create</h3>
-              <p>스캔 없이 ‘처음부터’ 가상공간을 제작합니다. 쇼룸/전시/브랜드 월드처럼 상업적 연출에 최적화됩니다.</p>
+              <p>스캔 없이 제작된 공간 연출. 공간을 디지털 단위로 만들고 관리하는 출발점.</p>
               <div class="ctaRow">
-                <span class="badge"><b>Output</b> Digital-native</span>
-                <a class="btn primary" href="explore.html">Explore로 보기</a>
+                <span class="badge"><b>Output</b> Explore</span>
               </div>
             </div>
 
             <div class="card">
-              <div class="k"><span class="miniDot"></span> MODE</div>
+              <div class="k"><span class="miniDot"></span> Mode</div>
               <h3>Mirror</h3>
-              <p>상업 시설은 변화가 지속적으로 반영되는 ‘디지털 미러 공간’을 목표로 합니다. 핵심은 전체 재스캔이 아니라 변경분 동기화입니다.</p>
+              <p>공간의 변경분(Delta)을 추적·동기화하여 ‘운영 가능한 상태’를 유지합니다.</p>
               <div class="ctaRow">
-                <span class="badge"><b>Use</b> Retail · Facility</span>
-                <a class="btn" href="vision.html">미러 비전</a>
+                <a class="btn primary" href="#mirror">Mirror 보기</a>
               </div>
             </div>
           </div>
         </section>
 
-<section class="section" id="mirror" aria-label="Mirror">
-  <div class="galleryHead">
-    <div>
-      <h2 class="galleryTitle">Mirror — 공간의 ‘지금’을 계속 반영하다</h2>
-      <p class="galleryLead">
-        Mirror는 공간을 한 번 기록하는 것이 아니라, 변화가 발생한 지점만을 추적·동기화하여
-        디지털 공간을 항상 ‘운영 가능한 상태’로 유지합니다.
-      </p>
-    </div>
-    <a class="btn primary" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Inquiry">Start a Mirror Pilot</a>
-  </div>
-
-  <div class="galleryGrid">
-    <article class="shot">
-      <div class="img"
-           style="background-image:url('assets/images/gallery/mirror-sync.png')"
-           role="img"
-           aria-label="Mirror synchronization visual"></div>
-      <div class="body">
-        <h4>Continuous Sync</h4>
-        <p>전체 재스캔이 아니라, 변경분(Delta)을 중심으로 반영하는 운영형 동기화.</p>
-        <div class="ctaRow">
-          <span class="badge"><b>Key</b> Delta sync</span>
-          <span class="badge"><b>Use</b> Retail · Facility</span>
-          <a class="btn" href="vision.html">Mirror 비전 보기</a>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="section" id="gallery" aria-label="Gallery">
-  <div class="galleryHead">
-    <div>
-      <h2 class="galleryTitle">우리 이미지로 보여주는 ourbang</h2>
-      <p class="galleryLead">
-        아래 이미지는 ourbang 자체 제작 시각 자료입니다. 이후에는 Mirror/추가 제작 이미지를 이 섹션에 계속 확장하면 됩니다.
-      </p>
-    </div>
-    <a class="btn" href="explore.html">Explore 페이지로</a>
-  </div>
-
-  <div class="galleryGrid">
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/preview/explore-shot.jpg')" role="img" aria-label="Explore visual"></div>
-      <div class="body">
-        <h4>Explore</h4>
-        <p>결과물(디지털 공간)을 웹에서 탐색하는 경험.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/preview/scan-shot.jpg')" role="img" aria-label="Scan visual"></div>
-      <div class="body">
-        <h4>Scan</h4>
-        <p>LiDAR/Camera 기반 입력 흐름. 촬영 → 업로드 → 검수 → 공유.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/preview/hero-room.jpg')" role="img" aria-label="Create visual"></div>
-      <div class="body">
-        <h4>Create</h4>
-        <p>스캔 없이 제작된 공간 연출.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/mirror-sync.png')" role="img" aria-label="Mirror sync visual"></div>
-      <div class="body">
-        <h4>Mirror Sync</h4>
-        <p>상업공간의 변경분을 추적하고 동기화하는 장면(타임라인/오버레이).</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/value-platform.png')" role="img" aria-label="Value platform visual"></div>
-      <div class="body">
-        <h4>Value Platform</h4>
-        <p>공간 단위 아카이빙·권리·패키지·라이선스 등 자산화 UI 레퍼런스.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/modes-scan-create-mirror.png')" role="img" aria-label="Modes visual"></div>
-      <div class="body">
-        <h4>Modes</h4>
-        <p>Scan / Create / Mirror 3가지 모드를 한 장으로 설명하는 요약 컷.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/flow-scan-explore-exchange-credit.png')" role="img" aria-label="Flow visual"></div>
-      <div class="body">
-        <h4>Flow</h4>
-        <p>Scan → Explore → Exchange → Credit, 가치 흐름을 직관적으로 보여주는 컷.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/benefits-trust-monetize-platform-history.png')" role="img" aria-label="Benefits visual"></div>
-      <div class="body">
-        <h4>Benefits</h4>
-        <p>Trust/Monetize/Platform/History 4가지 효익을 한 번에 정리한 컷.</p>
-      </div>
-    </article>
-
-    <article class="shot">
-      <div class="img" style="background-image:url('assets/images/gallery/operate.png')" role="img" aria-label="Operate visual"></div>
-      <div class="body">
-        <h4>Operate</h4>
-        <p>생성된 디지털 공간을 검토·관리·업데이트하며 실제 운영 흐름에 연결.</p>
-      </div>
-    </article>
-  </div>
-
-  <div class="note" style="margin-top:14px">
-    운영 팁: 갤러리 이미지는 <b>assets/images/gallery/</b> 폴더에 넣고, 카드 블록을 복사해 추가하면 됩니다.
-  </div>
-</section>
-
-
-
-
-
-<div class="galleryGrid">
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/preview/explore-shot.jpg')" role="img" aria-label="Explore visual"></div>
-    <div class="body">
-      <h4>Explore</h4>
-      <p>결과물(디지털 공간)을 웹에서 탐색하는 경험.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/preview/scan-shot.jpg')" role="img" aria-label="Scan visual"></div>
-    <div class="body">
-      <h4>Scan</h4>
-      <p>LiDAR/Camera 기반 입력 흐름. 촬영 → 업로드 → 검수 → 공유.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/preview/hero-room.jpg')" role="img" aria-label="Create visual"></div>
-    <div class="body">
-      <h4>Create</h4>
-      <p>스캔 없이 제작된 공간 연출. (다음 업데이트에서 Mirror 시각 자료로 교체/추가)</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/mirror-sync.png')" role="img" aria-label="Mirror sync visual"></div>
-    <div class="body">
-      <h4>Mirror Sync</h4>
-      <p>상업공간의 변경분을 추적하고 동기화하는 장면(타임라인/오버레이).</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/value-platform.png')" role="img" aria-label="Value platform visual"></div>
-    <div class="body">
-      <h4>Value Platform</h4>
-      <p>공간 단위 아카이빙·권리·패키지·라이선스 등 자산화 UI 레퍼런스.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/modes-scan-create-mirror.png')" role="img" aria-label="Modes visual"></div>
-    <div class="body">
-      <h4>Modes</h4>
-      <p>Scan / Create / Mirror 3가지 모드를 한 장으로 설명하는 요약 컷.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/flow-scan-explore-exchange-credit.png')" role="img" aria-label="Flow visual"></div>
-    <div class="body">
-      <h4>Flow</h4>
-      <p>Scan → Explore → Exchange → Credit, 가치 흐름을 직관적으로 보여주는 컷.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/benefits-trust-monetize-platform-history.png')" role="img" aria-label="Benefits visual"></div>
-    <div class="body">
-      <h4>Benefits</h4>
-      <p>Trust/Monetize/Platform/History 4가지 효익을 한 번에 정리한 컷.</p>
-    </div>
-  </article>
-
-  <article class="shot">
-    <div class="img" style="background-image:url('assets/images/gallery/operate.png')" role="img" aria-label="Operate visual"></div>
-    <div class="body">
-      <h4>Operate</h4>
-      <p>생성된 디지털 공간을 검토·관리·업데이트하며 실제 운영 흐름에 연결.</p>
-    </div>
-  </article>
-</div>ryLead">
-                아래 이미지는 현재 업로드된 ourbang 자체 제작 시각 자료를 그대로 사용합니다.
-                이후에는 Mirror/추가 제작 이미지를 이 섹션에 계속 확장하면 됩니다.
+        <!-- Mirror -->
+        <section class="section" id="mirror" aria-label="Mirror">
+          <div class="galleryHead">
+            <div>
+              <h2 class="galleryTitle">Mirror — 공간의 ‘지금’을 계속 반영하다</h2>
+              <p class="galleryLead">
+                Mirror는 공간을 한 번 기록하는 것이 아니라, 변화가 발생한 지점만을 추적·동기화하여
+                디지털 공간을 항상 ‘운영 가능한 상태’로 유지합니다.
               </p>
+            </div>
+            <a class="btn primary" href="mailto:info@akenm.com?subject=ourbang%20Mirror%20Pilot%20Inquiry">Start a Mirror Pilot</a>
+          </div>
+
+          <div class="galleryGrid">
+            <article class="shot">
+              <div class="img" style="background-image:url('assets/images/gallery/mirror-sync.png')" role="img" aria-label="Mirror sync visual"></div>
+              <div class="body">
+                <h4>Continuous Sync</h4>
+                <p>전체 재스캔이 아니라, 변경분(Delta)을 중심으로 반영하는 운영형 동기화.</p>
+                <div class="ctaRow">
+                  <span class="badge"><b>Key</b> Delta sync</span>
+                  <span class="badge"><b>Use</b> Retail · Facility</span>
+                  <a class="btn" href="vision.html">Mirror 비전 보기</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Gallery (ONLY ONCE) -->
+        <section class="section" id="gallery" aria-label="Gallery">
+          <div class="galleryHead">
+            <div>
+              <h2 class="galleryTitle">우리 이미지로 보여주는 ourbang</h2>
+              <p class="galleryLead">아래 이미지는 ourbang 자체 제작 시각 자료입니다.</p>
             </div>
             <a class="btn" href="explore.html">Explore 페이지로</a>
           </div>
 
           <div class="galleryGrid">
-            <article class="shot">
-              <div class="img" style="background-image:url('assets/images/preview/explore-shot.jpg')" role="img" aria-label="Explore visual"></div>
-              <div class="body">
-                <h4>Explore</h4>
-                <p>결과물(디지털 공간)을 웹에서 탐색하는 경험.</p>
-              </div>
-            </article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/preview/explore-shot.jpg')" role="img" aria-label="Explore visual"></div><div class="body"><h4>Explore</h4><p>결과물(디지털 공간)을 웹에서 탐색하는 경험.</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/preview/scan-shot.jpg')" role="img" aria-label="Scan visual"></div><div class="body"><h4>Scan</h4><p>LiDAR/Camera 기반 입력 흐름. 촬영 → 업로드 → 검수 → 공유.</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/preview/hero-room.jpg')" role="img" aria-label="Create visual"></div><div class="body"><h4>Create</h4><p>스캔 없이 제작된 공간 연출.</p></div></article>
 
-            <article class="shot">
-              <div class="img" style="background-image:url('assets/images/preview/scan-shot.jpg')" role="img" aria-label="Scan visual"></div>
-              <div class="body">
-                <h4>Scan</h4>
-                <p>LiDAR/Camera 기반 입력 흐름. 촬영 → 업로드 → 검수 → 공유.</p>
-              </div>
-            </article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/mirror-sync.png')" role="img" aria-label="Mirror sync visual"></div><div class="body"><h4>Mirror Sync</h4><p>상업공간의 변경분을 추적하고 동기화하는 장면(타임라인/오버레이).</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/value-platform.png')" role="img" aria-label="Value platform visual"></div><div class="body"><h4>Value Platform</h4><p>공간 단위 아카이빙·권리·패키지·라이선스 등 자산화 UI 레퍼런스.</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/modes-scan-create-mirror.png')" role="img" aria-label="Modes visual"></div><div class="body"><h4>Modes</h4><p>Scan / Create / Mirror 3가지 모드를 한 장으로 설명하는 요약 컷.</p></div></article>
 
-            <article class="shot">
-              <div class="img" style="background-image:url('assets/images/preview/hero-room.jpg')" role="img" aria-label="Create or hero visual"></div>
-              <div class="body">
-                <h4>Create / (Mirror 미리보기 자리)</h4>
-                <p>스캔 없이 제작된 공간 연출. 다음 업데이트에서 Mirror 시각 자료를 이 카드에 교체/추가하세요.</p>
-              </div>
-            </article>
-          
-
-<article class="shot">
-  <div class="img" style="background-image:url('assets/images/gallery/mirror-sync.png')" role="img" aria-label="Mirror sync visual"></div>
-  <div class="body">
-    <h4>Mirror Sync</h4>
-    <p>상업공간의 변경분을 추적하고 동기화하는 장면(타임라인/오버레이).</p>
-  </div>
-</article>
-
-<article class="shot">
-  <div class="img" style="background-image:url('assets/images/gallery/value-platform.png')" role="img" aria-label="Value platform visual"></div>
-  <div class="body">
-    <h4>Value Platform</h4>
-    <p>공간 단위 아카이빙·권리·패키지·라이선스 등 자산화 UI 레퍼런스.</p>
-  </div>
-</article>
-
-<article class="shot">
-  <div class="img" style="background-image:url('assets/images/gallery/modes-scan-create-mirror.png')" role="img" aria-label="Modes visual"></div>
-  <div class="body">
-    <h4>Modes</h4>
-    <p>Scan / Create / Mirror 3가지 모드를 한 장으로 설명하는 요약 컷.</p>
-  </div>
-</article>
-
-<article class="shot">
-  <div class="img" style="background-image:url('assets/images/gallery/flow-scan-explore-exchange-credit.png')" role="img" aria-label="Flow visual"></div>
-  <div class="body">
-    <h4>Flow</h4>
-    <p>Scan → Explore → Exchange → Credit, 가치 흐름을 직관적으로 보여주는 컷.</p>
-  </div>
-</article>
-
-<article class="shot">
-  <div class="img" style="background-image:url('assets/images/gallery/benefits-trust-monetize-platform-history.png')" role="img" aria-label="Benefits visual"></div>
-  <div class="body">
-    <h4>Benefits</h4>
-    <p>Trust/Monetize/Platform/History 4가지 효익을 한 번에 정리한 컷.</p>
-  </div>
-</article>
-
-          </div>
-
-          <div class="note" style="margin-top:14px">
-            운영 팁: 갤러리 이미지는 <b>assets/images/preview/</b> 폴더에 넣고 파일명만 맞추면 자동으로 노출됩니다.
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/flow-scan-explore-exchange-credit.png')" role="img" aria-label="Flow visual"></div><div class="body"><h4>Flow</h4><p>Scan → Explore → Exchange → Credit, 가치 흐름을 직관적으로 보여주는 컷.</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/benefits-trust-monetize-platform-history.png')" role="img" aria-label="Benefits visual"></div><div class="body"><h4>Benefits</h4><p>Trust/Monetize/Platform/History 4가지 효익을 한 번에 정리한 컷.</p></div></article>
+            <article class="shot"><div class="img" style="background-image:url('assets/images/gallery/operate.png')" role="img" aria-label="Operate visual"></div><div class="body"><h4>Operate</h4><p>생성된 디지털 공간을 검토·관리·업데이트하며 실제 운영 흐름에 연결.</p></div></article>
           </div>
         </section>
 
+        <!-- FAQ -->
         <section class="section" id="faq" aria-label="FAQ">
           <div class="cards">
             <div class="card">
@@ -572,6 +334,7 @@
             </div>
           </div>
         </section>
+
       </div>
     </section>
 
