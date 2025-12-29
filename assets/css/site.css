@@ -228,41 +228,10 @@ a.btn.primary:hover, .btn.primary:hover{
 }
 
 /* =========================
-   Unified Navigation Style
+   Navigation consistency + clickable Create output
    ========================= */
-
-.topbar .menu a,
-.topbar .actions a.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  line-height: 1;
-  padding: 10px 14px;
-
-  color: rgba(255,255,255,.72);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 999px;
-
-  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
-}
-
-.topbar .menu a:hover,
-.topbar .actions a.btn:hover{
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.22);
-  color: rgba(255,255,255,.92);
-}
-
-.topbar .menu a.is-active,
-.topbar .actions a.btn.is-active{
-  background: rgba(255,255,255,.14);
-  border-color: rgba(255,255,255,.38);
-  color: rgba(255,255,255,1);
-}
-
-.topbar .menu a.is-active:hover,
-.topbar .actions a.btn.is-active:hover{
-  background: rgba(255,255,255,.18);
-}
+.menu a{display:inline-flex; align-items:center; justify-content:center; line-height:1.1}
+.badgeLink{display:inline-flex; align-items:center}
+.badgeLink .badge{cursor:pointer}
+.badgeLink:hover .badge{filter:brightness(1.08)}
+.badgeLink:focus-visible{outline:2px solid rgba(120,180,255,.55); outline-offset:3px; border-radius:14px}
