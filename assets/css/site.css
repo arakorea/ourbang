@@ -228,10 +228,86 @@ a.btn.primary:hover, .btn.primary:hover{
 }
 
 /* =========================
-   Navigation consistency + clickable Create output
+   Create output clickable badge (index)
    ========================= */
-.menu a{display:inline-flex; align-items:center; justify-content:center; line-height:1.1}
 .badgeLink{display:inline-flex; align-items:center}
 .badgeLink .badge{cursor:pointer}
 .badgeLink:hover .badge{filter:brightness(1.08)}
 .badgeLink:focus-visible{outline:2px solid rgba(120,180,255,.55); outline-offset:3px; border-radius:14px}
+
+/* =========================
+   Video showroom hotspots + modal
+   ========================= */
+.videoStage{
+  position:relative;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+  box-shadow:0 20px 80px rgba(0,0,0,.45);
+}
+.videoStage video{width:100%; height:auto; display:block; background:#000}
+.hotspot{
+  position:absolute;
+  border:1px solid rgba(120,180,255,.55);
+  background:rgba(120,180,255,.10);
+  border-radius:14px;
+  cursor:pointer;
+  transition:transform .12s ease, filter .12s ease, background .12s ease;
+  backdrop-filter: blur(2px);
+}
+.hotspot:hover{filter:brightness(1.15); transform:scale(1.01)}
+.hotspot::after{
+  content:attr(data-label);
+  position:absolute;
+  left:8px; top:8px;
+  font-size:12px;
+  color:rgba(255,255,255,.92);
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.14);
+  padding:4px 8px;
+  border-radius:999px;
+}
+.hotspot[hidden]{display:none !important}
+
+.modalBack{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:18px;
+  z-index:9999;
+}
+.modalBack.open{display:flex}
+.modal{
+  width:min(980px, 96vw);
+  max-height:92vh;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(15,18,25,.92);
+  border-radius:22px;
+  box-shadow:0 30px 120px rgba(0,0,0,.65);
+}
+.modalTop{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:12px;
+  padding:14px 14px 0;
+}
+.modalTop h3{margin:0; font-size:20px}
+.modalClose{
+  appearance:none; border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.85);
+  border-radius:12px;
+  padding:8px 10px;
+  cursor:pointer;
+}
+.modalBody{padding:14px}
+.modalGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+@media (max-width: 860px){.modalGrid{grid-template-columns:1fr}}
+.modalImg{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+}
