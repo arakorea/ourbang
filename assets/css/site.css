@@ -73,3 +73,196 @@ a{color:inherit; text-decoration:none}
 .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
 .mutelink{color: rgba(255,255,255,.60)}
 .mutelink:hover{color: rgba(255,255,255,.85)}
+
+/* Mirror Concept block */
+.conceptGrid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+.conceptFigure{
+  margin:0;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+.conceptFigure img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.conceptCaption{
+  padding:10px 12px;
+  font-size:12px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.conceptText{
+  padding:18px;
+}
+
+.conceptBullets{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+  margin-top:14px;
+}
+
+.conceptBullets .bullet{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  background: rgba(255,255,255,.02);
+}
+
+.conceptBullets .bullet b{
+  min-width:72px;
+  display:inline-block;
+}
+
+@media (max-width: 980px){
+  .conceptGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Unified Buttons (Global) */
+a.btn, .btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.88) !important;
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
+  backdrop-filter: none !important;
+}
+
+a.btn:hover, .btn:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.32) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+a.btn:active, .btn:active{
+  transform: none !important;
+}
+
+a.btn:focus-visible, .btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
+
+/* Primary buttons should not be green anywhere */
+a.btn.primary, .btn.primary{
+  background: transparent !important;
+  border-color: rgba(255,255,255,.28) !important;
+  color: rgba(255,255,255,.95) !important;
+  box-shadow: none !important;
+}
+
+a.btn.primary:hover, .btn.primary:hover{
+  background: rgba(255,255,255,.10) !important;
+  border-color: rgba(255,255,255,.40) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+/* Remove hover motion from common CTA wrappers */
+.ctaRow a, .heroBtns a, .actions a{
+  transform: none !important;
+}
+
+
+/* Unified Navigation (Header) */
+.topbar .menu a,
+.topbar .actions a.btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.88) !important;
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
+}
+.topbar .menu a:hover,
+.topbar .actions a.btn:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.32) !important;
+  color: rgba(255,255,255,1) !important;
+}
+.topbar .menu a:focus-visible,
+.topbar .actions a.btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
+.topbar .menu a:hover,
+.topbar .actions a.btn:hover,
+.topbar .menu a:active,
+.topbar .actions a.btn:active{
+  transform: none !important;
+}
+.topbar .actions a.btn.primary,
+.topbar .actions a.btn.primary:hover{
+  background: transparent !important;
+  border-color: rgba(255,255,255,.28) !important;
+  color: rgba(255,255,255,.95) !important;
+}
+
+/* =========================
+   Unified Navigation Style
+   ========================= */
+
+.topbar .menu a,
+.topbar .actions a.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  padding: 10px 14px;
+
+  color: rgba(255,255,255,.72);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.topbar .menu a:hover,
+.topbar .actions a.btn:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.22);
+  color: rgba(255,255,255,.92);
+}
+
+.topbar .menu a.is-active,
+.topbar .actions a.btn.is-active{
+  background: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,1);
+}
+
+.topbar .menu a.is-active:hover,
+.topbar .actions a.btn.is-active:hover{
+  background: rgba(255,255,255,.18);
+}
