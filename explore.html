@@ -84,7 +84,7 @@
     .lead{margin:0; color: var(--muted); line-height:1.7; max-width:780px}
     .actionsRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
-    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items:stretch; padding: 16px 0 44px}
+    .grid{display:grid; grid-template-columns: 1fr; gap: 14px; align-items:stretch; padding: 16px 0 44px}
     @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
 
     .panel{
@@ -98,7 +98,7 @@
     .tag{font-size:12px; color: rgba(255,255,255,.78); padding: 7px 10px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); border-radius:999px; backdrop-filter: blur(10px);}
     .panelBody{padding: 14px;}
 
-    .embedWrap{position:relative; width:100%; aspect-ratio: 16/9; border-radius: 18px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);}
+    .embedWrap{position:relative; width:100%; max-width: 1120px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 18px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);}
     iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
     .hint{margin-top:10px; color: rgba(255,255,255,.55); font-size:12.5px; line-height:1.5}
 
@@ -125,7 +125,7 @@
       </a>
 
       <nav class="menu" aria-label="Primary">
-        <a href="explore.html" class="is-active">Explore</a>
+        <a href="explore.html">Explore</a>
         <a href="scan.html">Scan</a>
         <a href="mirror.html">Mirror</a>
         <a href="vision.html">Vision</a>
@@ -140,16 +140,7 @@
     <section class="hero">
       <div class="wrap">
         <h1>Explore</h1>
-        <p class="lead">
-          아래는 현재 ourbang이 사용할 “가상공간 데모(arakorea.shop) 링크를 Explore 화면 안에 임베드(삽입)한 버전입니다.
-          (외부 서비스에서 임베드를 차단하는 경우, 버튼으로 새 창에서 열어 확인합니다.)
-        </p>
-        <div class="actionsRow">
-          <a class="btn primary" href="https://arakorea.shop" target="_blank" rel="noopener">새 창으로 열기</a>
-          <a class="btn" href="scan.html">Scan 흐름 보기</a>
-          <a class="btn" href="vision.html">Create/Mirror 비전</a>
-        </div>
-
+        
         <div class="grid">
           <section class="panel" aria-label="Embedded demo">
             <div class="panelHeader">
@@ -160,42 +151,20 @@
               <div class="embedWrap">
                 <iframe src="https://3d.cobenef.com/ara_korea/#autoplay&flipmouse" title="ourbang virtual space demo" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
               </div>
-              <div class="hint">
-                팁: 조작이 불편하면 데모 주소 끝의 <b>#autoplay&flipmouse</b> 옵션을 조정하거나, 새 창으로 열어 확인하세요.
               </div>
-            </div>
           </section>
 
-          <aside class="panel" aria-label="Notes">
-            <div class="panelHeader">
-              <div class="tag">Notes</div>
-              <div class="tag">Scan · Create · Mirror</div>
-            </div>
-            <div class="panelBody">
-              <div class="card">
-                <h3>이 데모는 무엇을 의미하나요?</h3>
-                <p>ourbang의 “Explore 결과물”이 어떤 형태인지 파트너/투자자에게 즉시 보여주기 위한 레퍼런스입니다.</p>
-              </div>
-              <div class="card">
-                <h3>다음 구현 방향</h3>
-                <p>Explore UI 위에 공간 단위 메타데이터(이력/권한/공유/크레딧)를 덧씌우는 방식으로 확장합니다.</p>
-              </div>
-              <div class="card">
-                <h3>임베드가 안 될 때</h3>
-                <p>외부 서비스가 iframe을 차단하면, 임베드 영역 대신 “새 창으로 열기” 버튼만 남기면 됩니다.</p>
-              </div>
-            </div>
-          </aside>
-        </div>
+          </div>
       </div>
     </section>
 
-    <footer class="foot">
+    </main>
+
+<footer class="foot">
   <div class="wrap">
     <div class="footRow">
       <div>© <span id="y"></span> ourbang. All rights reserved.</div>
       <div style="display:flex; gap:14px; flex-wrap:wrap">
-        <a class="mutelink" href="index.html">Home</a>
         <a class="mutelink" href="explore.html">Explore</a>
         <a class="mutelink" href="scan.html">Scan</a>
         <a class="mutelink" href="vision.html">Vision</a>
@@ -203,6 +172,7 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script></main>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
 </body>
 </html>
