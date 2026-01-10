@@ -1,3 +1,10 @@
+/* ourbang site.css — MOBILE NAV CHIPS FORCE (FINAL)
+   - 모바일에서 Primary nav(.menu)를 절대 숨기지 않고 칩(가로 스크롤) 형태로 노출
+   - PC는 기존 레이아웃 유지
+   - 로고 옆 작은 텍스트/표식 제거(태그라인/로고이미지/데코 pseudo)
+*/
+
+/* ===== Base tokens (minimal; keep if already defined elsewhere) ===== */
 :root{
   --bg:#07090f;
   --panel: rgba(255,255,255,.06);
@@ -18,35 +25,51 @@ body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
-    radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
-    radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
-    var(--bg);
+  background: var(--bg);
   overflow-x:hidden;
 }
-
 a{color:inherit; text-decoration:none}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
-/* Shared Topbar */
+/* ===== Top bar / nav ===== */
 .topbar{
   position: sticky; top:0; z-index: 20;
   backdrop-filter: blur(14px);
   background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px;
+  gap: 14px;
+}
 .brand{display:flex; align-items:center; gap:12px; min-width:220px}
-.brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+.brand img{display:none !important;} /* 로고 이미지에서 생기는 작은 표식/아이콘 제거 */
 .brand .name{display:flex; flex-direction:column; line-height:1.05}
-.brand .name strong{font-size:18px; letter-spacing:.2px}
-.brand .name span{font-size:12px; color: var(--muted2)}
-.menu{display:flex; align-items:center; gap:18px}
-.menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
-.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
-@media (max-width: 980px){ .menu{display:none} .brand{min-width:auto} }
+.brand .name strong{font-size:30px; letter-spacing:.2px}
+.brand .name span{display:none !important;} /* 태그라인 제거 */
 
+/* 혹시 외부/기존 CSS가 만든 작은 데코(점/기호) 제거 */
+.brand::before, .brand::after,
+.name::before, .name::after,
+.topbar::before, .topbar::after,
+.nav::before, .nav::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Primary menu (PC default) */
+.menu{display:flex; align-items:center; gap:18px}
+.menu a{
+  font-size:14px;
+  color: var(--muted);
+  padding:10px 10px;
+  border-radius: 12px;
+}
+.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+
+/* Actions (Explore/Start) */
+.actions{display:flex; align-items:center; gap:10px}
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   gap:10px;
@@ -66,251 +89,49 @@ a{color:inherit; text-decoration:none}
   background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
   border-color: rgba(124,198,255,.28);
 }
-.btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
 
-/* Shared footer */
-.foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
-.footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-.mutelink{color: rgba(255,255,255,.60)}
-.mutelink:hover{color: rgba(255,255,255,.85)}
-
-/* Mirror Concept block */
-.conceptGrid{
-  display:grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap:18px;
-  align-items:stretch;
-}
-
-.conceptFigure{
-  margin:0;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:18px;
-  overflow:hidden;
-  background: rgba(255,255,255,.03);
-  box-shadow: 0 12px 40px rgba(0,0,0,.35);
-}
-
-.conceptFigure img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-.conceptCaption{
-  padding:10px 12px;
-  font-size:12px;
-  opacity:.8;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-.conceptText{
-  padding:18px;
-}
-
-.conceptBullets{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:10px;
-  margin-top:14px;
-}
-
-.conceptBullets .bullet{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:10px 12px;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:14px;
-  background: rgba(255,255,255,.02);
-}
-
-.conceptBullets .bullet b{
-  min-width:72px;
-  display:inline-block;
-}
-
+/* ===== MOBILE: make nav chips row always visible ===== */
 @media (max-width: 980px){
-  .conceptGrid{
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* Unified Buttons (Global) */
-a.btn, .btn{
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
-  color: rgba(255,255,255,.88) !important;
-  border-radius: 999px !important;
-  padding: 10px 14px !important;
-  line-height: 1 !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
-  backdrop-filter: none !important;
-}
-
-a.btn:hover, .btn:hover{
-  background: rgba(255,255,255,.08) !important;
-  border-color: rgba(255,255,255,.32) !important;
-  color: rgba(255,255,255,1) !important;
-  transform: none !important;
-}
-
-a.btn:active, .btn:active{
-  transform: none !important;
-}
-
-a.btn:focus-visible, .btn:focus-visible{
-  outline: 2px solid rgba(255,255,255,.55) !important;
-  outline-offset: 3px !important;
-}
-
-/* Primary buttons should not be green anywhere */
-a.btn.primary, .btn.primary{
-  background: transparent !important;
-  border-color: rgba(255,255,255,.28) !important;
-  color: rgba(255,255,255,.95) !important;
-  box-shadow: none !important;
-}
-
-a.btn.primary:hover, .btn.primary:hover{
-  background: rgba(255,255,255,.10) !important;
-  border-color: rgba(255,255,255,.40) !important;
-  color: rgba(255,255,255,1) !important;
-  transform: none !important;
-}
-
-/* Remove hover motion from common CTA wrappers */
-.ctaRow a, .heroBtns a, .actions a{
-  transform: none !important;
-}
-
-
-/* Unified Navigation (Header) */
-.topbar .menu a,
-.topbar .actions a.btn{
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
-  color: rgba(255,255,255,.88) !important;
-  border-radius: 999px !important;
-  padding: 10px 14px !important;
-  line-height: 1 !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
-}
-.topbar .menu a:hover,
-.topbar .actions a.btn:hover{
-  background: rgba(255,255,255,.08) !important;
-  border-color: rgba(255,255,255,.32) !important;
-  color: rgba(255,255,255,1) !important;
-}
-.topbar .menu a:focus-visible,
-.topbar .actions a.btn:focus-visible{
-  outline: 2px solid rgba(255,255,255,.55) !important;
-  outline-offset: 3px !important;
-}
-.topbar .menu a:hover,
-.topbar .actions a.btn:hover,
-.topbar .menu a:active,
-.topbar .actions a.btn:active{
-  transform: none !important;
-}
-.topbar .actions a.btn.primary,
-.topbar .actions a.btn.primary:hover{
-  background: transparent !important;
-  border-color: rgba(255,255,255,.28) !important;
-  color: rgba(255,255,255,.95) !important;
-}
-
-/* =========================
-   Unified Navigation Style
-   ========================= */
-
-.topbar .menu a,
-.topbar .actions a.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  line-height: 1;
-  padding: 10px 14px;
-
-  color: rgba(255,255,255,.72);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 999px;
-
-  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
-}
-
-.topbar .menu a:hover,
-.topbar .actions a.btn:hover{
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.22);
-  color: rgba(255,255,255,.92);
-}
-
-.topbar .menu a.is-active,
-.topbar .actions a.btn.is-active{
-  background: rgba(255,255,255,.14);
-  border-color: rgba(255,255,255,.38);
-  color: rgba(255,255,255,1);
-}
-
-.topbar .menu a.is-active:hover,
-.topbar .actions a.btn.is-active:hover{
-  background: rgba(255,255,255,.18);
-}
-
-/* ===== ourbang MOBILE NAV CHIPS (force) ===== */
-/* 목표: 모바일에서 1) 상단: brand + (Explore/Start)  2) 하단: Concept/Modes/... 칩 가로 스크롤 */
-@media (max-width: 980px){
+  /* 헤더를 2줄로 만들기: (brand + actions) 위, (menu chips) 아래 */
   .nav{
-    height: auto !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
+    height:auto !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
     padding: 10px 0 14px !important;
-    gap: 10px !important;
   }
-  .brand{order:1 !important;}
-  .nav > div{order:2 !important;} /* Explore/Start wrapper */
-  .nav > .menu{
+
+  .brand{min-width:auto !important; order:1 !important;}
+  .actions{order:2 !important; margin-left:auto !important;}
+
+  /* 핵심: 모바일에서 menu를 절대 숨기지 않음 */
+  .menu{
     order:3 !important;
-    display: flex !important;         /* 페이지별 .menu{display:none} 강제 무력화 */
-    width: 100% !important;
-    gap: 10px !important;
+    display:flex !important;
+    width:100% !important;
+
+    gap:10px !important;
     margin-top: 10px !important;
     padding: 6px 2px 2px !important;
-    overflow-x: auto !important;
+
+    overflow-x:auto !important;
     -webkit-overflow-scrolling: touch !important;
-    white-space: nowrap !important;
+    white-space:nowrap !important;
+
     border-top: 1px solid rgba(255,255,255,.06) !important;
   }
-  .nav > .menu::-webkit-scrollbar{height: 0 !important;}
-  .nav > .menu a{
-    white-space: nowrap !important;
-    padding: 10px 14px !important;
-    border-radius: 999px !important;
-    border: 1px solid rgba(255,255,255,.12) !important;
+  .menu::-webkit-scrollbar{height:0 !important;}
+
+  /* 칩 스타일 */
+  .menu a{
+    white-space:nowrap !important;
+    padding:10px 14px !important;
+    border-radius:999px !important;
+    border:1px solid rgba(255,255,255,.12) !important;
     background: rgba(255,255,255,.04) !important;
   }
 }
 
-/* ===== Brand cleanup + PC wordmark scale (force) ===== */
-.brand img{display:none !important;}     /* 작은 표식/아이콘이 로고 이미지에 붙어 있는 케이스 제거 */
-.brand .name span{display:none !important;}
-.brand::before, .brand::after,
-.name::before, .name::after,
-.topbar::before, .topbar::after,
-.nav::before, .nav::after{content:none !important; display:none !important;}
-
-/* PC에서 ourbang 워드마크 확실히 확대 */
-@media (min-width: 981px){
-  .nav{height: 96px !important;}
-  .brand .name strong{font-size: 30px !important; letter-spacing: .2px !important;}
+/* ===== Small screens: wordmark scale down a bit ===== */
+@media (max-width: 520px){
+  .brand .name strong{font-size:22px !important;}
 }
