@@ -72,37 +72,29 @@
 
     footer{padding:22px 0 40px; color:rgba(255,255,255,.45); border-top:1px solid rgba(255,255,255,.06)}
   </style>
-  <link rel="stylesheet" href="assets/css/site.css?v=5" />
+  <link rel="stylesheet" href="assets/css/site.css?v=21" />
 </head>
 <body>
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="index.html">
-        <img src="assets/images/brand/ourbang-logo.png" alt="ourbang logo" onerror="this.style.display='none'">
         <div class="name">
           <strong>ourbang</strong>
-          <span>space, scanned, created &amp; mirrored</span>
+          <span class="brand-spacer" aria-hidden="true"></span>
         </div>
       </a>
 
       <nav class="menu" aria-label="Primary">
-        <a href="index.html#concept">Concept</a>
-        <a href="index.html#modes">Modes</a>
-        <a href="index.html#mirror">Mirror</a>
-        <a href="index.html#gallery">Gallery</a>
+        <a href="explore.html">Explore</a>
+        <a href="scan.html" class="is-active" aria-current="page">Scan</a>
+        <a href="mirror.html" target="_blank" rel="noopener">Mirror</a>
         <a href="vision.html">Vision</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
-      <div style="display:flex; gap:10px; align-items:center">
-        <a class="btn" href="explore.html">Explore</a>
-        <a class="btn primary" href="index.html#modes">Start</a>
-      </div>
     </div>
   </div>
 </header>
-
-
 
 <main>
   <section class="hero">
@@ -316,5 +308,6 @@
   </div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script defer src="assets/js/nav-hint.js"></script>
 </body>
 </html>
