@@ -17,6 +17,7 @@
   <style>
     :root{
       --bg:#07090f; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
       --panel:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.10);
       --brand:#7cc6ff; --brand2:#4ee0c2; --shadow:0 20px 80px rgba(0,0,0,.45);
       --radius:22px; --radius2:28px; --max:1180px;
@@ -38,7 +39,12 @@
       background:linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .btn{padding:11px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
+    
+    /* Brand typography (match index/explore) */
+    .brand .name{display:flex; flex-direction:column; line-height:1.05}
+    .brand .name strong{font-size:18px; letter-spacing:.2px}
+    .brand .name span{font-size:12px; color: var(--muted2)}
+.btn{padding:11px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
     .btn.primary{background:linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22))}
 
     .hero{padding:44px 0 18px}
