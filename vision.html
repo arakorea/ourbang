@@ -17,16 +17,19 @@
       --muted2: rgba(255,255,255,.55);
       --panel:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.10);
       --brand:#7cc6ff; --brand2:#4ee0c2; --shadow:0 20px 80px rgba(0,0,0,.45);
-      --radius:22px; --max:980px;
+      --radius:22px; --radius2:28px; --max:1180px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; color:var(--text);
+      margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(124,198,255,.10), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(78,224,194,.08), transparent 60%),
+        radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+        radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+        radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
         var(--bg);
+      overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
@@ -48,8 +51,6 @@ h1{font-size:40px; margin:18px 0}
     }
     .card h3{margin:0 0 6px}
     .card p{margin:0; color:var(--muted); line-height:1.6}
-
-    footer{padding:28px 0; color:rgba(255,255,255,.45)}
 
     /* Demo CTA (inserted) */
     .demoCta{
