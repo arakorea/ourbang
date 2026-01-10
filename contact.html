@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>ourbang — Contact</title><meta content="ourbang Contact" name="description"/><meta content="ourbang — Contact" property="og:title"/><meta content="Contact ourbang" property="og:description"/><meta content="website" property="og:type"/><meta content="assets/images/og/og-cover.jpg" property="og:image"/><link href="assets/images/brand/favicon.png" rel="icon"/><style>
+:root{
+  --bg:#07090f;
+  --panel: rgba(255,255,255,.06);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --muted2: rgba(255,255,255,.55);
+  --brand: #7cc6ff;
+  --brand2:#4ee0c2;
+  --shadow: 0 20px 80px rgba(0,0,0,.45);
+  --radius: 22px;
+  --radius2: 28px;
+  --max: 1180px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+    radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+    radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+/* Top bar */
+.topbar{
+  position: sticky; top:0; z-index: 20;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+.brand{display:flex; align-items:center; gap:12px; min-width:220px}
+.brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.brand .name{display:flex; flex-direction:column; line-height:1.05}
+.brand .name strong{font-size:18px; letter-spacing:.2px}
+.brand .name span{font-size:12px; color: var(--muted2)}
+
+.menu{display:flex; align-items:center; gap:18px}
+.menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
+.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  user-select:none;
+  white-space:nowrap;
+}
+.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
+  border-color: rgba(124,198,255,.28);
+}
+.btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
+
+@media (max-width: 980px){ .brand{min-width:auto} }
+
+/* Footer */
+.foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
+.footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.mutelink{color: rgba(255,255,255,.60)}
+.mutelink:hover{color: rgba(255,255,255,.85)}
+
+
+/* Page: Contact (form only) */
+.mainPad{padding: 44px 0 54px}
+.formCard{
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:12px}
+label{font-size:12px; color: rgba(255,255,255,.72); letter-spacing:.14em; text-transform:uppercase}
+input, textarea{
+  width:100%;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  padding: 12px 12px;
+  font-size: 14px;
+  outline: none;
+}
+textarea{min-height: 160px; resize: vertical; line-height: 1.6}
+input:focus, textarea:focus{border-color: rgba(124,198,255,.35); box-shadow: 0 0 0 4px rgba(124,198,255,.10)}
+::placeholder{color: rgba(255,255,255,.38)}
+.actionsRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px}
+
+
+/* ===== Global header/footer stability (match index) ===== */
+@media (max-width: 760px){
+  .nav{height:72px}
+  .menu{
+    gap:10px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{padding:10px 8px}
+  /* footer links: keep single-line, scroll instead of wrapping */
+  .footRow > div:last-child{
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    max-width:100%;
+  }
+  .footRow > div:last-child::-webkit-scrollbar{display:none}
+}
+
+</style><link href="assets/css/site.css?v=22" rel="stylesheet"/></head><body><header class="topbar">
+<div class="wrap">
+<div class="nav">
+<a class="brand" href="index.html">
+<div class="name">
+<strong>ourbang</strong>
+</div>
+</a>
+<nav aria-label="Primary" class="menu">
+<a href="explore.html">Explore</a>
+<a href="scan.html">Scan</a>
+<a href="mirror.html">Mirror</a>
+<a href="vision.html">Vision</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</div>
+</header><main><section class="mainPad"><div class="wrap"><div class="formCard"><form autocomplete="on" id="contactForm"><div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Name" type="text"/></div><div class="field"><label for="email">Email</label><input id="email" name="email" placeholder="Email" required="required" type="email"/></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" placeholder="Phone" type="tel"/></div><div class="field"><label for="topic">Topic</label><input id="topic" name="topic" placeholder="Topic" type="text"/></div><div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Message"></textarea></div><div class="actionsRow"><button class="btn primary" type="submit">Send</button></div></form></div></div></section></main><footer class="foot">
+<div class="wrap">
+<div class="footRow">
+<div>© <span id="y"></span> ourbang. All rights reserved.</div>
+<div style="display:flex; gap:14px; flex-wrap:wrap">
+<a class="mutelink" href="explore.html">Explore</a>
+<a class="mutelink" href="scan.html">Scan</a>
+<a class="mutelink" href="vision.html">Vision</a>
+</div>
+</div>
+</div>
+</footer><script>
+(function(){
+  const RECIPIENT = "hello@ourbang.com";
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    const v = (id)=> (document.getElementById(id).value || "").trim();
+    const name = v("name");
+    const email = v("email");
+    const phone = v("phone");
+    const topic = v("topic");
+    const message = v("message");
+
+    const subject = topic ? ("[ourbang] " + topic) : "[ourbang] Contact";
+    const body =
+      "name: " + name + "\n" +
+      "email: " + email + "\n" +
+      "phone: " + phone + "\n" +
+      "topic: " + topic + "\n\n" +
+      message;
+
+    const url = "mailto:" + encodeURIComponent(RECIPIENT)
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+
+    window.location.href = url;
+  });
+})();
+</script></body></html>
