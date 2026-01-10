@@ -1,227 +1,264 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ourbang — Scan</title>
-  <meta name="description" content="ourbang Scan — LiDAR 또는 카메라로 공간을 스캔하는 방법을 안내합니다." />
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ourbang — Scan</title>
+<meta content="ourbang Scan — LiDAR 또는 카메라로 공간을 스캔하는 방법을 안내합니다." name="description"/>
+<meta content="ourbang — Scan" property="og:title"/>
+<meta content="Scan a space with LiDAR or Camera" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="assets/images/og/og-cover.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="assets/images/brand/favicon.png" rel="icon"/>
+<style>
+:root{
+  --bg:#07090f;
+  --panel: rgba(255,255,255,.06);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --muted2: rgba(255,255,255,.55);
+  --brand: #7cc6ff;
+  --brand2:#4ee0c2;
+  --shadow: 0 20px 80px rgba(0,0,0,.45);
+  --radius: 22px;
+  --radius2: 28px;
+  --max: 1180px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+    radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+    radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
-  <meta property="og:title" content="ourbang — Scan" />
-  <meta property="og:description" content="Scan a space with LiDAR or Camera" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/og/og-cover.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+/* Top bar */
+.topbar{
+  position: sticky; top:0; z-index: 20;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+.brand{display:flex; align-items:center; gap:12px; min-width:220px}
+.brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.brand .name{display:flex; flex-direction:column; line-height:1.05}
+.brand .name strong{font-size:18px; letter-spacing:.2px}
+.brand .name span{font-size:12px; color: var(--muted2)}
 
-  <link rel="icon" href="assets/images/brand/favicon.png" />
+.menu{display:flex; align-items:center; gap:18px}
+.menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
+.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
 
-  <style>
-    :root{
-      --bg:#07090f; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --panel:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.10);
-      --brand:#7cc6ff; --brand2:#4ee0c2; --shadow:0 20px 80px rgba(0,0,0,.45);
-      --radius:22px; --radius2:28px; --max:1180px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-      background:
-        radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
-        radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
-        var(--bg);
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter:blur(14px);
-      background:linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    
-    /* Brand typography (match index/explore) */
-    .brand .name{display:flex; flex-direction:column; line-height:1.05}
-    .brand .name strong{font-size:18px; letter-spacing:.2px}
-    .brand .name span{font-size:12px; color: var(--muted2)}
-.btn{padding:11px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
-    .btn.primary{background:linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22))}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  user-select:none;
+  white-space:nowrap;
+}
+.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
+  border-color: rgba(124,198,255,.28);
+}
+.btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
 
-    .hero{padding:44px 0 18px}
-    h1{font-size:44px; margin:12px 0}
-    .lead{color:var(--muted); max-width:720px; line-height:1.7}
+@media (max-width: 980px){ .brand{min-width:auto} }
 
-    .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+/* Footer */
+.foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
+.footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.mutelink{color: rgba(255,255,255,.60)}
+.mutelink:hover{color: rgba(255,255,255,.85)}
 
-    .panel{
-      position:relative; min-height:360px; border-radius:var(--radius2);
-      overflow:hidden; border:1px solid rgba(255,255,255,.10);
-      background:var(--panel); box-shadow:var(--shadow);
-    }
-    .panelBg{
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
-        url("assets/images/preview/scan-shot.jpg");
-      background-size:cover; background-position:center;
-    }
-    .panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
-    .step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
-    .step h3{margin:0 0 6px; font-size:16px}
-    .step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
 
-    footer{padding:22px 0 40px; color:rgba(255,255,255,.45); border-top:1px solid rgba(255,255,255,.06)}
-  
+/* Page: Scan */
+.hero{padding:44px 0 18px}
+h1{font-size:44px; margin:12px 0}
+.lead{color:var(--muted); max-width:720px; line-height:1.7}
 
-    /* ===== Scan video mobile stabilization ===== */
-    .videoStage{
-      position: relative;
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
-      aspect-ratio: 16 / 9;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .videoStage video{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000;
-    }
-    .videoStage .hotspot{
-      position: absolute;
-      z-index: 3;
-    }
-    @media (orientation: portrait), (orientation: landscape){
-      .videoStage{ aspect-ratio: 16 / 9; }
-    }
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.panel{
+  position:relative; min-height:360px; border-radius:var(--radius2);
+  overflow:hidden; border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04); box-shadow:var(--shadow);
+}
+.panelBg{
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
+    url("assets/images/preview/scan-shot.jpg");
+  background-size:cover; background-position:center;
+}
+.panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
+.step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
+.step h3{margin:0 0 6px; font-size:16px}
+.step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
+
+/* Showroom video: responsive + stable */
+.videoStage{
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.10);
+}
+.videoStage video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.videoStage .hotspot{position:absolute; z-index:3;}
+
+
+/* ===== Global header/footer stability (match index) ===== */
+@media (max-width: 760px){
+  .nav{height:72px}
+  .menu{
+    gap:10px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{padding:10px 8px}
+  /* footer links: keep single-line, scroll instead of wrapping */
+  .footRow > div:last-child{
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    max-width:100%;
+  }
+  .footRow > div:last-child::-webkit-scrollbar{display:none}
+}
+
 </style>
-  <link rel="stylesheet" href="assets/css/site.css?v=22" />
+<link href="assets/css/site.css?v=22" rel="stylesheet"/>
 </head>
 <body>
 <header class="topbar">
-  <div class="wrap">
-    <div class="nav">
-      <a class="brand" href="index.html">
-        <div class="name">
-          <strong>ourbang</strong>
-          <span class="brand-spacer" aria-hidden="true"></span>
-        </div>
-      </a>
-
-      <nav class="menu" aria-label="Primary">
-        <a href="explore.html">Explore</a>
-        <a href="scan.html" class="is-active" aria-current="page">Scan</a>
-        <a href="mirror.html">Mirror</a>
-        <a href="vision.html">Vision</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </div>
+<div class="wrap">
+<div class="nav">
+<a class="brand" href="index.html">
+<div class="name">
+<strong>ourbang</strong>
+</div>
+</a>
+<nav aria-label="Primary" class="menu">
+<a href="explore.html">Explore</a>
+<a href="scan.html">Scan</a>
+<a href="mirror.html">Mirror</a>
+<a href="vision.html">Vision</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</div>
 </header>
-
 <main>
-  <section class="hero">
-    <div class="wrap">
-      <h1>공간을 스캔하는 방법</h1>
-      <p class="lead">
+<section class="hero">
+<div class="wrap">
+<h1>공간을 스캔하는 방법</h1>
+<p class="lead">
         ourbang은 LiDAR 또는 카메라 기반으로 공간을 수집합니다.
         촬영 난이도를 낮추고, 결과물의 일관성을 유지하는 것이 목표입니다.
       </p>
-
-      <div class="grid">
-        <div class="panel">
-          <div class="panelBg"></div>
-        </div>
-
-        <div class="panel">
-          <div class="panelInner">
-            <div class="step">
-              <h3>1. 공간 준비</h3>
-              <p>조명을 켜고, 이동 가능한 물체를 최소화합니다.</p>
-            </div>
-            <div class="step">
-              <h3>2. 촬영 / 스캔</h3>
-              <p>LiDAR 또는 카메라로 천천히 공간을 이동하며 촬영합니다.</p>
-            </div>
-            <div class="step">
-              <h3>3. 업로드</h3>
-              <p>촬영 데이터를 업로드하면 ourbang이 디지털 공간으로 변환합니다.</p>
-            </div>
-            <div class="step">
-              <h3>4. 검수 & 공개</h3>
-              <p>결과를 확인하고 탐색 가능한 링크로 공유합니다.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-<!-- Video showroom demo (no external link) -->
-<section class="section" id="showroom" aria-label="Showroom demo">
-  <div class="galleryHead">
-    <div>
-      <h2 class="galleryTitle">Scan → Showroom Demo</h2>
-      <p class="sub">
-        스캔 결과를 외부 링크로 이동하지 않고 ourbang 안에서 확인합니다.
-        영상은 천천히 자동 재생되며, 원하시는 지점에서 <b>일시정지</b> 후 작품을 클릭해 고화질 이미지와 구매 흐름(데모)을 확인할 수 있습니다.
-      </p>
-    </div>
-  </div>
-
-  <div class="videoStage" id="videoStage">
-    <video id="showroomVideo" controls playsinline webkit-playsinline loop preload="metadata">
-      <source src="assets/videos/ourbanggallery.mp4" type="video/mp4" />
-    </video>
-    <!-- hotspots injected by JS -->
-  </div>
-
-  <p class="note" style="margin-top:12px">
-    External checkout · Pilot demonstration (실제 결제는 진행되지 않습니다)
-  </p>
-</section>
-
-<!-- Artwork modal -->
-<div class="modalBack" id="artModalBack" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="artModalTitle">
-    <div class="modalTop">
-      <div>
-        <h3 id="artModalTitle">Artwork</h3>
-        <div class="sub" id="artModalMeta"></div>
-      </div>
-      <button class="modalClose" id="artModalClose" type="button">Close</button>
-    </div>
-
-    <div class="modalBody">
-      <div class="modalGrid">
-        <div>
-          <img class="modalImg" id="artModalImg" alt="Artwork image" src="" />
-        </div>
-        <div>
-          <p class="sub" id="artModalDesc" style="margin-top:0"></p>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-            <a class="btn primary" id="artModalBuy" href="purchase.html?id=1">View &amp; Purchase</a>
-            <a class="btn" href="#showroom">Back to video</a>
-          </div>
-
-          <p class="note" style="margin-top:12px">
-            ourbang은 결제를 직접 처리하지 않습니다. 본 버튼은 “결제 흐름”을 보여주는 데모입니다.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="grid">
+<div class="panel">
+<div class="panelBg"></div>
 </div>
-
+<div class="panel">
+<div class="panelInner">
+<div class="step">
+<h3>1. 공간 준비</h3>
+<p>조명을 켜고, 이동 가능한 물체를 최소화합니다.</p>
+</div>
+<div class="step">
+<h3>2. 촬영 / 스캔</h3>
+<p>LiDAR 또는 카메라로 천천히 공간을 이동하며 촬영합니다.</p>
+</div>
+<div class="step">
+<h3>3. 업로드</h3>
+<p>촬영 데이터를 업로드하면 ourbang이 디지털 공간으로 변환합니다.</p>
+</div>
+<div class="step">
+<h3>4. 검수 &amp; 공개</h3>
+<p>결과를 확인하고 탐색 가능한 링크로 공유합니다.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Video showroom demo (no external link) -->
+<section aria-label="Showroom demo" class="section" id="showroom">
+<div class="galleryHead">
+<div>
+<h2 class="galleryTitle">Scan → Showroom Demo</h2>
+</div>
+</div>
+<div class="videoStage" id="videoStage">
+<video controls="" id="showroomVideo" loop="" playsinline="" preload="metadata" webkit-playsinline="">
+<source src="assets/videos/ourbanggallery.mp4" type="video/mp4"/>
+</video>
+<!-- hotspots injected by JS -->
+</div>
+</section>
+<!-- Artwork modal -->
+<div aria-hidden="true" class="modalBack" id="artModalBack">
+<div aria-labelledby="artModalTitle" aria-modal="true" class="modal" role="dialog">
+<div class="modalTop">
+<div>
+<h3 id="artModalTitle">Artwork</h3>
+<div class="sub" id="artModalMeta"></div>
+</div>
+<button class="modalClose" id="artModalClose" type="button">Close</button>
+</div>
+<div class="modalBody">
+<div class="modalGrid">
+<div>
+<img alt="Artwork image" class="modalImg" id="artModalImg" src=""/>
+</div>
+<div>
+<p class="sub" id="artModalDesc" style="margin-top:0"></p>
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+<a class="btn primary" href="purchase.html?id=1" id="artModalBuy">View &amp; Purchase</a>
+<a class="btn" href="#showroom">Back to video</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <script>
 (function(){
   // Slow auto-rotate feel (video playback)
@@ -321,21 +358,18 @@
 
 })();
 </script>
-
 </main>
-
 <footer class="foot">
-  <div class="wrap">
-    <div class="footRow">
-      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-      <div style="display:flex; gap:14px; flex-wrap:wrap">
-        <a class="mutelink" href="index.html">Home</a>
-        <a class="mutelink" href="explore.html">Explore</a>
-        <a class="mutelink" href="scan.html">Scan</a>
-        <a class="mutelink" href="vision.html">Vision</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="footRow">
+<div>© <span id="y"></span> ourbang. All rights reserved.</div>
+<div style="display:flex; gap:14px; flex-wrap:wrap">
+<a class="mutelink" href="explore.html">Explore</a>
+<a class="mutelink" href="scan.html">Scan</a>
+<a class="mutelink" href="vision.html">Vision</a>
+</div>
+</div>
+</div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
