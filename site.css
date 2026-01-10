@@ -36,25 +36,16 @@ a{color:inherit; text-decoration:none}
   background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.nav{display:flex; align-items:center; justify-content:space-between; height:90px}
+.nav{display:flex; align-items:center; justify-content:space-between; height:72px}
 .brand{display:flex; align-items:center; gap:12px; min-width:220px}
-.brand img{display:none !important;}
+.brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));}
 .brand .name{display:flex; flex-direction:column; line-height:1.05}
-.brand .name strong{font-size:30px !important; letter-spacing:.2px}
-.brand .name span{display:none !important;}
+.brand .name strong{font-size:18px; letter-spacing:.2px}
+.brand .name span{font-size:12px; color: var(--muted2)}
 .menu{display:flex; align-items:center; gap:18px}
 .menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
 .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
-@media (max-width: 980px){
-  .nav{flex-wrap:wrap; height:auto; padding:14px 0}
-  .brand{min-width:auto}
-  /* Show menu as horizontal scroll chips */
-  .menu{display:flex !important; width:100%; gap:10px; padding:10px 0 0; overflow-x:auto; -webkit-overflow-scrolling:touch}
-  .menu a{white-space:nowrap; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); padding:10px 12px; border-radius:999px}
-  .menu a:hover{background: rgba(255,255,255,.06)}
-  /* Keep wordmark readable but not huge on mobile */
-  .brand .name strong{font-size:22px !important}
-} .brand{min-width:auto} }
+@media (max-width: 980px){ .menu{display:none} .brand{min-width:auto} }
 
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -277,5 +268,50 @@ a.btn.primary:hover, .btn.primary:hover{
 }
 
 
-/* Hard-kill tiny decorative marks near brand/header */
-.topbar::before,.topbar::after,.nav::before,.nav::after,.brand::before,.brand::after,.name::before,.name::after{content:none !important; display:none !important;}
+
+/* ===== ourbang NAV + LOGO overrides (FINAL) ===== */
+
+/* 1) Remove any decorative marks around the brand */
+.brand::before, .brand::after,
+.brand .name::before, .brand .name::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 2) Logo: show only wordmark (hide image entirely to avoid tiny broken icon) */
+.brand img{ display:none !important; }
+
+/* 3) Wordmark size: PC only larger (1.5x+) */
+.brand .name strong{ font-size: 28px !important; letter-spacing: .2px !important; }
+.nav{ height: 88px !important; }  /* give breathing room */
+
+/* 4) Hide tagline everywhere */
+.brand .name span{ display:none !important; }
+
+/* 5) Mobile: horizontal scroll chips for the primary menu */
+@media (max-width: 980px){
+  .nav{ height: 72px !important; }
+  .brand .name strong{ font-size: 20px !important; }
+  .menu{
+    display:flex !important;
+    gap:10px !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling: touch;
+    white-space:nowrap;
+    padding: 10px 0 14px !important;
+    margin: 6px 0 0 !important;
+  }
+  .menu::-webkit-scrollbar{ height: 0px; }
+  .menu a{
+    white-space:nowrap;
+    border:1px solid rgba(255,255,255,.16) !important;
+    background: rgba(255,255,255,.03) !important;
+    border-radius:999px !important;
+    padding:10px 14px !important;
+  }
+}
+
+/* 6) Desktop: keep menu as-is (no scroll) */
+@media (min-width: 981px){
+  .menu{ overflow: visible !important; padding: 0 !important; margin: 0 !important; }
+}
