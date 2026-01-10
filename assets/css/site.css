@@ -1,55 +1,47 @@
-/* site.css — Navigation usability patch
-   - Keep desktop look (page inline <style>) untouched
-   - Mobile: single-line header (logo + horizontal-scroll nav)
-   - CTA items (Explore / Start) live inside the nav to reduce clutter
+/* site.css (FINAL) — unified header nav (mobile one-line strip)
+   목표:
+   - PC 디자인은 각 페이지의 기존(inline/페이지별) 스타일을 그대로 사용
+   - 모바일에서 네비게이션을 '로고 옆 한 줄'로 유지 + 좌우 스와이프(가로 스크롤)
+   - 특정 페이지에서 .menu를 숨겨도 모바일에서 강제로 보이게 함
 */
 
-/* CTA look inside nav (applies all sizes, minimal impact) */
-.topbar .menu a.cta{
-  padding: 9px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.05);
-  color: rgba(255,255,255,.88);
-}
-.topbar .menu a.cta:hover{
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.20);
-  color: rgba(255,255,255,.94);
-}
-.topbar .menu a.cta.primary{
-  background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
-  border-color: rgba(124,198,255,.28);
-}
-.topbar .menu a.cta.primary:hover{
-  background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));
+/* ACTIVE(현재 페이지) 표시 — 각 페이지에서 <a class="is-active">로 지정 */
+.menu a.is-active{
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
 }
 
-/* Mobile: logo + nav in ONE row, nav becomes horizontal strip */
+/* Mobile: one-line brand + scrollable menu */
 @media (max-width: 980px){
+  /* 혹시 다른 CSS에서 숨겼다면 복구 */
+  .topbar .menu{ display:flex !important; }
+
+  /* 한 줄 유지 */
   .topbar .nav{
     flex-wrap: nowrap !important;
-    height: 72px !important;
+    height:72px; /* 기존 탑바 높이 유지 */
   }
 
-  /* Some pages had .menu{display:none} in inline CSS: override it */
+  /* 가운데 메뉴가 flex 안에서 줄어들 수 있게(이게 없으면 iOS에서 안 보이거나 잘리는 경우가 많음) */
   .topbar .menu{
-    display:flex !important;
-    align-items:center;
     flex: 1 1 auto;
-    min-width: 0;              /* critical: allows scroll area to exist */
+    min-width: 0;
     overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    gap: 10px;
+    white-space: nowrap;
+    gap: 10px; /* 기존 gap보다 살짝 조밀 */
   }
+
   .topbar .menu a{
     flex: 0 0 auto;
     white-space: nowrap;
   }
 
-  .topbar .brand{ min-width: auto !important; }
-
+  /* 스크롤바 최소화(브라우저별 차이 있음) */
   .topbar .menu::-webkit-scrollbar{ display:none; }
+}
+
+/* Extra small: 브랜드 영역이 너무 길면(서브타이틀 등) 줄바꿈 방지 */
+@media (max-width: 520px){
+  .topbar .brand .name span{ display:none; }
 }
