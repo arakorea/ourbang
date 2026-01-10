@@ -1,19 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ourbang — Vision</title>
-  <meta name="description" content="ourbang Vision — 공간을 디지털 자산으로 확장하는 방향성" />
-
-  <meta property="og:title" content="ourbang — Vision" />
-  <meta property="og:description" content="From space to digital asset" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/og/og-cover.jpg" />
-
-  <link rel="icon" href="assets/images/brand/favicon.png" />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ourbang — Vision</title>
+<meta content="ourbang Vision — 공간을 디지털 자산으로 확장하는 방향성" name="description"/>
+<meta content="ourbang — Vision" property="og:title"/>
+<meta content="From space to digital asset" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="assets/images/og/og-cover.jpg" property="og:image"/>
+<link href="assets/images/brand/favicon.png" rel="icon"/>
+<style>
     :root{
       --bg:#07090f; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.55);
@@ -102,81 +100,99 @@ h1{font-size:40px; margin:18px 0}
       color:#061018;
     }
 
-  </style>
-  <link rel="stylesheet" href="assets/css/site.css?v=22" />
+  
+
+/* ===== Global header/footer stability (match index) ===== */
+@media (max-width: 760px){
+  .nav{height:72px}
+  .menu{
+    gap:10px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{padding:10px 8px}
+  /* footer links: keep single-line, scroll instead of wrapping */
+  .footRow > div:last-child{
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    max-width:100%;
+  }
+  .footRow > div:last-child::-webkit-scrollbar{display:none}
+}
+
+</style>
+<link href="assets/css/site.css?v=22" rel="stylesheet"/>
 </head>
 <body>
 <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="index.html">
-          
-          <div class="name">
-            <strong>ourbang</strong>
-            
-          </div>
-        </a>
-
-        <nav class="menu" aria-label="Primary">
-          <a href="explore.html">Explore</a>
-          <a href="scan.html">Scan</a>
-          <a href="mirror.html">Mirror</a>
-          <a href="vision.html" class="is-active" aria-current="page">Vision</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+<div class="wrap">
+<div class="nav">
+<a class="brand" href="index.html">
+<div class="name">
+<strong>ourbang</strong>
 </div>
-    </div>
-  </header>
+</a>
+<nav aria-label="Primary" class="menu">
+<a href="explore.html">Explore</a>
+<a href="scan.html">Scan</a>
+<a href="mirror.html">Mirror</a>
+<a href="vision.html">Vision</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</div>
+</header>
 <main>
-  <section class="wrap">
-    <h1>Vision</h1>
-    <p class="lead">
+<section class="wrap">
+<h1>Vision</h1>
+<p class="lead">
       ourbang은 공간을 단순한 3D 모델이 아닌, 경험 가능한 디지털 자산으로 확장합니다.
     </p>
-
-    <div class="demoCta" aria-label="ourbang demo link">
-      <div class="kicker">Live Demo</div>
-      <h2>demo.ourbang.com에서 ‘공간을 클릭해’ 바로 체험하세요</h2>
-      <p>
+<div aria-label="ourbang demo link" class="demoCta">
+<div class="kicker">Live Demo</div>
+<h2>demo.ourbang.com에서 ‘공간을 클릭해’ 바로 체험하세요</h2>
+<p>
         공간 리스트에서 시작해 공간 상세(3D 오브젝트)와 상품 상세까지 이어지는
         ourbang의 핵심 흐름을 가장 빠르게 확인할 수 있습니다.
       </p>
-      <div class="actions">
-        <a class="btnLike primary" href="https://demo.ourbang.com" target="_blank" rel="noreferrer">데모 열기</a>
-        <a class="btnLike" href="https://demo.ourbang.com" target="_blank" rel="noreferrer">공간 목록 보기 →</a>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="wrap section">
-    <div class="card">
-      <h3>1. 공간의 디지털화</h3>
-      <p>실제 공간을 웹에서 탐색 가능한 구조로 변환합니다.</p>
-    </div>
-    <div class="card">
-      <h3>2. 기록과 공유</h3>
-      <p>공간 단위로 이력과 접근 권한을 관리합니다.</p>
-    </div>
-    <div class="card">
-      <h3>3. 자산화</h3>
-      <p>크레딧, 인증, 거래로 확장 가능한 구조를 전제합니다.</p>
-    </div>
-  </section>
+<div class="actions">
+<a class="btnLike primary" href="https://demo.ourbang.com" rel="noreferrer" target="_blank">데모 열기</a>
+<a class="btnLike" href="https://demo.ourbang.com" rel="noreferrer" target="_blank">공간 목록 보기 →</a>
+</div>
+</div>
+</section>
+<section class="wrap section">
+<div class="card">
+<h3>1. 공간의 디지털화</h3>
+<p>실제 공간을 웹에서 탐색 가능한 구조로 변환합니다.</p>
+</div>
+<div class="card">
+<h3>2. 기록과 공유</h3>
+<p>공간 단위로 이력과 접근 권한을 관리합니다.</p>
+</div>
+<div class="card">
+<h3>3. 자산화</h3>
+<p>크레딧, 인증, 거래로 확장 가능한 구조를 전제합니다.</p>
+</div>
+</section>
 </main>
-
 <footer class="foot">
-  <div class="wrap">
-    <div class="footRow">
-      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-      <div style="display:flex; gap:14px; flex-wrap:wrap">
-        <a class="mutelink" href="index.html">Home</a>
-        <a class="mutelink" href="explore.html">Explore</a>
-        <a class="mutelink" href="scan.html">Scan</a>
-        <a class="mutelink" href="vision.html">Vision</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="footRow">
+<div>© <span id="y"></span> ourbang. All rights reserved.</div>
+<div style="display:flex; gap:14px; flex-wrap:wrap">
+<a class="mutelink" href="explore.html">Explore</a>
+<a class="mutelink" href="scan.html">Scan</a>
+<a class="mutelink" href="vision.html">Vision</a>
+</div>
+</div>
+</div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
