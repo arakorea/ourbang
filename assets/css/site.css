@@ -1,25 +1,65 @@
 
-/* site.css — mobile horizontal nav (smart hint + refined spacing) */
+/* site.css — Unified Top Navigation (PC + Mobile) */
 
+/* ====== Base (PC 포함) : 모든 페이지 공통 네비 규격 ====== */
+.topbar .nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:72px;
+}
+
+/* 로고 영역 */
+.topbar .brand{
+  display:flex;
+  align-items:center;
+  min-width:auto;
+}
+
+/* 메뉴(기본은 PC도 동일 규격) */
+.topbar .menu{
+  display:flex;
+  align-items:center;
+  gap:18px;                 /* index 기준 */
+}
+
+.topbar .menu a{
+  font-size:14px;
+  padding:10px 10px;        /* index 기준: 이게 폭을 결정합니다(일관성 핵심) */
+  border-radius:12px;
+  color: rgba(255,255,255,.70);
+  white-space:nowrap;
+}
+
+.topbar .menu a:hover{
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.92);
+}
+
+/* active */
+.topbar .menu a.is-active,
+.topbar .menu a[aria-current="page"]{
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+/* ====== Mobile : 한 줄 + 가로 스와이프 + 스마트 페이드 힌트 ====== */
 @media (max-width: 980px){
-  /* 한 줄 헤더 유지 */
   .topbar .nav{
     flex-wrap: nowrap;
     height:72px;
-    align-items:center;
   }
 
-  /* 로고 ↔ 첫 네비 간격: 메뉴 아이템 간격보다 '조금 더' */
+  /* 로고 ↔ 첫 네비 : 메뉴 간격(18px)보다 조금 더 */
   .topbar .brand{
-    margin-right: 20px; /* 로고-Explore 간격 (menu gap 18px보다 큼) */
+    margin-right: 20px;
   }
 
-  /* 메뉴: 가로 스크롤 */
   .topbar .menu{
     flex: 1 1 auto;
-    min-width: 0;              /* 중요: flex 아이템이 안 보이는 문제 방지 */
+    min-width: 0;                 /* 중요: flex 환경에서 메뉴가 안 보이는 문제 방지 */
     overflow-x: auto;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     position: relative;
 
@@ -27,13 +67,10 @@
     padding-right: 18px;
     padding-left: 18px;
   }
-  .topbar .menu a{
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
+
   .topbar .menu::-webkit-scrollbar{ display:none; }
 
-  /* 스마트 힌트: 스크롤이 가능할 때만(fade 표시), 끝까지 가면 사라짐 */
+  /* 스마트 힌트: 스크롤이 가능할 때만, 끝까지 가면 사라짐 */
   .topbar .menu::after,
   .topbar .menu::before{
     content:"";
