@@ -1,56 +1,68 @@
 
-/* site.css — mobile horizontal nav hint (fade + arrow) */
+/* site.css — mobile horizontal nav (smart hint + refined spacing) */
 
-/* 모바일 네비 기본 */
 @media (max-width: 980px){
+  /* 한 줄 헤더 유지 */
   .topbar .nav{
     flex-wrap: nowrap;
     height:72px;
+    align-items:center;
   }
 
+  /* 로고 ↔ 첫 네비 간격: 메뉴 아이템 간격보다 '조금 더' */
+  .topbar .brand{
+    margin-right: 20px; /* 로고-Explore 간격 (menu gap 18px보다 큼) */
+  }
+
+  /* 메뉴: 가로 스크롤 */
   .topbar .menu{
-    flex:1 1 auto;
-    overflow-x:auto;
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-    position:relative;
-    padding-right:28px; /* 힌트 영역 */
-  }
+    flex: 1 1 auto;
+    min-width: 0;              /* 중요: flex 아이템이 안 보이는 문제 방지 */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
 
+    /* 페이드 영역 확보 */
+    padding-right: 18px;
+    padding-left: 18px;
+  }
   .topbar .menu a{
-    flex:0 0 auto;
-    white-space:nowrap;
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
+  .topbar .menu::-webkit-scrollbar{ display:none; }
 
-  /* 오른쪽 페이드 + 화살표 힌트 */
-  .topbar .menu::after{
-    content:"→";
+  /* 스마트 힌트: 스크롤이 가능할 때만(fade 표시), 끝까지 가면 사라짐 */
+  .topbar .menu::after,
+  .topbar .menu::before{
+    content:"";
     position:absolute;
-    right:0;
     top:0;
     height:100%;
-    width:28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:18px;
     pointer-events:none;
+    opacity:0;
+    transition: opacity .18s ease;
+  }
 
-    background:linear-gradient(to right,
+  /* 오른쪽: 아직 끝이 아니면 표시 */
+  .topbar .menu.has-overflow:not(.at-end)::after{
+    right:0;
+    opacity:1;
+    background: linear-gradient(to right,
       rgba(7,9,15,0),
-      rgba(7,9,15,.65)
+      rgba(7,9,15,.70)
     );
-
-    color:rgba(255,255,255,.55);
-    font-size:14px;
   }
 
-  /* 로고 ↔ 첫 네비 1cm 간격 */
-  .topbar .brand{
-    margin-right:10px;
-  }
-
-  /* 스크롤바 숨김 */
-  .topbar .menu::-webkit-scrollbar{
-    display:none;
+  /* 왼쪽: 스크롤이 조금이라도 진행되면 표시 */
+  .topbar .menu.has-overflow:not(.at-start)::before{
+    left:0;
+    opacity:1;
+    background: linear-gradient(to left,
+      rgba(7,9,15,0),
+      rgba(7,9,15,.70)
+    );
   }
 }
