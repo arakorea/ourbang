@@ -58,7 +58,7 @@
     .menu{display:flex; align-items:center; gap:18px}
     .menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
     .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
-    @media (max-width: 980px){ .menu{display:none} .brand{min-width:auto} }
+    @media (max-width: 980px){ .brand{min-width:auto} }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -112,39 +112,31 @@
     .mutelink{color: rgba(255,255,255,.60)}
     .mutelink:hover{color: rgba(255,255,255,.85)}
   </style>
-  <link rel="stylesheet" href="assets/css/site.css?v=5" />
+  <link rel="stylesheet" href="assets/css/site.css?v=18" />
 </head>
 <body>
 <header class="topbar">
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="index.html">
-        <img src="assets/images/brand/ourbang-logo.png" alt="ourbang logo" onerror="this.style.display='none'">
         <div class="name">
           <strong>ourbang</strong>
-          <span>space, scanned, created &amp; mirrored</span>
         </div>
       </a>
 
       <nav class="menu" aria-label="Primary">
-        <a href="index.html#concept">Concept</a>
-        <a href="index.html#modes">Modes</a>
-        <a href="index.html#mirror">Mirror</a>
-        <a href="index.html#gallery">Gallery</a>
+        <a href="explore.html" class="is-active">Explore</a>
+        <a href="scan.html">Scan</a>
+        <a href="mirror.html" target="_blank" rel="noopener">Mirror</a>
         <a href="vision.html">Vision</a>
-      </nav>
-
-      <div style="display:flex; gap:10px; align-items:center">
-        <a class="btn" href="explore.html">Explore</a>
-        <a class="btn primary" href="index.html#modes">Start</a>
-      </div>
+          <a href="contact.html">Contact</a>
+        </nav>
     </div>
   </div>
 </header>
 
-  
 
-  <main>
+<main>
     <section class="hero">
       <div class="wrap">
         <h1>Explore</h1>
@@ -212,9 +204,5 @@
   </div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script></main>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
