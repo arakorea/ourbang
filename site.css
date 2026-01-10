@@ -1,137 +1,44 @@
-/* ourbang site.css — MOBILE NAV CHIPS FORCE (FINAL)
-   - 모바일에서 Primary nav(.menu)를 절대 숨기지 않고 칩(가로 스크롤) 형태로 노출
-   - PC는 기존 레이아웃 유지
-   - 로고 옆 작은 텍스트/표식 제거(태그라인/로고이미지/데코 pseudo)
+/* site.css (FINAL) — Minimal nav strip support
+   목적:
+   1) index.html의 기존 디자인(인라인 <style>)을 건드리지 않음
+   2) 모바일에서 상단 네비(.menu)가 '가로 스크롤 스트립'으로 자연스럽게 동작
+   3) 혹시 다른 페이지에서 .menu를 숨긴 경우에도 모바일에서 다시 보이게 함
 */
 
-/* ===== Base tokens (minimal; keep if already defined elsewhere) ===== */
-:root{
-  --bg:#07090f;
-  --panel: rgba(255,255,255,.06);
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --muted2: rgba(255,255,255,.55);
-  --brand: #7cc6ff;
-  --brand2:#4ee0c2;
-  --shadow: 0 20px 80px rgba(0,0,0,.45);
-  --radius: 22px;
-  --radius2: 28px;
-  --max: 1180px;
-}
-
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  overflow-x:hidden;
-}
-a{color:inherit; text-decoration:none}
-.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
-
-/* ===== Top bar / nav ===== */
-.topbar{
-  position: sticky; top:0; z-index: 20;
-  backdrop-filter: blur(14px);
-  background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.nav{
-  display:flex; align-items:center; justify-content:space-between;
-  height:72px;
-  gap: 14px;
-}
-.brand{display:flex; align-items:center; gap:12px; min-width:220px}
-.brand img{display:none !important;} /* 로고 이미지에서 생기는 작은 표식/아이콘 제거 */
-.brand .name{display:flex; flex-direction:column; line-height:1.05}
-.brand .name strong{font-size:30px; letter-spacing:.2px}
-.brand .name span{display:none !important;} /* 태그라인 제거 */
-
-/* 혹시 외부/기존 CSS가 만든 작은 데코(점/기호) 제거 */
-.brand::before, .brand::after,
-.name::before, .name::after,
-.topbar::before, .topbar::after,
-.nav::before, .nav::after{
-  content:none !important;
-  display:none !important;
-}
-
-/* Primary menu (PC default) */
-.menu{display:flex; align-items:center; gap:18px}
-.menu a{
-  font-size:14px;
-  color: var(--muted);
-  padding:10px 10px;
-  border-radius: 12px;
-}
-.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
-
-/* Actions (Explore/Start) */
-.actions{display:flex; align-items:center; gap:10px}
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  gap:10px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  color: var(--text);
-  padding: 11px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  cursor:pointer;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease;
-  user-select:none;
-  white-space:nowrap;
-}
-.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
-.btn.primary{
-  background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
-  border-color: rgba(124,198,255,.28);
-}
-
-/* ===== MOBILE: make nav chips row always visible ===== */
+/* 모바일: 헤더 2줄(브랜드/버튼 + 메뉴 스트립)로 자연스럽게 재배치 */
 @media (max-width: 980px){
-  /* 헤더를 2줄로 만들기: (brand + actions) 위, (menu chips) 아래 */
-  .nav{
+  /* 혹시 다른 CSS에서 숨겼다면 복구 */
+  .topbar .menu{ display:flex !important; }
+
+  /* 기존 .nav는 height:72px 고정이라 모바일에서 잘림/겹침이 생길 수 있어 auto로 전환 */
+  .topbar .nav{
     height:auto !important;
-    flex-wrap:wrap !important;
-    align-items:center !important;
-    padding: 10px 0 14px !important;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:10px 0;
   }
 
-  .brand{min-width:auto !important; order:1 !important;}
-  .actions{order:2 !important; margin-left:auto !important;}
-
-  /* 핵심: 모바일에서 menu를 절대 숨기지 않음 */
-  .menu{
-    order:3 !important;
-    display:flex !important;
-    width:100% !important;
-
-    gap:10px !important;
-    margin-top: 10px !important;
-    padding: 6px 2px 2px !important;
-
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space:nowrap !important;
-
-    border-top: 1px solid rgba(255,255,255,.06) !important;
+  /* 메뉴를 두 번째 줄로 내려서 '가로 스크롤 스트립'화 */
+  .topbar .menu{
+    order:3;
+    width:100%;
+    flex:0 0 100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;
+    padding:6px 2px;
+    margin-top:6px;
   }
-  .menu::-webkit-scrollbar{height:0 !important;}
-
-  /* 칩 스타일 */
-  .menu a{
-    white-space:nowrap !important;
-    padding:10px 14px !important;
-    border-radius:999px !important;
-    border:1px solid rgba(255,255,255,.12) !important;
-    background: rgba(255,255,255,.04) !important;
+  .topbar .menu a{
+    flex:0 0 auto;
+    white-space:nowrap;
   }
+
+  /* 스크롤바는 가능한 한 숨김(기기별로 다를 수 있음) */
+  .topbar .menu::-webkit-scrollbar{ display:none; }
 }
 
-/* ===== Small screens: wordmark scale down a bit ===== */
+/* 초소형: 액션 버튼이 너무 크면 줄바꿈 허용 */
 @media (max-width: 520px){
-  .brand .name strong{font-size:22px !important;}
+  .topbar .actions{ flex-wrap:wrap; gap:8px; }
 }
