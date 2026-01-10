@@ -1,47 +1,56 @@
-/* site.css (FINAL) — unified header nav (mobile one-line strip)
-   목표:
-   - PC 디자인은 각 페이지의 기존(inline/페이지별) 스타일을 그대로 사용
-   - 모바일에서 네비게이션을 '로고 옆 한 줄'로 유지 + 좌우 스와이프(가로 스크롤)
-   - 특정 페이지에서 .menu를 숨겨도 모바일에서 강제로 보이게 함
-*/
 
-/* ACTIVE(현재 페이지) 표시 — 각 페이지에서 <a class="is-active">로 지정 */
-.menu a.is-active{
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.92);
-}
+/* site.css — mobile horizontal nav hint (fade + arrow) */
 
-/* Mobile: one-line brand + scrollable menu */
+/* 모바일 네비 기본 */
 @media (max-width: 980px){
-  /* 혹시 다른 CSS에서 숨겼다면 복구 */
-  .topbar .menu{ display:flex !important; }
-
-  /* 한 줄 유지 */
   .topbar .nav{
-    flex-wrap: nowrap !important;
-    height:72px; /* 기존 탑바 높이 유지 */
+    flex-wrap: nowrap;
+    height:72px;
   }
 
-  /* 가운데 메뉴가 flex 안에서 줄어들 수 있게(이게 없으면 iOS에서 안 보이거나 잘리는 경우가 많음) */
   .topbar .menu{
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    gap: 10px; /* 기존 gap보다 살짝 조밀 */
+    flex:1 1 auto;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    position:relative;
+    padding-right:28px; /* 힌트 영역 */
   }
 
   .topbar .menu a{
-    flex: 0 0 auto;
-    white-space: nowrap;
+    flex:0 0 auto;
+    white-space:nowrap;
   }
 
-  /* 스크롤바 최소화(브라우저별 차이 있음) */
-  .topbar .menu::-webkit-scrollbar{ display:none; }
-}
+  /* 오른쪽 페이드 + 화살표 힌트 */
+  .topbar .menu::after{
+    content:"→";
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    width:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
 
-/* Extra small: 브랜드 영역이 너무 길면(서브타이틀 등) 줄바꿈 방지 */
-@media (max-width: 520px){
-  .topbar .brand .name span{ display:none; }
+    background:linear-gradient(to right,
+      rgba(7,9,15,0),
+      rgba(7,9,15,.65)
+    );
+
+    color:rgba(255,255,255,.55);
+    font-size:14px;
+  }
+
+  /* 로고 ↔ 첫 네비 1cm 간격 */
+  .topbar .brand{
+    margin-right:10px;
+  }
+
+  /* 스크롤바 숨김 */
+  .topbar .menu::-webkit-scrollbar{
+    display:none;
+  }
 }
