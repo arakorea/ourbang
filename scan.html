@@ -14,266 +14,112 @@
 
   <link rel="icon" href="assets/images/brand/favicon.png" />
 
-  <style>
-
-    
-    
-    
-    
-    
-    
-    /* Ensure stage is positioning context for hotspots */
-    .videoStage{position:relative;}
-
-/* ===== Icon play/pause in nav ===== */
-    .menu .navCtl{
-      width:44px;
-      height:38px;
-      padding:0;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      line-height:1;
-    }
-
-/* ===== Nav control button (matches Explore/Mirror menu pills) ===== */
-    .menu .navCtl{
-      font-size:14px;
-      color: rgba(255,255,255,.78);
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .menu .navCtl:hover{background: rgba(255,255,255,.06); color: rgba(255,255,255,.92);}
-    .menu .navCtl:active{transform: translateY(1px);}
-
-/* ===== Tap-to-start overlay (shown only if autoplay is blocked) ===== */
-    .tapStart{
-      position:absolute;
-      z-index:7;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      min-width: 180px;
-      height: 56px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.42);
-      color: rgba(255,255,255,.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      font-size: 15px;
-      letter-spacing:.2px;
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-    }
-    .tapStart:hover{background: rgba(0,0,0,.52)}
-    .tapStart:active{transform:translate(-50%,-50%) translateY(1px)}
-
-/* ===== Hotspot visual reset (avoid white boxes on mobile/desktop) ===== */
-    .videoStage .hotspot{
-      -webkit-appearance: none;
-      appearance: none;
-      background: rgba(0,0,0,0) !important;
-      border: 1px solid rgba(120,180,255,.55) !important;
-      border-radius: 14px !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      box-shadow: none !important;
-      outline: none !important;
-      -webkit-tap-highlight-color: transparent;
-      cursor:pointer;
-    }
-    .videoStage .hotspot:active{background: rgba(120,180,255,.08) !important;}
-    .videoStage .hotspot:focus-visible{
-      outline: 2px solid rgba(255,255,255,.55) !important;
-      outline-offset: 3px !important;
-    }
-
-    }
-
-:root{
-      --bg:#07090f; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --panel:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.10);
-      --brand:#7cc6ff; --brand2:#4ee0c2; --shadow:0 20px 80px rgba(0,0,0,.45);
-      --radius:22px; --radius2:28px; --max:1180px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-      background:
-        radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
-        radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
-        var(--bg);
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter:blur(14px);
-      background:linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    
-    /* Brand typography (match index/explore) */
-    .brand .name{display:flex; flex-direction:column; line-height:1.05}
-    .brand .name strong{font-size:18px; letter-spacing:.2px}
-    .brand .name span{font-size:12px; color: var(--muted2)}
-.btn{padding:11px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
-    .btn.primary{background:linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22))}
-
-    .hero{padding:44px 0 18px}
-    h1{font-size:44px; margin:12px 0}
-    .lead{color:var(--muted); max-width:720px; line-height:1.7}
-
-    .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
-
-    .panel{
-      position:relative; min-height:360px; border-radius:var(--radius2);
-      overflow:hidden; border:1px solid rgba(255,255,255,.10);
-      background:var(--panel); box-shadow:var(--shadow);
-    }
-    .panelBg{
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
-        url("assets/images/preview/scan-shot.jpg");
-      background-size:cover; background-position:center;
-    }
-    .panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
-    .step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
-    .step h3{margin:0 0 6px; font-size:16px}
-    .step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
-
-    footer{padding:22px 0 40px; color:rgba(255,255,255,.45); border-top:1px solid rgba(255,255,255,.06)}
   
+  <link rel="stylesheet" href="assets/css/site.css?v=22" />
+<style>
+/* Scan page-specific layout (keeps nav styling in assets/css/site.css) */
+.hero{padding:44px 0 18px}
+h1{font-size:44px; margin:12px 0}
+.lead{color:var(--muted); max-width:720px; line-height:1.7}
 
-    /* ===== Scan video mobile stabilization ===== */
-    .videoStage{
-      position: relative;
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
-      aspect-ratio: 16 / 9;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .videoStage video{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000;
-    }
-    .videoStage .hotspot{
-      position: absolute;
-      z-index: 3;
-    }
-    @media (orientation: portrait), (orientation: landscape){
-      .videoStage{ aspect-ratio: 16 / 9; }
-    }
-
-
-/* --- nav styles from scan-final(7) --- */
-
-:root{
-  --bg:#07090f;
-  --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.65);
-  --brand:#7cc6ff;
-  --brand2:#4ee0c2;
-  --radius:22px;
-  --radius2:28px;
-  --max:1180px;
-}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
-    radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
-    radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
-    var(--bg);
-}
-.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
-
-/* hero */
-.hero{padding:44px 0 26px}
-.heroGrid{display:grid; grid-template-columns:1.05fr .95fr; gap:26px}
-@media(max-width:980px){.heroGrid{grid-template-columns:1fr}}
-h1{margin:0 0 12px; font-size:44px}
-.lead{color:var(--muted); line-height:1.7; max-width:720px}
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
 
 .panel{
+  position:relative;
+  min-height:360px;
   border-radius:var(--radius2);
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(255,255,255,.04);
   overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background:var(--panel);
+  box-shadow:var(--shadow);
 }
 .panelBg{
-  height:100%;
-  background:
+  position:absolute; inset:0;
+  background-image:
     linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
     url("assets/images/preview/scan-shot.jpg");
   background-size:cover;
   background-position:center;
 }
-.steps{display:flex; flex-direction:column}
-.step{
-  padding:16px 18px;
-  border-bottom:1px solid rgba(255,255,255,.08)
-}
-.step:last-child{border-bottom:none}
-.step h3{margin:0 0 6px; font-size:15px}
-.step p{margin:0; font-size:13px; color:var(--muted)}
+.panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
+.step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
+.step h3{margin:0 0 6px; font-size:16px}
+.step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
 
-/* video */
+/* Video stage */
 .videoStage{
-  position:relative;
-  width:100%;
-  max-width:1100px;
-  margin:40px auto 10px;
-  aspect-ratio:16/9;
-  border-radius:var(--radius2);
-  overflow:hidden;
-  background:#000;
-  border:1px solid rgba(255,255,255,.12);
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto 10px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius2);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.12);
 }
 .videoStage video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:contain;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
 }
 
-/* hotspot */
-.hotspot{
+/* Hotspots: keep transparent hitboxes (no white boxes) */
+.videoStage .hotspot{
   position:absolute;
   z-index:3;
-  background:rgba(0,0,0,.0);
-  border:none;
+  -webkit-appearance:none;
+  appearance:none;
+  background: rgba(0,0,0,0) !important;
+  border: 1px solid rgba(120,180,255,.55) !important;
+  border-radius: 14px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
   cursor:pointer;
 }
+.videoStage .hotspot:active{background: rgba(120,180,255,.08) !important;}
+.videoStage .hotspot:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
 
-/* modal (same behavior as reference) */
+/* Tap-to-start overlay (autoplay blocked) */
+.tapStart{
+  position:absolute;
+  z-index:7;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  min-width: 180px;
+  height: 56px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.42);
+  color: rgba(255,255,255,.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  font-size: 15px;
+  letter-spacing:.2px;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select:none;
+}
+.tapStart:hover{background: rgba(0,0,0,.52)}
+.tapStart:active{transform:translate(-50%,-50%) translateY(1px)}
+
+/* Modal */
 .modalBack{
   position:fixed;
   inset:0;
@@ -307,83 +153,11 @@ h1{margin:0 0 12px; font-size:44px}
   font-size:14px;
   cursor:pointer;
 }
-.modalBody{
-  padding:20px;
-}
-.modalGrid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:20px;
-}
-@media(max-width:900px){
-  .modalGrid{grid-template-columns:1fr}
-}
-.modalImg{
-  width:100%;
-  border-radius:18px;
-}
-.modalActions{
-  display:flex;
-  gap:10px;
-  margin-top:14px;
-}
-
-
-.topbar .menu{gap:8px}
-  .topbar .menu a{padding:9px 12px; font-size:14px}
-}
-
-
-
-/* === NAV/FOOTER synced with index.html === */
-.topbar{
-      position: sticky; top:0; z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
-    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
-    .brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45))}
-    .brand .name{display:flex; flex-direction:column; line-height:1.05}
-    .brand .name strong{font-size:18px; letter-spacing:.2px}
-    .brand .name span{font-size:12px; color: var(--muted2)}
-
-    .menu{display:flex; align-items:center; gap:18px}
-    .menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
-    .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
-
-    .actions{display:flex; align-items:center; gap:10px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 11px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
-      border-color: rgba(124,198,255,.28);
-    }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
-
-    @media (max-width: 980px){ .brand{min-width:auto} }
-
-.foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
-    .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .mutelink{color: rgba(255,255,255,.60)}
-    .mutelink:hover{color: rgba(255,255,255,.85)}
-
+.modalBody{padding:20px}
+.modalGrid{display:grid; grid-template-columns:1.1fr .9fr; gap:20px}
+@media(max-width:900px){ .modalGrid{grid-template-columns:1fr} }
+.modalImg{width:100%; border-radius:18px}
 </style>
-  <link rel="stylesheet" href="assets/css/site.css?v=22" />
 </head>
 <body>
 <header class="topbar">
