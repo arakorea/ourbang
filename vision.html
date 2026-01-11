@@ -12,7 +12,33 @@
 <meta content="assets/images/og/og-cover.jpg" property="og:image"/>
 <link href="assets/images/brand/favicon.png" rel="icon"/>
 <style>
-    :root{
+    
+/* ===== Nav pills: unify hover/active/tap across PC & Mobile ===== */
+.topbar .menu a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 10px;
+  border-radius:12px;
+  color: rgba(255,255,255,.70);
+  transition: background .12s ease, color .12s ease, transform .12s ease, border-color .12s ease;
+}
+.topbar .menu a:hover{
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.92);
+}
+.topbar .menu a:active{
+  background: rgba(255,255,255,.08);
+  transform: translateY(1px);
+}
+.topbar .menu a.is-active,
+.topbar .menu a[aria-current="page"]{
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+:root{
       --bg:#07090f; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.55);
       --panel:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.10);
@@ -103,10 +129,7 @@ h1{font-size:40px; margin:18px 0}
 
   
 
-/* ===== Global header/footer stability (match index) ===== */
-@media (max-width: 760px){
-  .nav{height:72px}
-  .menu{
+.menu{
     gap:10px;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -132,26 +155,24 @@ h1{font-size:40px; margin:18px 0}
 </head>
 <body>
 <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="index.html">
-          
-          <div class="name">
-            <strong>ourbang</strong>
-            
-          </div>
-        </a>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="name">
+          <strong>ourbang</strong>
+        </div>
+      </a>
 
-        <nav class="menu" aria-label="Primary">
-          <a href="explore.html">Explore</a>
-          <a href="scan.html">Scan</a>
-          <a href="mirror.html">Mirror</a>
-          <a href="vision.html">Vision</a>
+      <nav class="menu" aria-label="Primary">
+        <a href="explore.html">Explore</a>
+        <a href="scan.html">Scan</a>
+        <a href="mirror.html">Mirror</a>
+        <a href="vision.html">Vision</a>
           <a href="contact.html">Contact</a>
         </nav>
-</div>
     </div>
-  </header>
+  </div>
+</header>
 <main>
 <section class="wrap">
 <h1>Vision</h1>
@@ -187,17 +208,17 @@ h1{font-size:40px; margin:18px 0}
 </section>
 </main>
 <footer class="foot">
-      <div class="wrap">
-        <div class="footRow">
-          <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-          <div style="display:flex; gap:14px; flex-wrap:wrap">
-            <a class="mutelink" href="explore.html">Explore</a>
-            <a class="mutelink" href="scan.html">Scan</a>
-            <a class="mutelink" href="vision.html">Vision</a>
-          </div>
-        </div>
+  <div class="wrap">
+    <div class="footRow">
+      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap">
+        <a class="mutelink" href="explore.html">Explore</a>
+        <a class="mutelink" href="scan.html">Scan</a>
+        <a class="mutelink" href="vision.html">Vision</a>
       </div>
-    </footer>
+    </div>
+  </div>
+</footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
 <script>
