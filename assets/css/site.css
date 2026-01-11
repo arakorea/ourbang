@@ -1,42 +1,337 @@
-
-/* site.css — Unified Top Navigation (PC + Mobile) */
-
-/* ====== Base (PC 포함) : 모든 페이지 공통 네비 규격 ====== */
-.topbar .nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:72px;
+:root{
+  --bg:#07090f;
+  --panel: rgba(255,255,255,.06);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --muted2: rgba(255,255,255,.55);
+  --brand: #7cc6ff;
+  --brand2:#4ee0c2;
+  --shadow: 0 20px 80px rgba(0,0,0,.45);
+  --radius: 22px;
+  --radius2: 28px;
+  --max: 1180px;
 }
 
-/* 로고 영역 */
-.topbar .brand{
-  display:flex;
-  align-items:center;
-  min-width:auto;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 500px at 20% 10%, rgba(124,198,255,.12), transparent 60%),
+    radial-gradient(900px 520px at 80% 15%, rgba(78,224,194,.10), transparent 60%),
+    radial-gradient(900px 700px at 55% 80%, rgba(124,198,255,.08), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
 }
 
-/* 메뉴(기본은 PC도 동일 규격) */
-.topbar .menu{
-  display:flex;
-  align-items:center;
-  gap:18px;                 /* index 기준 */
-}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
-.topbar .menu a{
-  font-size:14px;
-  padding:10px 10px;        /* index 기준: 이게 폭을 결정합니다(일관성 핵심) */
-  border-radius:12px;
-  color: rgba(255,255,255,.70);
+/* Shared Topbar */
+.topbar{
+  position: sticky; top:0; z-index: 20;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+.brand{display:flex; align-items:center; gap:12px; min-width:220px}
+.brand img{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+.brand .name{display:flex; flex-direction:column; line-height:1.05}
+.brand .name strong{font-size:18px; letter-spacing:.2px}
+.brand .name span{font-size:12px; color: var(--muted2)}
+.menu{display:flex; align-items:center; gap:18px}
+.menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
+.menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+@media (max-width: 980px){ .menu{display:none} .brand{min-width:auto} }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  user-select:none;
   white-space:nowrap;
 }
+.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(124,198,255,.28), rgba(78,224,194,.22));
+  border-color: rgba(124,198,255,.28);
+}
+.btn.primary:hover{background: linear-gradient(135deg, rgba(124,198,255,.35), rgba(78,224,194,.28));}
 
+/* Shared footer */
+.foot{padding: 22px 0 40px; color: rgba(255,255,255,.45); font-size: 12px; border-top: 1px solid rgba(255,255,255,.06);}
+.footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.mutelink{color: rgba(255,255,255,.60)}
+.mutelink:hover{color: rgba(255,255,255,.85)}
+
+/* Mirror Concept block */
+.conceptGrid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+.conceptFigure{
+  margin:0;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+.conceptFigure img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.conceptCaption{
+  padding:10px 12px;
+  font-size:12px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.conceptText{
+  padding:18px;
+}
+
+.conceptBullets{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+  margin-top:14px;
+}
+
+.conceptBullets .bullet{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  background: rgba(255,255,255,.02);
+}
+
+.conceptBullets .bullet b{
+  min-width:72px;
+  display:inline-block;
+}
+
+@media (max-width: 980px){
+  .conceptGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Unified Buttons (Global) */
+a.btn, .btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.88) !important;
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
+  backdrop-filter: none !important;
+}
+
+a.btn:hover, .btn:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.32) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+a.btn:active, .btn:active{
+  transform: none !important;
+}
+
+a.btn:focus-visible, .btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
+
+/* Primary buttons should not be green anywhere */
+a.btn.primary, .btn.primary{
+  background: transparent !important;
+  border-color: rgba(255,255,255,.28) !important;
+  color: rgba(255,255,255,.95) !important;
+  box-shadow: none !important;
+}
+
+a.btn.primary:hover, .btn.primary:hover{
+  background: rgba(255,255,255,.10) !important;
+  border-color: rgba(255,255,255,.40) !important;
+  color: rgba(255,255,255,1) !important;
+  transform: none !important;
+}
+
+/* Remove hover motion from common CTA wrappers */
+.ctaRow a, .heroBtns a, .actions a{
+  transform: none !important;
+}
+
+
+/* Unified Navigation (Header) */
+.topbar .menu a,
+.topbar .actions a.btn{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.88) !important;
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease !important;
+}
+.topbar .menu a:hover,
+.topbar .actions a.btn:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.32) !important;
+  color: rgba(255,255,255,1) !important;
+}
+.topbar .menu a:focus-visible,
+.topbar .actions a.btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.55) !important;
+  outline-offset: 3px !important;
+}
+.topbar .menu a:hover,
+.topbar .actions a.btn:hover,
+.topbar .menu a:active,
+.topbar .actions a.btn:active{
+  transform: none !important;
+}
+.topbar .actions a.btn.primary,
+.topbar .actions a.btn.primary:hover{
+  background: transparent !important;
+  border-color: rgba(255,255,255,.28) !important;
+  color: rgba(255,255,255,.95) !important;
+}
+
+/* =========================
+   Create output clickable badge (index)
+   ========================= */
+.badgeLink{display:inline-flex; align-items:center}
+.badgeLink .badge{cursor:pointer}
+.badgeLink:hover .badge{filter:brightness(1.08)}
+.badgeLink:focus-visible{outline:2px solid rgba(120,180,255,.55); outline-offset:3px; border-radius:14px}
+
+/* =========================
+   Video showroom hotspots + modal
+   ========================= */
+.videoStage{
+  position:relative;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+  box-shadow:0 20px 80px rgba(0,0,0,.45);
+}
+.videoStage video{width:100%; height:auto; display:block; background:#000}
+.hotspot{
+  position:absolute;
+  border:1px solid rgba(120,180,255,.55);
+  background:rgba(120,180,255,.10);
+  border-radius:14px;
+  cursor:pointer;
+  transition:transform .12s ease, filter .12s ease, background .12s ease;
+  backdrop-filter: blur(2px);
+}
+.hotspot:hover{filter:brightness(1.15); transform:scale(1.01)}
+.hotspot::after{
+  content:attr(data-label);
+  position:absolute;
+  left:8px; top:8px;
+  font-size:12px;
+  color:rgba(255,255,255,.92);
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.14);
+  padding:4px 8px;
+  border-radius:999px;
+}
+.hotspot[hidden]{display:none !important}
+
+.modalBack{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:18px;
+  z-index:9999;
+}
+.modalBack.open{display:flex}
+.modal{
+  width:min(980px, 96vw);
+  max-height:92vh;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(15,18,25,.92);
+  border-radius:22px;
+  box-shadow:0 30px 120px rgba(0,0,0,.65);
+}
+.modalTop{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:12px;
+  padding:14px 14px 0;
+}
+.modalTop h3{margin:0; font-size:20px}
+.modalClose{
+  appearance:none; border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.85);
+  border-radius:12px;
+  padding:8px 10px;
+  cursor:pointer;
+}
+.modalBody{padding:14px}
+.modalGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+@media (max-width: 860px){.modalGrid{grid-template-columns:1fr}}
+.modalImg{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+}
+
+
+
+/* ===== Nav pills: unify hover/active/tap across PC & Mobile ===== */
+.topbar .menu a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 10px;
+  border-radius:12px;
+  color: rgba(255,255,255,.70);
+  transition: background .12s ease, color .12s ease, transform .12s ease, border-color .12s ease;
+}
 .topbar .menu a:hover{
   background: rgba(255,255,255,.05);
   color: rgba(255,255,255,.92);
 }
-
-/* active */
+.topbar .menu a:active{
+  background: rgba(255,255,255,.08);
+  transform: translateY(1px);
+}
 .topbar .menu a.is-active,
 .topbar .menu a[aria-current="page"]{
   background: rgba(255,255,255,.06);
@@ -44,62 +339,3 @@
   border: 1px solid rgba(255,255,255,.10);
 }
 
-/* ====== Mobile : 한 줄 + 가로 스와이프 + 스마트 페이드 힌트 ====== */
-@media (max-width: 980px){
-  .topbar .nav{
-    flex-wrap: nowrap;
-    height:72px;
-  }
-
-  /* 로고 ↔ 첫 네비 : 메뉴 간격(18px)보다 조금 더 */
-  .topbar .brand{
-    margin-right: 20px;
-  }
-
-  .topbar .menu{
-    flex: 1 1 auto;
-    min-width: 0;                 /* 중요: flex 환경에서 메뉴가 안 보이는 문제 방지 */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-
-    /* 페이드 영역 확보 */
-    padding-right: 18px;
-    padding-left: 18px;
-  }
-
-  .topbar .menu::-webkit-scrollbar{ display:none; }
-
-  /* 스마트 힌트: 스크롤이 가능할 때만, 끝까지 가면 사라짐 */
-  .topbar .menu::after,
-  .topbar .menu::before{
-    content:"";
-    position:absolute;
-    top:0;
-    height:100%;
-    width:18px;
-    pointer-events:none;
-    opacity:0;
-    transition: opacity .18s ease;
-  }
-
-  /* 오른쪽: 아직 끝이 아니면 표시 */
-  .topbar .menu.has-overflow:not(.at-end)::after{
-    right:0;
-    opacity:1;
-    background: linear-gradient(to right,
-      rgba(7,9,15,0),
-      rgba(7,9,15,.70)
-    );
-  }
-
-  /* 왼쪽: 스크롤이 조금이라도 진행되면 표시 */
-  .topbar .menu.has-overflow:not(.at-start)::before{
-    left:0;
-    opacity:1;
-    background: linear-gradient(to left,
-      rgba(7,9,15,0),
-      rgba(7,9,15,.70)
-    );
-  }
-}
