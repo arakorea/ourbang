@@ -162,25 +162,26 @@
 
 <body>
   <header class="topbar">
-  <div class="wrap">
-    <div class="nav">
-      <a class="brand" href="index.html">
-        <div class="name">
-          <strong>ourbang</strong>
-          <span class="brand-spacer" aria-hidden="true"></span>
-        </div>
-      </a>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html">
+          
+          <div class="name">
+            <strong>ourbang</strong>
+            
+          </div>
+        </a>
 
-      <nav class="menu" aria-label="Primary">
-        <a href="explore.html">Explore</a>
-        <a href="scan.html">Scan</a>
-        <a href="mirror.html" class="is-active" aria-current="page">Mirror</a>
-        <a href="vision.html">Vision</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+        <nav class="menu" aria-label="Primary">
+          <a href="explore.html">Explore</a>
+          <a href="scan.html">Scan</a>
+          <a href="mirror.html">Mirror</a>
+          <a href="vision.html">Vision</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+</div>
     </div>
-  </div>
-</header>
+  </header>
 
 <main>
   <!-- HERO -->
@@ -333,22 +334,37 @@
   </section>
 
   <footer class="foot">
-    <div class="wrap">
-      <div class="footRow">
-        <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap">
-          <a class="mutelink" href="index.html">Home</a>
-          <a class="mutelink" href="explore.html">Explore</a>
-          <a class="mutelink" href="scan.html">Scan</a>
-          <a class="mutelink" href="vision.html">Vision</a>
+      <div class="wrap">
+        <div class="footRow">
+          <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap">
+            <a class="mutelink" href="explore.html">Explore</a>
+            <a class="mutelink" href="scan.html">Scan</a>
+            <a class="mutelink" href="vision.html">Vision</a>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 </main>
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 </script>
+
+<script>
+  (function(){
+    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const links = document.querySelectorAll('.topbar .menu a');
+    links.forEach(a=>{
+      const href = (a.getAttribute('href')||'').toLowerCase();
+      if(!href) return;
+      if(href === path || (path === '' && href === 'index.html')){
+        a.classList.add('is-active');
+        a.setAttribute('aria-current','page');
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
