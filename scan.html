@@ -13,151 +13,228 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="assets/images/brand/favicon.png" />
-
-  
   <link rel="stylesheet" href="assets/css/site.css?v=22" />
-<style>
-/* Scan page-specific layout (keeps nav styling in assets/css/site.css) */
-.hero{padding:44px 0 18px}
-h1{font-size:44px; margin:12px 0}
-.lead{color:var(--muted); max-width:720px; line-height:1.7}
 
-.grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
+  <style>
+    /* Scan page-specific layout only (nav styling stays in assets/css/site.css) */
+    .hero{padding:44px 0 18px}
+    h1{font-size:44px; margin:12px 0}
+    .lead{color:var(--muted); max-width:720px; line-height:1.7}
 
-.panel{
-  position:relative;
-  min-height:360px;
-  border-radius:var(--radius2);
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-  background:var(--panel);
-  box-shadow:var(--shadow);
-}
-.panelBg{
-  position:absolute; inset:0;
-  background-image:
-    linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
-    url("assets/images/preview/scan-shot.jpg");
-  background-size:cover;
-  background-position:center;
-}
-.panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
-.step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
-.step h3{margin:0 0 6px; font-size:16px}
-.step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
 
-/* Video stage */
-.videoStage{
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-  margin: 40px auto 10px;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius2);
-  overflow: hidden;
-  background: #000;
-  border: 1px solid rgba(255,255,255,.12);
-}
-.videoStage video{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-}
+    .panel{
+      position:relative;
+      min-height:360px;
+      border-radius:var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:var(--panel);
+      box-shadow:var(--shadow);
+    }
+    .panelBg{
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(180deg, rgba(7,9,15,.25), rgba(7,9,15,.75)),
+        url("assets/images/preview/scan-shot.jpg");
+      background-size:cover;
+      background-position:center;
+    }
+    .panelInner{position:relative; padding:18px; display:flex; flex-direction:column; gap:12px}
+    .step{border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:14px; background:rgba(0,0,0,.22)}
+    .step h3{margin:0 0 6px; font-size:16px}
+    .step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
 
-/* Hotspots: keep transparent hitboxes (no white boxes) */
-.videoStage .hotspot{
-  position:absolute;
-  z-index:3;
-  -webkit-appearance:none;
-  appearance:none;
-  background: rgba(0,0,0,0) !important;
-  border: 1px solid rgba(120,180,255,.55) !important;
-  border-radius: 14px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent;
-  cursor:pointer;
-}
-.videoStage .hotspot:active{background: rgba(120,180,255,.08) !important;}
-.videoStage .hotspot:focus-visible{
-  outline: 2px solid rgba(255,255,255,.55) !important;
-  outline-offset: 3px !important;
-}
+    /* Video stage */
+    .videoStage{
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 26px auto 10px;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius2);
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+    }
+    .videoStage video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      background:#000;
+    }
 
-/* Tap-to-start overlay (autoplay blocked) */
-.tapStart{
-  position:absolute;
-  z-index:7;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  min-width: 180px;
-  height: 56px;
-  padding: 0 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.16);
-  background: rgba(0,0,0,.42);
-  color: rgba(255,255,255,.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 18px 60px rgba(0,0,0,.55);
-  font-size: 15px;
-  letter-spacing:.2px;
-  cursor:pointer;
-  -webkit-tap-highlight-color: transparent;
-  user-select:none;
-}
-.tapStart:hover{background: rgba(0,0,0,.52)}
-.tapStart:active{transform:translate(-50%,-50%) translateY(1px)}
+    /* Visible artwork boxes (clickable) */
+    .hotspot{
+      position:absolute;
+      z-index: 5;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:8px;
+      padding:10px 10px 8px;
+      border-radius:16px;
+      border:1px solid rgba(124,198,255,.55);
+      background: linear-gradient(180deg, rgba(7,9,15,.20), rgba(7,9,15,.55));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+      text-align:left;
+    }
+    .hotspot:hover{border-color: rgba(124,198,255,.78)}
+    .hotspot:active{transform: translateY(1px)}
+    .hotspotTop{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .hotspotTag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      font-size:12px;
+      color: rgba(255,255,255,.86);
+      white-space:nowrap;
+    }
+    .hotspotTitle{font-size:13px; line-height:1.2; margin:0; color: rgba(255,255,255,.92)}
+    .hotspotMeta{font-size:12px; color: rgba(255,255,255,.70); margin:0}
+    .hotspotBuy{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:30px;
+      padding:0 10px;
+      border-radius:999px;
+      border:1px solid rgba(124,198,255,.30);
+      background: rgba(124,198,255,.14);
+      color: rgba(255,255,255,.92);
+      font-size:12px;
+      text-decoration:none;
+      width:max-content;
+    }
 
-/* Modal */
-.modalBack{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(6px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:50;
-}
-.modalBack.open{display:flex}
-.modal{
-  width:min(920px,92vw);
-  border-radius:28px;
-  background:linear-gradient(180deg, rgba(20,24,32,.95), rgba(10,12,18,.98));
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 30px 120px rgba(0,0,0,.6);
-}
-.modalTop{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 20px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.modalTop h3{margin:0;font-size:18px}
-.modalClose{
-  background:none;
-  border:none;
-  color:var(--muted);
-  font-size:14px;
-  cursor:pointer;
-}
-.modalBody{padding:20px}
-.modalGrid{display:grid; grid-template-columns:1.1fr .9fr; gap:20px}
-@media(max-width:900px){ .modalGrid{grid-template-columns:1fr} }
-.modalImg{width:100%; border-radius:18px}
-</style>
+    /* Navigation controls under video */
+    .vidNav{
+      max-width: 1100px;
+      margin: 10px auto 0;
+      padding: 0 6px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .vidNavLeft{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .ppBtn{
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ppBtn:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.20)}
+    .vidDots{display:flex; gap:8px; flex-wrap:wrap}
+    .dotBtn{
+      width:34px; height:34px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.82);
+      cursor:pointer;
+      font-size:13px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .dotBtn[aria-current="true"]{
+      border-color: rgba(124,198,255,.60);
+      background: rgba(124,198,255,.14);
+      color: rgba(255,255,255,.92);
+    }
+    .vidHint{color: rgba(255,255,255,.60); font-size:12px; line-height:1.5}
+    @media(max-width: 980px){
+      .vidNav{padding: 0 14px}
+    }
+
+    /* Tap-to-start overlay (autoplay blocked) */
+    .tapStart{
+      position:absolute;
+      z-index:7;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      min-width: 180px;
+      height: 56px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.42);
+      color: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      font-size: 15px;
+      letter-spacing:.2px;
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+    .tapStart:hover{background: rgba(0,0,0,.52)}
+    .tapStart:active{transform:translate(-50%,-50%) translateY(1px)}
+
+    /* Modal */
+    .modalBack{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      backdrop-filter:blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:50;
+    }
+    .modalBack.open{display:flex}
+    .modal{
+      width:min(920px,92vw);
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(20,24,32,.95), rgba(10,12,18,.98));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 30px 120px rgba(0,0,0,.6);
+    }
+    .modalTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .modalTop h3{margin:0;font-size:18px}
+    .modalClose{
+      background:none;
+      border:none;
+      color:var(--muted);
+      font-size:14px;
+      cursor:pointer;
+    }
+    .modalBody{padding:20px}
+    .modalGrid{display:grid; grid-template-columns:1.1fr .9fr; gap:20px}
+    @media(max-width:900px){ .modalGrid{grid-template-columns:1fr} }
+    .modalImg{width:100%; border-radius:18px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03)}
+  </style>
 </head>
 <body>
 <header class="topbar">
@@ -166,16 +243,17 @@ h1{font-size:44px; margin:12px 0}
       <a class="brand" href="index.html">
         <div class="name">
           <strong>ourbang</strong>
+          <span class="brand-spacer" aria-hidden="true"></span>
         </div>
       </a>
 
       <nav class="menu" aria-label="Primary">
         <a href="explore.html">Explore</a>
-        <a href="scan.html">Scan</a>
+        <a href="scan.html" class="is-active" aria-current="page">Scan</a>
         <a href="mirror.html">Mirror</a>
         <a href="vision.html">Vision</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
   </div>
 </header>
@@ -215,176 +293,105 @@ h1{font-size:44px; margin:12px 0}
           </div>
         </div>
       </div>
+
+      <section class="section" id="showroom" aria-label="Showroom demo" style="margin-top:26px">
+        <div class="galleryHead">
+          <div>
+            <h2 class="galleryTitle">Scan → Showroom Demo</h2>
+            <p class="sub">
+              영상은 천천히 자동 재생됩니다. 아래 네비게이션(⏸︎/▶︎, 작품 번호)로 정지/재생 및 작품 구간 이동이 가능합니다.
+              박스(작품 정보)를 누르면 상세(모달)과 구매 페이지(데모)로 연결됩니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="videoStage" id="videoStage">
+          <video id="showroomVideo" preload="metadata" muted playsinline webkit-playsinline loop>
+            <source src="assets/videos/ourbanggallery.mp4" type="video/mp4" />
+          </video>
+          <button class="tapStart" id="tapStart" type="button" aria-label="Tap to start">Tap to Start</button>
+          <!-- hotspots injected by JS -->
+        </div>
+
+        <div class="vidNav" aria-label="Video navigation">
+          <div class="vidNavLeft">
+            <button class="ppBtn" id="ppBtn" type="button" aria-label="Play / Pause">⏸︎</button>
+            <div class="vidDots" id="vidDots" aria-label="Artwork navigation"></div>
+          </div>
+          <div class="vidHint">Tip: 작품 번호를 누르면 해당 구간으로 이동 후 자동 정지됩니다.</div>
+        </div>
+
+        <p class="note" style="margin-top:12px">
+          External checkout · Pilot demonstration (실제 결제는 진행되지 않습니다)
+        </p>
+      </section>
     </div>
   </section>
 
-
-<!-- Video showroom demo (no external link) -->
-<section class="section" id="showroom" aria-label="Showroom demo">
-  <div class="videoStage" id="videoStage">
-    <video id="showroomVideo" preload="metadata" controls autoplay muted playsinline webkit-playsinline loop>
-      <source src="assets/videos/ourbanggallery.mp4" type="video/mp4" />
-    </video>
-<button class="tapStart" id="tapStart" type="button" aria-label="Tap to start">
-      Tap to Start
-    </button>
-<!-- hotspots injected by JS -->
-  </div>
-</section>
-
-<!-- Artwork modal -->
-<div class="modalBack" id="artModalBack" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="artModalTitle">
-    <div class="modalTop">
-      <div>
-        <h3 id="artModalTitle">Artwork</h3>
-        <div class="sub" id="artModalMeta"></div>
-      </div>
-      <button class="modalClose" id="artModalClose" type="button">Close</button>
-    </div>
-
-    <div class="modalBody">
-      <div class="modalGrid">
+  <!-- Artwork modal -->
+  <div class="modalBack" id="artModalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="artModalTitle">
+      <div class="modalTop">
         <div>
-          <img class="modalImg" id="artModalImg" alt="Artwork image" src="" />
+          <h3 id="artModalTitle">Artwork</h3>
+          <div class="sub" id="artModalMeta"></div>
         </div>
-        <div>
-          <p class="sub" id="artModalDesc" style="margin-top:0"></p>
+        <button class="modalClose" id="artModalClose" type="button">Close</button>
+      </div>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-            <a class="btn primary" id="artModalBuy" href="purchase.html?id=1" target="_blank" rel="noopener">View &amp; Purchase</a>
-            <a class="btn" href="#showroom">Back to video</a>
+      <div class="modalBody">
+        <div class="modalGrid">
+          <div>
+            <img class="modalImg" id="artModalImg" alt="Artwork image" src="" />
           </div>
+          <div>
+            <p class="sub" id="artModalDesc" style="margin-top:0"></p>
 
-          <p class="note" style="margin-top:12px">
-            ourbang은 결제를 직접 처리하지 않습니다. 본 버튼은 “결제 흐름”을 보여주는 데모입니다.
-          </p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <a class="btn primary" id="artModalBuy" href="purchase.html?id=1">View &amp; Purchase</a>
+              <a class="btn" href="#showroom">Back to video</a>
+            </div>
+
+            <p class="note" style="margin-top:12px">
+              ourbang은 결제를 직접 처리하지 않습니다. 본 버튼은 “결제 흐름”을 보여주는 데모입니다.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="footRow">
+      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap">
+        <a class="mutelink" href="index.html">Home</a>
+        <a class="mutelink" href="explore.html">Explore</a>
+        <a class="mutelink" href="scan.html">Scan</a>
+        <a class="mutelink" href="vision.html">Vision</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 
 <script>
 (function(){
-  // Slow auto-rotate feel (video playback)
   const video = document.getElementById("showroomVideo");
-  
-  
+  const stage = document.getElementById("videoStage");
 
-  // User intent lock: if user paused, do NOT auto-play again
-  let userPaused = false;
-  const PLAYBACK_RATE = 0.003;
+  // --- Speed control (slower than before) ---
+  // 0.12 = 12% speed (feels slow on mobile too). Tune here if needed.
+  const PLAYBACK_RATE = 0.12;
 
-// Slow auto-rotate feel (half speed)
-  video.playbackRate = 0.0416667;
-
-  // Autoplay safety (server/mobile): try autoplay, fall back to first user gesture.
-  function tryPlay(){
-    if(userPaused) return; // respect manual pause
-    // satisfy autoplay policies
-    video.muted = true;
-    video.setAttribute("muted","");
-    video.playsInline = true;
-    video.setAttribute("playsinline","");
-    video.setAttribute("webkit-playsinline","");
-    // keep slow rotate speed
-    video.playbackRate = PLAYBACK_RATE;
-
-    const tap = document.getElementById("tapStart");
-    const p = video.play();
-    if(p && typeof p.catch === "function"){
-      p.catch(()=> {
-        // autoplay blocked → show tap-to-start
-        if(tap){ tap.style.display = "inline-flex"; }
-      });
-    }
-  }
-      
-
-  const tapStart = document.getElementById("tapStart");
-  if(tapStart){
-    tapStart.addEventListener("click", async (e)=>{
-      e.preventDefault();
-      e.stopPropagation();
-      userPaused = false;
-      tapStart.style.display = "none";
-      video.muted = true;
-      video.setAttribute("muted","");
-      video.playbackRate = PLAYBACK_RATE;
-      try{
-        if(video.readyState < 2){ video.load(); }
-        await video.play();
-      }catch(err){
-        console.warn("Play blocked:", err);
-        tapStart.style.display = "inline-flex";
-      }
-      if(typeof setPP === "function") setPP();
-    });
-  }
-  window.addEventListener("load", tryPlay);
-  video.addEventListener("canplay", tryPlay, {once:true});
-
-  // Ensure hotspots appear immediately on load (even before user interacts)
-  function primeHotspots(){
-    layout();
-    // tiny seek to trigger first timeupdate/layout in some browsers
-    try{
-      if(video.readyState >= 1 && (video.currentTime || 0) < 0.02){
-        video.currentTime = 0.02;
-      }
-    }catch(e){}
-    layout();
-  }
-  window.addEventListener("load", primeHotspots);
-  requestAnimationFrame(layout);
-  setTimeout(layout, 150);
-  setTimeout(layout, 500);
-
-  // Ensure hotspots keep rendering even if timeupdate is sparse or video is paused
-  setInterval(layout, 200);
-
-  video.addEventListener("loadedmetadata", primeHotspots);
-  video.addEventListener("canplay", primeHotspots);
-
-
-});
-    }
-  });
-          window.removeEventListener("click", unlock);
-          window.removeEventListener("touchstart", unlock);
-        };
-        window.addEventListener("click", unlock, {once:true});
-        window.addEventListener("touchstart", unlock, {once:true});
-      });
-    }
-  }
-// Autoplay safety: on some browsers autoplay is blocked unless muted + user gesture.
-  function tryPlay(){
-    const p = video.play();
-    if(p && typeof p.catch === "function"){
-      p.catch(()=> {
-        // Wait for first user interaction, then try again.
-        const unlock = ()=>{
-          video.play().catch(()=>{});
-          window.removeEventListener("click", unlock);
-          window.removeEventListener("touchstart", unlock);
-        };
-        window.addEventListener("click", unlock, {once:true});
-        window.addEventListener("touchstart", unlock, {once:true});
-      });
-    }
-  }
-
-  // 0.25 = quarter speed (recommended). Adjust if needed.
-  video.playbackRate = 0.25;
-  video.addEventListener("loadedmetadata", tryPlay);
-  // Also attempt immediately (desktop often succeeds right away)
-  tryPlay();
-
+  // --- Works / purchase link ---
   const ARTIST = "Angel's Angle";
   const PRICE  = "$400,000";
-
   const works = {
     1: { title: "Artwork 1", img: "assets/images/artworks/1.jpg" },
     2: { title: "Artwork 2", img: "assets/images/artworks/2.jpg" },
@@ -395,69 +402,18 @@ h1{font-size:44px; margin:12px 0}
     7: { title: "Artwork 7", img: "assets/images/artworks/7.jpg" },
   };
 
-  // Video-hotspot demo config:
-  // x/y/w/h are normalized 0..1 relative to the video stage box.
-  // start/end are seconds. You can fine-tune later by watching the clip.
+  // Hotspot config: normalized 0..1 relative to stage
   const hotspots = [
-    {id:1, label:"#1", start:0.0, end:1.2, x:0.05, y:0.08, w:0.22, h:0.22},
-    {id:2, label:"#2", start:1.0, end:3.2, x:0.14, y:0.18, w:0.18, h:0.28},
-    {id:3, label:"#3", start:1.0, end:3.2, x:0.36, y:0.18, w:0.24, h:0.28},
-    {id:4, label:"#4", start:1.0, end:3.2, x:0.64, y:0.18, w:0.18, h:0.28},
-    {id:5, label:"#5", start:0.0, end:6.0, x:0.78, y:0.12, w:0.20, h:0.34},
-    {id:6, label:"#6", start:2.2, end:4.8, x:0.02, y:0.30, w:0.14, h:0.22},
-    {id:7, label:"#7", start:3.6, end:5.8, x:0.88, y:0.22, w:0.10, h:0.24},
+    {id:1, label:"01", start:0.0, end:1.2, x:0.05, y:0.08, w:0.24, h:0.26},
+    {id:2, label:"02", start:1.0, end:3.2, x:0.14, y:0.18, w:0.22, h:0.30},
+    {id:3, label:"03", start:1.0, end:3.2, x:0.36, y:0.18, w:0.26, h:0.30},
+    {id:4, label:"04", start:1.0, end:3.2, x:0.64, y:0.18, w:0.22, h:0.30},
+    {id:5, label:"05", start:0.0, end:6.0, x:0.78, y:0.12, w:0.22, h:0.36},
+    {id:6, label:"06", start:2.2, end:4.8, x:0.02, y:0.30, w:0.18, h:0.24},
+    {id:7, label:"07", start:3.6, end:5.8, x:0.88, y:0.22, w:0.12, h:0.26},
   ];
 
-  const HOT_CYCLE = Math.max.apply(null, hotspots.map(h=>h.end)) || 6;
-
-
-  const stage = document.getElementById("videoStage");
-
-
-  // --- Nav control: Play/Pause via top navigation button ---
-  const navCtl = document.getElementById("navPlayPause");
-  function setNavCtl(){
-    if(!navCtl) return;
-    navCtl.textContent = video.paused ? "▶︎" : "⏸︎";
-  }
-  async function navToggle(){
-    // satisfy policy-friendly settings
-    video.muted = true;
-    video.setAttribute("muted","");
-    video.playsInline = true;
-    video.setAttribute("playsinline","");
-    video.setAttribute("webkit-playsinline","");
-    video.playbackRate = PLAYBACK_RATE;
-
-    try{
-      if(video.paused){
-        userPaused = false;
-        const tap = document.getElementById("tapStart");
-        if(tap) tap.style.display = "none";
-        if(video.readyState < 2){ video.load(); }
-        await video.play();
-      }else{
-        userPaused = true;
-        video.pause();
-      }
-    }catch(err){
-      console.warn("Nav play blocked:", err);
-      const tap = document.getElementById("tapStart");
-      if(tap) tap.style.display = "inline-flex";
-    }
-    setNavCtl();
-    layout();
-  }
-  if(navCtl){
-    navCtl.addEventListener("click", (e)=>{ e.preventDefault(); e.stopPropagation(); navToggle(); });
-  }
-  video.addEventListener("play", setNavCtl);
-  video.addEventListener("pause", setNavCtl);
-  video.addEventListener("loadedmetadata", setNavCtl);
-
-});
-
-// Modal elements
+  // --- Modal ---
   const back = document.getElementById("artModalBack");
   const closeBtn = document.getElementById("artModalClose");
   const titleEl = document.getElementById("artModalTitle");
@@ -485,14 +441,33 @@ h1{font-size:44px; margin:12px 0}
   back.addEventListener("click", (e)=>{ if(e.target === back) closeModal(); });
   document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
 
-  // Create hotspot elements
+  // --- Create visible boxes ---
   const hs = hotspots.map(cfg=>{
     const el = document.createElement("button");
     el.type = "button";
     el.className = "hotspot";
-    el.dataset.label = cfg.label;
-    el.setAttribute("aria-label", "Open " + cfg.label);
-    el.addEventListener("click", ()=> openModal(cfg.id));
+    el.setAttribute("aria-label", "Open artwork " + cfg.label);
+    el.innerHTML = `
+      <div class="hotspotTop">
+        <div class="hotspotTag">Artwork ${cfg.label}</div>
+      </div>
+      <div>
+        <p class="hotspotTitle">${works[cfg.id]?.title || ("Artwork " + cfg.label)}</p>
+        <p class="hotspotMeta">${ARTIST} · ${PRICE}</p>
+      </div>
+      <a class="hotspotBuy" href="purchase.html?id=${encodeURIComponent(cfg.id)}">View & Purchase</a>
+    `;
+    // Button click opens modal (detail)
+    el.addEventListener("click", (ev)=>{
+      // If user tapped the inner link, allow navigation.
+      const a = ev.target && ev.target.closest ? ev.target.closest("a") : null;
+      if(a) return;
+      openModal(cfg.id);
+      // pause at artwork moment for reading
+      userPaused = true;
+      video.pause();
+      setPP();
+    });
     stage.appendChild(el);
     return {cfg, el};
   });
@@ -500,66 +475,143 @@ h1{font-size:44px; margin:12px 0}
   function layout(){
     const rect = stage.getBoundingClientRect();
     const W = rect.width, H = rect.height;
-    const t = ((video.currentTime || 0) % HOT_CYCLE);
+    const t = video.currentTime || 0;
+
+    // highlight current dot if in any range
+    let currentId = null;
+
     hs.forEach(({cfg, el})=>{
       const on = (t >= cfg.start && t <= cfg.end);
       el.hidden = !on;
+      if(on) currentId = cfg.id;
       if(!on) return;
       el.style.left   = (cfg.x * W) + "px";
       el.style.top    = (cfg.y * H) + "px";
       el.style.width  = (cfg.w * W) + "px";
       el.style.height = (cfg.h * H) + "px";
     });
+
+    // dots state
+    document.querySelectorAll(".dotBtn").forEach(btn=>{
+      const id = parseInt(btn.dataset.id || "0", 10);
+      btn.setAttribute("aria-current", (id === currentId) ? "true" : "false");
+    });
   }
 
+  // --- Play/Pause + dot navigation (visible) ---
+  const ppBtn = document.getElementById("ppBtn");
+  const dotsWrap = document.getElementById("vidDots");
 
-  // Smooth hotspot updates while playing (timeupdate can be sparse on mobile / low playbackRate)
-  let rafId = null;
-  function startRaf(){
-    if(rafId) return;
-    const tick = ()=>{
+  let userPaused = false;
+
+  function setPP(){
+    if(!ppBtn) return;
+    ppBtn.textContent = video.paused ? "▶︎" : "⏸︎";
+    ppBtn.setAttribute("aria-label", video.paused ? "Play" : "Pause");
+  }
+
+  async function safePlay(){
+    // autoplay policies
+    video.muted = true;
+    video.setAttribute("muted","");
+    video.playsInline = true;
+    video.setAttribute("playsinline","");
+    video.setAttribute("webkit-playsinline","");
+    video.playbackRate = PLAYBACK_RATE;
+
+    const tap = document.getElementById("tapStart");
+    try{
+      if(video.readyState < 2){ video.load(); }
+      await video.play();
+      if(tap) tap.style.display = "none";
+    }catch(err){
+      // blocked -> show tap-to-start
+      if(tap) tap.style.display = "inline-flex";
+    }
+    setPP();
+  }
+
+  async function togglePlayPause(){
+    if(video.paused){
+      userPaused = false;
+      await safePlay();
+    }else{
+      userPaused = true;
+      video.pause();
+    }
+    setPP();
+    layout();
+  }
+
+  if(ppBtn){
+    ppBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      togglePlayPause();
+    });
+  }
+
+  // Dots (jump to artwork start, then pause so box is readable/clickable)
+  hotspots.forEach(cfg=>{
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "dotBtn";
+    b.textContent = cfg.label;
+    b.dataset.id = String(cfg.id);
+    b.setAttribute("aria-label", "Go to artwork " + cfg.label);
+    b.addEventListener("click", (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      try{
+        video.currentTime = Math.max(0, cfg.start + 0.01);
+      }catch(_){}
+      userPaused = true;
+      video.pause();
+      setPP();
       layout();
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
-  }
-  function stopRaf(){
-    if(!rafId) return;
-    cancelAnimationFrame(rafId);
-    rafId = null;
-  }
-  video.addEventListener("play", startRaf);
-  video.addEventListener("pause", stopRaf);
-  video.addEventListener("ended", stopRaf);
+    });
+    dotsWrap.appendChild(b);
+  });
 
-  // Keep hotspots stable even when paused/seeked
+  // Tap-to-start overlay
+  const tapStart = document.getElementById("tapStart");
+  if(tapStart){
+    tapStart.addEventListener("click", async (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      userPaused = false;
+      await safePlay();
+      layout();
+    });
+  }
+
+  // Autoplay attempt on load (muted)
+  window.addEventListener("load", ()=>{
+    // start slow
+    video.playbackRate = PLAYBACK_RATE;
+    // try autoplay
+    if(!userPaused) safePlay().then(()=> layout());
+  });
+
+  // Keep boxes updated
   video.addEventListener("timeupdate", layout);
   video.addEventListener("pause", layout);
   video.addEventListener("seeked", layout);
-  video.addEventListener("loadedmetadata", ()=>{ layout(); tryPlay(); });
-video.addEventListener("play", layout);
+  video.addEventListener("loadedmetadata", ()=>{
+    video.playbackRate = PLAYBACK_RATE;
+    layout();
+    setPP();
+  });
+  video.addEventListener("play", ()=>{
+    video.playbackRate = PLAYBACK_RATE;
+    setPP();
+  });
   window.addEventListener("resize", layout);
+
+  // Ensure layout runs even when timeupdate is sparse (mobile + low playbackRate)
+  setInterval(layout, 200);
 
 })();
 </script>
-
-</main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="footRow">
-      <div>© <span id="y"></span> ourbang. All rights reserved.</div>
-      <div style="display:flex; gap:14px; flex-wrap:wrap">
-        <a class="mutelink" href="explore.html">Explore</a>
-        <a class="mutelink" href="scan.html">Scan</a>
-        <a class="mutelink" href="vision.html">Vision</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-
-
-
 </body>
 </html>
