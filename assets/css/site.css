@@ -45,10 +45,18 @@ a{color:inherit; text-decoration:none}
 .menu{display:flex; align-items:center; gap:18px}
 .menu a{font-size:14px; color: var(--muted); padding:10px 10px; border-radius: 12px}
 .menu a:hover{background: rgba(255,255,255,.05); color: var(--text)}
+
+/* Mobile: keep the same top navigation visible (no hamburger), but add spacing from the logo */
 @media (max-width: 980px){
   .brand{min-width:auto}
-  /* Keep the top navigation visible on mobile (same position as desktop) */
-  .menu{display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:0 2px}
+  .menu{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:0 2px;
+    margin-left: 1cm; /* requested: move menu ~1cm to the right on mobile */
+  }
   .menu::-webkit-scrollbar{display:none}
   .menu a{padding:9px 12px; font-size:14px; white-space:nowrap}
 }
@@ -345,3 +353,74 @@ a.btn.primary:hover, .btn.primary:hover{
   border: 1px solid rgba(255,255,255,.10);
 }
 
+
+
+/* =========================
+   Mobile navigation (<=980px)
+   ========================= */
+.navToggle{
+  display:none;
+  width:44px;
+  height:44px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.88);
+  border-radius: 999px;
+  cursor:pointer;
+}
+
+.navToggle:hover{background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.32);}
+.navToggle:focus-visible{outline: 2px solid rgba(255,255,255,.55); outline-offset: 3px;}
+
+
+.navToggleIcon{
+  position:relative;
+  width:18px;
+  height:12px;
+  display:block;
+}
+.navToggleIcon::before,
+.navToggleIcon::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:2px;
+  border-radius:999px;
+  background: rgba(255,255,255,.88);
+}
+.navToggleIcon::before{
+  top:0;
+  box-shadow: 0 5px 0 rgba(255,255,255,.88);
+}
+.navToggleIcon::after{bottom:0}
+
+.mobileMenu{
+  display:none;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  background: linear-gradient(to bottom, rgba(7,9,15,.80), rgba(7,9,15,.55));
+  backdrop-filter: blur(14px);
+}
+.mobileMenu.open{display:block}
+
+.mobileMenu a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 12px;
+  margin: 6px 0;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  color: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.03);
+}
+.mobileMenu a:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18);}
+.mobileMenu a:active{background: rgba(255,255,255,.08);}
+
+@media (max-width: 980px){
+  .nav{height:64px}
+  .navToggle{display:inline-flex}
+}
