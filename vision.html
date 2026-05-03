@@ -150,6 +150,84 @@ h1{font-size:40px; margin:18px 0}
   .footRow > div:last-child::-webkit-scrollbar{display:none}
 }
 
+
+/* ===== Fixed ourbang navigation layout ===== */
+.topbar{
+  position: sticky !important;
+  top:0 !important;
+  z-index:20 !important;
+  backdrop-filter: blur(14px) !important;
+  background: linear-gradient(to bottom, rgba(7,9,15,.72), rgba(7,9,15,.22)) !important;
+  border-bottom:1px solid rgba(255,255,255,.06) !important;
+}
+.nav{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  height:72px !important;
+  width:100% !important;
+}
+.brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  min-width:220px !important;
+}
+.brand .name{
+  display:flex !important;
+  flex-direction:column !important;
+  line-height:1.05 !important;
+}
+.brand .name strong{
+  font-size:18px !important;
+  letter-spacing:.2px !important;
+}
+.menu{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:18px !important;
+  flex-wrap:nowrap !important;
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  scrollbar-width:none !important;
+}
+.menu::-webkit-scrollbar{display:none !important;}
+.menu a{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:10px 10px !important;
+  border-radius:12px !important;
+  color:rgba(255,255,255,.70) !important;
+  white-space:nowrap !important;
+  font-size:14px !important;
+}
+.menu a:hover{
+  background:rgba(255,255,255,.05) !important;
+  color:rgba(255,255,255,.92) !important;
+}
+.menu a.is-active,
+.menu a[aria-current="page"]{
+  background:rgba(255,255,255,.06) !important;
+  color:rgba(255,255,255,.92) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+}
+@media(max-width:780px){
+  .nav{
+    gap:12px !important;
+  }
+  .brand{
+    min-width:auto !important;
+  }
+  .menu{
+    gap:10px !important;
+  }
+  .menu a{
+    padding:10px 8px !important;
+  }
+}
+
 </style>
 <link href="assets/css/site.css?v=22" rel="stylesheet"/>
 </head>
@@ -177,7 +255,7 @@ h1{font-size:40px; margin:18px 0}
 <section class="wrap">
 <h1>Vision</h1>
 <p class="lead">
-      ourbang은 공간을 단순한 3D 모델이 아닌, 경험 가능한 디지털 자산으로 확장합니다.
+      ourbang은 공간을 기존 3D 모델을 넘어, 경험 가능한 디지털 자산으로 확장합니다.
     </p>
 <div aria-label="ourbang demo link" class="demoCta">
 <div class="kicker">Live Demo</div>
@@ -187,8 +265,8 @@ h1{font-size:40px; margin:18px 0}
         ourbang의 핵심 흐름을 가장 빠르게 확인할 수 있습니다.
       </p>
 <div class="actions">
-<a class="btnLike primary" href="https://demo.ourbang.com" rel="noreferrer" target="_blank">데모 열기</a>
-<a class="btnLike" href="https://demo.ourbang.com" rel="noreferrer" target="_blank">공간 목록 보기 →</a>
+<a class="btnLike primary" href="ourbang_full_demo.html">데모 열기</a>
+<a class="btnLike" href="ourbang_full_demo.html">공간 목록 보기 →</a>
 </div>
 </div>
 </section>
