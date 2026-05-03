@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ourbang Demo Full</title>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<style>
+body{margin:0;background:#07090f;font-family:sans-serif;color:white}
+.room{
+  position:relative;
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+}
+
+/* 3D PRODUCT */
+.productHotspot{
+  position:absolute;
+  left:50%;
+  top:58%;
+  transform:translate(-50%,-50%);
+  width:100px;
+  height:130px;
+  cursor:pointer;
+}
+
+/* INFO CARD */
+.infoCard{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  width:300px;
+  background:rgba(0,0,0,0.85);
+  padding:16px;
+  border-radius:16px;
+  display:none;
+}
+.infoCard.show{display:block;}
+.infoCard h2{margin:0 0 6px;font-size:18px}
+.price{font-weight:bold;margin-bottom:10px}
+.infoCard button{
+  margin-top:6px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+.primary{background:#7cc6ff;color:black}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.modal.show{display:flex;}
+.viewer{
+  width:80%;
+  height:70%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="room">
+
+  <!-- 3D PRODUCT -->
+  <div class="productHotspot" id="product">
+    <model-viewer
+      src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+      auto-rotate
+      shadow-intensity="1"
+      exposure="1.2"
+      scale="0.5 0.5 0.5">
+    </model-viewer>
+  </div>
+
+  <!-- INFO CARD -->
+  <div class="infoCard" id="infoCard">
+    <h2>우주인 피규어</h2>
+    <div class="price">₩48,000</div>
+    <p>상태: 매우 좋음</p>
+    <p>위치: 침실 침대 위</p>
+    <button class="primary" id="view3d">3D로 보기</button>
+    <button>구매하기</button>
+    <button>채팅하기</button>
+  </div>
+
+</div>
+
+<!-- MODAL 3D VIEW -->
+<div class="modal" id="modal">
+  <div class="viewer">
+    <model-viewer
+      src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+      camera-controls
+      auto-rotate
+      style="width:100%;height:100%;">
+    </model-viewer>
+  </div>
+</div>
+
+<script>
+const product = document.getElementById('product');
+const card = document.getElementById('infoCard');
+const modal = document.getElementById('modal');
+const view3d = document.getElementById('view3d');
+
+product.addEventListener('click', () => {
+  card.classList.toggle('show');
+});
+
+view3d.addEventListener('click', () => {
+  modal.classList.add('show');
+});
+
+modal.addEventListener('click', () => {
+  modal.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
