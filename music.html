@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>MUSIC — OURBANG</title>
+<meta content="Music creation and production through OURBANG." name="description"/>
+<style>
+    :root{
+      --bg:#07090f;
+      --text:#f7f8fb;
+      --muted:rgba(247,248,251,.56);
+      --line:rgba(255,255,255,.11);
+      --blue:#7cc6ff;
+      --violet:#8f7cff;
+      --max:1380px;
+      --header:88px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 620px at 78% 10%,rgba(124,198,255,.14),transparent 60%),
+        radial-gradient(760px 560px at 10% 72%,rgba(143,124,255,.12),transparent 64%),
+        #07090f;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+      overflow-x:hidden;
+    }
+    body.menuOpen{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(calc(100% - 56px),var(--max));margin:auto}
+
+    .topbar{
+      position:sticky;top:0;z-index:100;
+      background:rgba(7,9,15,.76);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      backdrop-filter:blur(24px) saturate(140%);
+      -webkit-backdrop-filter:blur(24px) saturate(140%);
+    }
+    .nav{
+      height:var(--header);
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:34px;
+    }
+    .brand{
+      font-size:24px;
+      font-weight:850;
+      letter-spacing:.18em;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .links{display:flex;justify-content:center;align-items:center;gap:6px}
+    .links a{
+      padding:11px 13px;
+      border-radius:13px;
+      color:rgba(255,255,255,.63);
+      font-size:13px;
+      font-weight:650;
+      letter-spacing:.055em;
+      transition:.2s ease;
+    }
+    .links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}
+    .langs{display:flex;gap:8px}
+    .langBtn{
+      width:40px;height:34px;
+      border:1px solid rgba(255,255,255,.17);
+      border-radius:13px;
+      background:transparent;
+      color:rgba(255,255,255,.6);
+      font-size:11px;
+      font-weight:750;
+      letter-spacing:.08em;
+      cursor:pointer;
+    }
+    .langBtn.active{color:#07090f;background:#f7f8fb;border-color:#f7f8fb}
+    .menuBtn{display:none;border:0;background:transparent;color:#fff;width:42px;height:42px}
+    .menuBtn span{display:block;width:22px;height:1px;background:currentColor;margin:6px auto}
+    .mobilePanel{display:none}
+
+    .hero{
+      min-height:72svh;
+      display:grid;
+      align-items:end;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:min(54vw,760px);
+      aspect-ratio:1;
+      right:-8%;
+      top:-6%;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:50%;
+      box-shadow:0 0 160px rgba(124,198,255,.08);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:min(30vw,420px);
+      aspect-ratio:1;
+      right:24%;
+      top:22%;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:38% 62% 55% 45% / 45% 42% 58% 55%;
+      transform:rotate(24deg);
+    }
+    .heroContent{
+      position:relative;
+      z-index:2;
+      padding:110px 0 76px;
+    }
+    .eyebrow{
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+      font-weight:750;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(82px,13vw,188px);
+      line-height:.8;
+      letter-spacing:-.075em;
+      font-weight:860;
+    }
+    .lead{
+      margin:32px 0 0;
+      font-size:clamp(22px,3vw,42px);
+      line-height:1.18;
+      letter-spacing:-.04em;
+      max-width:15ch;
+      font-weight:620;
+    }
+
+    .createGrid{
+      padding:28px 0 110px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      min-height:430px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+      position:relative;
+      overflow:hidden;
+      transition:.28s ease;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      width:250px;height:250px;
+      right:-90px;top:-90px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:50%;
+      transition:.7s ease;
+    }
+    .card:nth-child(2)::before{border-radius:38% 62% 55% 45% / 45% 42% 58% 55%}
+    .card:nth-child(3)::before{transform:rotate(20deg);border-radius:24px}
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,255,255,.22);
+      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
+    }
+    .card:hover::before{transform:scale(1.08) rotate(10deg)}
+    .num{
+      color:rgba(255,255,255,.34);
+      font-size:11px;
+      font-weight:750;
+      letter-spacing:.18em;
+    }
+    .card h2{
+      margin:0;
+      font-size:clamp(42px,4.8vw,68px);
+      line-height:.92;
+      letter-spacing:-.055em;
+    }
+    .card p{
+      margin:18px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      max-width:30ch;
+    }
+    .action{
+      margin-top:30px;
+      width:66px;height:66px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.2);
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      transition:.25s ease;
+    }
+    .card:hover .action{background:#fff;color:#07090f;transform:translateX(4px)}
+
+    .statement{padding:0 0 110px}
+    .statementBox{
+      border-top:1px solid rgba(255,255,255,.1);
+      padding-top:52px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:start;
+    }
+    .statementBox h3{
+      margin:0;
+      font-size:clamp(42px,6vw,88px);
+      line-height:.92;
+      letter-spacing:-.06em;
+    }
+    .statementBox p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:38ch;
+    }
+
+    footer{padding:0 0 34px}
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      color:rgba(255,255,255,.36);
+      font-size:12px;
+      letter-spacing:.07em;
+    }
+
+    @media(max-width:980px){
+      .links{display:none}
+      .langs{margin-left:auto}
+      .menuBtn{display:block}
+      .mobilePanel{
+        position:fixed;
+        inset:var(--header) 0 0;
+        z-index:90;
+        background:rgba(7,9,15,.98);
+        padding:34px 28px;
+      }
+      .mobilePanel.open{display:block}
+      .mobilePanel a{
+        display:block;
+        padding:16px 0;
+        border-bottom:1px solid rgba(255,255,255,.09);
+        font-size:22px;
+        font-weight:700;
+      }
+      .createGrid{grid-template-columns:1fr}
+      .card{min-height:330px}
+      .statementBox{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      :root{--header:76px}
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .brand{font-size:20px}
+      .langBtn{width:36px;height:32px}
+      .hero{min-height:64svh}
+      .heroContent{padding:86px 0 54px}
+      h1{font-size:clamp(78px,24vw,120px)}
+      .lead{font-size:28px}
+      .hero::before{width:440px;right:-240px}
+      .hero::after{width:220px;right:4%;top:28%}
+      .createGrid{padding:14px 0 74px;gap:14px}
+      .card{border-radius:24px;padding:26px;min-height:310px}
+      .statement{padding-bottom:74px}
+      .statementBox{padding-top:38px}
+      .foot{display:block;line-height:1.9}
+    }
+  </style>
+<style>
+.musicLead{
+  max-width:19ch;
+}
+.musicLead .line{
+  display:block;
+}
+.musicLead .accent{
+  color:#fff;
+  text-shadow:0 0 32px rgba(124,198,255,.18);
+}
+.musicStatement{
+  max-width:11ch;
+}
+.musicStatement .soft{
+  display:block;
+  color:rgba(247,248,251,.48);
+  font-size:.55em;
+  line-height:1.15;
+  letter-spacing:-.035em;
+  margin-bottom:.18em;
+}
+.musicStatement .strong{
+  display:block;
+  color:#fff;
+}
+@media(max-width:640px){
+  .musicLead{max-width:15ch}
+  .musicStatement{max-width:9ch}
+}
+</style>
+<style>
+/* OURBANG child-page typography */
+.statementBox h3,
+.refStatement,
+.musicStatement{
+  font-size:clamp(34px,4.9vw,72px)!important;
+  line-height:.96!important;
+  letter-spacing:-.055em!important;
+  max-width:none!important;
+}
+.statementBox h3 .soft,
+.refStatement .soft,
+.musicStatement .soft{
+  display:block;
+  color:rgba(247,248,251,.48);
+  font-size:.58em;
+  line-height:1.1;
+  letter-spacing:-.035em;
+  margin-bottom:.22em;
+}
+.statementBox h3 .strong,
+.refStatement .strong,
+.musicStatement .strong{
+  display:block;
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  .statementBox h3,
+  .refStatement,
+  .musicStatement{
+    font-size:clamp(34px,7vw,60px)!important;
+  }
+  .statementBox h3 .strong,
+  .refStatement .strong,
+  .musicStatement .strong{
+    white-space:normal;
+  }
+}
+@media(max-width:640px){
+  .statementBox h3,
+  .refStatement,
+  .musicStatement{
+    font-size:clamp(32px,10vw,48px)!important;
+  }
+}
+</style>
+<style>
+/* MUSIC — language-specific typography refinement */
+.createGrid .card > div:last-child{
+  min-width:0;
+}
+
+.createGrid .card h2{
+  white-space:nowrap;
+  text-wrap:nowrap;
+}
+
+.createGrid .card p{
+  min-height:3.4em;
+  max-width:31ch;
+  word-break:normal;
+  overflow-wrap:normal;
+}
+
+/* Korean card typography */
+html[lang="ko"] .createGrid .card h2{
+  font-size:clamp(39px,3.75vw,55px);
+  line-height:.98;
+  letter-spacing:-.07em;
+  font-weight:830;
+  word-break:keep-all;
+}
+
+html[lang="ko"] .createGrid .card:nth-child(1) h2,
+html[lang="ko"] .createGrid .card:nth-child(3) h2{
+  font-size:clamp(35px,3.25vw,48px);
+  letter-spacing:-.075em;
+}
+
+html[lang="ko"] .createGrid .card p{
+  max-width:29ch;
+  font-size:14px;
+  line-height:1.72;
+  letter-spacing:-.025em;
+  word-break:keep-all;
+  overflow-wrap:normal;
+}
+
+/* English card typography */
+html[lang="en"] .createGrid .card h2{
+  font-size:clamp(38px,3.75vw,56px);
+  line-height:.95;
+  letter-spacing:-.055em;
+}
+
+html[lang="en"] .createGrid .card:nth-child(1) h2,
+html[lang="en"] .createGrid .card:nth-child(3) h2{
+  font-size:clamp(34px,3.25vw,48px);
+}
+
+html[lang="en"] .createGrid .card p{
+  max-width:30ch;
+  line-height:1.68;
+}
+
+/* Hero copy */
+html[lang="ko"] .musicLead{
+  max-width:22ch;
+  font-size:clamp(23px,2.65vw,38px);
+  line-height:1.23;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+
+html[lang="en"] .musicLead{
+  max-width:18ch;
+}
+
+/* Statement copy */
+html[lang="ko"] .musicStatement{
+  font-size:clamp(35px,4.35vw,64px)!important;
+  line-height:1!important;
+  letter-spacing:-.06em!important;
+}
+
+html[lang="ko"] .musicStatement .soft{
+  font-size:.62em;
+}
+
+html[lang="ko"] .musicStatement .strong{
+  white-space:nowrap;
+}
+
+html[lang="ko"] .statementBox p{
+  word-break:keep-all;
+  letter-spacing:-.02em;
+}
+
+@media(max-width:980px){
+  .createGrid .card p{
+    min-height:auto;
+  }
+
+  html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
+  html[lang="ko"] .createGrid .card:nth-child(3) h2{
+    font-size:clamp(40px,8vw,58px);
+  }
+
+  html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
+  html[lang="en"] .createGrid .card:nth-child(3) h2{
+    font-size:clamp(40px,8vw,58px);
+  }
+}
+
+@media(max-width:640px){
+  html[lang="ko"] .musicLead{
+    max-width:18ch;
+    font-size:clamp(23px,7.2vw,29px);
+  }
+
+  html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
+  html[lang="ko"] .createGrid .card:nth-child(3) h2{
+    font-size:clamp(35px,10.8vw,46px);
+  }
+
+  html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
+  html[lang="en"] .createGrid .card:nth-child(3) h2{
+    font-size:clamp(34px,10.5vw,45px);
+  }
+
+  html[lang="ko"] .createGrid .card p{
+    max-width:32ch;
+    font-size:13.5px;
+    line-height:1.75;
+  }
+
+  html[lang="ko"] .musicStatement{
+    font-size:clamp(30px,8.9vw,42px)!important;
+  }
+
+  html[lang="ko"] .musicStatement .strong{
+    white-space:nowrap;
+  }
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+<div class="wrap nav">
+<a class="brand" href="index.html">OURBANG</a>
+<nav aria-label="Primary" class="links">
+<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
+<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
+<a class="active" data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
+<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
+<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
+<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<div aria-label="Language" class="langs">
+<button class="langBtn" data-lang="en" type="button">EN</button>
+<button class="langBtn" data-lang="ko" type="button">KO</button>
+</div>
+<button aria-expanded="false" aria-label="메뉴 열기" class="menuBtn" type="button">
+<span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<div class="mobilePanel" id="mobilePanel">
+<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
+<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
+<a data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
+<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
+<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
+<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
+</div>
+<main>
+<section class="hero">
+<div class="wrap heroContent">
+<div class="eyebrow">OURBANG / CREATE / MUSIC</div>
+<h1>MUSIC</h1>
+<p class="lead musicLead" data-en="Sound shapes identity. Production brings it to life." data-ko="사운드는 정체성을 만들고, 프로덕션은 그 세계를 현실로 확장합니다.">
+<span class="line">Sound shapes</span>
+<span class="line accent">identity.</span>
+<span class="line">Production brings</span>
+<span class="line">it to life.</span>
+</p>
+</div>
+</section>
+<section class="wrap createGrid"><div class="card"><div class="num">01</div><div><h2 data-en="PRODUCTION" data-ko="프로덕션">PRODUCTION</h2><p data-en="Original music, arranging, recording and release-ready production." data-ko="오리지널 음악, 편곡, 녹음과 발매를 위한 프로덕션을 진행합니다.">Original music, arranging, recording and release-ready production.</p></div></div><div class="card"><div class="num">02</div><div><h2 data-en="ARTIST" data-ko="아티스트">ARTIST</h2><p data-en="Artist development, musical direction and long-term creative identity." data-ko="아티스트 개발, 음악적 디렉션과 장기적인 창작 정체성을 설계합니다.">Artist development, musical direction and long-term creative identity.</p></div></div><div class="card"><div class="num">03</div><div><h2 data-en="PERFORMANCE" data-ko="퍼포먼스">PERFORMANCE</h2><p data-en="Live sets, audiovisual shows and performance-driven experiences." data-ko="라이브 세트, 오디오비주얼 쇼와 퍼포먼스 중심의 경험을 제작합니다.">Live sets, audiovisual shows and performance-driven experiences.</p></div></div></section>
+<section class="statement">
+<div class="wrap statementBox">
+<h3 class="musicStatement" data-en="SOUND BECOMES IDENTITY." data-ko="하나의 사운드가, 하나의 세계를 완성합니다."><span class="soft">하나의 사운드가,</span><span class="strong">하나의 세계를 완성합니다.</span></h3>
+<p data-en="OURBANG develops sound beyond a single track—into identity, content, performance and a world audiences can enter." data-ko="OURBANG은 한 곡의 음악을 넘어, 사운드를 정체성과 콘텐츠, 퍼포먼스 그리고 관객이 들어갈 수 있는 하나의 세계로 확장합니다.">
+ OURBANG develops sound beyond a single track—into identity, content, performance and a world audiences can enter.
+</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap foot">
+<div>© <span id="year"></span> OURBANG</div>
+<div>CREATE · MUSIC · SOUND · PERFORMANCE</div>
+</div>
+</footer>
+<script>
+  const langButtons=[...document.querySelectorAll('.langBtn')];
+  const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
+
+  function setLanguage(lang){
+    const safe=lang==='ko'?'ko':'en';
+    document.documentElement.lang=safe;
+    translatables.forEach(el=>{
+    if(el.classList.contains('musicLead')){
+      el.innerHTML=safe==='ko'
+        ? '<span class="line">사운드는 정체성을 만들고,</span><span class="line accent">프로덕션은 그 세계를</span><span class="line">현실로 확장합니다.</span>'
+        : '<span class="line">Sound shapes</span><span class="line accent">identity.</span><span class="line">Production brings</span><span class="line">it to life.</span>';
+    }else if(el.classList.contains('musicStatement')){
+      el.innerHTML=safe==='ko'
+        ? '<span class="soft">하나의 사운드가,</span><span class="strong">하나의 세계를 완성합니다.</span>'
+        : '<span class="soft">SOUND BECOMES</span><span class="strong">IDENTITY.</span>';
+    }else{
+      el.textContent=el.dataset[safe];
+    }
+  });
+    langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
+    localStorage.setItem('ourbang-language',safe);
+  }
+
+  langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+  setLanguage(localStorage.getItem('ourbang-language')||'ko');
+
+  const menuBtn=document.querySelector('.menuBtn');
+  const mobilePanel=document.getElementById('mobilePanel');
+
+  menuBtn.addEventListener('click',()=>{
+    const open=!mobilePanel.classList.contains('open');
+    mobilePanel.classList.toggle('open',open);
+    document.body.classList.toggle('menuOpen',open);
+    menuBtn.setAttribute('aria-expanded',String(open));
+  });
+
+  mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mobilePanel.classList.remove('open');
+    document.body.classList.remove('menuOpen');
+    menuBtn.setAttribute('aria-expanded','false');
+  }));
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
