@@ -31,6 +31,7 @@
     body.menuOpen{overflow:hidden}
     a{color:inherit;text-decoration:none}
     button{font:inherit}
+    body,a,button,p,h1,h2,.eyebrow,.descriptor,.num{word-break:keep-all;overflow-wrap:normal}
     .wrap{width:min(calc(100% - 56px),var(--max));margin:auto}
 
     .topbar{
@@ -280,6 +281,232 @@
       .card{min-height:330px;border-radius:24px;padding:26px}
       .foot{display:block;line-height:1.9}
     }
+
+    /* ARA KOREA — gallery / performance art direction */
+    .hero{min-height:auto;border-bottom:0;padding:34px 0 0}
+    .hero::before,.hero::after{display:none}
+    .heroPanel{
+      position:relative;
+      min-height:66svh;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:36px;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      isolation:isolate;
+      box-shadow:0 30px 100px rgba(0,0,0,.34)
+    }
+    .heroPanel::before{
+      content:"";
+      position:absolute;inset:0;z-index:-4;
+      background:
+        radial-gradient(circle at 73% 25%,rgba(217,184,112,.24),transparent 22%),
+        radial-gradient(circle at 46% 18%,rgba(255,255,255,.08),transparent 28%),
+        linear-gradient(138deg,#17140f,#090a07 50%,#12110d)
+    }
+    .heroPanel::after{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.15) 48%,rgba(3,4,2,.9) 100%)
+    }
+    .heroContent{
+      width:100%;
+      padding:48px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:32px
+    }
+    .eyebrow{
+      display:flex;align-items:center;gap:14px;width:max-content;
+      margin:0 0 18px;
+      font-size:11px;letter-spacing:.22em
+    }
+    .eyebrow:before{
+      content:"";width:42px;height:1px;
+      background:linear-gradient(90deg,rgba(217,184,112,.14),rgba(255,255,255,.7));
+      box-shadow:0 0 12px rgba(217,184,112,.14)
+    }
+    h1{
+      position:relative;width:max-content;max-width:none;
+      font-size:clamp(64px,10.5vw,150px);
+      font-weight:840;
+      background:linear-gradient(180deg,#fff 4%,#f7eed9 52%,rgba(217,184,112,.72));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 18px 55px rgba(0,0,0,.28)
+    }
+    h1:after{
+      content:attr(data-outline);
+      position:absolute;left:.03em;top:.07em;z-index:-1;
+      color:transparent;-webkit-text-stroke:1px rgba(217,184,112,.22)
+    }
+    .descriptor{
+      position:relative;
+      margin-top:26px;padding-left:22px;
+      font-size:14px
+    }
+    .descriptor:before{
+      content:"";position:absolute;left:0;top:1px;bottom:1px;width:1px;
+      background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(217,184,112,.18));
+      box-shadow:0 0 12px rgba(217,184,112,.13)
+    }
+    .back{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 15px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-size:12px;font-weight:740;letter-spacing:.08em;
+      backdrop-filter:blur(14px);
+      transition:.3s
+    }
+    .back:hover{background:rgba(255,255,255,.1);transform:translateX(-3px)}
+    .backRow{display:none}
+
+    .heroSculpture{
+      position:absolute;
+      width:min(38vw,470px);
+      aspect-ratio:1;
+      right:5%;top:8%;
+      z-index:-2;
+      transform:translate3d(var(--gx,0),var(--gy,0),0);
+      transition:transform .85s cubic-bezier(.2,.8,.2,1)
+    }
+    .heroSculpture .ring{
+      position:absolute;border:1px solid rgba(231,207,154,.2);border-radius:50%
+    }
+    .heroSculpture .r1{inset:4%;border-radius:44% 56% 50% 50% / 58% 42% 58% 42%;transform:rotate(18deg)}
+    .heroSculpture .r2{inset:21%;border-radius:58% 42% 60% 40%;transform:rotate(-14deg)}
+    .heroSculpture .r3{inset:36%;border-radius:50%}
+    .heroSculpture .core{
+      position:absolute;width:9%;height:9%;left:45.5%;top:45.5%;border-radius:50%;
+      background:#f7e9bf;
+      box-shadow:0 0 24px rgba(217,184,112,.5),0 0 60px rgba(255,255,255,.12)
+    }
+
+    .choices{padding:24px 0 110px}
+    .choiceGrid{grid-template-columns:1.2fr .8fr;gap:22px}
+    .card{
+      padding:0;
+      min-height:560px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:stretch;
+      isolation:isolate;
+      background:#0c0c09;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.24);
+      transition:transform .55s cubic-bezier(.2,.75,.2,1),border-color .3s,box-shadow .55s
+    }
+    .card.secondary{background:#0b0c09}
+    .card::after{content:"";position:absolute;inset:0;width:auto;height:auto;right:auto;top:auto;border:0;border-radius:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.13) 40%,rgba(3,4,2,.94) 100%)}
+    .card:hover{transform:translateY(-7px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 38px 105px rgba(0,0,0,.32)}
+    .cardBody{position:relative;width:100%;padding:38px;z-index:2}
+    .num{
+      display:flex;align-items:center;gap:12px;width:max-content;
+      margin-bottom:18px;font-size:10px;color:rgba(255,255,255,.45)
+    }
+    .num:before{content:"";width:30px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(217,184,112,.65))}
+    .card h2{
+      position:relative;max-width:9ch;
+      font-weight:790;
+      background:linear-gradient(180deg,#fff,rgba(235,221,185,.77));
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .card h2:after{
+      content:"";display:block;width:58px;height:1px;margin-top:20px;
+      background:linear-gradient(90deg,rgba(255,255,255,.78),rgba(217,184,112,.05));
+      transition:width .45s
+    }
+    .card:hover h2:after{width:108px}
+    .card p{max-width:32ch;text-wrap:pretty}
+    .action span{transition:.3s}
+
+    .artwork{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+    .artwork *{position:absolute;box-sizing:border-box}
+
+    /* 01 — Virtual Building: architectural pavilion */
+    .buildingArt{
+      background:
+        radial-gradient(circle at 72% 25%,rgba(217,184,112,.18),transparent 24%),
+        linear-gradient(145deg,#17150f,#0a0a07 57%,#13120e)
+    }
+    .buildingArt .pavilion{
+      width:330px;height:330px;right:5%;top:5%;
+      transform:perspective(700px) rotateY(-13deg) rotateX(4deg);
+      transition:transform .9s cubic-bezier(.2,.8,.2,1)
+    }
+    .buildingArt .pavilion:before{
+      content:"";left:10%;right:10%;top:8%;height:54%;
+      border:1px solid rgba(234,213,167,.25);
+      clip-path:polygon(50% 0,100% 34%,82% 100%,18% 100%,0 34%);
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.04),transparent),
+        repeating-linear-gradient(90deg,rgba(255,255,255,.055) 0 1px,transparent 1px 38px)
+    }
+    .buildingArt .pavilion:after{
+      content:"";left:18%;right:18%;bottom:8%;height:35%;
+      border:1px solid rgba(234,213,167,.18);
+      background:linear-gradient(180deg,rgba(217,184,112,.05),transparent)
+    }
+    .buildingArt .column{width:1px;height:180px;top:125px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(217,184,112,.08))}
+    .buildingArt .c1{right:13%}.buildingArt .c2{right:24%}.buildingArt .c3{right:35%}
+    .buildingArt .floor{width:310px;height:1px;right:2%;top:66%;background:linear-gradient(90deg,transparent,rgba(217,184,112,.6),transparent);transform:rotate(-7deg)}
+    .buildingArt .light{width:110px;height:110px;right:22%;top:23%;border-radius:50%;background:radial-gradient(circle,rgba(247,233,191,.65),rgba(217,184,112,.08) 48%,transparent 70%);filter:blur(.2px)}
+    .building:hover .pavilion{transform:perspective(700px) rotateY(-3deg) rotateX(1deg) translate(-8px,-5px)}
+
+    /* 02 — Official Website: folded archive / golden manuscript */
+    .siteArt{
+      background:
+        radial-gradient(circle at 68% 24%,rgba(255,255,255,.09),transparent 23%),
+        linear-gradient(145deg,#12120e,#080906 58%,#10100c)
+    }
+    .siteArt .folio{
+      width:225px;height:300px;right:2%;top:7%;
+      border:1px solid rgba(240,224,187,.22);
+      border-radius:8px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.07),rgba(217,184,112,.025)),
+        repeating-linear-gradient(180deg,transparent 0 28px,rgba(255,255,255,.045) 28px 29px);
+      transform:rotate(7deg);
+      box-shadow:0 0 42px rgba(217,184,112,.06);
+      transition:transform .85s cubic-bezier(.2,.8,.2,1)
+    }
+    .siteArt .folio:before{
+      content:"";inset:22px;border:1px solid rgba(255,255,255,.11)
+    }
+    .siteArt .seal{
+      width:72px;height:72px;right:19%;top:33%;
+      border-radius:50%;
+      border:1px solid rgba(244,225,179,.34);
+      box-shadow:inset 0 0 0 14px rgba(217,184,112,.035),0 0 24px rgba(217,184,112,.08)
+    }
+    .siteArt .seal:before,.siteArt .seal:after{content:"";left:50%;top:50%;background:rgba(244,225,179,.34);transform:translate(-50%,-50%)}
+    .siteArt .seal:before{width:34px;height:1px}.siteArt .seal:after{width:1px;height:34px}
+    .siteArt .line{height:1px;background:linear-gradient(90deg,transparent,rgba(244,225,179,.55),transparent)}
+    .siteArt .l1{width:170px;right:0;top:22%;transform:rotate(-16deg)}
+    .siteArt .l2{width:150px;right:10%;top:62%;transform:rotate(18deg)}
+    .site:hover .folio{transform:rotate(1deg) translate(-8px,-5px)}
+
+    @media(prefers-reduced-motion:reduce){.card,.heroSculpture{transition:none}}
+    @media(max-width:980px){
+      .heroContent{padding:38px}
+      .choiceGrid{grid-template-columns:1fr}
+      .card{min-height:470px}
+    }
+    @media(max-width:640px){
+      .hero{min-height:auto;padding-top:14px}
+      .heroPanel{min-height:58svh;border-radius:24px}
+      .heroContent{padding:26px;display:block}
+      h1{font-size:clamp(58px,18vw,90px)}
+      .back{margin-top:24px}
+      .heroSculpture{width:300px;right:-70px;top:5%}
+      .eyebrow{gap:10px}.eyebrow:before{width:28px}
+      .choices{padding-top:14px}
+      .card{min-height:56svh}.cardBody{padding:26px}
+      .buildingArt .pavilion{width:270px;height:270px;right:-10%;top:8%}
+      .siteArt .folio{width:190px;height:260px;right:-16px;top:8%}
+    }
+
   </style>
 </head>
 <body>
@@ -317,34 +544,57 @@
 
 <main>
   <section class="hero">
-    <div class="wrap heroContent">
-      <div class="eyebrow">OURBANG / ARA KOREA</div>
-      <h1>ARA KOREA</h1>
-      <div class="descriptor">ART · PERFORMANCE</div>
+    <div class="wrap">
+      <div class="heroPanel">
+        <div class="heroSculpture" aria-hidden="true">
+          <span class="ring r1"></span>
+          <span class="ring r2"></span>
+          <span class="ring r3"></span>
+          <span class="core"></span>
+        </div>
+        <div class="heroContent">
+          <div>
+            <div class="eyebrow">OURBANG / ARA KOREA</div>
+            <h1 data-outline="ARA KOREA">ARA KOREA</h1>
+            <div class="descriptor">ART · PERFORMANCE</div>
+          </div>
+          <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="choices">
     <div class="wrap choiceGrid">
-      <a class="card" href="https://arakorea.shop" target="_blank" rel="noopener">
-        <div class="num">01</div>
-        <div>
+      <a class="card building" href="https://arakorea.shop" target="_blank" rel="noopener">
+        <div class="artwork buildingArt" aria-hidden="true">
+          <span class="pavilion"></span>
+          <span class="column c1"></span>
+          <span class="column c2"></span>
+          <span class="column c3"></span>
+          <span class="floor"></span>
+          <span class="light"></span>
+        </div>
+        <div class="cardBody">
+          <div class="num">OURBANG / 01</div>
           <h2 data-en="VIRTUAL BUILDING" data-ko="가상 공간">VIRTUAL BUILDING</h2>
           <p data-en="Enter the ARA KOREA virtual building through OURBANG." data-ko="OURBANG을 통해 ARA KOREA의 가상 공간으로 들어갑니다.">Enter the ARA KOREA virtual building through OURBANG.</p>
-          <div class="action" data-en="ENTER" data-ko="입장">
-            ENTER <span>→</span>
-          </div>
+          <div class="action" data-en="ENTER" data-ko="입장">ENTER <span>→</span></div>
         </div>
       </a>
 
-      <a class="card secondary" href="https://arakorea.org" target="_blank" rel="noopener">
-        <div class="num">02</div>
-        <div>
+      <a class="card secondary site" href="https://arakorea.org" target="_blank" rel="noopener">
+        <div class="artwork siteArt" aria-hidden="true">
+          <span class="folio"></span>
+          <span class="seal"></span>
+          <span class="line l1"></span>
+          <span class="line l2"></span>
+        </div>
+        <div class="cardBody">
+          <div class="num">OURBANG / 02</div>
           <h2 data-en="OFFICIAL WEBSITE" data-ko="공식 웹사이트">OFFICIAL WEBSITE</h2>
           <p data-en="Visit the official ARA KOREA website." data-ko="ARA KOREA 공식 웹사이트를 방문합니다.">Visit the official ARA KOREA website.</p>
-          <div class="action" data-en="VISIT" data-ko="방문">
-            VISIT <span>→</span>
-          </div>
+          <div class="action" data-en="VISIT" data-ko="방문">VISIT <span>→</span></div>
         </div>
       </a>
     </div>
@@ -400,6 +650,38 @@
     document.body.classList.remove('menuOpen');
     menuBtn.setAttribute('aria-expanded','false');
   }));
+
+  const heroPanel=document.querySelector('.heroPanel');
+  const heroSculpture=document.querySelector('.heroSculpture');
+  if(heroPanel&&heroSculpture&&window.matchMedia('(pointer:fine)').matches){
+    heroPanel.addEventListener('pointermove',e=>{
+      const r=heroPanel.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      heroSculpture.style.setProperty('--gx',`${(x*10).toFixed(1)}px`);
+      heroSculpture.style.setProperty('--gy',`${(y*10).toFixed(1)}px`);
+    });
+    heroPanel.addEventListener('pointerleave',()=>{
+      heroSculpture.style.setProperty('--gx','0px');
+      heroSculpture.style.setProperty('--gy','0px');
+    });
+  }
+
+  document.querySelectorAll('.card').forEach(card=>{
+    if(!window.matchMedia('(pointer:fine)').matches)return;
+    const art=card.querySelector('.artwork');
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-7px)`;
+      if(art)art.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`;
+    });
+    card.addEventListener('pointerleave',()=>{
+      card.style.transform='';
+      if(art)art.style.transform='';
+    });
+  });
 
   document.getElementById('year').textContent=new Date().getFullYear();
 </script>
