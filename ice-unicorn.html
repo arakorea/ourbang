@@ -235,12 +235,193 @@ body{
 }
 
 </style>
+
+<style>
+  /* ICE UNICORN — FINAL EXHIBITION REFINEMENT */
+  .topbar{position:fixed;left:0;right:0}
+  main{padding-top:calc(var(--header) + 26px)}
+
+  .hero{
+    min-height:76svh;
+    border-radius:38px;
+  }
+  .heroInner{
+    position:relative;
+    padding:clamp(38px,5.5vw,78px);
+  }
+  .hero h1{
+    display:flex;
+    flex-direction:column;
+    gap:.16em;
+    font-size:clamp(76px,11.5vw,164px);
+    line-height:.70;
+    letter-spacing:-.085em;
+  }
+  .hero h1 span{
+    display:block;
+    width:max-content;
+    white-space:nowrap;
+  }
+  .hero h1 span:last-child{
+    margin-left:clamp(20px,3vw,46px);
+  }
+  .heroTag{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:34px;
+  }
+  .heroTag span{
+    padding:9px 13px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:999px;
+    background:rgba(255,255,255,.025);
+    font-size:9px;
+    font-weight:780;
+    letter-spacing:.21em;
+    color:rgba(255,255,255,.54);
+  }
+  .back{
+    position:absolute;
+    right:clamp(28px,4vw,58px);
+    top:clamp(28px,4vw,58px);
+    font-size:10px;
+    color:rgba(255,255,255,.62);
+  }
+
+  .iceSculpture{
+    width:min(52vw,710px);
+    right:-2%;
+    top:-3%;
+  }
+  .iceWing{
+    border-color:rgba(225,243,251,.14);
+  }
+  .iceSpine{
+    box-shadow:
+      inset -10px 0 18px rgba(76,89,111,.2),
+      0 0 44px rgba(200,233,246,.1);
+  }
+
+  .section{padding-top:18px}
+  .work{
+    min-height:88svh;
+    border-radius:38px;
+  }
+  .workBody{
+    padding:clamp(38px,5.5vw,82px);
+    padding-bottom:clamp(46px,6vw,94px);
+  }
+  .label{
+    margin-bottom:24px;
+    font-size:10px;
+    letter-spacing:.24em;
+    color:rgba(255,255,255,.43);
+  }
+  .work h2{
+    display:flex;
+    flex-direction:column;
+    gap:.11em;
+    max-width:7ch;
+    font-size:clamp(76px,11vw,164px);
+    line-height:.70;
+    letter-spacing:-.085em;
+  }
+  .work p{
+    margin-top:30px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.2em;
+    color:rgba(255,255,255,.47);
+  }
+  .enter{
+    width:86px;
+    height:86px;
+    font-size:24px;
+  }
+
+  .boomArc{
+    width:440px;
+    height:180px;
+    right:2%;
+    top:20%;
+    border:1px solid rgba(224,241,249,.12);
+    border-left-color:transparent;
+    border-right-color:transparent;
+    border-radius:50%;
+    transform:rotate(-14deg);
+    box-shadow:0 0 60px rgba(157,211,235,.04);
+  }
+  .boomCore{
+    width:15px;
+    height:15px;
+    right:27%;
+    top:35%;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .9s ease,transform 1s cubic-bezier(.2,.75,.2,1);
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media(max-width:980px){
+    .hero{min-height:68svh}
+    .back{position:static;margin-top:28px}
+    .work{min-height:78svh}
+  }
+
+  @media(max-width:640px){
+    main{padding-top:calc(var(--header) + 12px)}
+    .hero{
+      min-height:64svh;
+      border-radius:26px;
+    }
+    .heroInner{padding:28px}
+    .hero h1{
+      font-size:clamp(58px,18vw,88px);
+      line-height:.73;
+    }
+    .hero h1 span:last-child{margin-left:14px}
+    .heroTag{margin-top:28px;gap:7px}
+    .heroTag span{padding:8px 10px;font-size:8px}
+    .iceSculpture{width:360px;right:-118px;top:4%}
+
+    .work{
+      min-height:74svh;
+      border-radius:26px;
+    }
+    .workBody{
+      padding:28px;
+      padding-bottom:34px;
+    }
+    .work h2{
+      font-size:clamp(58px,17vw,88px);
+      line-height:.73;
+    }
+    .work p{
+      margin-top:23px;
+      font-size:10px;
+    }
+    .enter{
+      width:64px;
+      height:64px;
+      font-size:19px;
+    }
+    .boomArc{width:300px;right:-70px}
+  }
+</style>
+
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 <main><div class="wrap">
-  <section class="hero">
+  <section class="hero reveal">
       <div class="iceSculpture" aria-hidden="true">
         <span class="iceWing wingA"></span>
         <span class="iceWing wingB"></span>
@@ -248,21 +429,21 @@ body{
         <span class="iceHalo"></span>
         <span class="iceCore"></span>
       </div>
-      <div class="heroInner"><div><div class="eyebrow">OURBANG / TIKOONZ / ARTIST</div><h1>ICE<br>UNICORN</h1><div class="heroTag">MUSIC · VISUAL · EXPERIENCE</div></div><a class="back" href="tikoonz.html"><span>←</span><span data-en="BACK TO TIKOONZ" data-ko="TIKOONZ로 돌아가기">BACK TO TIKOONZ</span></a></div></section>
+      <div class="heroInner"><div><div class="eyebrow">003.01 · ARTIST WORLD</div><h1 aria-label="ICE UNICORN"><span>ICE</span><span>UNICORN</span></h1><div class="heroTag"><span>MUSIC</span><span>VISUAL</span><span>EXPERIENCE</span></div></div><a class="back" href="tikoonz.html"><span>←</span><span data-en="BACK TO TIKOONZ" data-ko="TIKOONZ로 돌아가기">BACK TO TIKOONZ</span></a></div></section>
   <section class="section">
-      <a class="work" href="boomboomboom.html">
+      <a class="work reveal" href="boomboomboom.html">
         <div class="boomArtwork" aria-hidden="true">
           <span class="impact impactA"></span>
           <span class="impact impactB"></span>
           <span class="impact impactC"></span>
           <span class="boomBlade bladeA"></span>
           <span class="boomBlade bladeB"></span>
-          <span class="boomCore"></span>
+          <span class="boomCore"></span><span class="boomArc"></span>
           <span class="boomDust dustA"></span>
           <span class="boomDust dustB"></span>
           <span class="boomDust dustC"></span>
         </div>
-        <div class="workBody"><div><div class="label" data-en="FIRST EXPERIENCE" data-ko="첫 번째 경험">FIRST EXPERIENCE</div><h2>BOOM<br>BOOM<br>BOOM</h2><p data-en="Enter the first ICE UNICORN world." data-ko="ICE UNICORN의 첫 번째 세계로 들어갑니다.">Enter the first ICE UNICORN world.</p></div><span class="enter" data-en="ENTER" data-ko="입장">ENTER</span></div></a></section>
+        <div class="workBody"><div><div class="label">001 · BOOMBOOMBOOM</div><h2>BOOM<br>BOOM<br>BOOM</h2><p data-en="SOUND. IMAGE. IMPACT." data-ko="사운드. 이미지. 충격.">SOUND. IMAGE. IMPACT.</p></div><span class="enter" aria-hidden="true">→</span></div></a></section>
 </div></main>
 <footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>TIKOONZ · ICE UNICORN · BOOMBOOMBOOM</div></div></footer>
 <script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const finePointer=window.matchMedia('(pointer:fine)').matches;
@@ -280,6 +461,6 @@ if(finePointer&&hero&&iceSculpture){
     iceSculpture.style.setProperty('--iy','0px');
   });
 }
-document.getElementById('year').textContent=new Date().getFullYear();</script>
+const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -8%'});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
