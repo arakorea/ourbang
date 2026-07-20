@@ -51,4 +51,256 @@ html[lang="en"] .sectionGrid .tile:nth-child(1) h2{
 }
 </style>
 
-</head><body><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero"><div class="wrap heroContent"><div class="eyebrow">ICE UNICORN / FIRST EXPERIENCE</div><h1><span>BOOM</span><span>BOOM</span><span>BOOM</span></h1><div class="sub" data-en="MUSIC · VISUAL · EXPERIENCE" data-ko="음악 · 비주얼 · 경험">MUSIC · VISUAL · EXPERIENCE</div><a class="scroll" href="#experience" data-en="DISCOVER" data-ko="살펴보기">DISCOVER</a></div></section><section class="sections" id="experience"><div class="wrap sectionGrid"><a class="tile" href="boomboomboom-experience.html"><div class="tileNum">01</div><div><h2 data-en="EXPERIENCE" data-ko="경험">EXPERIENCE</h2><p data-en="Enter the BOOM BOOM BOOM world through OURBANG." data-ko="OURBANG을 통해 BOOM BOOM BOOM의 세계로 들어갑니다.">Enter the BOOM BOOM BOOM world through OURBANG.</p><span class="action">→</span></div></a><a class="tile" href="https://www.youtube.com/channel/UCjucM3L1V_tbBGmuLzN21kg" target="_blank" rel="noopener"><div class="tileNum">02</div><div><h2 data-en="MUSIC" data-ko="음악">MUSIC</h2><p data-en="Listen to the official release by ICE UNICORN." data-ko="ICE UNICORN의 공식 음원을 감상합니다.">Listen to the official release by ICE UNICORN.</p><span class="action">→</span></div></a><a class="tile" href="https://www.youtube.com/watch?v=236bi4YaQuM&list=PLf7t0drTh5IaI21MUob1Fv_eKrfNuCtRf" target="_blank" rel="noopener"><div class="tileNum">03</div><div><h2 data-en="VIDEO" data-ko="영상">VIDEO</h2><p data-en="Watch the official visual content and performance." data-ko="공식 영상과 퍼포먼스를 감상합니다.">Watch the official visual content and performance.</p><span class="action">→</span></div></a></div></section><div class="wrap backRow"><a class="back" href="ice-unicorn.html" data-en="← BACK TO ICE UNICORN" data-ko="← ICE UNICORN으로 돌아가기">← BACK TO ICE UNICORN</a></div></main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>ICE UNICORN · BOOM BOOM BOOM</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
+<style>
+/* ===== BOOM BOOM BOOM — TRIPLE IMPACT STAGE ===== */
+body{
+  background:
+    radial-gradient(900px 620px at 80% 8%,rgba(84,188,232,.13),transparent 62%),
+    radial-gradient(760px 580px at 10% 34%,rgba(174,93,223,.12),transparent 64%),
+    #05060a;
+}
+.hero{
+  min-height:calc(100svh - var(--header));
+  isolation:isolate;
+  background:
+    radial-gradient(620px 430px at 70% 27%,rgba(79,191,235,.12),transparent 72%),
+    radial-gradient(520px 390px at 30% 72%,rgba(171,86,222,.1),transparent 72%),
+    linear-gradient(145deg,#10131b 0%,#05060a 58%,#130d18 100%);
+}
+.hero::before{display:none}
+.heroContent{
+  position:relative;
+  z-index:4;
+  padding:104px 0 96px;
+}
+.hero h1{
+  position:relative;
+  z-index:4;
+  text-shadow:0 28px 80px rgba(0,0,0,.42);
+}
+.hero h1 span{
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),letter-spacing .55s ease,text-shadow .55s ease;
+}
+.hero:hover h1 span:nth-child(1){transform:translateX(-10px);letter-spacing:-.065em}
+.hero:hover h1 span:nth-child(2){transform:translateX(7px);letter-spacing:-.08em}
+.hero:hover h1 span:nth-child(3){transform:translateX(-4px);letter-spacing:-.07em}
+
+.boomStage{
+  position:absolute;
+  width:min(72vw,980px);
+  height:min(76vh,760px);
+  right:-6%;
+  top:1%;
+  z-index:1;
+  pointer-events:none;
+  transform:translate3d(var(--bx,0),var(--by,0),0);
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.boomStage span,.tileArtwork span{position:absolute;display:block}
+.boomOrb{
+  border-radius:50%;
+  border:1px solid rgba(237,247,251,.13);
+  background:radial-gradient(circle at 38% 30%,rgba(255,255,255,.12),rgba(111,195,230,.025) 48%,transparent 72%);
+  box-shadow:inset 0 0 60px rgba(255,255,255,.018),0 0 90px rgba(91,190,230,.05);
+}
+.orbOne{width:31%;aspect-ratio:1;left:14%;top:15%;animation:orbFloatA 8s ease-in-out infinite}
+.orbTwo{width:25%;aspect-ratio:1;left:47%;top:34%;animation:orbFloatB 7s ease-in-out infinite reverse}
+.orbThree{width:20%;aspect-ratio:1;left:67%;top:11%;animation:orbFloatC 6.2s ease-in-out infinite}
+@keyframes orbFloatA{50%{transform:translate(-8px,10px) scale(1.04)}}
+@keyframes orbFloatB{50%{transform:translate(9px,-8px) scale(.97)}}
+@keyframes orbFloatC{50%{transform:translate(-6px,9px) scale(1.06)}}
+.boomShock{
+  border:1px solid rgba(240,247,250,.12);
+  border-radius:50%;
+  opacity:.54;
+}
+.shockOne{width:44%;aspect-ratio:1;left:7%;top:8%;animation:shockPulse 5.4s ease-out infinite}
+.shockTwo{width:37%;aspect-ratio:1;left:41%;top:27%;animation:shockPulse 5.4s ease-out infinite 1.15s}
+.shockThree{width:31%;aspect-ratio:1;left:61%;top:5%;animation:shockPulse 5.4s ease-out infinite 2.3s}
+@keyframes shockPulse{
+  0%{transform:scale(.72);opacity:0}
+  24%{opacity:.65}
+  75%,100%{transform:scale(1.22);opacity:0}
+}
+.laser{
+  height:1px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,transparent,rgba(249,251,252,.92),rgba(99,196,234,.18),transparent);
+  box-shadow:0 0 14px rgba(117,203,237,.12);
+}
+.laserA{width:72%;left:9%;top:34%;transform:rotate(-17deg);animation:laserSweepA 6s ease-in-out infinite alternate}
+.laserB{width:61%;left:23%;top:55%;transform:rotate(13deg);animation:laserSweepB 7s ease-in-out infinite alternate}
+.laserC{width:48%;left:39%;top:68%;transform:rotate(-8deg);opacity:.58;animation:laserSweepC 5.4s ease-in-out infinite alternate}
+@keyframes laserSweepA{to{transform:rotate(-10deg) translateX(-14px);opacity:.55}}
+@keyframes laserSweepB{to{transform:rotate(7deg) translateX(12px);opacity:.67}}
+@keyframes laserSweepC{to{transform:rotate(-2deg) translateX(-8px);opacity:.32}}
+.boomSpark{
+  width:5px;height:5px;border-radius:50%;background:#fff;
+  box-shadow:0 0 16px rgba(230,247,255,.9),0 0 42px rgba(102,196,234,.32);
+  animation:sparkJump 4.8s ease-in-out infinite alternate;
+}
+.sparkA{left:31%;top:20%}.sparkB{left:58%;top:31%;animation-delay:.8s}
+.sparkC{left:75%;top:18%;animation-delay:1.4s}.sparkD{left:51%;top:63%;animation-delay:2s}
+@keyframes sparkJump{to{transform:translate(12px,-9px) scale(1.45);opacity:.42}}
+
+/* Cards */
+.sections{padding-top:42px}
+.sectionGrid{gap:20px;align-items:stretch}
+.tile{
+  min-height:520px;
+  isolation:isolate;
+  justify-content:flex-end;
+  padding:38px;
+  background:linear-gradient(145deg,#10131a,#07090e 68%,#11131a);
+}
+.tile::before{display:none}
+.tile::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent 32%,rgba(3,4,7,.03) 54%,rgba(3,4,7,.94) 100%);
+}
+.tile>*{position:relative;z-index:3}
+.tileNum{position:absolute!important;top:36px;left:38px;z-index:5!important}
+.tileCopy{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.tile h2,.tile p{text-align:left}
+.tile p{max-width:30ch;min-height:auto}
+.tileArtwork{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden;pointer-events:none}
+.tileArtwork span{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s ease}
+.tileCore{
+  width:10px;height:10px;border-radius:50%;
+  background:#f5fbff;
+  box-shadow:0 0 18px rgba(236,248,255,.95),0 0 70px rgba(108,195,231,.3);
+  animation:tileCorePulse 3.5s ease-in-out infinite;
+}
+@keyframes tileCorePulse{50%{transform:scale(1.25);opacity:1}0%,100%{transform:scale(.88);opacity:.68}}
+
+/* EXPERIENCE */
+.experienceArtwork{
+  background:radial-gradient(420px 320px at 72% 22%,rgba(95,192,232,.13),transparent 70%),linear-gradient(145deg,#101720,#07090e 68%,#11131a);
+}
+.portal{
+  border:1px solid rgba(224,241,249,.16);
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(102,188,226,.015));
+  box-shadow:inset 0 0 36px rgba(255,255,255,.02);
+}
+.portalA{width:36%;height:54%;right:13%;top:10%;border-radius:120px 18px 100px 18px;transform:perspective(900px) rotateY(-14deg) rotateZ(-4deg)}
+.portalB{width:25%;height:41%;right:34%;top:21%;border-radius:90px 14px 78px 14px;transform:perspective(900px) rotateY(12deg) rotateZ(5deg);opacity:.52}
+.portalLine{height:1px;background:linear-gradient(90deg,transparent,rgba(238,248,252,.76),rgba(105,191,228,.12),transparent)}
+.portalLineA{width:58%;right:4%;top:39%;transform:rotate(-15deg)}.portalLineB{width:45%;right:14%;top:51%;transform:rotate(11deg);opacity:.5}
+.experienceArtwork .tileCore{right:31%;top:35%}
+.experienceTile:hover .portalA{transform:perspective(900px) rotateY(-7deg) rotateZ(-1deg) translate(-7px,-5px)}
+.experienceTile:hover .portalB{transform:perspective(900px) rotateY(6deg) rotateZ(2deg) translate(7px,-4px)}
+
+/* MUSIC */
+.musicArtwork{
+  background:radial-gradient(420px 320px at 71% 22%,rgba(175,89,222,.12),transparent 70%),linear-gradient(145deg,#15101b,#08090e 68%,#11131a);
+}
+.wave{border:1px solid rgba(235,219,247,.16);border-left-color:transparent;border-right-color:transparent;border-radius:50%}
+.waveA{width:66%;height:25%;right:2%;top:17%;transform:rotate(-12deg)}
+.waveB{width:55%;height:22%;right:10%;top:30%;transform:rotate(11deg);opacity:.64}
+.waveC{width:43%;height:18%;right:20%;top:43%;transform:rotate(-6deg);opacity:.38}
+.beatLine{width:1px;background:linear-gradient(180deg,transparent,rgba(241,233,249,.78),rgba(167,105,210,.11),transparent)}
+.beatA{height:56%;right:31%;top:8%;transform:rotate(11deg)}
+.beatB{height:46%;right:45%;top:17%;transform:rotate(-9deg);opacity:.52}
+.musicArtwork .tileCore{right:35%;top:36%}
+.musicTile:hover .waveA{transform:rotate(-7deg) translateX(-7px)}
+.musicTile:hover .waveB{transform:rotate(6deg) translateX(8px)}
+.musicTile:hover .waveC{transform:rotate(-1deg) translateX(-5px)}
+
+/* VIDEO */
+.videoArtwork{
+  background:radial-gradient(420px 320px at 72% 22%,rgba(103,183,219,.1),transparent 70%),linear-gradient(145deg,#11151b,#08090e 68%,#12121a);
+}
+.screenPlane{
+  border:1px solid rgba(226,239,245,.15);
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(112,181,211,.012));
+  box-shadow:inset 0 0 32px rgba(255,255,255,.018);
+}
+.screenA{width:45%;height:34%;right:8%;top:15%;border-radius:24px;transform:perspective(900px) rotateY(-13deg) rotateZ(-4deg)}
+.screenB{width:32%;height:25%;right:29%;top:27%;border-radius:18px;transform:perspective(900px) rotateY(12deg) rotateZ(5deg);opacity:.49}
+.cameraRay{height:1px;background:linear-gradient(90deg,transparent,rgba(239,247,251,.76),rgba(111,187,219,.11),transparent)}
+.rayA{width:59%;right:2%;top:38%;transform:rotate(-16deg)}.rayB{width:46%;right:13%;top:49%;transform:rotate(10deg);opacity:.5}
+.videoArtwork .tileCore{right:32%;top:35%}
+.videoTile:hover .screenA{transform:perspective(900px) rotateY(-7deg) rotateZ(-1deg) translate(-7px,-5px)}
+.videoTile:hover .screenB{transform:perspective(900px) rotateY(6deg) rotateZ(2deg) translate(7px,-4px)}
+
+.tile:hover{transform:translateY(-5px) scale(1.002)}
+.action{margin-top:30px}
+
+@media(max-width:980px){
+  .boomStage{width:720px;right:-210px}
+  .tile{min-height:430px}
+}
+@media(max-width:640px){
+  .hero{min-height:calc(100svh - var(--header))}
+  .heroContent{padding:86px 6px}
+  .boomStage{width:470px;height:520px;right:-210px;top:5%;opacity:.9}
+  .tile{min-height:380px;padding:28px}
+  .tileNum{top:26px;left:28px}
+  .portalA,.screenA{width:50%;right:0}
+  .portalB,.screenB{width:35%;right:21%}
+  .waveA{width:76%;right:-8%}.waveB{width:64%;right:0}.waveC{width:50%;right:12%}
+}
+@media(prefers-reduced-motion:reduce){
+  .boomStage,.boomStage span,.tileArtwork span{animation:none!important;transition:none!important}
+}
+</style></head><body><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero">
+<div class="boomStage" aria-hidden="true">
+  <span class="boomOrb orbOne"></span>
+  <span class="boomOrb orbTwo"></span>
+  <span class="boomOrb orbThree"></span>
+  <span class="boomShock shockOne"></span>
+  <span class="boomShock shockTwo"></span>
+  <span class="boomShock shockThree"></span>
+  <span class="laser laserA"></span>
+  <span class="laser laserB"></span>
+  <span class="laser laserC"></span>
+  <span class="boomSpark sparkA"></span><span class="boomSpark sparkB"></span>
+  <span class="boomSpark sparkC"></span><span class="boomSpark sparkD"></span>
+</div>
+<div class="wrap heroContent"><div class="eyebrow">ICE UNICORN / FIRST EXPERIENCE</div><h1><span>BOOM</span><span>BOOM</span><span>BOOM</span></h1><div class="sub" data-en="MUSIC · VISUAL · EXPERIENCE" data-ko="음악 · 비주얼 · 경험">MUSIC · VISUAL · EXPERIENCE</div><a class="scroll" href="#experience" data-en="DISCOVER" data-ko="살펴보기">DISCOVER</a></div></section><section class="sections" id="experience"><div class="wrap sectionGrid"><a class="tile experienceTile" href="boomboomboom-experience.html">
+<div class="tileArtwork experienceArtwork" aria-hidden="true">
+  <span class="portal portalA"></span><span class="portal portalB"></span>
+  <span class="portalLine portalLineA"></span><span class="portalLine portalLineB"></span>
+  <span class="tileCore"></span>
+</div><div class="tileNum">01</div><div class="tileCopy"><h2 data-en="EXPERIENCE" data-ko="경험">EXPERIENCE</h2><p data-en="Enter the BOOM BOOM BOOM world through OURBANG." data-ko="OURBANG을 통해 BOOM BOOM BOOM의 세계로 들어갑니다.">Enter the BOOM BOOM BOOM world through OURBANG.</p><span class="action">→</span></div></a><a class="tile musicTile" href="https://www.youtube.com/channel/UCjucM3L1V_tbBGmuLzN21kg" target="_blank" rel="noopener"><div class="tileArtwork musicArtwork" aria-hidden="true">
+  <span class="wave waveA"></span><span class="wave waveB"></span><span class="wave waveC"></span>
+  <span class="beatLine beatA"></span><span class="beatLine beatB"></span>
+  <span class="tileCore"></span>
+</div>
+<div class="tileNum">02</div><div class="tileCopy"><h2 data-en="MUSIC" data-ko="음악">MUSIC</h2><p data-en="Listen to the official release by ICE UNICORN." data-ko="ICE UNICORN의 공식 음원을 감상합니다.">Listen to the official release by ICE UNICORN.</p><span class="action">→</span></div></a><a class="tile videoTile" href="https://www.youtube.com/watch?v=236bi4YaQuM&list=PLf7t0drTh5IaI21MUob1Fv_eKrfNuCtRf" target="_blank" rel="noopener"><div class="tileArtwork videoArtwork" aria-hidden="true">
+  <span class="screenPlane screenA"></span><span class="screenPlane screenB"></span>
+  <span class="cameraRay rayA"></span><span class="cameraRay rayB"></span>
+  <span class="tileCore"></span>
+</div>
+<div class="tileNum">03</div><div class="tileCopy"><h2 data-en="VIDEO" data-ko="영상">VIDEO</h2><p data-en="Watch the official visual content and performance." data-ko="공식 영상과 퍼포먼스를 감상합니다.">Watch the official visual content and performance.</p><span class="action">→</span></div></a></div></section><div class="wrap backRow"><a class="back" href="ice-unicorn.html" data-en="← BACK TO ICE UNICORN" data-ko="← ICE UNICORN으로 돌아가기">← BACK TO ICE UNICORN</a></div></main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>ICE UNICORN · BOOM BOOM BOOM</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const finePointer=window.matchMedia('(pointer:fine)').matches;
+const boomHero=document.querySelector('.hero');
+const boomStage=document.querySelector('.boomStage');
+if(finePointer&&boomHero&&boomStage){
+  boomHero.addEventListener('pointermove',e=>{
+    const r=boomHero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    boomStage.style.setProperty('--bx',`${(x*15).toFixed(1)}px`);
+    boomStage.style.setProperty('--by',`${(y*12).toFixed(1)}px`);
+  });
+  boomHero.addEventListener('pointerleave',()=>{
+    boomStage.style.setProperty('--bx','0px');
+    boomStage.style.setProperty('--by','0px');
+  });
+}
+const boomWords=[...document.querySelectorAll('h1 span')];
+let boomIndex=0;
+setInterval(()=>{
+  boomWords.forEach((word,i)=>{
+    word.style.textShadow=i===boomIndex
+      ? '0 0 30px rgba(230,248,255,.32),0 0 90px rgba(105,194,232,.18)'
+      : '0 28px 80px rgba(0,0,0,.42)';
+  });
+  boomIndex=(boomIndex+1)%3;
+},1150);
+document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
