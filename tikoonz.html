@@ -14,6 +14,105 @@
     .section{padding-top:24px}.grid{display:grid;grid-template-columns:1.35fr .825fr .825fr;gap:22px}.card{position:relative;min-height:380px;border:1px solid var(--line);border-radius:30px;overflow:hidden;display:flex;align-items:flex-end;isolation:isolate;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 26px 80px rgba(0,0,0,.22);transition:transform .55s cubic-bezier(.2,.75,.2,1),border-color .28s ease,box-shadow .55s ease}.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.23);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 34px 96px rgba(0,0,0,.3)}.card::before{content:"";position:absolute;inset:0;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.card:hover::before{transform:scale(1.035)}.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.12) 40%,rgba(3,4,8,.91) 100%)}.experience::before{background:radial-gradient(circle at 72% 24%,rgba(124,198,255,.38),transparent 20%),radial-gradient(circle at 28% 30%,rgba(145,118,255,.30),transparent 25%),linear-gradient(140deg,#111621 0%,#090b12 52%,#110b1a 100%)}.official::before{background:radial-gradient(circle at 68% 28%,rgba(88,141,255,.22),transparent 24%),linear-gradient(145deg,#11151d,#090b11 58%,#0c1118)}.tv::before{background:radial-gradient(circle at 64% 22%,rgba(145,118,255,.26),transparent 26%),linear-gradient(145deg,#15101f,#090b11 58%,#0d0c14)}.cardBody{width:100%;padding:34px}.label{display:flex;align-items:center;gap:12px;width:max-content;font-size:10px;font-weight:760;letter-spacing:.19em;color:rgba(255,255,255,.5);margin-bottom:16px;text-transform:uppercase}.label:before{content:"";width:28px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.62))}.card h2{position:relative;margin:0;font-size:clamp(30px,4vw,56px);line-height:.92;letter-spacing:-.045em;font-weight:790;background:linear-gradient(180deg,#fff,rgba(228,235,246,.76));-webkit-background-clip:text;background-clip:text;color:transparent}.card h2:after{content:"";display:block;width:58px;height:1px;margin-top:19px;background:linear-gradient(90deg,rgba(255,255,255,.78),rgba(124,198,255,.06));transition:width .45s ease}.card:hover h2:after{width:104px}.card p{margin:16px 0 0;color:rgba(255,255,255,.61);font-size:14px;line-height:1.7;letter-spacing:.035em;max-width:34ch;text-wrap:pretty}.action{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.09em}.arrow{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.055);transition:.25s}.card:hover .arrow{background:#fff;color:#07090f;transform:translateX(3px)}
 
 
+
+    .exhibition{display:flex;flex-direction:column;gap:22px}
+    .exhibit{
+      min-height:76svh;
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:34px;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      isolation:isolate;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 90px rgba(0,0,0,.25);
+      transition:transform .65s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .65s ease;
+    }
+    .exhibit::before{
+      content:"";position:absolute;inset:0;z-index:-3;
+      transition:transform 1s cubic-bezier(.2,.7,.2,1);
+    }
+    .exhibit::after{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12) 45%,rgba(3,4,8,.92) 100%);
+    }
+    .exhibit:hover{
+      transform:translateY(-7px);
+      border-color:rgba(255,255,255,.24);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.075),0 42px 120px rgba(0,0,0,.34);
+    }
+    .exhibit:hover::before{transform:scale(1.025)}
+    .experience::before{
+      background:radial-gradient(circle at 72% 24%,rgba(124,198,255,.38),transparent 20%),radial-gradient(circle at 28% 30%,rgba(145,118,255,.30),transparent 25%),linear-gradient(140deg,#111621 0%,#090b12 52%,#110b1a 100%);
+    }
+    .shop::before{
+      background:radial-gradient(circle at 70% 24%,rgba(255,226,169,.24),transparent 22%),radial-gradient(circle at 30% 76%,rgba(196,143,94,.12),transparent 27%),linear-gradient(145deg,#18140f,#0a0a0c 55%,#15100c);
+    }
+    .official::before{
+      background:radial-gradient(circle at 68% 28%,rgba(88,141,255,.22),transparent 24%),linear-gradient(145deg,#11151d,#090b11 58%,#0c1118);
+    }
+    .tv::before{
+      background:radial-gradient(circle at 64% 22%,rgba(145,118,255,.26),transparent 26%),linear-gradient(145deg,#15101f,#090b11 58%,#0d0c14);
+    }
+    .exhibitIndex{
+      position:absolute;top:clamp(28px,4vw,54px);left:clamp(32px,5vw,72px);
+      z-index:2;font-size:11px;font-weight:760;letter-spacing:.28em;color:rgba(255,255,255,.44)
+    }
+    .exhibitIndex::before{
+      content:"";display:inline-block;width:38px;height:1px;margin-right:14px;vertical-align:middle;
+      background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.65))
+    }
+    .exhibitBody{
+      position:relative;z-index:2;width:100%;
+      display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;
+      padding:clamp(34px,5vw,72px)
+    }
+    .exhibit h2{
+      margin:0;max-width:8ch;font-size:clamp(68px,10vw,148px);line-height:.78;letter-spacing:-.075em;font-weight:840;
+      background:linear-gradient(180deg,#fff 4%,#eef4ff 57%,rgba(207,218,238,.74) 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 20px 60px rgba(0,0,0,.28)
+    }
+    .exhibit p{
+      margin:22px 0 0;max-width:34ch;color:rgba(255,255,255,.58);font-size:14px;line-height:1.72;letter-spacing:.02em
+    }
+    .exhibitArrow{
+      width:92px;height:92px;border-radius:50%;border:1px solid rgba(255,255,255,.23);
+      display:grid;place-items:center;font-size:24px;transition:.35s ease
+    }
+    .exhibit:hover .exhibitArrow{background:#fff;color:#07090f;transform:translateX(5px)}
+
+    /* 02 — TIKOONZ.SHOP : luxury showcase / jewelry orbit */
+    .shopArt .showcase{
+      width:340px;height:340px;right:8%;top:10%;
+      border:1px solid rgba(255,227,180,.26);border-radius:34px;
+      transform:rotate(10deg);
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.08),transparent 42%),
+        radial-gradient(circle at 50% 48%,rgba(217,174,108,.08),transparent 52%);
+      box-shadow:inset 0 0 60px rgba(255,255,255,.025),0 0 80px rgba(217,174,108,.08);
+      transition:transform .9s cubic-bezier(.2,.8,.2,1),border-radius .7s ease;
+    }
+    .shopArt .showcase::before{
+      content:"";inset:28px;border:1px solid rgba(255,255,255,.11);border-radius:26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)
+    }
+    .shopArt .ring{
+      border-radius:50%;border:1px solid rgba(255,226,169,.42);
+      box-shadow:0 0 34px rgba(217,174,108,.12),inset 0 0 18px rgba(255,255,255,.03)
+    }
+    .shopArt .ringOne{width:160px;height:160px;right:15%;top:27%;transform:rotate(18deg)}
+    .shopArt .ringTwo{width:92px;height:92px;right:22%;top:39%;border-color:rgba(255,245,221,.56)}
+    .shopArt .glint{
+      width:14px;height:14px;right:29%;top:31%;transform:rotate(45deg);
+      background:rgba(255,245,221,.92);
+      box-shadow:0 0 24px rgba(255,226,169,.55),0 0 54px rgba(217,174,108,.24);
+      clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)
+    }
+    .shop:hover .showcase{transform:rotate(2deg) translate(-10px,6px);border-radius:50%}
+    .shop:hover .ringOne{transform:rotate(28deg) scale(1.04)}
+    .shop:hover .ringTwo{transform:scale(1.08)}
+    .shop:hover .glint{filter:brightness(1.2);transform:rotate(90deg) scale(1.12)}
+
     .artwork{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
     .artwork *{position:absolute;box-sizing:border-box}
 
@@ -128,43 +227,429 @@
     }
     footer{padding:0 0 34px}.foot{display:flex;align-items:center;justify-content:space-between;color:rgba(255,255,255,.38);font-size:12px;letter-spacing:.07em}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.card,.halo{transition:none}} 
-    @media(max-width:1100px){.grid{grid-template-columns:1fr 1fr}.experience{grid-column:1/-1}.card{min-height:340px}}
-    @media(max-width:980px){.nav{grid-template-columns:auto 1fr auto;gap:18px}.links{display:none}.langs{margin-left:auto}.menuBtn{display:block}.mobilePanel{position:fixed;inset:var(--header) 0 0;z-index:90;background:rgba(7,9,15,.97);padding:34px 28px}.mobilePanel.open{display:block}.mobilePanel a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:22px;font-weight:700}.heroInner{padding:38px}.grid{grid-template-columns:1fr}.experience{grid-column:auto}}
-    @media(max-width:640px){:root{--header:76px}.wrap{width:min(calc(100% - 24px),var(--max))}.brand{font-size:20px}.langs{gap:6px}.langBtn{width:36px;height:32px}main{padding:14px 0 46px}.hero{min-height:58svh;border-radius:24px}.heroInner{padding:26px;display:block}.hero h1{font-size:clamp(58px,19vw,88px)}.heroTag{font-size:12px}.back{margin-top:24px}.halo{width:290px;right:-54px;top:7%}.eyebrow{gap:10px}.eyebrow:before{width:28px}.artwork{opacity:.86}.iceArt .crystalMask{width:210px;height:252px;right:-8%;top:8%}.iceArt .horn{right:17%;height:185px}.webArt .portal{width:205px;height:205px;right:-38px;top:42px}.tvArt .screen{width:205px;height:132px;right:-30px;top:62px}.section{padding-top:14px}.grid{gap:14px}.card{min-height:310px;border-radius:24px}.cardBody{padding:26px}.foot{display:block;line-height:1.9}}
+    @media(max-width:1100px){.exhibit{min-height:68svh}}
+    @media(max-width:980px){.nav{grid-template-columns:auto 1fr auto;gap:18px}.links{display:none}.langs{margin-left:auto}.menuBtn{display:block}.mobilePanel{position:fixed;inset:var(--header) 0 0;z-index:90;background:rgba(7,9,15,.97);padding:34px 28px}.mobilePanel.open{display:block}.mobilePanel a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:22px;font-weight:700}.heroInner{padding:38px}.exhibitBody{padding:38px}}
+    @media(max-width:640px){:root{--header:76px}.wrap{width:min(calc(100% - 24px),var(--max))}.brand{font-size:20px}.langs{gap:6px}.langBtn{width:36px;height:32px}main{padding:14px 0 46px}.hero{min-height:58svh;border-radius:24px}.heroInner{padding:26px;display:block}.hero h1{font-size:clamp(58px,19vw,88px)}.heroTag{font-size:12px}.back{margin-top:24px}.halo{width:290px;right:-54px;top:7%}.eyebrow{gap:10px}.eyebrow:before{width:28px}.artwork{opacity:.86}.iceArt .crystalMask{width:210px;height:252px;right:-8%;top:8%}.iceArt .horn{right:17%;height:185px}.webArt .portal{width:205px;height:205px;right:-38px;top:42px}.tvArt .screen{width:205px;height:132px;right:-30px;top:62px}.section{padding-top:14px}.exhibition{gap:14px}.exhibit{min-height:64svh;border-radius:24px}.exhibitBody{padding:26px}.exhibit h2{font-size:clamp(56px,17vw,86px)}.exhibitArrow{width:70px;height:70px}.shopArt .showcase{width:250px;height:250px;right:-48px;top:12%}.shopArt .ringOne{width:130px;height:130px;right:5%;top:30%}.shopArt .ringTwo{width:76px;height:76px;right:16%;top:42%}.foot{display:block;line-height:1.9}}
   </style>
+
+  <style>
+    /* ARTWORK REFINEMENT — make every section feel like an installation */
+    .exhibit{
+      min-height:82svh;
+      background:#08090d;
+    }
+    .exhibit::after{
+      background:
+        linear-gradient(180deg,rgba(3,4,8,.04),rgba(3,4,8,.16) 38%,rgba(3,4,8,.88) 86%,rgba(3,4,8,.97) 100%);
+    }
+    .exhibitBody{
+      padding-bottom:clamp(42px,6vw,88px);
+    }
+    .exhibit h2{
+      font-size:clamp(76px,10.6vw,158px);
+      line-height:.74;
+      max-width:7.4ch;
+      mix-blend-mode:screen;
+    }
+    .exhibit p{
+      max-width:31ch;
+      font-size:13px;
+      color:rgba(255,255,255,.5);
+    }
+
+    /* 003.01 — ICE UNICORN / suspended crystal relic */
+    .experience::before{
+      background:
+        radial-gradient(circle at 72% 28%,rgba(168,224,255,.19),transparent 24%),
+        radial-gradient(circle at 58% 62%,rgba(130,102,255,.12),transparent 30%),
+        linear-gradient(145deg,#0d1118 0%,#080a0f 48%,#110c19 100%);
+    }
+    .iceArt .crystalMask{
+      width:min(36vw,520px);
+      height:min(48vw,660px);
+      right:7%;
+      top:5%;
+      clip-path:polygon(50% 0,84% 13%,96% 46%,82% 83%,62% 100%,38% 100%,18% 83%,4% 46%,16% 13%);
+      border:1px solid rgba(218,239,255,.22);
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.14),rgba(165,218,255,.03) 34%,rgba(126,104,255,.11) 70%,rgba(255,255,255,.03)),
+        radial-gradient(circle at 42% 24%,rgba(255,255,255,.26),transparent 12%);
+      box-shadow:
+        inset 36px 0 90px rgba(157,211,255,.04),
+        inset -42px -24px 100px rgba(96,68,160,.09),
+        0 40px 120px rgba(0,0,0,.44),
+        0 0 90px rgba(124,198,255,.08);
+      transform:perspective(900px) rotateY(-13deg) rotateX(2deg) rotateZ(2deg);
+      backdrop-filter:blur(3px);
+    }
+    .iceArt .crystalMask::before,
+    .iceArt .crystalMask::after{
+      top:44%;
+      width:36%;
+      height:10%;
+      border-color:rgba(229,244,255,.26);
+      background:linear-gradient(180deg,rgba(4,7,12,.72),rgba(10,15,24,.42));
+      box-shadow:inset 0 0 20px rgba(124,198,255,.05);
+    }
+    .iceArt .horn{
+      width:46px;
+      height:300px;
+      right:26%;
+      top:-3%;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.02),rgba(241,249,255,.86) 48%,rgba(139,207,255,.08));
+      filter:drop-shadow(0 0 24px rgba(158,219,255,.28));
+    }
+    .iceArt .shard{
+      height:2px;
+      background:linear-gradient(90deg,transparent,rgba(223,241,255,.74),transparent);
+      box-shadow:0 0 14px rgba(124,198,255,.2);
+    }
+    .iceArt .s1{width:300px;right:0;top:28%}
+    .iceArt .s2{width:260px;right:9%;top:67%}
+    .iceArt .s3{width:210px;right:2%;top:50%}
+    .experience:hover .crystalMask{
+      transform:perspective(900px) rotateY(-4deg) rotateX(0) rotateZ(0) translateY(-10px);
+    }
+
+    /* 003.02 — TIKOONZ.SHOP / jewelry constellation */
+    .shop::before{
+      background:
+        radial-gradient(circle at 76% 24%,rgba(255,222,160,.18),transparent 20%),
+        radial-gradient(circle at 62% 66%,rgba(176,119,65,.10),transparent 26%),
+        linear-gradient(145deg,#16120d 0%,#09090b 50%,#120d09 100%);
+    }
+    .shopArt .showcase{
+      width:min(40vw,570px);
+      height:min(40vw,570px);
+      right:5%;
+      top:8%;
+      border-radius:50%;
+      border:1px solid rgba(255,222,164,.18);
+      background:
+        radial-gradient(circle at 38% 34%,rgba(255,255,255,.11),transparent 12%),
+        radial-gradient(circle at 50% 50%,rgba(217,173,106,.05),transparent 62%);
+      box-shadow:
+        inset 0 0 80px rgba(255,255,255,.02),
+        0 0 100px rgba(217,173,106,.06);
+      transform:rotate(-6deg);
+    }
+    .shopArt .showcase::before{
+      inset:12%;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.08);
+      background:none;
+    }
+    .shopArt .ringOne{
+      width:250px;height:250px;
+      right:13%;top:22%;
+      border-width:2px;
+      border-color:rgba(255,222,169,.38);
+      transform:rotateX(58deg) rotateZ(18deg);
+      box-shadow:0 0 38px rgba(217,174,108,.12);
+    }
+    .shopArt .ringTwo{
+      width:150px;height:150px;
+      right:22%;top:40%;
+      border-width:2px;
+      border-color:rgba(255,245,221,.48);
+      transform:rotateX(64deg) rotateZ(-12deg);
+    }
+    .shopArt .glint{
+      width:28px;height:28px;
+      right:28%;top:28%;
+      box-shadow:0 0 36px rgba(255,226,169,.58),0 0 90px rgba(217,174,108,.25);
+    }
+    .shopArt::after{
+      content:"";
+      position:absolute;
+      width:1px;
+      height:60%;
+      right:31%;
+      top:3%;
+      background:linear-gradient(180deg,transparent,rgba(255,235,198,.44),transparent);
+      box-shadow:0 0 18px rgba(255,226,169,.24);
+    }
+    .shop:hover .showcase{transform:rotate(0deg) scale(1.03)}
+    .shop:hover .ringOne{transform:rotateX(58deg) rotateZ(28deg) scale(1.04)}
+    .shop:hover .ringTwo{transform:rotateX(64deg) rotateZ(-22deg) scale(1.06)}
+
+    /* 003.03 — TIKOONZ.COM / architectural portal */
+    .official::before{
+      background:
+        radial-gradient(circle at 74% 30%,rgba(104,161,255,.16),transparent 24%),
+        linear-gradient(145deg,#0d121b 0%,#080a0f 55%,#0c1018 100%);
+    }
+    .webArt .portal{
+      width:min(40vw,560px);
+      height:min(48vw,640px);
+      right:4%;
+      top:4%;
+      border-radius:18px;
+      border:1px solid rgba(193,221,255,.18);
+      transform:perspective(900px) rotateY(-18deg) rotateZ(3deg);
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.07),transparent 32%),
+        linear-gradient(315deg,rgba(85,137,255,.08),transparent 42%);
+      box-shadow:inset 0 0 70px rgba(255,255,255,.02),0 40px 110px rgba(0,0,0,.4);
+    }
+    .webArt .portal::before{
+      inset:7%;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+      background-size:34px 34px;
+    }
+    .webArt .portal::after{
+      width:110px;height:110px;
+      border-color:rgba(225,239,255,.34);
+      background:rgba(207,227,255,.035);
+      box-shadow:0 0 44px rgba(88,141,255,.16);
+    }
+    .webArt .w1{width:360px;right:-20px;top:25%}
+    .webArt .w2{width:320px;right:4%;top:70%}
+    .webArt .dot{
+      width:12px;height:12px;
+      right:30%;top:42%;
+      box-shadow:0 0 28px rgba(88,141,255,.62);
+    }
+    .official:hover .portal{
+      transform:perspective(900px) rotateY(-5deg) rotateZ(0) translate(-14px,6px);
+      border-radius:26px;
+    }
+
+    /* 003.04 — TIKOONZ.TV / broadcast light sculpture */
+    .tv::before{
+      background:
+        radial-gradient(circle at 70% 24%,rgba(150,122,255,.17),transparent 22%),
+        linear-gradient(145deg,#130f1b 0%,#08090d 56%,#0e0b13 100%);
+    }
+    .tvArt .screen{
+      width:min(44vw,620px);
+      height:min(28vw,380px);
+      right:3%;
+      top:15%;
+      border-radius:3px;
+      border:1px solid rgba(216,202,255,.19);
+      transform:perspective(900px) rotateY(-12deg) rotateZ(-2deg);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.045),rgba(145,118,255,.03)),
+        repeating-linear-gradient(180deg,rgba(255,255,255,.025) 0 1px,transparent 1px 9px);
+      box-shadow:0 40px 120px rgba(0,0,0,.42),0 0 80px rgba(145,118,255,.06);
+    }
+    .tvArt .screen::before{inset:7%}
+    .tvArt .beam{
+      width:420px;height:620px;
+      right:-70px;top:-90px;
+      background:linear-gradient(180deg,rgba(210,194,255,.13),transparent 76%);
+      filter:blur(3px);
+    }
+    .tvArt .signal{
+      width:52px;height:52px;
+      right:28%;top:32%;
+    }
+    .tvArt .signal::before{width:100px;height:100px}
+    .tvArt .signal::after{width:160px;height:160px}
+    .tv:hover .screen{
+      transform:perspective(900px) rotateY(-2deg) rotateZ(0) translate(-12px,-6px);
+    }
+
+    @media(max-width:640px){
+      .exhibit{min-height:70svh}
+      .exhibit h2{font-size:clamp(58px,18vw,88px)}
+      .iceArt .crystalMask{width:260px;height:350px;right:-40px;top:10%}
+      .iceArt .horn{height:210px;right:16%}
+      .shopArt .showcase{width:290px;height:290px;right:-70px;top:10%}
+      .shopArt .ringOne{width:150px;height:150px;right:0;top:28%}
+      .shopArt .ringTwo{width:92px;height:92px;right:10%;top:42%}
+      .webArt .portal{width:280px;height:360px;right:-60px;top:8%}
+      .tvArt .screen{width:300px;height:180px;right:-76px;top:18%}
+      .tvArt .beam{width:260px;height:420px;right:-110px}
+    }
+  </style>
+
+
+  <style>
+    /* TYPOGRAPHY REFINEMENT */
+    .heroTag{
+      letter-spacing:.22em;
+      font-size:12px;
+    }
+
+    .exhibitIndex{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:3px;
+      line-height:.9;
+      letter-spacing:.22em;
+      font-size:11px;
+    }
+    .exhibitIndex::before{
+      margin:0 0 11px 0;
+      width:44px;
+    }
+    .exhibitIndex span:last-child{
+      font-size:18px;
+      color:rgba(255,255,255,.8);
+      letter-spacing:.14em;
+      font-weight:800;
+    }
+
+    .label{
+      margin-bottom:24px;
+      letter-spacing:.24em;
+      font-size:9px;
+      color:rgba(255,255,255,.44);
+    }
+
+    .titleStack{
+      display:flex;
+      flex-direction:column;
+      gap:.16em;
+      max-width:none !important;
+      letter-spacing:-.085em !important;
+      line-height:.72 !important;
+    }
+    .titleStack span{
+      display:block;
+      white-space:nowrap;
+    }
+    .titleStack span:last-child{
+      margin-left:.02em;
+    }
+
+    .posterCopy{
+      margin-top:30px !important;
+      max-width:none !important;
+      font-size:clamp(12px,1.15vw,15px) !important;
+      line-height:1.55 !important;
+      letter-spacing:.09em !important;
+      text-transform:uppercase;
+      font-weight:650;
+      color:rgba(255,255,255,.56) !important;
+    }
+    html[lang="ko"] .posterCopy{
+      text-transform:none;
+      letter-spacing:-.015em !important;
+      line-height:1.72 !important;
+      font-size:clamp(13px,1.12vw,16px) !important;
+      font-weight:560;
+    }
+
+    .exhibitArrow{
+      align-self:end;
+      margin-bottom:4px;
+    }
+
+    @media(max-width:640px){
+      .titleStack{
+        gap:.13em;
+        line-height:.75 !important;
+      }
+      .posterCopy{
+        margin-top:24px !important;
+        font-size:12px !important;
+        line-height:1.5 !important;
+      }
+      html[lang="ko"] .posterCopy{
+        font-size:13px !important;
+        line-height:1.68 !important;
+      }
+      .exhibitIndex{
+        top:24px;
+        left:26px;
+      }
+      .exhibitIndex span:last-child{
+        font-size:16px;
+      }
+      .label{
+        margin-bottom:18px;
+      }
+    }
+  </style>
+
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs" aria-label="Language"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs" aria-label="Language"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 <main>
   <div class="wrap">
     <section class="hero">
       <span class="halo" aria-hidden="true"></span>
       <div class="heroInner">
-        <div><div class="eyebrow">OURBANG / TIKOONZ</div><h1 data-outline="TIKOONZ">TIKOONZ</h1><div class="heroTag">MUSIC · ENTERTAINMENT</div></div>
+        <div><div class="eyebrow">003 · TIKOONZ</div><h1 data-outline="TIKOONZ">TIKOONZ</h1><div class="heroTag">SOUND · STYLE · CULTURE</div></div>
         <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="grid">
-        <a class="card experience" href="ice-unicorn.html">
-          <div class="artwork iceArt" aria-hidden="true"><span class="crystalMask"></span><span class="horn"></span><span class="shard s1"></span><span class="shard s2"></span><span class="shard s3"></span></div>
-          <div class="cardBody"><div class="label" data-en="EXPERIENCE" data-ko="EXPERIENCE">EXPERIENCE</div><h2>ICE UNICORN</h2><p data-en="Enter the first TIKOONZ experience." data-ko="TIKOONZ의 첫 번째 경험으로 들어갑니다.">Enter the first TIKOONZ experience.</p><div class="action"><span data-en="ENTER" data-ko="입장">ENTER</span><span class="arrow">→</span></div></div>
-        </a>
-        <a class="card official" href="https://tikoonz.com/" target="_blank" rel="noopener">
-          <div class="artwork webArt" aria-hidden="true"><span class="portal"></span><span class="chromeLine w1"></span><span class="chromeLine w2"></span><span class="dot"></span></div>
-          <div class="cardBody"><div class="label" data-en="OFFICIAL WEBSITE" data-ko="공식 웹사이트">OFFICIAL WEBSITE</div><h2>TIKOONZ<br>.COM</h2><p>tikoonz.com</p><div class="action"><span data-en="VISIT" data-ko="방문">VISIT</span><span class="arrow">↗</span></div></div>
-        </a>
-        <a class="card tv" href="https://tikoonz.tv/" target="_blank" rel="noopener">
-          <div class="artwork tvArt" aria-hidden="true"><span class="beam"></span><span class="screen"></span><span class="signal"></span></div>
-          <div class="cardBody"><div class="label">TIKOONZ TV</div><h2>TIKOONZ<br>.TV</h2><p>tikoonz.tv</p><div class="action"><span data-en="WATCH" data-ko="보기">WATCH</span><span class="arrow">↗</span></div></div>
-        </a>
-      </div>
+    <section class="section exhibition">
+      <a class="exhibit experience" href="ice-unicorn.html">
+        <div class="artwork iceArt" aria-hidden="true">
+          <span class="crystalMask"></span><span class="horn"></span>
+          <span class="shard s1"></span><span class="shard s2"></span><span class="shard s3"></span>
+        </div>
+        <div class="exhibitIndex"><span>003</span><span>01</span></div>
+        <div class="exhibitBody">
+          <div>
+            <div class="label" data-en="ARTIST WORLD" data-ko="아티스트 세계">ARTIST WORLD</div>
+            <h2 class="titleStack"><span>ICE</span><span>UNICORN</span></h2>
+            <p class="posterCopy" data-en-html="THE FIRST<br>TIKOONZ<br>ARTIST WORLD." data-ko-html="TIKOONZ의<br>첫 번째<br>아티스트 세계.">TIKOONZ의<br>첫 번째<br>아티스트 세계.</p>
+          </div>
+          <span class="exhibitArrow">→</span>
+        </div>
+      </a>
+
+      <a class="exhibit shop" href="https://tikoonz.shop/" target="_blank" rel="noopener">
+        <div class="artwork shopArt" aria-hidden="true">
+          <span class="showcase"></span><span class="ring ringOne"></span><span class="ring ringTwo"></span><span class="glint"></span>
+        </div>
+        <div class="exhibitIndex"><span>003</span><span>02</span></div>
+        <div class="exhibitBody">
+          <div>
+            <div class="label" data-en="MARKET" data-ko="마켓">MARKET</div>
+            <h2 class="titleStack"><span>TIKOONZ</span><span>.SHOP</span></h2>
+            <p class="posterCopy" data-en-html="WORN BY<br>K-POP ICONS.<br><br>BUILT FOR<br>THE NEXT CULTURE." data-ko-html="K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를 위한 공간.">K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를 위한 공간.</p>
+          </div>
+          <span class="exhibitArrow">↗</span>
+        </div>
+      </a>
+
+      <a class="exhibit official" href="https://tikoonz.com/" target="_blank" rel="noopener">
+        <div class="artwork webArt" aria-hidden="true">
+          <span class="portal"></span><span class="chromeLine w1"></span><span class="chromeLine w2"></span><span class="dot"></span>
+        </div>
+        <div class="exhibitIndex"><span>003</span><span>03</span></div>
+        <div class="exhibitBody">
+          <div>
+            <div class="label" data-en="OFFICIAL WORLD" data-ko="공식 공간">OFFICIAL WORLD</div>
+            <h2 class="titleStack"><span>TIKOONZ</span><span>.COM</span></h2>
+            <p class="posterCopy" data-en-html="OFFICIAL<br>TIKOONZ<br>WORLD." data-ko-html="TIKOONZ의<br>공식<br>세계.">TIKOONZ의<br>공식<br>세계.</p>
+          </div>
+          <span class="exhibitArrow">↗</span>
+        </div>
+      </a>
+
+      <a class="exhibit tv" href="https://tikoonz.tv/" target="_blank" rel="noopener">
+        <div class="artwork tvArt" aria-hidden="true">
+          <span class="beam"></span><span class="screen"></span><span class="signal"></span>
+        </div>
+        <div class="exhibitIndex"><span>003</span><span>04</span></div>
+        <div class="exhibitBody">
+          <div>
+            <div class="label" data-en="BROADCAST SPACE" data-ko="브로드캐스트 공간">BROADCAST SPACE</div>
+            <h2 class="titleStack"><span>TIKOONZ</span><span>.TV</span></h2>
+            <p class="posterCopy" data-en-html="BROADCAST.<br>PERFORMANCE.<br>MOVING CULTURE." data-ko-html="방송.<br>퍼포먼스.<br>움직이는 문화.">방송.<br>퍼포먼스.<br>움직이는 문화.</p>
+          </div>
+          <span class="exhibitArrow">↗</span>
+        </div>
+      </a>
     </section>
   </div>
 </main>
-<footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>TIKOONZ · ICE UNICORN</div></div></footer>
-<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const hero=document.querySelector('.hero'),halo=document.querySelector('.halo');if(hero&&halo&&window.matchMedia('(pointer:fine)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;halo.style.setProperty('--hx',`${(x*10).toFixed(1)}px`);halo.style.setProperty('--hy',`${(y*10).toFixed(1)}px`);halo.style.setProperty('--hs',(1+Math.max(0,.5-Math.hypot(x,y))*.05).toFixed(3));hero.classList.add('active')});hero.addEventListener('pointerleave',()=>{halo.style.setProperty('--hx','0px');halo.style.setProperty('--hy','0px');halo.style.setProperty('--hs','1');hero.classList.remove('active')})}document.querySelectorAll('.card').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const obj=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-6px)`;if(obj)obj.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(obj)obj.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script>
+<footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>TIKOONZ · SOUND · STYLE · CULTURE</div></div></footer>
+<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);document.querySelectorAll('[data-en-html][data-ko-html]').forEach(el=>el.innerHTML=el.dataset[safe+'Html']);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const hero=document.querySelector('.hero'),halo=document.querySelector('.halo');if(hero&&halo&&window.matchMedia('(pointer:fine)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;halo.style.setProperty('--hx',`${(x*10).toFixed(1)}px`);halo.style.setProperty('--hy',`${(y*10).toFixed(1)}px`);halo.style.setProperty('--hs',(1+Math.max(0,.5-Math.hypot(x,y))*.05).toFixed(3));hero.classList.add('active')});hero.addEventListener('pointerleave',()=>{halo.style.setProperty('--hx','0px');halo.style.setProperty('--hy','0px');halo.style.setProperty('--hs','1');hero.classList.remove('active')})}document.querySelectorAll('.exhibit').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const obj=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-6px)`;if(obj)obj.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(obj)obj.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
