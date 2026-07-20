@@ -1969,6 +1969,66 @@ html[lang="en"] .liveStatementDescription span{
 }
 </style>
 
+
+<style>
+/* LIVE — closing copy overlap fix */
+.liveStatement .statementGrid{
+  align-items:start;
+}
+
+.liveStatementDescription{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  max-width:38ch!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:8px 0 0!important;
+  color:rgba(255,255,255,.58)!important;
+  font-size:16px!important;
+  line-height:1.8!important;
+  letter-spacing:-.012em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+}
+
+.liveStatementDescription span{
+  position:static!important;
+  display:inline!important;
+  transform:none!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:inherit!important;
+  white-space:normal!important;
+}
+
+html[lang="ko"] .liveStatementDescription{
+  max-width:31ch!important;
+  word-break:keep-all!important;
+  letter-spacing:-.025em!important;
+}
+
+html[lang="en"] .liveStatementDescription{
+  max-width:36ch!important;
+}
+
+@media(max-width:980px){
+  .liveStatementDescription{
+    max-width:38ch!important;
+    padding-top:0!important;
+  }
+}
+
+@media(max-width:640px){
+  .liveStatementDescription{
+    max-width:31ch!important;
+    font-size:14px!important;
+    line-height:1.75!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a class="active" href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
@@ -2101,8 +2161,8 @@ html[lang="en"] .liveStatementDescription span{
     <p class="liveStatementDescription" data-copy="statement-description"
        data-en="OURBANG connects performances, conversations and audiences in real time."
        data-ko="OURBANG은 공연과 대화, 관객을 실시간으로 연결하여 새로운 경험을 만듭니다.">
-      <span>OURBANG은 공연과 대화, 관객을</span>
-      <span>실시간으로 연결하여 새로운 경험을 만듭니다.</span>
+      OURBANG은 공연과 대화, 관객을<br>
+      실시간으로 연결하여 새로운 경험을 만듭니다.
     </p>
   </div>
 </section>
@@ -2164,8 +2224,8 @@ function setLanguage(lang){
   const statementDescription=document.querySelector('[data-copy="statement-description"]');
   if(statementDescription){
     statementDescription.innerHTML=safe==='ko'
-      ? '<span>OURBANG은 공연과 대화, 관객을</span><span>실시간으로 연결하여 새로운 경험을 만듭니다.</span>'
-      : '<span>OURBANG brings performance, conversation</span><span>and audiences together in real time.</span>';
+      ? 'OURBANG은 공연과 대화, 관객을<br>실시간으로 연결하여 새로운 경험을 만듭니다.'
+      : 'OURBANG brings performance, conversation<br>and audiences together in real time.';
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
