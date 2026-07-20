@@ -1,0 +1,234 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>LIVE — OURBANG</title><meta name="description" content="OURBANG LIVE broadcasts and upcoming events."><style>
+:root{--bg:#07090f;--text:#f7f8fb;--muted:rgba(247,248,251,.58);--line:rgba(255,255,255,.12);--max:1380px;--header:88px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100%;color:var(--text);background:radial-gradient(900px 620px at 80% 5%,rgba(124,198,255,.14),transparent 60%),radial-gradient(760px 620px at 8% 80%,rgba(145,118,255,.12),transparent 64%),var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;overflow-x:hidden}body.menuOpen{overflow:hidden}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(calc(100% - 56px),var(--max));margin:auto}.topbar{position:sticky;top:0;z-index:100;background:rgba(7,9,15,.76);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}.nav{height:var(--header);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:34px}.brand{font-size:24px;font-weight:850;letter-spacing:.18em;line-height:1;white-space:nowrap}.links{display:flex;justify-content:center;align-items:center;gap:6px}.links a{padding:11px 13px;border-radius:13px;color:rgba(255,255,255,.63);font-size:13px;font-weight:650;letter-spacing:.055em;transition:.2s}.links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}.langs{display:flex;gap:8px}.langBtn{width:40px;height:34px;border:1px solid rgba(255,255,255,.17);border-radius:13px;background:transparent;color:rgba(255,255,255,.6);font-size:11px;font-weight:750;letter-spacing:.08em;cursor:pointer}.langBtn.active{color:#07090f;background:#f7f8fb;border-color:#f7f8fb}.menuBtn{display:none;border:0;background:transparent;color:#fff;width:42px;height:42px}.menuBtn span{display:block;width:22px;height:1px;background:currentColor;margin:6px auto}.mobilePanel{display:none}.eyebrow{font-size:12px;font-weight:760;letter-spacing:.2em;color:rgba(255,255,255,.45);text-transform:uppercase}.hero{min-height:62svh;display:flex;align-items:flex-end;border-bottom:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:min(48vw,650px);aspect-ratio:1;right:-4%;top:-12%;border:1px solid rgba(255,255,255,.1);border-radius:50%;box-shadow:0 0 160px rgba(124,198,255,.08)}.heroIn{padding:110px 0 72px;position:relative;z-index:1}.hero h1{margin:20px 0 0;font-size:clamp(72px,12vw,174px);line-height:.8;letter-spacing:-.07em}.lead{margin:28px 0 0;color:rgba(255,255,255,.65);font-size:clamp(18px,2.5vw,34px);line-height:1.25;max-width:22ch;letter-spacing:-.035em}.content{padding:28px 0 110px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{min-height:370px;border:1px solid var(--line);border-radius:30px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));position:relative;overflow:hidden;transition:.28s}.card:before{content:"";position:absolute;width:260px;height:260px;right:-95px;top:-95px;border:1px solid rgba(255,255,255,.09);border-radius:50%}.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.23)}.num{font-size:11px;font-weight:760;letter-spacing:.18em;color:rgba(255,255,255,.35)}.card h2{margin:0;font-size:clamp(34px,4vw,58px);line-height:.94;letter-spacing:-.05em}.card p{margin:16px 0 0;color:var(--muted);font-size:14px;line-height:1.7}.action{margin-top:28px;display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:800;letter-spacing:.1em}.action i{font-style:normal;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center}.card:hover .action i{background:#fff;color:#07090f}.foot{padding:0 0 34px;display:flex;justify-content:space-between;color:rgba(255,255,255,.38);font-size:12px;letter-spacing:.07em}@media(max-width:980px){.links{display:none}.langs{margin-left:auto}.menuBtn{display:block}.mobilePanel{position:fixed;inset:var(--header) 0 0;z-index:90;background:rgba(7,9,15,.98);padding:34px 28px}.mobilePanel.open{display:block}.mobilePanel a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:22px;font-weight:700}.grid{grid-template-columns:1fr}}@media(max-width:640px){:root{--header:76px}.wrap{width:min(calc(100% - 24px),var(--max))}.brand{font-size:20px}.langBtn{width:36px;height:32px}.hero{min-height:56svh}.heroIn{padding:84px 0 54px}.hero h1{font-size:clamp(64px,21vw,105px)}.content{padding:14px 0 72px}.grid{gap:14px}.card{min-height:310px;border-radius:24px;padding:26px}.foot{display:block;line-height:1.9}}
+.liveCard{grid-column:1/-1;min-height:430px;background:radial-gradient(circle at 78% 20%,rgba(255,72,96,.16),transparent 22%),linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}.status{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,.62)}.dot{width:8px;height:8px;border-radius:50%;background:#ff4860;box-shadow:0 0 20px #ff4860}.brandList{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}@media(max-width:980px){.brandList{grid-template-columns:1fr}}</style>
+<style>
+/* LIVE — language-specific typography refinement */
+.liveCard > div:last-child,
+.brandList .card > div:last-child{
+  min-width:0;
+}
+
+.liveCard h2,
+.brandList .card h2{
+  text-wrap:balance;
+}
+
+.liveCard p,
+.brandList .card p{
+  word-break:normal;
+  overflow-wrap:normal;
+}
+
+/* Hero */
+html[lang="ko"] .lead{
+  max-width:20ch;
+  font-size:clamp(21px,2.35vw,32px);
+  line-height:1.28;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+
+/* Live status and main notice */
+html[lang="ko"] .status{
+  font-size:11px;
+  letter-spacing:.08em;
+  word-break:keep-all;
+}
+
+html[lang="ko"] .liveCard h2{
+  max-width:18ch;
+  font-size:clamp(38px,4.65vw,66px);
+  line-height:1;
+  letter-spacing:-.065em;
+  word-break:keep-all;
+}
+
+html[lang="en"] .liveCard h2{
+  max-width:17ch;
+  font-size:clamp(36px,4.45vw,64px);
+  line-height:.96;
+  letter-spacing:-.055em;
+}
+
+html[lang="ko"] .liveCard p{
+  max-width:37ch;
+  font-size:14px;
+  line-height:1.75;
+  letter-spacing:-.025em;
+  word-break:keep-all;
+}
+
+html[lang="en"] .liveCard p{
+  max-width:39ch;
+  line-height:1.7;
+}
+
+/* Channel cards */
+.brandList .card h2{
+  white-space:nowrap;
+}
+
+html[lang="en"] .brandList .card h2{
+  font-size:clamp(34px,3.5vw,50px);
+  line-height:.95;
+  letter-spacing:-.055em;
+}
+
+html[lang="en"] .brandList .card:nth-child(2) h2{
+  font-size:clamp(30px,3vw,44px);
+  white-space:normal;
+}
+
+html[lang="en"] .brandList .card:nth-child(3) h2{
+  font-size:clamp(30px,3vw,44px);
+}
+
+.brandList .card p{
+  min-height:1.7em;
+  max-width:30ch;
+}
+
+html[lang="ko"] .action{
+  letter-spacing:.04em;
+}
+
+@media(max-width:980px){
+  html[lang="ko"] .liveCard h2,
+  html[lang="en"] .liveCard h2{
+    max-width:20ch;
+    font-size:clamp(38px,7vw,60px);
+  }
+
+  html[lang="en"] .brandList .card h2,
+  html[lang="en"] .brandList .card:nth-child(2) h2,
+  html[lang="en"] .brandList .card:nth-child(3) h2{
+    font-size:clamp(38px,7vw,56px);
+  }
+}
+
+@media(max-width:640px){
+  html[lang="ko"] .lead{
+    max-width:17ch;
+    font-size:clamp(22px,7vw,28px);
+  }
+
+  html[lang="ko"] .liveCard h2{
+    max-width:16ch;
+    font-size:clamp(31px,9.4vw,43px);
+  }
+
+  html[lang="en"] .liveCard h2{
+    max-width:15ch;
+    font-size:clamp(30px,9vw,42px);
+  }
+
+  html[lang="ko"] .liveCard p{
+    max-width:32ch;
+    font-size:13.5px;
+  }
+
+  html[lang="en"] .brandList .card h2,
+  html[lang="en"] .brandList .card:nth-child(2) h2,
+  html[lang="en"] .brandList .card:nth-child(3) h2{
+    font-size:clamp(34px,10.5vw,45px);
+  }
+
+  .brandList .card p{
+    min-height:auto;
+  }
+}
+</style>
+
+<style>
+/* LIVE — PULSE INSTALLATION */
+.hero{min-height:70svh;isolation:isolate;background:radial-gradient(720px 520px at 75% 20%,rgba(120,188,226,.09),transparent 68%),linear-gradient(140deg,#10131a 0%,#07090f 60%,#0f1017 100%)}
+.hero::before{display:none}.heroIn{z-index:3}
+.liveInstallation{position:absolute;width:min(50vw,700px);aspect-ratio:1;right:1%;top:-2%;z-index:1;pointer-events:none;transform:translate3d(var(--lx,0),var(--ly,0),0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.liveInstallation span,.offlineArtwork span,.channelArtwork span{position:absolute;display:block}
+.pulseRing{border:1px solid rgba(224,240,248,.14);border-radius:50%;box-shadow:0 0 48px rgba(131,195,224,.03)}
+.ringA{inset:13%;animation:pulseBreath 7.2s ease-in-out infinite}.ringB{inset:25%;opacity:.7;animation:pulseBreath 6.4s ease-in-out infinite reverse}.ringC{inset:37%;opacity:.44;animation:pulseBreath 5.8s ease-in-out infinite}
+.pulseLine{height:1px;background:linear-gradient(90deg,transparent,rgba(235,247,251,.75),rgba(120,188,219,.12),transparent);transform-origin:left center}
+.lineA{width:66%;left:17%;top:47%;transform:rotate(-14deg)}.lineB{width:52%;left:24%;top:56%;transform:rotate(12deg);opacity:.54}
+.liveCore,.offlineCore,.channelCore{width:10px;height:10px;border-radius:50%;background:#f5fbff;box-shadow:0 0 18px rgba(237,249,255,.95),0 0 74px rgba(125,195,227,.3);animation:corePulse 3.4s ease-in-out infinite}
+.liveCore{left:50%;top:50%;transform:translate(-50%,-50%)}
+.liveParticle{width:4px;height:4px;border-radius:50%;background:rgba(233,247,252,.86);box-shadow:0 0 14px rgba(145,207,234,.6);animation:particleDrift 7s ease-in-out infinite alternate}
+.p1{left:31%;top:26%}.p2{left:68%;top:29%;animation-delay:.8s}.p3{left:74%;top:58%;animation-delay:1.4s}.p4{left:36%;top:72%;animation-delay:2s}.p5{left:20%;top:52%;animation-delay:2.6s}.p6{left:57%;top:18%;animation-delay:3.1s}
+@keyframes particleDrift{to{transform:translate(10px,-8px) scale(1.3);opacity:.45}}
+@keyframes pulseBreath{0%,100%{transform:scale(.96);opacity:.68}50%{transform:scale(1.08);opacity:1}}
+@keyframes corePulse{0%,100%{transform:scale(.9)}50%{transform:scale(1.22)}}
+.liveCore{animation-name:heroCorePulse}@keyframes heroCorePulse{0%,100%{transform:translate(-50%,-50%) scale(.9)}50%{transform:translate(-50%,-50%) scale(1.22)}}
+
+.liveCard{min-height:520px;isolation:isolate;background:radial-gradient(540px 390px at 73% 26%,rgba(255,72,96,.08),transparent 68%),linear-gradient(145deg,#12141b,#080a0f 67%,#12121a)}
+.liveCard::before{display:none}.liveCard::after,.channelCard::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 36%,rgba(3,4,7,.04) 56%,rgba(3,4,7,.91) 100%)}
+.liveCard>*{position:relative;z-index:3}.offlineArtwork,.channelArtwork{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden;pointer-events:none}
+.offlineWave{border:1px solid rgba(236,241,245,.12);border-radius:50%;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.waveA{width:390px;height:390px;right:7%;top:6%}.waveB{width:285px;height:285px;right:11%;top:16%;opacity:.64}.waveC{width:180px;height:180px;right:15%;top:26%;opacity:.4}
+.offlineSweep{width:360px;height:1px;right:3%;top:44%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),rgba(255,72,96,.2),transparent);transform:rotate(-13deg);animation:sweepMove 5.8s ease-in-out infinite alternate}
+.offlineCore{right:22%;top:38%;background:#fff4f6;box-shadow:0 0 18px rgba(255,230,235,.9),0 0 58px rgba(255,72,96,.22)}
+@keyframes sweepMove{to{transform:rotate(-8deg) translateX(-14px);opacity:.65}}
+.liveCard:hover .waveA{transform:scale(1.035)}.liveCard:hover .waveB{transform:scale(.97)}.liveCard:hover .waveC{transform:scale(1.06)}
+
+.channelCard{min-height:430px;isolation:isolate;justify-content:flex-end;background:linear-gradient(145deg,#10131a,#080a0f 70%,#11131a)}
+.channelCard::before{display:none}.channelCard>*{position:relative;z-index:3}
+.channelArtwork span{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s ease}
+.tikoonzArtwork{background:radial-gradient(360px 280px at 70% 24%,rgba(100,181,218,.11),transparent 70%),linear-gradient(145deg,#10161d,#080a0f 68%,#11121a)}
+.soundBand{border:1px solid rgba(222,239,247,.15);border-left-color:transparent;border-right-color:transparent;border-radius:50%}
+.bandA{width:66%;height:27%;right:5%;top:18%;transform:rotate(-14deg)}.bandB{width:54%;height:23%;right:13%;top:31%;transform:rotate(12deg);opacity:.66}.bandC{width:42%;height:18%;right:22%;top:43%;transform:rotate(-7deg);opacity:.38}
+.tikoonzArtwork .channelCore{right:34%;top:37%}.tikoonzCard:hover .bandA{transform:rotate(-8deg) translateX(-7px)}.tikoonzCard:hover .bandB{transform:rotate(7deg) translateX(7px)}.tikoonzCard:hover .bandC{transform:rotate(-2deg) translateX(-5px)}
+
+.angelArtwork{background:radial-gradient(340px 270px at 72% 23%,rgba(160,130,205,.1),transparent 70%),linear-gradient(145deg,#13111a,#08090e 68%,#11131a)}
+.lensArc{border:1px solid rgba(229,219,247,.16);border-radius:50%}.lensA{width:44%;height:44%;right:15%;top:14%}.lensB{width:29%;height:29%;right:22%;top:22%;opacity:.58}
+.sightLine{width:62%;height:1px;right:4%;top:38%;background:linear-gradient(90deg,transparent,rgba(243,237,251,.78),rgba(153,124,202,.13),transparent);transform:rotate(-18deg)}
+.angelArtwork .channelCore{right:31%;top:34%}.angelCard:hover .lensA{transform:scale(1.04)}.angelCard:hover .lensB{transform:scale(.96)}.angelCard:hover .sightLine{transform:rotate(-11deg) translateX(-8px)}
+
+.araArtwork{background:radial-gradient(350px 280px at 70% 22%,rgba(197,213,224,.08),transparent 70%),linear-gradient(145deg,#11151a,#080a0e 68%,#11131a)}
+.stagePlane{border:1px solid rgba(225,236,242,.14);background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(156,180,195,.015))}
+.stageA{width:22%;height:58%;right:19%;top:9%;border-radius:90px 90px 8px 8px;transform:rotate(8deg)}.stageB{width:17%;height:46%;right:40%;top:20%;border-radius:76px 76px 8px 8px;transform:rotate(-9deg);opacity:.47}
+.stageBeam{width:1px;height:58%;top:10%;background:linear-gradient(180deg,transparent,rgba(236,244,248,.7),rgba(145,176,191,.08),transparent)}
+.beamA{right:34%;transform:rotate(13deg)}.beamB{right:47%;transform:rotate(-11deg);opacity:.55}.araArtwork .channelCore{right:37%;top:35%}
+.araCard:hover .stageA{transform:rotate(4deg) translate(-6px,-5px)}.araCard:hover .stageB{transform:rotate(-4deg) translate(6px,-4px)}
+
+@media(max-width:980px){.liveInstallation{width:520px;right:-110px}.channelCard{min-height:380px}}
+@media(max-width:640px){.hero{min-height:62svh}.liveInstallation{width:350px;right:-120px;top:3%;opacity:.9}.liveCard{min-height:480px}.waveA{width:300px;height:300px;right:-8%}.waveB{width:220px;height:220px;right:1%}.waveC{width:140px;height:140px;right:10%}.channelCard{min-height:340px}}
+@media(prefers-reduced-motion:reduce){.liveInstallation,.liveInstallation span,.offlineArtwork span,.channelArtwork span{animation:none!important;transition:none!important}}
+</style></head><body><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a class="active" href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero">
+<div class="liveInstallation" aria-hidden="true">
+  <span class="pulseRing ringA"></span><span class="pulseRing ringB"></span><span class="pulseRing ringC"></span>
+  <span class="pulseLine lineA"></span><span class="pulseLine lineB"></span>
+  <span class="liveCore"></span>
+  <span class="liveParticle p1"></span><span class="liveParticle p2"></span><span class="liveParticle p3"></span>
+  <span class="liveParticle p4"></span><span class="liveParticle p5"></span><span class="liveParticle p6"></span>
+</div>
+<div class="wrap heroIn"><div class="eyebrow">OURBANG</div><h1>LIVE</h1><p class="lead" data-en="Live performances, conversations and events." data-ko="공연, 대화와 이벤트를 실시간으로 만납니다.">Live performances, conversations and events.</p></div></section><section class="content"><div class="wrap"><div class="card liveCard">
+<div class="offlineArtwork" aria-hidden="true">
+  <span class="offlineWave waveA"></span><span class="offlineWave waveB"></span><span class="offlineWave waveC"></span>
+  <span class="offlineSweep"></span><span class="offlineCore"></span>
+</div>
+<div class="status"><span class="dot"></span><span data-en="NO LIVE BROADCAST NOW" data-ko="현재 진행 중인 방송 없음">NO LIVE BROADCAST NOW</span></div><div><h2 data-en="THE NEXT LIVE EXPERIENCE IS COMING." data-ko="다음 라이브 경험을 준비하고 있습니다.">THE NEXT LIVE EXPERIENCE IS COMING.</h2><p data-en="Upcoming broadcasts will appear here. Live notifications will be added with the OURBANG app." data-ko="예정된 방송이 이곳에 표시됩니다. OURBANG 앱에서는 방송 알림 기능도 제공할 예정입니다.">Upcoming broadcasts will appear here.</p></div></div><div class="brandList"><a class="card channelCard tikoonzCard" href="https://www.youtube.com/@tikoonz" target="_blank" rel="noopener"><div class="num">01</div>
+<div class="channelArtwork tikoonzArtwork" aria-hidden="true">
+  <span class="soundBand bandA"></span><span class="soundBand bandB"></span><span class="soundBand bandC"></span><span class="channelCore"></span>
+</div><div><h2>TIKOONZ</h2><p>ICE UNICORN LIVE</p><span class="action" data-en="CHANNEL" data-ko="채널">CHANNEL <i>↗</i></span></div></a><a class="card channelCard angelCard" href="https://www.youtube.com/@akenm79" target="_blank" rel="noopener"><div class="num">02</div>
+<div class="channelArtwork angelArtwork" aria-hidden="true">
+  <span class="lensArc lensA"></span><span class="lensArc lensB"></span><span class="sightLine"></span><span class="channelCore"></span>
+</div><div><h2>ANGEL'S<br>ANGLE</h2><p>MEDIA · CULTURE</p><span class="action" data-en="CHANNEL" data-ko="채널">CHANNEL <i>↗</i></span></div></a><a class="card channelCard araCard" href="https://www.youtube.com/@ampkind" target="_blank" rel="noopener"><div class="num">03</div>
+<div class="channelArtwork araArtwork" aria-hidden="true">
+  <span class="stagePlane stageA"></span><span class="stagePlane stageB"></span>
+  <span class="stageBeam beamA"></span><span class="stageBeam beamB"></span><span class="channelCore"></span>
+</div><div><h2>ARA KOREA</h2><p>ART · PERFORMANCE</p><span class="action" data-en="CHANNEL" data-ko="채널">CHANNEL <i>↗</i></span></div></a></div></div></section></main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>CAPTURE REALITY · CREATE EXPERIENCES</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const finePointer=window.matchMedia('(pointer:fine)').matches;
+const liveHero=document.querySelector('.hero');
+const liveInstallation=document.querySelector('.liveInstallation');
+if(finePointer&&liveHero&&liveInstallation){
+  liveHero.addEventListener('pointermove',e=>{
+    const r=liveHero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    liveInstallation.style.setProperty('--lx',`${(x*13).toFixed(1)}px`);
+    liveInstallation.style.setProperty('--ly',`${(y*11).toFixed(1)}px`);
+  });
+  liveHero.addEventListener('pointerleave',()=>{
+    liveInstallation.style.setProperty('--lx','0px');
+    liveInstallation.style.setProperty('--ly','0px');
+  });
+}
+document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
