@@ -406,7 +406,148 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
 @media(prefers-reduced-motion:reduce){
   .ipNexus *{animation:none!important}
 }
-</style></head><body><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero"><div class="wrap"><div class="heroPanel"><div class="heroSculpture ipNexus" aria-hidden="true">
+</style>
+<style>
+/* ===== AK ENM — GALLERY FLOW ENHANCEMENT ===== */
+.content{padding-top:34px}
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+}
+.card{
+  min-height:72svh;
+  border-radius:34px;
+}
+.cardBody{
+  width:min(560px,92%);
+  padding:52px;
+}
+.card:nth-child(even) .cardBody{margin-left:auto;text-align:right}
+.card:nth-child(even) .num{margin-left:auto}
+.card:nth-child(even) .num:before{order:2}
+.card:nth-child(even) h2:after{margin-left:auto}
+.card:nth-child(even) p{margin-left:auto}
+.card:nth-child(even) .action{justify-content:flex-end}
+.card h2{font-size:clamp(48px,7vw,94px)}
+.card p{font-size:15px;line-height:1.75}
+.officialArt .ipCore{right:24%;top:31%}
+.officialArt .orbitOne{width:48%;height:68%;right:4%;top:8%}
+.officialArt .orbitTwo{width:34%;height:50%;right:11%;top:17%}
+.artistsArt .artistFrame{width:42%;height:62%;right:8%;top:8%}
+.angelsArt .angelLens{width:18%;right:19%;top:28%}
+.angelsArt .angelWing{height:54%;top:12%}
+.angelsArt .wingLeft{right:31%}.angelsArt .wingRight{right:7%}
+
+.akNext{
+  padding:34px 0 110px;
+  background:
+    radial-gradient(760px 480px at 78% 20%,rgba(124,198,255,.10),transparent 68%),
+    radial-gradient(680px 520px at 12% 85%,rgba(145,118,255,.10),transparent 70%),
+    #08090e;
+}
+.akNextIn{
+  min-height:62svh;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:36px;
+  padding:54px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
+    radial-gradient(circle at 76% 28%,rgba(255,210,228,.13),transparent 26%);
+  box-shadow:0 30px 100px rgba(0,0,0,.28);
+}
+.akNextNum{
+  font-size:10px;
+  font-weight:760;
+  letter-spacing:.22em;
+  color:rgba(255,255,255,.42);
+  margin-bottom:20px;
+}
+.akNext h2{
+  margin:0;
+  font-size:clamp(72px,11vw,156px);
+  line-height:.78;
+  letter-spacing:-.075em;
+}
+.akNext p{
+  margin:24px 0 0;
+  color:rgba(255,255,255,.56);
+  font-size:15px;
+}
+.akNextActions{display:flex;flex-direction:column;gap:10px;min-width:220px}
+.akNextActions a{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  padding:15px 18px;
+  font-size:10px;
+  font-weight:760;
+  letter-spacing:.14em;
+  transition:.25s ease;
+}
+.akNextActions a::after{content:"↗"}
+.akNextActions a:last-child::after{content:"↑"}
+.akNextActions a:hover{background:#fff;color:#07090f}
+
+.akDock{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  z-index:70;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:999px;
+  background:rgba(7,9,15,.74);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 18px 60px rgba(0,0,0,.32);
+}
+.akDock a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 13px;
+  border-radius:999px;
+  color:rgba(255,255,255,.58);
+  transition:.2s ease;
+}
+.akDock a:hover{background:rgba(255,255,255,.08);color:#fff}
+.akDock span{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.34)}
+.akDock b{font-size:9px;letter-spacing:.12em;white-space:nowrap}
+
+@media(max-width:980px){
+  .card{min-height:64svh}
+  .cardBody{padding:40px}
+  .akNextIn{min-height:56svh;padding:40px}
+}
+@media(max-width:640px){
+  .grid{gap:18px}
+  .card{min-height:58svh;border-radius:24px}
+  .cardBody,.card:nth-child(even) .cardBody{width:100%;padding:28px;text-align:left;margin:0}
+  .card:nth-child(even) .num{margin-left:0}
+  .card:nth-child(even) .num:before{order:0}
+  .card:nth-child(even) h2:after{margin-left:0}
+  .card:nth-child(even) p{margin-left:0}
+  .card:nth-child(even) .action{justify-content:flex-start}
+  .akNext{padding-bottom:92px}
+  .akNextIn{min-height:52svh;border-radius:24px;padding:28px;display:block}
+  .akNextActions{margin-top:34px;min-width:0}
+  .akDock{left:12px;right:12px;transform:none;overflow:auto;justify-content:space-between}
+  .akDock a{padding:9px 10px}
+  .akDock b{font-size:8px}
+}
+</style>
+
+</head><body id="top"><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero"><div class="wrap"><div class="heroPanel"><div class="heroSculpture ipNexus" aria-hidden="true">
   <span class="nexusHalo haloOuter"></span>
   <span class="nexusHalo haloMiddle"></span>
   <span class="nexusHalo haloInner"></span>
@@ -428,8 +569,8 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
   <span class="ipNode nodeD"></span>
   <span class="nexusPulse pulseA"></span>
   <span class="nexusPulse pulseB"></span>
-</div><div class="heroIn"><div><div class="eyebrow">OURBANG / AK ENM</div><h1 data-outline="AK\A ENM">AK<br>ENM</h1><p class="lead" data-en="IP, artists and original creative content." data-ko="IP, 아티스트 그리고 오리지널 창작 콘텐츠.">IP, artists and original creative content.</p></div><a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a></div></div></div></section><section class="content"><div class="wrap grid">
-<a class="card official" href="https://akenm.com/" target="_blank" rel="noopener">
+</div><div class="heroIn"><div><div class="eyebrow">004 · AK ENM</div><h1 data-outline="AK\A ENM">AK<br>ENM</h1><p class="lead" data-en="IP, artists and original creative content." data-ko="IP, 아티스트 그리고 오리지널 창작 콘텐츠.">IP, artists and original creative content.</p></div><a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a></div></div></div></section><section class="content"><div class="wrap grid">
+<a class="card official" id="official" href="https://akenm.com/" target="_blank" rel="noopener">
   <div class="artwork officialArt" aria-hidden="true">
     <span class="ipCore"></span>
     <span class="ipOrbit orbitOne"></span>
@@ -439,14 +580,14 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
     <span class="ipBlock blockThree"></span>
   </div>
   <div class="cardBody">
-    <div class="num">AK ENM / 01</div>
+    <div class="num">004.01</div>
     <h2 data-en="OFFICIAL" data-ko="공식 사이트">OFFICIAL</h2>
     <p data-en="Enter the official home of AK ENM and its IP projects." data-ko="AK ENM의 공식 홈페이지와 IP 프로젝트를 만나보세요.">Enter the official home of AK ENM and its IP projects.</p>
     <span class="action" data-en="VISIT SITE" data-ko="사이트 방문">VISIT SITE <i>↗</i></span>
   </div>
 </a>
 
-<a class="card artists" href="https://akenm.com/ko/artists.html" target="_blank" rel="noopener">
+<a class="card artists" id="artists" href="https://akenm.com/ko/artists.html" target="_blank" rel="noopener">
   <div class="artwork artistsArt" aria-hidden="true">
     <span class="artistNode nodeOne"></span>
     <span class="artistNode nodeTwo"></span>
@@ -456,14 +597,14 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
     <span class="artistFrame"></span>
   </div>
   <div class="cardBody">
-    <div class="num">AK ENM / 02</div>
+    <div class="num">004.02</div>
     <h2 data-en="ARTISTS" data-ko="아티스트">ARTISTS</h2>
     <p data-en="Discover the artists and creative identities represented by AK ENM." data-ko="AK ENM과 함께하는 아티스트와 창작 정체성을 만나보세요.">Discover the artists and creative identities represented by AK ENM.</p>
     <span class="action" data-en="EXPLORE" data-ko="살펴보기">EXPLORE <i>↗</i></span>
   </div>
 </a>
 
-<a class="card angels" href="https://www.youtube.com/@akenm79" target="_blank" rel="noopener">
+<a class="card angels" id="angels-angle" href="https://www.youtube.com/@akenm79" target="_blank" rel="noopener">
   <div class="artwork angelsArt" aria-hidden="true">
     <span class="angelWing wingLeft"></span>
     <span class="angelWing wingRight"></span>
@@ -471,10 +612,30 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
     <span class="angelSignal"></span>
   </div>
   <div class="cardBody">
-    <div class="num">AK ENM / 03</div>
+    <div class="num">004.03</div>
     <h2>ANGEL'S<br>ANGLE</h2>
     <p data-en="Watch AK ENM's original media series and creative stories." data-ko="AK ENM의 오리지널 미디어 시리즈와 창작 이야기를 감상하세요.">Watch AK ENM's original media series and creative stories.</p>
     <span class="action" data-en="WATCH" data-ko="시청하기">WATCH <i>↗</i></span>
   </div>
 </a>
-</div></section></main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>CAPTURE REALITY · CREATE EXPERIENCES</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const heroPanel=document.querySelector('.heroPanel'),heroSculpture=document.querySelector('.heroSculpture');if(heroPanel&&heroSculpture&&window.matchMedia('(pointer:fine)').matches){heroPanel.addEventListener('pointermove',e=>{const r=heroPanel.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;heroSculpture.style.setProperty('--ax',`${(x*10).toFixed(1)}px`);heroSculpture.style.setProperty('--ay',`${(y*10).toFixed(1)}px`)});heroPanel.addEventListener('pointerleave',()=>{heroSculpture.style.setProperty('--ax','0px');heroSculpture.style.setProperty('--ay','0px')})}document.querySelectorAll('.card').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const art=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-7px)`;if(art)art.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(art)art.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
+</div></section>
+<section class="akNext" id="next-collection">
+  <div class="wrap akNextIn">
+    <div>
+      <div class="akNextNum">005 · NEXT COLLECTION</div>
+      <h2>ARA<br>KOREA</h2>
+      <p data-en="Continue to the next founding collection." data-ko="다음 파운딩 컬렉션으로 이동합니다.">Continue to the next founding collection.</p>
+    </div>
+    <div class="akNextActions">
+      <a href="ara-korea.html" data-en="ENTER ARA KOREA" data-ko="ARA KOREA 입장">ENTER ARA KOREA</a>
+      <a href="#top" data-en="BACK TO TOP" data-ko="맨 위로">BACK TO TOP</a>
+    </div>
+  </div>
+</section>
+<div class="akDock" aria-label="AK ENM quick navigation">
+  <a href="#official"><span>004.01</span><b data-en="OFFICIAL" data-ko="공식">OFFICIAL</b></a>
+  <a href="#artists"><span>004.02</span><b data-en="ARTISTS" data-ko="아티스트">ARTISTS</b></a>
+  <a href="#angels-angle"><span>004.03</span><b>ANGEL'S ANGLE</b></a>
+  <a href="#next-collection"><span>005</span><b data-en="NEXT" data-ko="다음">NEXT</b></a>
+</div>
+</main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>CAPTURE REALITY · CREATE EXPERIENCES</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const heroPanel=document.querySelector('.heroPanel'),heroSculpture=document.querySelector('.heroSculpture');if(heroPanel&&heroSculpture&&window.matchMedia('(pointer:fine)').matches){heroPanel.addEventListener('pointermove',e=>{const r=heroPanel.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;heroSculpture.style.setProperty('--ax',`${(x*10).toFixed(1)}px`);heroSculpture.style.setProperty('--ay',`${(y*10).toFixed(1)}px`)});heroPanel.addEventListener('pointerleave',()=>{heroSculpture.style.setProperty('--ax','0px');heroSculpture.style.setProperty('--ay','0px')})}document.querySelectorAll('.card').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const art=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-7px)`;if(art)art.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(art)art.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
