@@ -15,16 +15,271 @@
     footer{padding:0 0 34px}.foot{display:flex;align-items:center;justify-content:space-between;color:rgba(255,255,255,.38);font-size:12px;letter-spacing:.07em}
     @media(max-width:980px){.nav{grid-template-columns:auto 1fr auto;gap:18px}.links{display:none}.langs{margin-left:auto}.menuBtn{display:block}.mobilePanel{position:fixed;inset:var(--header) 0 0;z-index:90;background:rgba(7,9,15,.97);padding:34px 28px}.mobilePanel.open{display:block}.mobilePanel a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:22px;font-weight:700}.heroInner{padding:38px}.workBody{padding:36px}.work{min-height:460px}}
     @media(max-width:640px){:root{--header:76px}.wrap{width:min(calc(100% - 24px),var(--max))}.brand{font-size:20px}.langs{gap:6px}.langBtn{width:36px;height:32px}main{padding:14px 0 46px}.hero{min-height:54svh;border-radius:24px}.heroInner{padding:26px;display:block}.hero h1{font-size:clamp(54px,18vw,84px)}.heroTag{font-size:12px}.back{margin-top:24px}.ring{width:300px;right:-60px;top:7%}.section{padding-top:14px}.work{min-height:63svh;border-radius:24px}.workBody{padding:26px;display:block}.work h2{font-size:clamp(56px,20vw,88px)}.enter{width:70px;height:70px;margin-top:28px;font-size:10px}.pulse{width:190px;right:-25px;top:12%}.foot{display:block;line-height:1.9}}
-  </style>
+  
+/* ===== ICE UNICORN — ART DIRECTION V2 ===== */
+body{
+  background:
+    radial-gradient(920px 680px at 82% 6%,rgba(174,222,245,.12),transparent 62%),
+    radial-gradient(760px 620px at 6% 82%,rgba(135,115,193,.1),transparent 66%),
+    #06080d;
+}
+.hero{
+  min-height:66svh;
+  background:#090c12;
+}
+.hero::before{
+  background:
+    radial-gradient(520px 400px at 72% 24%,rgba(190,229,246,.12),transparent 66%),
+    radial-gradient(390px 310px at 54% 18%,rgba(139,126,190,.08),transparent 72%),
+    linear-gradient(138deg,#111722 0%,#080a0f 58%,#11131b 100%);
+}
+.hero::after{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.06) 40%,rgba(3,5,9,.92) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.04),transparent 62%);
+}
+.hero h1{
+  background:linear-gradient(180deg,#fff 2%,#dff5ff 48%,#a9a3d9 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 20px 70px rgba(0,0,0,.3);
+}
+.heroTag{
+  color:rgba(224,239,248,.58);
+}
+.eyebrow{
+  color:rgba(219,235,244,.46);
+}
+
+/* HERO SCULPTURE */
+.iceSculpture{
+  position:absolute;
+  width:min(46vw,590px);
+  aspect-ratio:1;
+  right:1%;
+  top:1%;
+  z-index:-2;
+  pointer-events:none;
+  filter:drop-shadow(0 42px 86px rgba(0,0,0,.38));
+  transform:translate3d(var(--ix,0),var(--iy,0),0);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.iceSculpture span{position:absolute;box-sizing:border-box}
+.iceWing{
+  border:1px solid rgba(223,243,251,.18);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.18),rgba(163,211,233,.035) 48%,rgba(125,111,184,.045));
+  box-shadow:
+    inset 0 0 42px rgba(255,255,255,.045),
+    0 0 60px rgba(156,207,231,.035);
+  backdrop-filter:blur(2px);
+}
+.wingA{
+  width:42%;height:68%;
+  left:15%;top:10%;
+  border-radius:72% 28% 62% 38% / 46% 58% 42% 54%;
+  transform:rotate(-24deg);
+}
+.wingB{
+  width:38%;height:64%;
+  right:14%;top:19%;
+  border-radius:32% 68% 38% 62% / 58% 42% 56% 44%;
+  transform:rotate(21deg);
+  opacity:.7;
+}
+.iceSpine{
+  width:14%;height:62%;
+  left:44%;top:18%;
+  border-radius:999px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.08),rgba(231,247,253,.74) 45%,rgba(128,147,179,.11));
+  box-shadow:
+    inset -10px 0 18px rgba(76,89,111,.23),
+    0 0 26px rgba(200,233,246,.09);
+  transform:rotate(8deg);
+}
+.iceHalo{
+  width:58%;height:20%;
+  left:21%;top:39%;
+  border:1px solid rgba(225,242,250,.17);
+  border-radius:50%;
+  transform:rotate(-13deg);
+  box-shadow:0 0 34px rgba(173,215,233,.045);
+}
+.iceCore{
+  width:10px;height:10px;border-radius:50%;
+  left:55%;top:46%;
+  background:#f3fbff;
+  box-shadow:
+    0 0 18px rgba(231,248,255,.95),
+    0 0 58px rgba(145,204,231,.3);
+}
+
+/* BOOMBOOMBOOM ARTWORK */
+.work{
+  min-height:610px;
+  background:#090b10;
+  border-color:rgba(255,255,255,.1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 30px 100px rgba(0,0,0,.28);
+}
+.work::before{
+  background:
+    radial-gradient(480px 380px at 72% 23%,rgba(151,208,231,.13),transparent 68%),
+    radial-gradient(360px 300px at 55% 38%,rgba(128,112,187,.09),transparent 72%),
+    linear-gradient(138deg,#111821 0%,#080a0f 58%,#12131b 100%);
+}
+.work::after{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.03) 42%,rgba(3,4,7,.94) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.02),transparent 64%);
+}
+.boomArtwork{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+  pointer-events:none;
+}
+.boomArtwork span{position:absolute;box-sizing:border-box}
+.impact{
+  border:1px solid rgba(225,241,249,.13);
+  border-radius:50%;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s ease;
+}
+.impactA{
+  width:360px;height:360px;
+  right:8%;top:7%;
+}
+.impactB{
+  width:265px;height:265px;
+  right:14%;top:15%;
+  opacity:.64;
+}
+.impactC{
+  width:170px;height:170px;
+  right:21%;top:23%;
+  opacity:.4;
+}
+.boomBlade{
+  border:1px solid rgba(230,244,250,.17);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.14),rgba(135,190,215,.025) 52%,rgba(121,109,178,.035));
+  box-shadow:inset 0 0 32px rgba(255,255,255,.035);
+  backdrop-filter:blur(1.5px);
+  transition:transform .95s cubic-bezier(.2,.8,.2,1);
+}
+.bladeA{
+  width:94px;height:360px;
+  right:25%;top:5%;
+  border-radius:999px;
+  transform:rotate(34deg);
+}
+.bladeB{
+  width:76px;height:310px;
+  right:12%;top:14%;
+  border-radius:999px;
+  transform:rotate(-28deg);
+  opacity:.62;
+}
+.boomCore{
+  width:12px;height:12px;border-radius:50%;
+  right:27%;top:35%;
+  background:#f2fbff;
+  box-shadow:
+    0 0 20px rgba(231,248,255,.95),
+    0 0 65px rgba(139,203,231,.35);
+}
+.boomDust{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(232,247,253,.86);
+  box-shadow:0 0 15px rgba(173,222,242,.7);
+}
+.dustA{right:14%;top:18%}
+.dustB{right:34%;top:15%;width:3px;height:3px}
+.dustC{right:9%;top:43%;width:4px;height:4px}
+.work:hover .impactA{transform:scale(1.035)}
+.work:hover .impactB{transform:scale(.97)}
+.work:hover .bladeA{transform:rotate(28deg) translate(-7px,-7px)}
+.work:hover .bladeB{transform:rotate(-23deg) translate(5px,-5px)}
+
+.work h2{
+  background:linear-gradient(180deg,#fff,#dceef7 58%,rgba(163,153,209,.75));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.enter{
+  width:88px;height:88px;
+  background:rgba(255,255,255,.035);
+  border-color:rgba(231,244,250,.2);
+}
+.work:hover .enter{
+  background:#f6fbff;
+  color:#07090f;
+}
+
+@media(max-width:980px){
+  .iceSculpture{width:470px;right:-80px}
+  .work{min-height:520px}
+}
+@media(max-width:640px){
+  .hero{min-height:58svh}
+  .iceSculpture{width:330px;right:-92px;top:4%}
+  .work{min-height:64svh}
+  .impactA{width:280px;height:280px;right:-8%}
+  .impactB{width:205px;height:205px;right:0}
+  .impactC{width:130px;height:130px;right:9%}
+  .bladeA{height:280px;right:20%}
+  .bladeB{height:245px;right:2%}
+}
+
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
 <div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 <main><div class="wrap">
-  <section class="hero"><span class="ring" aria-hidden="true"></span><div class="heroInner"><div><div class="eyebrow">OURBANG / TIKOONZ / ARTIST</div><h1>ICE<br>UNICORN</h1><div class="heroTag">MUSIC · VISUAL · EXPERIENCE</div></div><a class="back" href="tikoonz.html"><span>←</span><span data-en="BACK TO TIKOONZ" data-ko="TIKOONZ로 돌아가기">BACK TO TIKOONZ</span></a></div></section>
-  <section class="section"><a class="work" href="boomboomboom.html"><span class="pulse" aria-hidden="true"></span><div class="workBody"><div><div class="label" data-en="FIRST EXPERIENCE" data-ko="첫 번째 경험">FIRST EXPERIENCE</div><h2>BOOM<br>BOOM<br>BOOM</h2><p data-en="Enter the first ICE UNICORN world." data-ko="ICE UNICORN의 첫 번째 세계로 들어갑니다.">Enter the first ICE UNICORN world.</p></div><span class="enter" data-en="ENTER" data-ko="입장">ENTER</span></div></a></section>
+  <section class="hero">
+      <div class="iceSculpture" aria-hidden="true">
+        <span class="iceWing wingA"></span>
+        <span class="iceWing wingB"></span>
+        <span class="iceSpine"></span>
+        <span class="iceHalo"></span>
+        <span class="iceCore"></span>
+      </div>
+      <div class="heroInner"><div><div class="eyebrow">OURBANG / TIKOONZ / ARTIST</div><h1>ICE<br>UNICORN</h1><div class="heroTag">MUSIC · VISUAL · EXPERIENCE</div></div><a class="back" href="tikoonz.html"><span>←</span><span data-en="BACK TO TIKOONZ" data-ko="TIKOONZ로 돌아가기">BACK TO TIKOONZ</span></a></div></section>
+  <section class="section">
+      <a class="work" href="boomboomboom.html">
+        <div class="boomArtwork" aria-hidden="true">
+          <span class="impact impactA"></span>
+          <span class="impact impactB"></span>
+          <span class="impact impactC"></span>
+          <span class="boomBlade bladeA"></span>
+          <span class="boomBlade bladeB"></span>
+          <span class="boomCore"></span>
+          <span class="boomDust dustA"></span>
+          <span class="boomDust dustB"></span>
+          <span class="boomDust dustC"></span>
+        </div>
+        <div class="workBody"><div><div class="label" data-en="FIRST EXPERIENCE" data-ko="첫 번째 경험">FIRST EXPERIENCE</div><h2>BOOM<br>BOOM<br>BOOM</h2><p data-en="Enter the first ICE UNICORN world." data-ko="ICE UNICORN의 첫 번째 세계로 들어갑니다.">Enter the first ICE UNICORN world.</p></div><span class="enter" data-en="ENTER" data-ko="입장">ENTER</span></div></a></section>
 </div></main>
 <footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>TIKOONZ · ICE UNICORN · BOOMBOOMBOOM</div></div></footer>
-<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const finePointer=window.matchMedia('(pointer:fine)').matches;
+const hero=document.querySelector('.hero'),iceSculpture=document.querySelector('.iceSculpture');
+if(finePointer&&hero&&iceSculpture){
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    iceSculpture.style.setProperty('--ix',`${(x*11).toFixed(1)}px`);
+    iceSculpture.style.setProperty('--iy',`${(y*11).toFixed(1)}px`);
+  });
+  hero.addEventListener('pointerleave',()=>{
+    iceSculpture.style.setProperty('--ix','0px');
+    iceSculpture.style.setProperty('--iy','0px');
+  });
+}
+document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
