@@ -284,14 +284,41 @@
     }
   </style>
 <style>
-.refLead .line{display:block}.refLead .accent{color:#fff;text-shadow:0 0 30px rgba(124,198,255,.18)}
-.refStatement .soft{display:block;color:rgba(247,248,251,.48);font-size:.55em;margin-bottom:.18em}
-.refStatement .strong{display:block}
-</style><style>
+.visualLead{
+  max-width:19ch;
+}
+.visualLead .line{
+  display:block;
+}
+.visualLead .accent{
+  color:#fff;
+  text-shadow:0 0 32px rgba(124,198,255,.18);
+}
+.visualStatement{
+  max-width:11ch;
+}
+.visualStatement .soft{
+  display:block;
+  color:rgba(247,248,251,.48);
+  font-size:.55em;
+  line-height:1.15;
+  letter-spacing:-.035em;
+  margin-bottom:.18em;
+}
+.visualStatement .strong{
+  display:block;
+  color:#fff;
+}
+@media(max-width:640px){
+  .visualLead{max-width:15ch}
+  .visualStatement{max-width:9ch}
+}
+</style>
+<style>
 /* OURBANG child-page typography */
 .statementBox h3,
 .refStatement,
-.musicStatement{
+.visualStatement{
   font-size:clamp(34px,4.9vw,72px)!important;
   line-height:.96!important;
   letter-spacing:-.055em!important;
@@ -299,7 +326,7 @@
 }
 .statementBox h3 .soft,
 .refStatement .soft,
-.musicStatement .soft{
+.visualStatement .soft{
   display:block;
   color:rgba(247,248,251,.48);
   font-size:.58em;
@@ -309,26 +336,26 @@
 }
 .statementBox h3 .strong,
 .refStatement .strong,
-.musicStatement .strong{
+.visualStatement .strong{
   display:block;
   white-space:nowrap;
 }
 @media(max-width:900px){
   .statementBox h3,
   .refStatement,
-  .musicStatement{
+  .visualStatement{
     font-size:clamp(34px,7vw,60px)!important;
   }
   .statementBox h3 .strong,
   .refStatement .strong,
-  .musicStatement .strong{
+  .visualStatement .strong{
     white-space:normal;
   }
 }
 @media(max-width:640px){
   .statementBox h3,
   .refStatement,
-  .musicStatement{
+  .visualStatement{
     font-size:clamp(32px,10vw,48px)!important;
   }
 }
@@ -353,16 +380,17 @@
 
 /* Korean card typography */
 html[lang="ko"] .createGrid .card h2{
-  font-size:clamp(42px,4.1vw,59px);
+  font-size:clamp(39px,3.75vw,55px);
   line-height:.98;
-  letter-spacing:-.065em;
+  letter-spacing:-.07em;
   font-weight:830;
   word-break:keep-all;
 }
 
+html[lang="ko"] .createGrid .card:nth-child(1) h2,
 html[lang="ko"] .createGrid .card:nth-child(3) h2{
-  font-size:clamp(33px,3.05vw,45px);
-  letter-spacing:-.078em;
+  font-size:clamp(35px,3.25vw,48px);
+  letter-spacing:-.075em;
 }
 
 html[lang="ko"] .createGrid .card p{
@@ -376,13 +404,14 @@ html[lang="ko"] .createGrid .card p{
 
 /* English card typography */
 html[lang="en"] .createGrid .card h2{
-  font-size:clamp(40px,4vw,58px);
+  font-size:clamp(38px,3.75vw,56px);
   line-height:.95;
   letter-spacing:-.055em;
 }
 
+html[lang="en"] .createGrid .card:nth-child(1) h2,
 html[lang="en"] .createGrid .card:nth-child(3) h2{
-  font-size:clamp(35px,3.35vw,49px);
+  font-size:clamp(34px,3.25vw,48px);
 }
 
 html[lang="en"] .createGrid .card p{
@@ -391,30 +420,30 @@ html[lang="en"] .createGrid .card p{
 }
 
 /* Hero copy */
-html[lang="ko"] .refLead{
-  max-width:21ch;
-  font-size:clamp(23px,2.6vw,37px);
-  line-height:1.24;
+html[lang="ko"] .visualLead{
+  max-width:22ch;
+  font-size:clamp(23px,2.65vw,38px);
+  line-height:1.23;
   letter-spacing:-.045em;
   word-break:keep-all;
 }
 
-html[lang="en"] .refLead{
-  max-width:19ch;
+html[lang="en"] .visualLead{
+  max-width:18ch;
 }
 
 /* Statement copy */
-html[lang="ko"] .refStatement{
+html[lang="ko"] .visualStatement{
   font-size:clamp(35px,4.35vw,64px)!important;
   line-height:1!important;
   letter-spacing:-.06em!important;
 }
 
-html[lang="ko"] .refStatement .soft{
+html[lang="ko"] .visualStatement .soft{
   font-size:.62em;
 }
 
-html[lang="ko"] .refStatement .strong{
+html[lang="ko"] .visualStatement .strong{
   white-space:nowrap;
 }
 
@@ -429,36 +458,34 @@ html[lang="ko"] .statementBox p{
   }
 
   html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
   html[lang="ko"] .createGrid .card:nth-child(3) h2{
     font-size:clamp(40px,8vw,58px);
   }
 
   html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
   html[lang="en"] .createGrid .card:nth-child(3) h2{
     font-size:clamp(40px,8vw,58px);
   }
 }
 
 @media(max-width:640px){
-  html[lang="ko"] .refLead{
+  html[lang="ko"] .visualLead{
     max-width:18ch;
     font-size:clamp(23px,7.2vw,29px);
   }
 
-  html[lang="ko"] .createGrid .card h2{
-    font-size:clamp(38px,12vw,50px);
-  }
-
+  html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
   html[lang="ko"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(32px,9.8vw,42px);
+    font-size:clamp(35px,10.8vw,46px);
   }
 
-  html[lang="en"] .createGrid .card h2{
-    font-size:clamp(36px,11vw,47px);
-  }
-
+  html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
   html[lang="en"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(32px,9.8vw,42px);
+    font-size:clamp(34px,10.5vw,45px);
   }
 
   html[lang="ko"] .createGrid .card p{
@@ -467,17 +494,228 @@ html[lang="ko"] .statementBox p{
     line-height:1.75;
   }
 
-  html[lang="ko"] .refStatement{
+  html[lang="ko"] .visualStatement{
     font-size:clamp(30px,8.9vw,42px)!important;
   }
 
-  html[lang="ko"] .refStatement .strong{
+  html[lang="ko"] .visualStatement .strong{
     white-space:nowrap;
   }
 }
 </style>
+<style>
 
-</head>
+/* VISUAL CARD OBJECT SYSTEM — same master layout, distinct objects */
+.backToCreate{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:24px;
+  color:rgba(255,255,255,.46);
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.16em;
+  transition:color .25s ease,transform .25s ease;
+}
+.backToCreate:hover{color:#fff;transform:translateX(-3px)}
+
+.createGrid .card{
+  isolation:isolate;
+  padding-top:30px;
+}
+.createGrid .card::before{display:none}
+.createGrid .card > *{position:relative;z-index:2}
+
+.cardObject{
+  position:absolute!important;
+  z-index:1!important;
+  top:26px;
+  right:24px;
+  width:180px;
+  height:180px;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .65s ease,opacity .65s ease;
+}
+.cardObject span{position:absolute;display:block}
+
+/* 01 — FILM */
+.filmObject{
+  perspective:700px;
+  filter:drop-shadow(0 28px 42px rgba(100,192,255,.10));
+}
+.filmFrame{
+  width:112px;height:78px;
+  left:34px;top:48px;
+  border:1px solid rgba(200,233,255,.34);
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(124,198,255,.025));
+  box-shadow:inset 0 0 28px rgba(124,198,255,.06),0 0 22px rgba(124,198,255,.07);
+}
+.filmFrameA{transform:rotate(-8deg) translateZ(8px)}
+.filmFrameB{transform:rotate(8deg) translate(14px,-14px) scale(.86);opacity:.55}
+.filmStrip{
+  width:132px;height:20px;
+  left:24px;top:84px;
+  border-top:1px solid rgba(255,255,255,.28);
+  border-bottom:1px solid rgba(255,255,255,.18);
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.26) 0 5px,transparent 5px 13px);
+  opacity:.50;
+}
+.filmGlow{
+  width:34px;height:34px;
+  left:73px;top:70px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff 0 8%,#a9ddff 20%,rgba(124,198,255,.20) 52%,transparent 72%);
+  box-shadow:0 0 30px rgba(124,198,255,.38);
+}
+.card:nth-child(1)::after{
+  content:"";
+  position:absolute;
+  inset:auto -20% -42% 8%;
+  height:220px;
+  background:radial-gradient(ellipse,rgba(72,160,255,.12),transparent 67%);
+  z-index:0;
+}
+
+/* 02 — MOTION */
+.motionObject{
+  filter:drop-shadow(0 28px 42px rgba(155,116,255,.11));
+}
+.motionRibbon{
+  width:138px;height:44px;
+  left:20px;
+  border:1px solid rgba(218,202,255,.32);
+  border-left-color:transparent;
+  border-right-color:transparent;
+  border-radius:50%;
+  transform-origin:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);
+}
+.ribbonA{top:48px;transform:rotate(-18deg)}
+.ribbonB{top:92px;transform:rotate(16deg) scaleX(.82);opacity:.72}
+.motionCore{
+  width:54px;height:54px;
+  left:63px;top:63px;
+  border-radius:50%;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.95),rgba(200,180,255,.42) 24%,rgba(132,96,232,.18) 56%,transparent 72%);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 34px rgba(143,124,255,.24);
+}
+.card:nth-child(2)::after{
+  content:"";
+  position:absolute;
+  inset:-25% -18% auto 16%;
+  height:240px;
+  background:radial-gradient(ellipse,rgba(143,124,255,.13),transparent 70%);
+  z-index:0;
+}
+
+/* 03 — IDENTITY */
+.identityObject{
+  perspective:700px;
+  filter:drop-shadow(0 28px 42px rgba(94,213,255,.10));
+}
+.identityPrism{
+  width:78px;height:78px;
+  left:50px;top:50px;
+  border:1px solid rgba(208,240,255,.34);
+  background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(124,198,255,.03));
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  box-shadow:inset 0 0 28px rgba(124,198,255,.07);
+}
+.prismA{transform:rotateY(-18deg) rotateZ(5deg)}
+.prismB{transform:translate(18px,10px) rotateY(22deg) rotateZ(-8deg) scale(.72);opacity:.52}
+.identityRay{
+  height:1px;
+  width:118px;
+  left:30px;
+  top:89px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.78),rgba(124,198,255,.22),transparent);
+  box-shadow:0 0 10px rgba(124,198,255,.26);
+}
+.rayA{transform:rotate(12deg)}
+.rayB{transform:rotate(-14deg);opacity:.58}
+.identityCore{
+  width:18px;height:18px;
+  left:81px;top:80px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff 0 10%,#b9e7ff 28%,rgba(124,198,255,.18) 62%,transparent 74%);
+  box-shadow:0 0 26px rgba(124,198,255,.44);
+}
+.card:nth-child(3)::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 -36% 0;
+  height:250px;
+  background:radial-gradient(ellipse,rgba(76,194,255,.12),transparent 68%);
+  z-index:0;
+}
+
+/* Hover motions — same intensity and timing as MUSIC */
+.card:nth-child(1):hover .filmObject{
+  transform:translate3d(-4px,-3px,0) rotate(-2deg) scale(1.025);
+  filter:drop-shadow(0 30px 46px rgba(93,187,255,.17));
+}
+.card:nth-child(1):hover .filmFrameA{animation:filmA 2.2s ease-in-out infinite alternate}
+.card:nth-child(1):hover .filmFrameB{animation:filmB 2.5s ease-in-out infinite alternate}
+.card:nth-child(1):hover .filmGlow{animation:visualPulse 1.8s ease-in-out infinite}
+
+.card:nth-child(2):hover .motionObject{
+  transform:translateY(-3px) rotateZ(3deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(160,116,255,.18));
+}
+.card:nth-child(2):hover .ribbonA{animation:ribbonA 2.1s ease-in-out infinite alternate}
+.card:nth-child(2):hover .ribbonB{animation:ribbonB 2.4s ease-in-out infinite alternate}
+.card:nth-child(2):hover .motionCore{animation:visualPulse 1.9s ease-in-out infinite}
+
+.card:nth-child(3):hover .identityObject{
+  transform:translateY(-4px) rotateY(-4deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(80,208,255,.18));
+}
+.card:nth-child(3):hover .prismA{animation:prismA 5.8s ease-in-out infinite alternate}
+.card:nth-child(3):hover .prismB{animation:prismB 6.6s ease-in-out infinite alternate}
+.card:nth-child(3):hover .rayA{animation:rayA 2.5s ease-in-out infinite alternate}
+.card:nth-child(3):hover .rayB{animation:rayB 2.8s ease-in-out infinite alternate}
+
+@keyframes filmA{to{transform:rotate(-3deg) translate(4px,-3px) translateZ(8px)}}
+@keyframes filmB{to{transform:rotate(13deg) translate(18px,-17px) scale(.88)}}
+@keyframes ribbonA{to{transform:translateX(7px) rotate(-11deg)}}
+@keyframes ribbonB{to{transform:translateX(-8px) rotate(10deg) scaleX(.88)}}
+@keyframes prismA{to{transform:rotateY(8deg) rotateZ(-3deg)}}
+@keyframes prismB{to{transform:translate(15px,7px) rotateY(34deg) rotateZ(-2deg) scale(.74)}}
+@keyframes rayA{to{transform:rotate(18deg);opacity:.72}}
+@keyframes rayB{to{transform:rotate(-8deg);opacity:.78}}
+@keyframes visualPulse{50%{transform:scale(1.14);opacity:.82}}
+
+@media(max-width:980px){
+  .cardObject{width:160px;height:160px;right:20px;top:20px}
+  .filmFrame{left:25px;top:40px}
+  .filmStrip{left:14px;top:75px}
+  .filmGlow{left:63px;top:61px}
+  .motionCore{left:53px;top:53px}
+  .identityPrism{left:40px;top:40px}
+  .identityRay{left:20px;top:79px}
+  .identityCore{left:71px;top:70px}
+}
+@media(max-width:640px){
+  .backToCreate{margin-bottom:18px}
+  .cardObject{
+    width:132px;height:132px;
+    top:16px;right:14px;
+    opacity:.92;
+    transform:scale(.86);
+    transform-origin:top right;
+  }
+  .createGrid .card h2{padding-right:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .card,.cardObject,.cardObject span,.backToCreate{animation:none!important;transition:none!important}
+}
+
+</style></head>
 <body>
 <header class="topbar">
 <div class="wrap nav">
@@ -512,16 +750,37 @@ html[lang="ko"] .statementBox p{
 <main>
 <section class="hero">
 <div class="wrap heroContent">
-<div class="eyebrow">OURBANG / CREATE / VISUAL</div>
+<a class="backToCreate" data-en="← BACK TO CREATE" data-ko="← CREATE로 돌아가기" href="create.html">← CREATE로 돌아가기</a><div class="eyebrow">OURBANG / CREATE / VISUAL</div>
 <h1>VISUAL</h1>
-<p class="lead refLead" data-en="Shape stories through image, movement and cinematic direction." data-ko="이미지, 움직임, 시네마틱 연출을 통해 이야기를 만듭니다."><span class="line">Images shape</span><span class="line accent">emotion.</span><span class="line">Stories stay.</span></p>
+<p class="lead visualLead" data-en="Images shape emotion. Stories stay." data-ko="이미지는 감정을 만들고, 이야기는 기억에 남습니다.">
+<span class="line">Images shape</span>
+<span class="line accent">emotion.</span>
+<span class="line">Stories stay.</span>
+</p>
 </div>
 </section>
-<section class="wrap createGrid"><div class="card"><div class="num">01</div><div><h2 data-en="FILM" data-ko="필름">FILM</h2><p data-en="Music videos, artist films and cinematic branded content." data-ko="뮤직비디오, 아티스트 필름과 시네마틱 브랜드 콘텐츠를 제작합니다.">Music videos, artist films and cinematic branded content.</p></div></div><div class="card"><div class="num">02</div><div><h2 data-en="MOTION" data-ko="모션">MOTION</h2><p data-en="Motion graphics, title design and dynamic visual systems." data-ko="모션 그래픽, 타이틀 디자인과 움직이는 비주얼 시스템을 만듭니다.">Motion graphics, title design and dynamic visual systems.</p></div></div><div class="card"><div class="num">03</div><div><h2 data-en="IDENTITY" data-ko="아이덴티티">IDENTITY</h2><p data-en="Visual direction, campaigns and distinctive image language." data-ko="비주얼 디렉션, 캠페인과 차별화된 이미지 언어를 구축합니다.">Visual direction, campaigns and distinctive image language.</p></div></div></section>
+<section class="wrap createGrid"><div class="card"><div class="num">01</div><div aria-hidden="true" class="cardObject filmObject">
+<span class="filmFrame filmFrameA"></span>
+<span class="filmFrame filmFrameB"></span>
+<span class="filmStrip"></span>
+<span class="filmGlow"></span>
+</div><div><h2 data-en="FILM" data-ko="필름">FILM</h2><p data-en="Music videos, artist films and cinematic branded content." data-ko="뮤직비디오, 아티스트 필름과 시네마틱 브랜드 콘텐츠를 제작합니다.">Music videos, artist films and cinematic branded content.</p></div></div><div class="card"><div class="num">02</div><div aria-hidden="true" class="cardObject motionObject">
+<span class="motionRibbon ribbonA"></span>
+<span class="motionRibbon ribbonB"></span>
+<span class="motionCore"></span>
+</div><div><h2 data-en="MOTION" data-ko="모션">MOTION</h2><p data-en="Motion graphics, title design and dynamic visual systems." data-ko="모션 그래픽, 타이틀 디자인과 움직이는 비주얼 시스템을 만듭니다.">Motion graphics, title design and dynamic visual systems.</p></div></div><div class="card"><div class="num">03</div><div aria-hidden="true" class="cardObject identityObject">
+<span class="identityPrism prismA"></span>
+<span class="identityPrism prismB"></span>
+<span class="identityRay rayA"></span>
+<span class="identityRay rayB"></span>
+<span class="identityCore"></span>
+</div><div><h2 data-en="IDENTITY" data-ko="아이덴티티">IDENTITY</h2><p data-en="Visual direction, campaigns and distinctive image language." data-ko="비주얼 디렉션, 캠페인과 차별화된 이미지 언어를 구축합니다.">Visual direction, campaigns and distinctive image language.</p></div></div></section>
 <section class="statement">
 <div class="wrap statementBox">
-<h3 class="refStatement" data-en="IMAGE BECOMES EXPERIENCE." data-ko="하나의 이미지가, 하나의 기억이 됩니다."><span class="soft">하나의 이미지가,</span><span class="strong">하나의 기억이 됩니다.</span></h3>
-<p data-en="OURBANG transforms images and storytelling into memorable brand and artist experiences." data-ko="OURBANG은 이미지와 스토리텔링을 연결하여 브랜드와 아티스트의 세계를 오래 기억되는 경험으로 확장합니다.">OURBANG transforms images and storytelling into memorable brand and artist experiences.</p>
+<h3 class="visualStatement" data-en="IMAGE BECOMES EXPERIENCE." data-ko="하나의 이미지가, 하나의 기억이 됩니다."><span class="soft">하나의 이미지가,</span><span class="strong">하나의 기억이 됩니다.</span></h3>
+<p data-en="OURBANG transforms images and storytelling into memorable brand and artist experiences." data-ko="OURBANG은 이미지와 스토리텔링을 연결하여 브랜드와 아티스트의 세계를 오래 기억되는 경험으로 확장합니다.">
+OURBANG transforms images and storytelling into memorable brand and artist experiences.
+</p>
 </div>
 </section>
 </main>
@@ -539,7 +798,11 @@ html[lang="ko"] .statementBox p{
     const safe=lang==='ko'?'ko':'en';
     document.documentElement.lang=safe;
     translatables.forEach(el=>{
-    if(el.closest('.statementBox') && el.tagName==='H3'){
+    if(el.classList.contains('visualLead')){
+      el.innerHTML=safe==='ko'
+        ? '<span class="line">이미지는 감정을 만들고,</span><span class="line accent">이야기는 기억에 남습니다.</span>'
+        : '<span class="line">Images shape</span><span class="line accent">emotion.</span><span class="line">Stories stay.</span>';
+    }else if(el.classList.contains('visualStatement')){
       el.innerHTML=safe==='ko'
         ? '<span class="soft">하나의 이미지가,</span><span class="strong">하나의 기억이 됩니다.</span>'
         : '<span class="soft">IMAGE BECOMES</span><span class="strong">EXPERIENCE.</span>';
