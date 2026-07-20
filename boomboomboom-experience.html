@@ -4,311 +4,188 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>BOOM BOOM BOOM EXPERIENCE — OURBANG</title>
-<meta name="description" content="Enter the BOOM BOOM BOOM world by ICE UNICORN. An OURBANG immersive experience.">
 <style>
-:root{
-  --bg:#04050a;
-  --fg:#f8f9fb;
-  --muted:rgba(248,249,251,.56);
-  --line:rgba(255,255,255,.13);
-  --header:88px;
-  --max:1380px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:
-    radial-gradient(900px 650px at 78% 6%,rgba(103,188,232,.10),transparent 65%),
-    radial-gradient(760px 620px at 10% 70%,rgba(173,90,220,.08),transparent 68%),
-    var(--bg);
-  color:var(--fg);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
-  overflow-x:hidden;
-}
-body.menuOpen,body.modalOpen{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit}
-.wrap{width:min(calc(100% - 56px),var(--max));margin:auto}
+:root{--bg:#05050a;--fg:#fff;--muted:rgba(255,255,255,.68);--line:rgba(255,255,255,.22);--glass:rgba(8,8,18,.58)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+.topbar{position:fixed;z-index:40;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:linear-gradient(to bottom,rgba(0,0,0,.72),transparent);pointer-events:none}.brand,.nav{pointer-events:auto}.brand{font-size:clamp(22px,3vw,34px);font-weight:780;letter-spacing:-.05em}.nav{display:flex;gap:22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.nav a{opacity:.76}.nav a:hover{opacity:1}
+.progress{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:35;display:grid;gap:9px}.progress a{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.32);transition:.25s}.progress a.active{height:25px;border-radius:8px;background:#fff}
+.scene{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08)}.scene video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 35%,rgba(0,0,0,.84) 100%),linear-gradient(90deg,rgba(0,0,0,.25),transparent 45%)}.scene-content{position:relative;z-index:3;width:min(1320px,90vw);margin:0 auto;padding:0 0 max(10vh,76px)}.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}h1,h2{margin:.35em 0 .2em;letter-spacing:-.06em;line-height:.9}h1{font-size:clamp(58px,12vw,150px)}h2{font-size:clamp(45px,9vw,110px)}.desc{display:none}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.action{border:1px solid var(--line);background:rgba(10,10,18,.38);backdrop-filter:blur(18px);padding:13px 18px;border-radius:999px;cursor:pointer;transition:.25s}.action:hover{background:#fff;color:#05050a;transform:translateY(-2px)}
+.hotspot{position:absolute;z-index:5;left:var(--x);top:var(--y);display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer}.hotspot-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;font-size:20px;box-shadow:0 0 0 0 rgba(255,255,255,.65);animation:pulse 2s infinite}.hotspot-label{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(15px);font-size:12px;letter-spacing:.08em;text-transform:uppercase}@keyframes pulse{70%{box-shadow:0 0 0 18px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.scene-index{position:absolute;right:5vw;bottom:8vh;z-index:4;font-size:12px;letter-spacing:.18em;color:rgba(255,255,255,.55)}
+.modal{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.76);backdrop-filter:blur(20px)}.modal.open{display:flex}.card{width:min(920px,100%);display:grid;grid-template-columns:1.05fr .95fr;background:#0d0d14;border:1px solid rgba(255,255,255,.16);border-radius:28px;overflow:hidden}.card-media{min-height:520px;background-size:cover;background-position:center}.card-body{padding:44px;display:flex;flex-direction:column;justify-content:center}.close{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:rgba(0,0,0,.5);cursor:pointer}.tag{font-size:11px;letter-spacing:.2em;color:var(--muted)}.card h3{font-size:42px;letter-spacing:-.05em;margin:14px 0}.price{font-size:23px;margin:8px 0 22px}.card p{display:none}.buy{margin-top:20px;border:0;border-radius:999px;background:#fff;color:#000;padding:16px 22px;font-weight:700;cursor:pointer}.demo-note{display:none}
+@media(max-width:760px){.topbar{height:62px;padding:0 18px}.nav{gap:12px;font-size:9px}.progress{display:none}.scene-content{width:calc(100vw - 36px);padding-bottom:76px}.desc{max-width:88%}.hotspot{left:auto!important;right:18px;top:auto!important;bottom:155px}.hotspot-label{display:none}.scene-index{right:18px;bottom:28px}.card{grid-template-columns:1fr;max-height:90svh;overflow:auto}.card-media{min-height:280px}.card-body{padding:28px}.card h3{font-size:34px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hotspot-dot{animation:none}}
+</style>
 
-/* NAV */
-.topbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(4,5,10,.72);
-  border-bottom:1px solid rgba(255,255,255,.065);
+<style>
+:root{--ourHeader:88px;--ourMax:1380px}
+body.menuOpen{overflow:hidden}
+.ourWrap{width:min(calc(100% - 56px),var(--ourMax));margin:auto}
+.ourTopbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(7,9,15,.76);
+  border-bottom:1px solid rgba(255,255,255,.07);
   backdrop-filter:blur(24px) saturate(140%);
   -webkit-backdrop-filter:blur(24px) saturate(140%);
 }
-.nav{
-  height:var(--header);
+.ourNav{
+  height:var(--ourHeader);
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
   gap:34px;
 }
-.brand{
-  font-size:24px;font-weight:850;letter-spacing:.18em;line-height:1;white-space:nowrap;
+.ourBrand{
+  font-size:24px;
+  font-weight:850;
+  letter-spacing:.18em;
+  line-height:1;
+  white-space:nowrap;
 }
-.links{display:flex;justify-content:center;align-items:center;gap:6px}
-.links a{
-  padding:11px 13px;border-radius:13px;
+.ourLinks{display:flex;justify-content:center;align-items:center;gap:6px}
+.ourLinks a{
+  padding:11px 13px;
+  border-radius:13px;
   color:rgba(255,255,255,.63);
-  font-size:13px;font-weight:650;letter-spacing:.055em;
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.055em;
   transition:.2s ease;
 }
-.links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}
-.actionsTop{display:flex;align-items:center;gap:8px}
-.langs{display:flex;gap:8px}
-.langBtn{
-  width:40px;height:34px;border:1px solid rgba(255,255,255,.17);
-  border-radius:13px;background:transparent;color:rgba(255,255,255,.6);
-  font-size:11px;font-weight:750;letter-spacing:.08em;cursor:pointer;
-}
-.langBtn.active{color:#05060a;background:#f7f8fb;border-color:#f7f8fb}
-.menuBtn{display:none;border:0;background:transparent;color:#fff;width:42px;height:42px}
-.menuBtn span{display:block;width:22px;height:1px;background:currentColor;margin:6px auto}
-.mobilePanel{display:none}
-
-/* PROGRESS */
-.progress{
-  position:fixed;right:24px;top:50%;transform:translateY(-50%);
-  z-index:45;display:grid;gap:10px;
-}
-.progress a{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(255,255,255,.28);
-  transition:.35s ease;
-}
-.progress a.active{
-  height:34px;border-radius:10px;background:#fff;
-  box-shadow:0 0 20px rgba(255,255,255,.34);
-}
-
-/* EXPERIENCE */
-.scene{
-  position:relative;
-  min-height:100svh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  isolation:isolate;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.scene video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  filter:saturate(.9) contrast(1.03) brightness(.82);
-  transform:scale(1.035);
-  transition:transform 7s ease,filter 1s ease;
-}
-.scene.active video{transform:scale(1)}
-.scene::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(circle at 70% 24%,rgba(124,198,255,.10),transparent 26%),
-    linear-gradient(180deg,rgba(0,0,0,.08) 18%,rgba(0,0,0,.18) 48%,rgba(0,0,0,.88) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.30),transparent 48%);
-}
-.scene::after{
-  content:"";position:absolute;inset:-15%;z-index:2;pointer-events:none;
-  background:
-    radial-gradient(circle at 50% 45%,transparent 0 30%,rgba(4,5,10,.18) 68%,rgba(4,5,10,.55) 100%);
-  opacity:.8;
-}
-.sceneContent{
-  position:relative;z-index:4;
-  width:min(calc(100% - 56px),var(--max));
-  margin:0 auto;
-  padding:calc(var(--header) + 120px) 0 max(10vh,88px);
-}
-.sceneMeta{
-  display:flex;align-items:center;gap:15px;
-  color:rgba(255,255,255,.45);
-  font-size:10px;font-weight:760;letter-spacing:.22em;
-  text-transform:uppercase;
-  margin-bottom:24px;
-}
-.sceneMeta::before{
-  content:"";width:46px;height:1px;
-  background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.7));
-}
-.scene h1,.scene h2{
-  margin:0;
-  font-weight:850;
-  letter-spacing:-.085em;
-  line-height:.76;
-  text-shadow:0 28px 90px rgba(0,0,0,.48);
-}
-.scene h1{font-size:clamp(82px,13vw,184px)}
-.scene h2{font-size:clamp(72px,11vw,154px)}
-.scene h1 span,.scene h2 span{display:block;width:max-content;max-width:100%}
-.sceneLead{
-  margin:28px 0 0;
-  max-width:36ch;
-  color:rgba(255,255,255,.54);
-  font-size:13px;
-  line-height:1.7;
-  letter-spacing:.04em;
-}
-.sceneIndex{
-  position:absolute;z-index:5;right:5vw;bottom:7vh;
-  font-size:11px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.46);
-}
-.enterAction{
-  display:inline-flex;align-items:center;gap:14px;margin-top:34px;
-  font-size:11px;font-weight:760;letter-spacing:.18em;color:rgba(255,255,255,.72);
-}
-.enterAction::after{content:"";width:64px;height:1px;background:rgba(255,255,255,.35)}
-
-/* HOTSPOTS AS ARTWORK */
-.hotspot{
-  position:absolute;z-index:7;left:var(--x);top:var(--y);
-  width:64px;height:64px;border:0;background:transparent;cursor:pointer;
-  display:grid;place-items:center;
-}
-.hotspotCore{
-  width:10px;height:10px;border-radius:50%;
-  background:#fff;
-  box-shadow:0 0 18px rgba(255,255,255,.95),0 0 58px rgba(124,198,255,.38);
-  position:relative;
-}
-.hotspotCore::before,.hotspotCore::after{
-  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  border:1px solid rgba(255,255,255,.34);border-radius:50%;
-  animation:ringPulse 2.8s ease-out infinite;
-}
-.hotspotCore::before{width:34px;height:34px}
-.hotspotCore::after{width:56px;height:56px;animation-delay:.9s}
-.hotspotLabel{
-  position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%) translateY(8px);
-  opacity:0;pointer-events:none;
-  white-space:nowrap;
-  padding:9px 13px;border:1px solid rgba(255,255,255,.18);
-  border-radius:999px;
-  background:rgba(5,6,12,.56);
-  backdrop-filter:blur(14px);
-  font-size:9px;font-weight:760;letter-spacing:.18em;
-  transition:.3s ease;
-}
-.hotspot:hover .hotspotLabel,.hotspot:focus-visible .hotspotLabel{
-  opacity:1;transform:translateX(-50%) translateY(0);
-}
-@keyframes ringPulse{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.55)}
-  24%{opacity:.75}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(1.45)}
-}
-
-/* PANEL */
-.modal{
-  position:fixed;inset:0;z-index:120;
-  display:none;align-items:flex-end;justify-content:center;
-  padding:24px;
-  background:rgba(0,0,0,.66);
-  backdrop-filter:blur(22px);
-}
-.modal.open{display:flex}
-.panel{
-  width:min(760px,100%);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:28px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012)),
-    rgba(8,9,15,.94);
-  box-shadow:0 30px 120px rgba(0,0,0,.45);
-  padding:34px;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:28px;
-  align-items:end;
-}
-.panelMeta{
-  display:flex;gap:10px;align-items:center;
-  font-size:9px;font-weight:760;letter-spacing:.2em;color:rgba(255,255,255,.38);
-  margin-bottom:15px;
-}
-.panel h3{
-  margin:0;
-  font-size:clamp(42px,7vw,74px);
-  line-height:.84;letter-spacing:-.07em;
-}
-.panelSub{
-  margin:18px 0 0;
-  color:rgba(255,255,255,.52);
-  font-size:12px;line-height:1.65;max-width:34ch;
-}
-.panelActions{display:flex;gap:10px;align-items:center}
-.panelLink,.panelClose{
-  border:1px solid rgba(255,255,255,.19);
+.ourLinks a:hover,.ourLinks a.active{color:#fff;background:rgba(255,255,255,.07)}
+.ourActions{display:flex;align-items:center;gap:8px}
+.ourLangs{display:flex;gap:8px}
+.ourLangBtn{
+  width:40px;height:34px;
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:13px;
   background:transparent;
-  border-radius:999px;
-  min-width:54px;height:54px;
-  display:grid;place-items:center;
+  color:rgba(255,255,255,.6);
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.08em;
   cursor:pointer;
-  transition:.25s ease;
 }
-.panelLink{padding:0 20px;font-size:10px;font-weight:760;letter-spacing:.15em}
-.panelLink:hover,.panelClose:hover{background:#fff;color:#05060a}
+.ourLangBtn.active{color:#07090f;background:#f7f8fb;border-color:#f7f8fb}
+.ourMenuBtn{display:none;border:0;background:transparent;color:#fff;width:42px;height:42px}
+.ourMenuBtn span{display:block;width:22px;height:1px;background:currentColor;margin:6px auto}
+.ourMobilePanel{display:none}
 
-/* FINAL */
-.finalScene::before{
-  background:
-    radial-gradient(circle at 70% 24%,rgba(165,117,255,.13),transparent 30%),
-    linear-gradient(180deg,rgba(0,0,0,.10) 18%,rgba(0,0,0,.28) 50%,rgba(0,0,0,.92) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.32),transparent 48%);
-}
-.finalLinks{
-  display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;
-}
-.finalLinks a{
-  padding:14px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
-  background:rgba(7,8,14,.35);backdrop-filter:blur(14px);
-  font-size:10px;font-weight:760;letter-spacing:.16em;
-  transition:.25s ease;
-}
-.finalLinks a:hover{background:#fff;color:#05060a;transform:translateY(-2px)}
+/* Journey begins beneath current site navigation */
+.scene{min-height:calc(100svh - var(--ourHeader))}
+.progress{top:calc(50% + var(--ourHeader)/2)}
+.scene-content{padding-bottom:max(10vh,76px)}
+.scene h1,.scene h2{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif}
 
 @media(max-width:980px){
-  :root{--header:76px}
-  .links{display:none}
-  .langs{margin-left:auto}
-  .menuBtn{display:block}
-  .mobilePanel{
-    position:fixed;inset:var(--header) 0 0;z-index:99;
-    background:rgba(4,5,10,.98);padding:34px 28px;
+  :root{--ourHeader:76px}
+  .ourLinks{display:none}
+  .ourLangs{margin-left:auto}
+  .ourMenuBtn{display:block}
+  .ourMobilePanel{
+    position:fixed;
+    inset:var(--ourHeader) 0 0;
+    z-index:99;
+    background:rgba(7,9,15,.98);
+    padding:34px 28px;
   }
-  .mobilePanel.open{display:block}
-  .mobilePanel a{
-    display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09);
-    font-size:22px;font-weight:700;
+  .ourMobilePanel.open{display:block}
+  .ourMobilePanel a{
+    display:block;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    font-size:22px;
+    font-weight:700;
   }
-  .progress{display:none}
 }
 @media(max-width:640px){
-  .wrap,.sceneContent{width:min(calc(100% - 24px),var(--max))}
-  .brand{font-size:20px}
-  .langBtn{width:36px;height:32px}
-  .sceneContent{padding-top:calc(var(--header) + 86px);padding-bottom:74px}
-  .scene h1{font-size:clamp(66px,21vw,98px)}
-  .scene h2{font-size:clamp(58px,18vw,88px)}
-  .sceneLead{font-size:12px;max-width:24ch}
-  .sceneIndex{right:18px;bottom:24px}
-  .hotspot{left:auto!important;right:18px;top:auto!important;bottom:145px}
-  .hotspotLabel{display:none}
-  .panel{grid-template-columns:1fr;padding:26px}
-  .panelActions{justify-content:flex-start}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
+  :root{--ourHeader:76px}
+  .ourWrap{width:min(calc(100% - 24px),var(--ourMax))}
+  .ourBrand{font-size:20px}
+  .ourLangBtn{width:36px;height:32px}
+  .scene{min-height:calc(100svh - var(--ourHeader))}
 }
 </style>
+
+
+<style>
+.catalog{
+  padding:110px 0 130px;
+  background:
+    radial-gradient(760px 520px at 80% 0%,rgba(103,188,232,.10),transparent 68%),
+    radial-gradient(660px 520px at 8% 90%,rgba(173,90,220,.08),transparent 70%),
+    #06070c;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.catalogWrap{width:min(calc(100% - 56px),1380px);margin:auto}
+.catalogHead{display:grid;grid-template-columns:1fr minmax(280px,440px);gap:40px;align-items:end;margin-bottom:42px}
+.catalogEyebrow{font-size:10px;font-weight:760;letter-spacing:.22em;color:rgba(255,255,255,.42);margin-bottom:18px}
+.catalogHead h2{margin:0;font-size:clamp(54px,8vw,116px);line-height:.78;letter-spacing:-.075em}
+.catalogHead p{margin:0;color:rgba(255,255,255,.52);font-size:13px;line-height:1.7}
+.catalogTabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.catalogTab{
+  border:1px solid rgba(255,255,255,.16);background:transparent;color:rgba(255,255,255,.58);
+  border-radius:999px;padding:10px 14px;font-size:10px;font-weight:760;letter-spacing:.15em;cursor:pointer
+}
+.catalogTab.active{background:#fff;color:#06070c;border-color:#fff}
+.catalogGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.catalogItem{
+  min-height:330px;border:1px solid rgba(255,255,255,.11);border-radius:26px;overflow:hidden;
+  display:flex;flex-direction:column;background:rgba(255,255,255,.018);transition:.35s ease
+}
+.catalogItem:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.24)}
+.catalogItem.hidden{display:none}
+.catalogVisual{position:relative;min-height:205px;overflow:hidden;background:#0d1017}
+.catalogVisual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(4,5,10,.22) 68%,rgba(4,5,10,.84))}
+.catalogVisual span{position:absolute;display:block}
+.catalogVisual span::before,.catalogVisual span::after{content:"";position:absolute;display:block}
+.catalogMeta{padding:22px}
+.catalogMeta span{font-size:9px;font-weight:760;letter-spacing:.18em;color:rgba(255,255,255,.34)}
+.catalogMeta strong{display:block;margin-top:12px;font-size:22px;line-height:1;letter-spacing:-.035em}
+.catalogMeta small{display:block;margin-top:9px;color:rgba(255,255,255,.48);font-size:12px}
+.visualStage{background:radial-gradient(circle at 65% 35%,rgba(105,190,230,.24),transparent 24%),linear-gradient(145deg,#101822,#08090f)}
+.visualStage span{width:42%;height:42%;left:29%;top:21%;border:1px solid rgba(255,255,255,.18);border-radius:50%;box-shadow:0 0 60px rgba(105,190,230,.15)}
+.visualMusic{background:radial-gradient(circle at 67% 35%,rgba(171,92,220,.22),transparent 25%),linear-gradient(145deg,#18101d,#09090f)}
+.visualMusic span{width:62%;height:1px;left:19%;top:48%;background:linear-gradient(90deg,transparent,#fff,transparent);transform:rotate(-12deg)}
+.visualArtist{background:radial-gradient(circle at 65% 32%,rgba(255,210,228,.18),transparent 24%),linear-gradient(145deg,#18131b,#09090f)}
+.visualArtist span{width:35%;height:58%;right:16%;top:14%;border:1px solid rgba(255,255,255,.17);border-radius:50% 50% 42% 42%}
+.visualTupac,.visualFire,.visualDragon,.visualPortal,.visualUnicorn{background:linear-gradient(145deg,#14151c,#090a0f)}
+.visualTupac span,.visualFire span,.visualDragon span,.visualPortal span,.visualUnicorn span{width:42%;aspect-ratio:1;left:29%;top:19%;border:1px solid rgba(255,255,255,.18);transform:rotate(45deg);box-shadow:0 0 55px rgba(110,190,230,.09)}
+.visualFire{background:radial-gradient(circle at 65% 36%,rgba(255,90,70,.17),transparent 24%),linear-gradient(145deg,#1a1010,#09090f)}
+.visualDragon{background:radial-gradient(circle at 65% 36%,rgba(230,170,80,.16),transparent 24%),linear-gradient(145deg,#18130e,#09090f)}
+.visualPortal{background:radial-gradient(circle at 65% 36%,rgba(95,188,230,.19),transparent 24%),linear-gradient(145deg,#101821,#09090f)}
+.visualPortal span{border-radius:50%;transform:none}
+.visualUnicorn{background:radial-gradient(circle at 65% 36%,rgba(165,105,220,.18),transparent 24%),linear-gradient(145deg,#17101c,#09090f)}
+.visualUnicorn span{border-radius:50% 50% 42% 42%;transform:none}
+
+.quickDock{
+  position:fixed;left:50%;bottom:18px;z-index:60;transform:translateX(-50%);
+  display:flex;gap:6px;padding:7px;border:1px solid rgba(255,255,255,.13);border-radius:999px;
+  background:rgba(5,6,11,.72);backdrop-filter:blur(20px);box-shadow:0 18px 60px rgba(0,0,0,.34)
+}
+.quickDock a{display:flex;align-items:center;gap:7px;padding:10px 13px;border-radius:999px;color:rgba(255,255,255,.58)}
+.quickDock a:hover{background:rgba(255,255,255,.08);color:#fff}
+.quickDock span{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.34)}
+.quickDock b{font-size:9px;letter-spacing:.12em;white-space:nowrap}
+
+@media(max-width:1000px){.catalogGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalogHead{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .catalog{padding:76px 0 100px}.catalogWrap{width:min(calc(100% - 24px),1380px)}
+  .catalogGrid{grid-template-columns:1fr}.catalogItem{min-height:300px}.catalogVisual{min-height:190px}
+  .quickDock{left:12px;right:12px;transform:none;justify-content:space-between;overflow:auto}
+  .quickDock a{padding:9px 10px}.quickDock b{font-size:8px}
+}
+</style>
+
 </head>
 <body>
 
-<header class="topbar">
-  <div class="wrap nav">
-    <a class="brand" href="index.html">OURBANG</a>
-    <nav class="links" aria-label="Primary">
+<header class="ourTopbar">
+  <div class="ourWrap ourNav">
+    <a class="ourBrand" href="index.html">OURBANG</a>
+    <nav class="ourLinks" aria-label="Primary">
       <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
       <a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
       <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
@@ -316,17 +193,16 @@ button{font:inherit;color:inherit}
       <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
       <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
     </nav>
-    <div class="actionsTop">
-      <div class="langs" aria-label="Language">
-        <button class="langBtn" type="button" data-lang="en">EN</button>
-        <button class="langBtn" type="button" data-lang="ko">KO</button>
+    <div class="ourActions">
+      <div class="ourLangs" aria-label="Language">
+        <button class="ourLangBtn" type="button" data-lang="en">EN</button>
+        <button class="ourLangBtn" type="button" data-lang="ko">KO</button>
       </div>
-      <button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
+      <button class="ourMenuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
-
-<div class="mobilePanel" id="mobilePanel">
+<div class="ourMobilePanel" id="ourMobilePanel">
   <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
   <a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
   <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
@@ -338,202 +214,160 @@ button{font:inherit;color:inherit}
 <nav class="progress" aria-label="장소 이동"></nav>
 
 <main id="journey">
-  <section class="scene" id="gate" data-name="Festival Gate">
-    <video src="assets/videos/01-festival-gate.mp4" muted loop playsinline webkit-playsinline preload="auto" autoplay></video>
-    <div class="sceneContent">
-      <div class="sceneMeta">003.01.001 · 01</div>
-      <h1><span>BOOM</span><span>BOOM</span><span>BOOM</span></h1>
-      <p class="sceneLead" data-en="ENTER THE FIRST ROOM OF THE ICE UNICORN WORLD." data-ko="ICE UNICORN 세계의 첫 번째 방으로 들어갑니다.">ENTER THE FIRST ROOM OF THE ICE UNICORN WORLD.</p>
-      <a class="enterAction" href="#stage" data-en="ENTER" data-ko="입장">ENTER</a>
-    </div>
-    <span class="sceneIndex">01 / 05</span>
-  </section>
+<section class="scene" id="gate" data-name="Festival Gate"><video src="assets/videos/01-festival-gate.mp4" muted loop playsinline webkit-playsinline preload="auto" autoplay></video><div class="scene-content"><div class="eyebrow">01</div><h1>BOOM<br>BOOM<br>BOOM</h1><div class="actions"><a class="action" href="#stage">ENTER ↓</a></div></div><span class="scene-index">01 / 10</span></section>
 
-  <section class="scene" id="stage" data-name="Main Stage">
-    <video src="assets/videos/02-main-stage.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
-    <button class="hotspot" style="--x:62%;--y:34%" data-panel="performance" aria-label="Watch performance">
-      <span class="hotspotCore"></span><span class="hotspotLabel">WATCH</span>
-    </button>
-    <div class="sceneContent">
-      <div class="sceneMeta">003.01.001 · 02</div>
-      <h2><span>THE</span><span>STAGE</span></h2>
-      <p class="sceneLead" data-en="SOUND, LIGHT AND MOVEMENT COLLIDE IN THE FIRST PERFORMANCE ROOM." data-ko="사운드와 빛, 움직임이 첫 번째 퍼포먼스 공간에서 충돌합니다.">SOUND, LIGHT AND MOVEMENT COLLIDE IN THE FIRST PERFORMANCE ROOM.</p>
-    </div>
-    <span class="sceneIndex">02 / 05</span>
-  </section>
+<section class="scene" id="stage" data-name="Main Stage"><video src="assets/videos/02-main-stage.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:62%;--y:34%" data-panel="performance"><span class="hotspot-dot">+</span><span class="hotspot-label">WATCH ↗</span></button><div class="scene-content"><div class="eyebrow">02</div><h2>THE STAGE</h2></div><span class="scene-index">02 / 10</span></section>
 
-  <section class="scene" id="dragon" data-name="Dragon Realm">
-    <video src="assets/videos/06-dragon-cavern.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
-    <button class="hotspot" style="--x:50%;--y:43%" data-panel="dragon" aria-label="Discover dragon collection">
-      <span class="hotspotCore"></span><span class="hotspotLabel">DISCOVER</span>
-    </button>
-    <div class="sceneContent">
-      <div class="sceneMeta">003.01.001 · 03</div>
-      <h2><span>THE</span><span>DRAGON</span></h2>
-      <p class="sceneLead" data-en="A SYMBOL OF IMPACT, SCALE AND TRANSFORMATION." data-ko="충격과 확장, 변형을 상징하는 공간입니다.">A SYMBOL OF IMPACT, SCALE AND TRANSFORMATION.</p>
-    </div>
-    <span class="sceneIndex">03 / 05</span>
-  </section>
+<section class="scene" id="deck" data-name="Performance Deck"><video src="assets/videos/03-performance-deck.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:48%;--y:30%" data-panel="artist"><span class="hotspot-dot">+</span><span class="hotspot-label">ARTIST</span></button><div class="scene-content"><div class="eyebrow">03</div><h2>ICE UNICORN</h2></div><span class="scene-index">03 / 10</span></section>
 
-  <section class="scene" id="portal" data-name="Ice Portal">
-    <video src="assets/videos/08-ice-portal.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
-    <button class="hotspot" style="--x:51%;--y:44%" data-panel="portal" aria-label="Discover ice portal collection">
-      <span class="hotspotCore"></span><span class="hotspotLabel">COLLECT</span>
-    </button>
-    <div class="sceneContent">
-      <div class="sceneMeta">003.01.001 · 04</div>
-      <h2><span>ICE</span><span>PORTAL</span></h2>
-      <p class="sceneLead" data-en="THE EXPERIENCE SHIFTS FROM PERFORMANCE TO DISCOVERY." data-ko="퍼포먼스의 감각이 발견과 수집의 경험으로 전환됩니다.">THE EXPERIENCE SHIFTS FROM PERFORMANCE TO DISCOVERY.</p>
-    </div>
-    <span class="sceneIndex">04 / 05</span>
-  </section>
+<section class="scene" id="look" data-name="Crystal Look"><video src="assets/videos/04-crystal-look.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:54%;--y:52%" data-panel="necklace"><span class="hotspot-dot">+</span><span class="hotspot-label">SHOP</span></button><div class="scene-content"><div class="eyebrow">04</div><h2>SHOP<br>THE LOOK</h2></div><span class="scene-index">04 / 10</span></section>
 
-  <section class="scene finalScene" id="next" data-name="Next Collection">
-    <video src="assets/videos/10-vip-balcony.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video>
-    <div class="sceneContent">
-      <div class="sceneMeta">003.01.001 · 05</div>
-      <h2><span>NEXT</span><span>COLLECTION</span></h2>
-      <p class="sceneLead" data-en="RETURN TO ICE UNICORN OR CONTINUE THROUGH OURBANG." data-ko="ICE UNICORN으로 돌아가거나 OURBANG의 다음 컬렉션으로 이동합니다.">RETURN TO ICE UNICORN OR CONTINUE THROUGH OURBANG.</p>
-      <div class="finalLinks">
-        <a href="ice-unicorn.html" data-en="ICE UNICORN" data-ko="ICE UNICORN">ICE UNICORN</a>
-        <a href="explore.html" data-en="ALL COLLECTIONS" data-ko="전체 컬렉션">ALL COLLECTIONS</a>
-        <a href="#gate" data-en="REPLAY" data-ko="다시 보기">REPLAY</a>
-      </div>
-    </div>
-    <span class="sceneIndex">05 / 05</span>
-  </section>
+<section class="scene" id="fire" data-name="Fire Realm"><video src="assets/videos/05-fire-realm.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:70%;--y:43%" data-panel="collection"><span class="hotspot-dot">+</span><span class="hotspot-label">SHOP</span></button><div class="scene-content"><div class="eyebrow">05</div><h2>FIRE<br>REALM</h2></div><span class="scene-index">05 / 10</span></section>
+
+<section class="scene" id="dragon" data-name="Dragon Cavern"><video src="assets/videos/06-dragon-cavern.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:50%;--y:43%" data-panel="story"><span class="hotspot-dot">+</span><span class="hotspot-label">SHOP</span></button><div class="scene-content"><div class="eyebrow">06</div><h2>THE<br>DRAGON</h2></div><span class="scene-index">06 / 10</span></section>
+
+<section class="scene" id="temple" data-name="DJ Temple"><video src="assets/videos/07-dj-temple.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:59%;--y:40%" data-panel="listen"><span class="hotspot-dot">+</span><span class="hotspot-label">LISTEN ↗</span></button><div class="scene-content"><div class="eyebrow">07</div><h2>LISTEN<br>NOW</h2></div><span class="scene-index">07 / 10</span></section>
+
+<section class="scene" id="portal" data-name="Ice Portal"><video src="assets/videos/08-ice-portal.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:51%;--y:44%" data-panel="portal"><span class="hotspot-dot">+</span><span class="hotspot-label">SHOP</span></button><div class="scene-content"><div class="eyebrow">08</div><h2>ICE<br>PORTAL</h2></div><span class="scene-index">08 / 10</span></section>
+
+<section class="scene" id="unicorn" data-name="Unicorn Field"><video src="assets/videos/09-unicorn-field.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:68%;--y:51%" data-panel="unicorn"><span class="hotspot-dot">+</span><span class="hotspot-label">SHOP</span></button><div class="scene-content"><div class="eyebrow">09</div><h2>THE ICE<br>UNICORN</h2></div><span class="scene-index">09 / 10</span></section>
+
+<section class="scene" id="vip" data-name="VIP Balcony"><video src="assets/videos/10-vip-balcony.mp4" muted loop playsinline webkit-playsinline preload="metadata"></video><button class="hotspot" style="--x:74%;--y:33%" data-panel="vip"><span class="hotspot-dot">+</span><span class="hotspot-label">JOIN</span></button><div class="scene-content"><div class="eyebrow">10</div><h2>YOUR<br>ROOM</h2><div class="actions"><a class="action" href="#gate">REPLAY ↑</a></div></div><span class="scene-index">10 / 10</span></section>
 </main>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
-  <article class="panel">
-    <div>
-      <div class="panelMeta" id="panelMeta">OURBANG DISCOVERY</div>
-      <h3 id="panelTitle"></h3>
-      <p class="panelSub" id="panelSub"></p>
+
+<section class="catalog" id="catalog">
+  <div class="catalogWrap">
+    <div class="catalogHead">
+      <div>
+        <div class="catalogEyebrow">003.01.001 · DISCOVER & COLLECT</div>
+        <h2 data-en="VIDEOS & OBJECTS" data-ko="영상과 오브젝트">VIDEOS & OBJECTS</h2>
+      </div>
+      <p data-en="All videos and collectible objects from the experience, gathered in one place." data-ko="경험 속 모든 영상과 제품을 한곳에서 빠르게 찾을 수 있습니다.">All videos and collectible objects from the experience, gathered in one place.</p>
     </div>
-    <div class="panelActions">
-      <a class="panelLink" id="panelLink" href="#" target="_blank" rel="noopener">VIEW ↗</a>
-      <button class="panelClose" id="closeModal" type="button" aria-label="닫기">×</button>
+
+    <div class="catalogTabs" role="tablist" aria-label="Catalog filter">
+      <button class="catalogTab active" type="button" data-filter="all" data-en="ALL" data-ko="전체">ALL</button>
+      <button class="catalogTab" type="button" data-filter="video" data-en="VIDEOS" data-ko="영상">VIDEOS</button>
+      <button class="catalogTab" type="button" data-filter="product" data-en="PRODUCTS" data-ko="제품">PRODUCTS</button>
     </div>
-  </article>
+
+    <div class="catalogGrid">
+      <a class="catalogItem" data-kind="video" href="https://www.youtube.com/watch?v=1UTqafvnSNg" target="_blank" rel="noopener">
+        <div class="catalogVisual visualStage"><span></span></div>
+        <div class="catalogMeta"><span>VIDEO · 01</span><strong>BOOM BOOM BOOM</strong><small data-en="Official performance" data-ko="공식 퍼포먼스">Official performance</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="video" href="https://www.youtube.com/channel/UCjucM3L1V_tbBGmuLzN21kg" target="_blank" rel="noopener">
+        <div class="catalogVisual visualMusic"><span></span></div>
+        <div class="catalogMeta"><span>VIDEO · 02</span><strong>ICE UNICORN</strong><small data-en="Music channel" data-ko="뮤직 채널">Music channel</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="video" href="https://www.tikoonz.com/artist.html" target="_blank" rel="noopener">
+        <div class="catalogVisual visualArtist"><span></span></div>
+        <div class="catalogMeta"><span>ARTIST · 03</span><strong>ARTIST PROFILE</strong><small data-en="Official artist page" data-ko="공식 아티스트 페이지">Official artist page</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="product" href="https://tikoonz.shop/product/tikoonz-iced-out-silver-925-tupac-shakur-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84-925-%ED%88%AC%ED%8C%8D-/70/category/28/display/1/" target="_blank" rel="noopener">
+        <div class="catalogVisual visualTupac"><span></span></div>
+        <div class="catalogMeta"><span>OBJECT · 01</span><strong>TUPAC SHAKUR</strong><small data-en="Pendant" data-ko="펜던트">Pendant</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="product" href="https://tikoonz.shop/product/tikoonz-iced-out-silver-925-ice-logo-color-necklace-set-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84/90/category/28/display/1/" target="_blank" rel="noopener">
+        <div class="catalogVisual visualFire"><span></span></div>
+        <div class="catalogMeta"><span>OBJECT · 02</span><strong>FIRE REALM</strong><small data-en="Ice logo necklace set" data-ko="아이스 로고 목걸이 세트">Ice logo necklace set</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="product" href="https://tikoonz.shop/product/tikoonz-iced-out-gd-dragon-88-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4%EC%95%84%EC%9B%83-%EC%A7%80%EB%94%94-%EB%93%9C%EB%9E%98%EA%B3%A4-88-%ED%8E%9C%EB%8D%98%ED%8A%B8/668/category/28/display/1/" target="_blank" rel="noopener">
+        <div class="catalogVisual visualDragon"><span></span></div>
+        <div class="catalogMeta"><span>OBJECT · 03</span><strong>THE DRAGON</strong><small data-en="Dragon 88 pendant" data-ko="드래곤 88 펜던트">Dragon 88 pendant</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="product" href="https://tikoonz.shop/product/tikoonz-iced-out-silver-925-super-son-goku-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84-925-/961/category/28/display/1/" target="_blank" rel="noopener">
+        <div class="catalogVisual visualPortal"><span></span></div>
+        <div class="catalogMeta"><span>OBJECT · 04</span><strong>ICE PORTAL</strong><small data-en="Silver 925 pendant" data-ko="실버 925 펜던트">Silver 925 pendant</small></div>
+      </a>
+
+      <a class="catalogItem" data-kind="product" href="https://tikoonz.shop/product/tikoonz-ice-logo-neon-mesh-cap-glow-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EB%A1%9C%EA%B3%A0-%EB%84%A4%EC%98%A8-%EB%A9%94%EC%89%AC%EC%BA%A1-%EC%95%BC%EA%B4%91-%EB%AA%A8%EC%9E%90/230/category/45/display/1/" target="_blank" rel="noopener">
+        <div class="catalogVisual visualUnicorn"><span></span></div>
+        <div class="catalogMeta"><span>OBJECT · 05</span><strong>THE ICE UNICORN</strong><small data-en="Neon mesh cap" data-ko="네온 메시 캡">Neon mesh cap</small></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="quickDock" aria-label="Quick access">
+  <a href="#gate"><span>01</span><b data-en="START" data-ko="시작">START</b></a>
+  <a href="#stage"><span>02</span><b data-en="VIDEOS" data-ko="영상">VIDEOS</b></a>
+  <a href="#look"><span>03</span><b data-en="SHOP" data-ko="제품">SHOP</b></a>
+  <a href="#catalog"><span>04</span><b data-en="ALL ITEMS" data-ko="전체 보기">ALL ITEMS</b></a>
 </div>
 
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button" aria-label="닫기">×</button><article class="card"><div class="card-media" id="cardMedia"></div><div class="card-body"><div class="tag" id="cardTag">OURBANG DISCOVERY</div><h3 id="modalTitle"></h3><div class="price" id="cardPrice"></div><button class="buy" id="buyBtn" type="button"></button></div></article></div>
 <script>
-const panelData={
-  performance:{
-    meta:'WATCH · PERFORMANCE',
-    title:'BOOM BOOM BOOM',
-    subEn:'Watch the official performance and visual world of ICE UNICORN.',
-    subKo:'ICE UNICORN의 공식 퍼포먼스와 비주얼 세계를 감상합니다.',
-    url:'https://www.youtube.com/watch?v=1UTqafvnSNg'
-  },
-  dragon:{
-    meta:'DISCOVER · COLLECTION',
-    title:'THE DRAGON',
-    subEn:'Discover the dragon-inspired object within the TIKOONZ collection.',
-    subKo:'TIKOONZ 컬렉션의 드래곤 모티프 오브젝트를 발견합니다.',
-    url:'https://tikoonz.shop/product/tikoonz-iced-out-gd-dragon-88-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4%EC%95%84%EC%9B%83-%EC%A7%80%EB%94%94-%EB%93%9C%EB%9E%98%EA%B3%A4-88-%ED%8E%9C%EB%8D%98%ED%8A%B8/668/category/28/display/1/'
-  },
-  portal:{
-    meta:'COLLECT · OBJECT',
-    title:'ICE PORTAL',
-    subEn:'Continue from immersive discovery to a collectible object.',
-    subKo:'몰입형 발견의 경험을 수집 가능한 오브젝트로 이어갑니다.',
-    url:'https://tikoonz.shop/product/tikoonz-iced-out-silver-925-super-son-goku-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84-925-/961/category/28/display/1/'
-  }
+const YOUTUBE_CHANNEL='https://www.youtube.com/channel/UCjucM3L1V_tbBGmuLzN21kg';
+const YOUTUBE_WATCH='https://www.youtube.com/watch?v=1UTqafvnSNg';
+const ARTIST_URL='https://www.tikoonz.com/artist.html';
+const SHOP_TUPAC='https://tikoonz.shop/product/tikoonz-iced-out-silver-925-tupac-shakur-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84-925-%ED%88%AC%ED%8C%8D-/70/category/28/display/1/';
+const SHOP_FIRE='https://tikoonz.shop/product/tikoonz-iced-out-silver-925-ice-logo-color-necklace-set-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84/90/category/28/display/1/';
+const SHOP_DRAGON='https://tikoonz.shop/product/tikoonz-iced-out-gd-dragon-88-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4%EC%95%84%EC%9B%83-%EC%A7%80%EB%94%94-%EB%93%9C%EB%9E%98%EA%B3%A4-88-%ED%8E%9C%EB%8D%98%ED%8A%B8/668/category/28/display/1/';
+const SHOP_PORTAL='https://tikoonz.shop/product/tikoonz-iced-out-silver-925-super-son-goku-pendant-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%95%84%EC%9B%83-%EC%8B%A4%EB%B2%84-925-/961/category/28/display/1/';
+const SHOP_UNICORN='https://tikoonz.shop/product/tikoonz-ice-logo-neon-mesh-cap-glow-%ED%83%80%EC%9D%B4%EC%BF%A4%EC%A6%88-%EC%95%84%EC%9D%B4%EC%8A%A4-%EB%A1%9C%EA%B3%A0-%EB%84%A4%EC%98%A8-%EB%A9%94%EC%89%AC%EC%BA%A1-%EC%95%BC%EA%B4%91-%EB%AA%A8%EC%9E%90/230/category/45/display/1/';
+const data={
+ performance:{tag:'WATCH',title:'BOOMBOOMBOOM',price:'',button:'WATCH ↗',image:'assets/product-necklace.jpg',url:YOUTUBE_WATCH},
+ artist:{tag:'ARTIST',title:'ICE UNICORN',price:'',button:'ARTIST ↗',image:'assets/product-necklace.jpg',url:ARTIST_URL},
+ necklace:{tag:'SHOP',title:'TUPAC SHAKUR',price:'',button:'SHOP ↗',image:'assets/product-necklace.jpg',url:SHOP_TUPAC},
+ collection:{tag:'SHOP',title:'FIRE REALM',price:'',button:'SHOP ↗',image:'assets/product-necklace.jpg',url:SHOP_FIRE},
+ story:{tag:'SHOP',title:'THE DRAGON',price:'',button:'SHOP ↗',image:'assets/product-necklace.jpg',url:SHOP_DRAGON},
+ listen:{tag:'MUSIC',title:'BOOMBOOMBOOM',price:'',button:'MUSIC ↗',image:'assets/product-necklace.jpg',url:YOUTUBE_CHANNEL},
+ portal:{tag:'SHOP',title:'ICE PORTAL',price:'',button:'SHOP ↗',image:'assets/product-necklace.jpg',url:SHOP_PORTAL},
+ unicorn:{tag:'SHOP',title:'THE ICE UNICORN',price:'',button:'SHOP ↗',image:'assets/product-necklace.jpg',url:SHOP_UNICORN},
+ vip:{tag:'VIP',title:'YOUR ROOM',price:'',button:'JOIN',image:'assets/product-necklace.jpg'}
 };
+const modal=document.getElementById('modal'),media=document.getElementById('cardMedia');
+document.querySelectorAll('[data-panel]').forEach(btn=>btn.addEventListener('click',()=>{const d=data[btn.dataset.panel];document.getElementById('cardTag').textContent=d.tag;document.getElementById('modalTitle').textContent=d.title;document.getElementById('cardPrice').textContent=d.price;const buy=document.getElementById('buyBtn');buy.textContent=d.button;buy.dataset.url=d.url||'';media.style.backgroundImage=`linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.22)),url('${d.image}')`;modal.classList.add('open');}));
+const close=()=>modal.classList.remove('open');document.getElementById('closeModal').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});document.getElementById('buyBtn').addEventListener('click',e=>{const url=e.currentTarget.dataset.url;if(url){window.open(url,'_blank','noopener')}else{e.currentTarget.textContent='COMING SOON'}});
+const scenes=[...document.querySelectorAll('.scene')],progress=document.querySelector('.progress');scenes.forEach((s,i)=>{const a=document.createElement('a');a.href='#'+s.id;a.title=s.dataset.name;a.setAttribute('aria-label',s.dataset.name);progress.appendChild(a)});const dots=[...progress.children];
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{const v=e.target.querySelector('video'),i=scenes.indexOf(e.target);if(e.isIntersecting){if(v.readyState<2)v.load();v.play().catch(()=>{});dots.forEach((d,n)=>d.classList.toggle('active',n===i))}else{v.pause()}}),{threshold:.45});scenes.forEach(s=>io.observe(s));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){const active=scenes.find(s=>{const r=s.getBoundingClientRect();return r.top<innerHeight*.55&&r.bottom>innerHeight*.45});active?.querySelector('video')?.play().catch(()=>{})}});
 
-const langButtons=[...document.querySelectorAll('.langBtn')];
-const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
-let currentLang='ko';
-
-function setLanguage(lang){
-  currentLang=lang==='ko'?'ko':'en';
-  document.documentElement.lang=currentLang;
-  translatables.forEach(el=>el.textContent=el.dataset[currentLang]);
-  langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===currentLang));
-  localStorage.setItem('ourbang-language',currentLang);
+const ourLangButtons=[...document.querySelectorAll('.ourLangBtn')];
+const ourTranslatables=[...document.querySelectorAll('[data-en][data-ko]')];
+function setOurLanguage(lang){
+  const safe=lang==='ko'?'ko':'en';
+  document.documentElement.lang=safe;
+  ourTranslatables.forEach(el=>el.textContent=el.dataset[safe]);
+  ourLangButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
+  localStorage.setItem('ourbang-language',safe);
 }
-langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-setLanguage(localStorage.getItem('ourbang-language')||'ko');
+ourLangButtons.forEach(btn=>btn.addEventListener('click',()=>setOurLanguage(btn.dataset.lang)));
+setOurLanguage(localStorage.getItem('ourbang-language')||'ko');
 
-const menuBtn=document.querySelector('.menuBtn');
-const mobilePanel=document.getElementById('mobilePanel');
-menuBtn.addEventListener('click',()=>{
-  const open=!mobilePanel.classList.contains('open');
-  mobilePanel.classList.toggle('open',open);
+const ourMenuBtn=document.querySelector('.ourMenuBtn');
+const ourMobilePanel=document.getElementById('ourMobilePanel');
+ourMenuBtn.addEventListener('click',()=>{
+  const open=!ourMobilePanel.classList.contains('open');
+  ourMobilePanel.classList.toggle('open',open);
   document.body.classList.toggle('menuOpen',open);
-  menuBtn.setAttribute('aria-expanded',String(open));
+  ourMenuBtn.setAttribute('aria-expanded',String(open));
 });
-mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  mobilePanel.classList.remove('open');
+ourMobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  ourMobilePanel.classList.remove('open');
   document.body.classList.remove('menuOpen');
-  menuBtn.setAttribute('aria-expanded','false');
+  ourMenuBtn.setAttribute('aria-expanded','false');
 }));
 
-const modal=document.getElementById('modal');
-const panelMeta=document.getElementById('panelMeta');
-const panelTitle=document.getElementById('panelTitle');
-const panelSub=document.getElementById('panelSub');
-const panelLink=document.getElementById('panelLink');
 
-document.querySelectorAll('[data-panel]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const data=panelData[btn.dataset.panel];
-    panelMeta.textContent=data.meta;
-    panelTitle.textContent=data.title;
-    panelSub.textContent=currentLang==='ko'?data.subKo:data.subEn;
-    panelLink.href=data.url;
-    modal.classList.add('open');
-    document.body.classList.add('modalOpen');
+const catalogTabs=[...document.querySelectorAll('.catalogTab')];
+const catalogItems=[...document.querySelectorAll('.catalogItem')];
+catalogTabs.forEach(tab=>tab.addEventListener('click',()=>{
+  const filter=tab.dataset.filter;
+  catalogTabs.forEach(t=>t.classList.toggle('active',t===tab));
+  catalogItems.forEach(item=>{
+    item.classList.toggle('hidden',filter!=='all'&&item.dataset.kind!==filter);
   });
-});
-function closeModal(){
-  modal.classList.remove('open');
-  document.body.classList.remove('modalOpen');
-}
-document.getElementById('closeModal').addEventListener('click',closeModal);
-modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+}));
 
-const scenes=[...document.querySelectorAll('.scene')];
-const progress=document.querySelector('.progress');
-scenes.forEach(scene=>{
-  const a=document.createElement('a');
-  a.href='#'+scene.id;
-  a.title=scene.dataset.name;
-  a.setAttribute('aria-label',scene.dataset.name);
-  progress.appendChild(a);
-});
-const dots=[...progress.children];
-
-const sceneObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    const scene=entry.target;
-    const video=scene.querySelector('video');
-    const index=scenes.indexOf(scene);
-    if(entry.isIntersecting){
-      scene.classList.add('active');
-      if(video.readyState<2)video.load();
-      video.play().catch(()=>{});
-      dots.forEach((dot,i)=>dot.classList.toggle('active',i===index));
-    }else{
-      scene.classList.remove('active');
-      video.pause();
-    }
-  });
-},{threshold:.48});
-scenes.forEach(scene=>sceneObserver.observe(scene));
-
-document.addEventListener('visibilitychange',()=>{
-  if(!document.hidden){
-    const active=scenes.find(scene=>{
-      const r=scene.getBoundingClientRect();
-      return r.top<innerHeight*.55&&r.bottom>innerHeight*.45;
-    });
-    active?.querySelector('video')?.play().catch(()=>{});
-  }
-});
 </script>
 </body>
 </html>
