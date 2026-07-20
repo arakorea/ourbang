@@ -194,29 +194,131 @@
 
     .preview{padding:16px 0 110px}
     .previewCard{
-      min-height:420px;
-      border:1px solid var(--line);
+      min-height:480px;
+      border:1px solid rgba(255,255,255,.13);
       border-radius:34px;
-      padding:42px;
+      padding:46px;
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:28px;
       background:
-        radial-gradient(circle at 72% 26%,rgba(124,198,255,.13),transparent 22%),
-        radial-gradient(circle at 30% 72%,rgba(143,124,255,.1),transparent 24%),
-        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+        radial-gradient(circle at 78% 24%,rgba(124,198,255,.14),transparent 24%),
+        radial-gradient(circle at 24% 80%,rgba(143,124,255,.11),transparent 27%),
+        linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.014));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 30px 90px rgba(0,0,0,.28);
       overflow:hidden;
       position:relative;
+      isolation:isolate;
+      transform:translateZ(0);
+      transition:transform .55s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .55s ease;
     }
     .previewCard::before{
       content:"";
       position:absolute;
-      width:340px;height:340px;
-      right:-70px;top:-100px;
-      border:1px solid rgba(255,255,255,.09);
-      border-radius:50%;
+      inset:0;
+      background:linear-gradient(115deg,transparent 24%,rgba(255,255,255,.065) 48%,transparent 70%);
+      transform:translateX(-115%);
+      transition:transform 1.05s cubic-bezier(.2,.7,.2,1);
+      z-index:-1;
     }
+    .previewCard::after{
+      content:"";
+      position:absolute;
+      inset:1px;
+      border-radius:33px;
+      background:
+        radial-gradient(circle at 74% 28%,rgba(255,255,255,.045),transparent 18%),
+        linear-gradient(180deg,rgba(255,255,255,.02),transparent 42%);
+      pointer-events:none;
+      z-index:-2;
+    }
+    .previewCard:hover{
+      transform:translateY(-7px);
+      border-color:rgba(255,255,255,.22);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.1),
+        0 40px 110px rgba(0,0,0,.34),
+        0 0 70px rgba(124,198,255,.06);
+    }
+    .previewCard:hover::before{transform:translateX(115%)}
+    .homeObject{
+      position:absolute;
+      width:min(42vw,500px);
+      aspect-ratio:1;
+      right:7%;
+      top:50%;
+      transform:translateY(-51%);
+      pointer-events:none;
+      z-index:-1;
+      filter:drop-shadow(0 34px 58px rgba(0,0,0,.36));
+    }
+    .homeObject .outer,
+    .homeObject .middle,
+    .homeObject .core{
+      position:absolute;
+      inset:50% auto auto 50%;
+      border-radius:50%;
+      transform:translate(-50%,-50%);
+    }
+    .homeObject .outer{
+      width:88%;
+      height:88%;
+      border:1px solid rgba(196,225,255,.28);
+      box-shadow:
+        inset 0 0 44px rgba(124,198,255,.06),
+        0 0 52px rgba(124,198,255,.08);
+      animation:homeRotate 18s linear infinite;
+    }
+    .homeObject .outer::before,
+    .homeObject .outer::after{
+      content:"";
+      position:absolute;
+      inset:10%;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.1);
+      transform:rotate(58deg);
+    }
+    .homeObject .outer::after{inset:22%;transform:rotate(-34deg)}
+    .homeObject .middle{
+      width:58%;
+      height:58%;
+      border:1px solid rgba(176,161,255,.32);
+      background:
+        radial-gradient(circle at 36% 30%,rgba(255,255,255,.14),transparent 14%),
+        radial-gradient(circle at 52% 54%,rgba(124,198,255,.12),transparent 54%);
+      box-shadow:
+        inset -24px -28px 55px rgba(56,40,118,.2),
+        inset 18px 20px 46px rgba(155,222,255,.08),
+        0 0 76px rgba(143,124,255,.12);
+      backdrop-filter:blur(5px);
+      animation:homeFloat 6.5s ease-in-out infinite;
+    }
+    .homeObject .core{
+      width:22%;
+      height:22%;
+      background:
+        radial-gradient(circle at 34% 28%,rgba(255,255,255,.95),rgba(176,222,255,.54) 18%,rgba(120,111,255,.24) 45%,rgba(9,13,23,.16) 72%);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 0 38px rgba(124,198,255,.24),0 0 84px rgba(143,124,255,.15);
+      animation:homePulse 4.8s ease-in-out infinite;
+    }
+    .homeObject .beam{
+      position:absolute;
+      width:72%;
+      height:1px;
+      left:14%;
+      top:50%;
+      background:linear-gradient(90deg,transparent,rgba(194,229,255,.5),transparent);
+      box-shadow:0 0 18px rgba(124,198,255,.34);
+      animation:beamSweep 7s ease-in-out infinite;
+    }
+    @keyframes homeRotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    @keyframes homeFloat{50%{transform:translate(-50%,-53%) scale(1.025)}}
+    @keyframes homePulse{50%{transform:translate(-50%,-50%) scale(1.08);filter:brightness(1.18)}}
+    @keyframes beamSweep{0%,100%{transform:rotate(-8deg);opacity:.35}50%{transform:rotate(8deg);opacity:.9}}
     .previewMeta{
       color:rgba(255,255,255,.4);
       font-size:11px;
@@ -259,6 +361,10 @@
       letter-spacing:.07em;
     }
 
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+      .previewCard{transition:none}
+    }
     @media(max-width:980px){
       .links{display:none}
       .langs{margin-left:auto}
@@ -294,10 +400,19 @@
       .primary,.secondary{width:100%}
       .preview{padding:0 0 72px}
       .previewCard{
-        min-height:390px;
+        min-height:460px;
         border-radius:24px;
         padding:26px;
         align-items:flex-end;
+      }
+      .previewCard::after{border-radius:23px}
+      .previewCard h2{font-size:clamp(44px,15vw,68px);max-width:8ch}
+      .previewCard p{max-width:24ch;font-size:13px}
+      .homeObject{
+        width:320px;
+        right:-94px;
+        top:34%;
+        opacity:.82;
       }
       .circleLink{width:70px;height:70px}
       .foot{display:block;line-height:1.9}
@@ -360,6 +475,12 @@
   <section class="preview">
     <div class="wrap">
       <a class="previewCard" href="explore.html">
+        <div class="homeObject" aria-hidden="true">
+          <div class="outer"></div>
+          <div class="middle"></div>
+          <div class="core"></div>
+          <div class="beam"></div>
+        </div>
         <div>
           <div class="previewMeta">TIKOONZ · ARA KOREA</div>
           <h2 data-en="ENTER OUR WORLD" data-ko="OURBANG의 세계">ENTER OUR WORLD</h2>
@@ -410,6 +531,17 @@
   }));
 
   document.getElementById('year').textContent=new Date().getFullYear();
+
+  const card=document.querySelector('.previewCard');
+  if(card && window.matchMedia('(pointer:fine)').matches){
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(1100px) rotateX(${(-y*2.4).toFixed(2)}deg) rotateY(${(x*3.6).toFixed(2)}deg) translateY(-7px)`;
+    });
+    card.addEventListener('pointerleave',()=>card.style.transform='');
+  }
 </script>
 </body>
 </html>
