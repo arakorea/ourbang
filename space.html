@@ -284,14 +284,41 @@
     }
   </style>
 <style>
-.refLead .line{display:block}.refLead .accent{color:#fff;text-shadow:0 0 30px rgba(124,198,255,.18)}
-.refStatement .soft{display:block;color:rgba(247,248,251,.48);font-size:.55em;margin-bottom:.18em}
-.refStatement .strong{display:block}
-</style><style>
+.spaceLead{
+  max-width:19ch;
+}
+.spaceLead .line{
+  display:block;
+}
+.spaceLead .accent{
+  color:#fff;
+  text-shadow:0 0 32px rgba(124,198,255,.18);
+}
+.spaceStatement{
+  max-width:11ch;
+}
+.spaceStatement .soft{
+  display:block;
+  color:rgba(247,248,251,.48);
+  font-size:.55em;
+  line-height:1.15;
+  letter-spacing:-.035em;
+  margin-bottom:.18em;
+}
+.spaceStatement .strong{
+  display:block;
+  color:#fff;
+}
+@media(max-width:640px){
+  .spaceLead{max-width:15ch}
+  .spaceStatement{max-width:9ch}
+}
+</style>
+<style>
 /* OURBANG child-page typography */
 .statementBox h3,
 .refStatement,
-.musicStatement{
+.spaceStatement{
   font-size:clamp(34px,4.9vw,72px)!important;
   line-height:.96!important;
   letter-spacing:-.055em!important;
@@ -299,7 +326,7 @@
 }
 .statementBox h3 .soft,
 .refStatement .soft,
-.musicStatement .soft{
+.spaceStatement .soft{
   display:block;
   color:rgba(247,248,251,.48);
   font-size:.58em;
@@ -309,32 +336,32 @@
 }
 .statementBox h3 .strong,
 .refStatement .strong,
-.musicStatement .strong{
+.spaceStatement .strong{
   display:block;
   white-space:nowrap;
 }
 @media(max-width:900px){
   .statementBox h3,
   .refStatement,
-  .musicStatement{
+  .spaceStatement{
     font-size:clamp(34px,7vw,60px)!important;
   }
   .statementBox h3 .strong,
   .refStatement .strong,
-  .musicStatement .strong{
+  .spaceStatement .strong{
     white-space:normal;
   }
 }
 @media(max-width:640px){
   .statementBox h3,
   .refStatement,
-  .musicStatement{
+  .spaceStatement{
     font-size:clamp(32px,10vw,48px)!important;
   }
 }
 </style>
 <style>
-/* Language-specific card typography */
+/* SPACE — language-specific typography refinement */
 .createGrid .card > div:last-child{
   min-width:0;
 }
@@ -351,16 +378,17 @@
   overflow-wrap:normal;
 }
 
+/* Korean card typography */
 html[lang="ko"] .createGrid .card h2{
-  font-size:clamp(42px,4.15vw,60px);
+  font-size:clamp(39px,3.75vw,55px);
   line-height:.98;
-  letter-spacing:-.065em;
+  letter-spacing:-.07em;
   font-weight:830;
   word-break:keep-all;
 }
 
 html[lang="ko"] .createGrid .card:nth-child(3) h2{
-  font-size:clamp(36px,3.45vw,50px);
+  font-size:clamp(35px,3.25vw,48px);
   letter-spacing:-.075em;
 }
 
@@ -373,9 +401,53 @@ html[lang="ko"] .createGrid .card p{
   overflow-wrap:normal;
 }
 
+/* English card typography */
 html[lang="en"] .createGrid .card h2{
-  font-size:clamp(42px,4.5vw,66px);
+  font-size:clamp(38px,3.75vw,56px);
+  line-height:.95;
   letter-spacing:-.055em;
+}
+
+html[lang="en"] .createGrid .card:nth-child(3) h2{
+  font-size:clamp(34px,3.25vw,48px);
+}
+
+html[lang="en"] .createGrid .card p{
+  max-width:30ch;
+  line-height:1.68;
+}
+
+/* Hero copy */
+html[lang="ko"] .spaceLead{
+  max-width:22ch;
+  font-size:clamp(23px,2.65vw,38px);
+  line-height:1.23;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+
+html[lang="en"] .spaceLead{
+  max-width:18ch;
+}
+
+/* Statement copy */
+html[lang="ko"] .spaceStatement{
+  font-size:clamp(35px,4.35vw,64px)!important;
+  line-height:1!important;
+  letter-spacing:-.06em!important;
+}
+
+html[lang="ko"] .spaceStatement .soft{
+  font-size:.62em;
+}
+
+html[lang="ko"] .spaceStatement .strong{
+  white-space:nowrap;
+}
+
+html[lang="ko"] .statementBox p{
+  word-break:keep-all;
+  letter-spacing:-.02em;
 }
 
 @media(max-width:980px){
@@ -384,169 +456,34 @@ html[lang="en"] .createGrid .card h2{
   }
 
   html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
   html[lang="ko"] .createGrid .card:nth-child(3) h2{
     font-size:clamp(40px,8vw,58px);
-    white-space:nowrap;
-  }
-}
-
-@media(max-width:640px){
-  html[lang="ko"] .createGrid .card h2{
-    font-size:clamp(38px,12vw,50px);
   }
 
-  html[lang="ko"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(34px,10.5vw,44px);
-  }
-
-  html[lang="ko"] .createGrid .card p{
-    max-width:32ch;
-    font-size:13.5px;
-    line-height:1.75;
-  }
-}
-</style>
-
-
-<style>
-/* SPACE — final language-specific typography refinement */
-.createGrid .card > div:last-child{
-  min-width:0;
-}
-
-.createGrid .card h2{
-  white-space:nowrap;
-  text-wrap:nowrap;
-}
-
-.createGrid .card p{
-  min-height:3.4em;
-  word-break:normal;
-  overflow-wrap:normal;
-}
-
-/* Korean hero */
-html[lang="ko"] .refLead{
-  max-width:19ch;
-  font-size:clamp(23px,2.65vw,38px);
-  line-height:1.24;
-  letter-spacing:-.045em;
-  word-break:keep-all;
-}
-
-/* English hero */
-html[lang="en"] .refLead{
-  max-width:18ch;
-  font-size:clamp(22px,2.8vw,40px);
-  line-height:1.2;
-}
-
-/* Korean cards */
-html[lang="ko"] .createGrid .card h2{
-  font-size:clamp(42px,4.1vw,59px);
-  line-height:.98;
-  letter-spacing:-.065em;
-  font-weight:830;
-  word-break:keep-all;
-}
-
-html[lang="ko"] .createGrid .card:nth-child(3) h2{
-  font-size:clamp(33px,3.05vw,45px);
-  letter-spacing:-.078em;
-}
-
-html[lang="ko"] .createGrid .card p{
-  max-width:29ch;
-  font-size:14px;
-  line-height:1.72;
-  letter-spacing:-.025em;
-  word-break:keep-all;
-  overflow-wrap:normal;
-}
-
-/* English cards */
-html[lang="en"] .createGrid .card h2{
-  font-size:clamp(40px,4vw,58px);
-  line-height:.95;
-  letter-spacing:-.055em;
-}
-
-html[lang="en"] .createGrid .card:nth-child(3) h2{
-  font-size:clamp(35px,3.35vw,49px);
-}
-
-html[lang="en"] .createGrid .card p{
-  max-width:30ch;
-  line-height:1.68;
-}
-
-/* Statement */
-html[lang="ko"] .refStatement{
-  font-size:clamp(35px,4.35vw,64px)!important;
-  line-height:1!important;
-  letter-spacing:-.06em!important;
-}
-
-html[lang="ko"] .refStatement .soft{
-  font-size:.62em;
-}
-
-html[lang="ko"] .refStatement .strong{
-  white-space:nowrap;
-}
-
-html[lang="ko"] .statementBox p{
-  max-width:36ch;
-  word-break:keep-all;
-  letter-spacing:-.02em;
-}
-
-html[lang="en"] .refStatement{
-  font-size:clamp(36px,4.65vw,68px)!important;
-}
-
-@media(max-width:980px){
-  .createGrid .card p{
-    min-height:auto;
-  }
-
-  html[lang="ko"] .createGrid .card h2{
-    font-size:clamp(40px,8vw,58px);
-  }
-
-  html[lang="ko"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(36px,7vw,50px);
-  }
-
-  html[lang="en"] .createGrid .card h2{
-    font-size:clamp(40px,8vw,58px);
-  }
-
+  html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
   html[lang="en"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(37px,7.2vw,52px);
+    font-size:clamp(40px,8vw,58px);
   }
 }
 
 @media(max-width:640px){
-  html[lang="ko"] .refLead{
-    max-width:17ch;
+  html[lang="ko"] .spaceLead{
+    max-width:18ch;
     font-size:clamp(23px,7.2vw,29px);
   }
 
-  html[lang="ko"] .createGrid .card h2{
-    font-size:clamp(38px,12vw,50px);
-  }
-
+  html[lang="ko"] .createGrid .card h2,
+  html[lang="ko"] .createGrid .card:nth-child(1) h2,
   html[lang="ko"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(32px,9.8vw,42px);
+    font-size:clamp(35px,10.8vw,46px);
   }
 
-  html[lang="en"] .createGrid .card h2{
-    font-size:clamp(36px,11vw,47px);
-  }
-
+  html[lang="en"] .createGrid .card h2,
+  html[lang="en"] .createGrid .card:nth-child(1) h2,
   html[lang="en"] .createGrid .card:nth-child(3) h2{
-    font-size:clamp(32px,9.8vw,42px);
+    font-size:clamp(34px,10.5vw,45px);
   }
 
   html[lang="ko"] .createGrid .card p{
@@ -555,17 +492,248 @@ html[lang="en"] .refStatement{
     line-height:1.75;
   }
 
-  html[lang="ko"] .refStatement{
+  html[lang="ko"] .spaceStatement{
     font-size:clamp(30px,8.9vw,42px)!important;
   }
 
-  html[lang="ko"] .refStatement .strong{
+  html[lang="ko"] .spaceStatement .strong{
     white-space:nowrap;
   }
 }
 </style>
+<style>
 
-</head>
+/* SPACE CARD OBJECT SYSTEM — same master layout, distinct objects */
+.backToCreate{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:24px;
+  color:rgba(255,255,255,.46);
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.16em;
+  transition:color .25s ease,transform .25s ease;
+}
+.backToCreate:hover{color:#fff;transform:translateX(-3px)}
+
+.createGrid .card{
+  isolation:isolate;
+  padding-top:30px;
+}
+.createGrid .card::before{display:none}
+.createGrid .card > *{position:relative;z-index:2}
+
+.cardObject{
+  position:absolute!important;
+  z-index:1!important;
+  top:26px;
+  right:24px;
+  width:180px;
+  height:180px;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .65s ease,opacity .65s ease;
+}
+.cardObject span{position:absolute;display:block}
+
+/* 01 — SCAN */
+.scanObject{
+  perspective:700px;
+  filter:drop-shadow(0 28px 42px rgba(86,196,255,.10));
+}
+.scanRing{
+  border-radius:50%;
+  border:1px solid rgba(190,231,255,.28);
+  box-shadow:inset 0 0 28px rgba(124,198,255,.06),0 0 28px rgba(124,198,255,.06);
+}
+.ringOuter{inset:24px}
+.ringInner{inset:48px;border-color:rgba(255,255,255,.20)}
+.scanGrid{
+  width:118px;height:82px;
+  left:31px;top:49px;
+  transform:rotateX(66deg) rotateZ(-6deg);
+  border:1px solid rgba(180,229,255,.26);
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:16px 16px;
+}
+.scanBeam{
+  width:2px;height:116px;
+  left:89px;top:30px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.72),rgba(124,198,255,.24),transparent);
+  box-shadow:0 0 16px rgba(124,198,255,.34);
+}
+.scanCore{
+  width:22px;height:22px;
+  left:79px;top:79px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff 0 8%,#b9e7ff 24%,rgba(124,198,255,.18) 58%,transparent 72%);
+  box-shadow:0 0 26px rgba(124,198,255,.42);
+}
+.card:nth-child(1)::after{
+  content:"";
+  position:absolute;
+  inset:auto -20% -42% 8%;
+  height:220px;
+  background:radial-gradient(ellipse,rgba(72,160,255,.12),transparent 67%);
+  z-index:0;
+}
+
+/* 02 — BUILD */
+.buildObject{
+  perspective:760px;
+  filter:drop-shadow(0 28px 42px rgba(155,116,255,.11));
+}
+.buildCube{
+  width:82px;height:82px;
+  left:49px;top:48px;
+  border:1px solid rgba(214,201,255,.32);
+  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(143,124,255,.025));
+  box-shadow:inset 0 0 28px rgba(143,124,255,.05);
+}
+.cubeBack{transform:translate(18px,-18px) rotateY(-18deg);opacity:.48}
+.cubeFront{transform:rotateY(22deg) rotateX(8deg)}
+.buildLine{
+  height:1px;width:100px;
+  left:40px;top:89px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.58),rgba(143,124,255,.22),transparent);
+}
+.lineA{transform:rotate(32deg)}
+.lineB{transform:rotate(-30deg);opacity:.62}
+.buildCore{
+  width:26px;height:26px;
+  left:77px;top:77px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0 10%,#d0c3ff 26%,rgba(143,124,255,.18) 60%,transparent 74%);
+  box-shadow:0 0 28px rgba(143,124,255,.35);
+}
+.card:nth-child(2)::after{
+  content:"";
+  position:absolute;
+  inset:-25% -18% auto 16%;
+  height:240px;
+  background:radial-gradient(ellipse,rgba(143,124,255,.13),transparent 70%);
+  z-index:0;
+}
+
+/* 03 — EXPLORE */
+.exploreObject{
+  perspective:760px;
+  filter:drop-shadow(0 28px 42px rgba(80,208,255,.10));
+}
+.portalRing{
+  border-radius:50%;
+  border:1px solid rgba(192,236,255,.30);
+  box-shadow:inset 0 0 34px rgba(124,198,255,.07),0 0 30px rgba(124,198,255,.07);
+}
+.portalOuter{inset:26px}
+.portalInner{inset:52px;border-color:rgba(255,255,255,.18)}
+.portalFloor{
+  width:124px;height:76px;
+  left:28px;bottom:24px;
+  transform:rotateX(70deg);
+  border:1px solid rgba(180,229,255,.24);
+  background:
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:17px 17px;
+}
+.portalRay{
+  width:1px;height:112px;
+  top:24px;
+  transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(124,198,255,.16) 58%,transparent);
+  box-shadow:0 0 12px rgba(124,198,255,.28);
+}
+.rayA{left:62px;transform:rotate(15deg)}
+.rayB{right:58px;transform:rotate(-16deg)}
+.portalCore{
+  width:24px;height:24px;
+  left:78px;top:78px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff 0 8%,#9bddff 22%,rgba(124,198,255,.20) 52%,transparent 72%);
+  box-shadow:0 0 26px rgba(124,198,255,.42);
+}
+.card:nth-child(3)::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 -36% 0;
+  height:250px;
+  background:radial-gradient(ellipse,rgba(76,194,255,.12),transparent 68%);
+  z-index:0;
+}
+
+/* Hover behavior */
+.card:nth-child(1):hover .scanObject{
+  transform:translate3d(-4px,-3px,0) rotate(-2deg) scale(1.025);
+  filter:drop-shadow(0 30px 46px rgba(93,187,255,.17));
+}
+.card:nth-child(1):hover .ringOuter{animation:scanRing 5.5s linear infinite}
+.card:nth-child(1):hover .ringInner{animation:scanRing 4.2s linear infinite reverse}
+.card:nth-child(1):hover .scanBeam{animation:scanBeam 1.9s ease-in-out infinite alternate}
+.card:nth-child(1):hover .scanCore{animation:spacePulse 1.8s ease-in-out infinite}
+
+.card:nth-child(2):hover .buildObject{
+  transform:translateY(-3px) rotateZ(3deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(160,116,255,.18));
+}
+.card:nth-child(2):hover .cubeFront{animation:cubeFront 5.8s ease-in-out infinite alternate}
+.card:nth-child(2):hover .cubeBack{animation:cubeBack 6.6s ease-in-out infinite alternate}
+.card:nth-child(2):hover .lineA{animation:buildLineA 2.5s ease-in-out infinite alternate}
+.card:nth-child(2):hover .lineB{animation:buildLineB 2.8s ease-in-out infinite alternate}
+.card:nth-child(2):hover .buildCore{animation:spacePulse 1.9s ease-in-out infinite}
+
+.card:nth-child(3):hover .exploreObject{
+  transform:translateY(-4px) rotateY(-4deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(80,208,255,.18));
+}
+.card:nth-child(3):hover .portalOuter{animation:portalSpin 6.4s linear infinite}
+.card:nth-child(3):hover .portalInner{animation:portalSpin 4.8s linear infinite reverse}
+.card:nth-child(3):hover .rayA{animation:portalRayA 2.4s ease-in-out infinite alternate}
+.card:nth-child(3):hover .rayB{animation:portalRayB 2.8s ease-in-out infinite alternate}
+.card:nth-child(3):hover .portalCore{animation:spacePulse 1.7s ease-in-out infinite}
+
+@keyframes scanRing{to{transform:rotate(360deg)}}
+@keyframes scanBeam{to{transform:translateX(12px);opacity:.68}}
+@keyframes cubeFront{to{transform:rotateY(34deg) rotateX(14deg) translateY(-3px)}}
+@keyframes cubeBack{to{transform:translate(14px,-22px) rotateY(-30deg)}}
+@keyframes buildLineA{to{transform:rotate(38deg);opacity:.72}}
+@keyframes buildLineB{to{transform:rotate(-24deg);opacity:.80}}
+@keyframes portalSpin{to{transform:rotate(360deg)}}
+@keyframes portalRayA{to{transform:rotate(10deg);opacity:.70}}
+@keyframes portalRayB{to{transform:rotate(-11deg);opacity:.78}}
+@keyframes spacePulse{50%{transform:scale(1.14);opacity:.82}}
+
+@media(max-width:980px){
+  .cardObject{width:160px;height:160px;right:20px;top:20px}
+  .scanGrid{left:21px;top:39px}
+  .scanBeam{left:79px;top:20px}
+  .scanCore{left:69px;top:69px}
+  .buildCube{left:39px;top:38px}
+  .buildLine{left:30px;top:79px}
+  .buildCore{left:67px;top:67px}
+  .portalFloor{left:18px}
+  .portalCore{left:68px;top:68px}
+}
+@media(max-width:640px){
+  .backToCreate{margin-bottom:18px}
+  .cardObject{
+    width:132px;height:132px;
+    top:16px;right:14px;
+    opacity:.92;
+    transform:scale(.86);
+    transform-origin:top right;
+  }
+  .createGrid .card h2{padding-right:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .card,.cardObject,.cardObject span,.backToCreate{animation:none!important;transition:none!important}
+}
+
+</style></head>
 <body>
 <header class="topbar">
 <div class="wrap nav">
@@ -600,16 +768,41 @@ html[lang="en"] .refStatement{
 <main>
 <section class="hero">
 <div class="wrap heroContent">
-<div class="eyebrow">OURBANG / CREATE / SPACE</div>
+<a class="backToCreate" data-en="← BACK TO CREATE" data-ko="← CREATE로 돌아가기" href="create.html">← CREATE로 돌아가기</a><div class="eyebrow">OURBANG / CREATE / SPACE</div>
 <h1>SPACE</h1>
-<p class="lead refLead" data-en="Transform places into immersive digital environments." data-ko="공간을 몰입형 디지털 환경으로 확장합니다."><span class="line">Spaces become</span><span class="line accent">living worlds.</span><span class="line">Explore freely.</span></p>
+<p class="lead spaceLead" data-en="Spaces become living worlds. Explore freely." data-ko="공간은 살아 있는 세계가 되고, 누구나 자유롭게 탐험할 수 있습니다.">
+<span class="line">Spaces become</span>
+<span class="line accent">living worlds.</span>
+<span class="line">Explore freely.</span>
+</p>
 </div>
 </section>
-<section class="wrap createGrid"><div class="card"><div class="num">01</div><div><h2 data-en="SCAN" data-ko="스캔">SCAN</h2><p data-en="Capture real spaces through photography, LiDAR and spatial data." data-ko="사진, LiDAR와 공간 데이터를 활용해 실제 공간을 기록합니다.">Capture real spaces through photography, LiDAR and spatial data.</p></div></div><div class="card"><div class="num">02</div><div><h2 data-en="BUILD" data-ko="빌드">BUILD</h2><p data-en="Create digital twins, virtual buildings and showcase worlds." data-ko="디지털 트윈, 가상 건축과 쇼케이스 월드를 제작합니다.">Create digital twins, virtual buildings and showcase worlds.</p></div></div><div class="card"><div class="num">03</div><div><h2 data-en="EXPLORE" data-ko="익스플로어">EXPLORE</h2><p data-en="Publish web-accessible environments for audiences, collections and communities." data-ko="관객, 컬렉션과 커뮤니티가 웹에서 경험할 수 있는 공간으로 공개합니다.">Publish web-accessible environments for audiences, collections and communities.</p></div></div></section>
+<section class="wrap createGrid"><div class="card"><div class="num">01</div><div aria-hidden="true" class="cardObject scanObject">
+<span class="scanRing ringOuter"></span>
+<span class="scanRing ringInner"></span>
+<span class="scanGrid"></span>
+<span class="scanBeam"></span>
+<span class="scanCore"></span>
+</div><div><h2 data-en="SCAN" data-ko="스캔">SCAN</h2><p data-en="Capture real spaces through photography, LiDAR and spatial data." data-ko="사진, LiDAR와 공간 데이터를 활용해 실제 공간을 기록합니다.">Capture real spaces through photography, LiDAR and spatial data.</p></div></div><div class="card"><div class="num">02</div><div aria-hidden="true" class="cardObject buildObject">
+<span class="buildCube cubeBack"></span>
+<span class="buildCube cubeFront"></span>
+<span class="buildLine lineA"></span>
+<span class="buildLine lineB"></span>
+<span class="buildCore"></span>
+</div><div><h2 data-en="BUILD" data-ko="빌드">BUILD</h2><p data-en="Create digital twins, virtual buildings and showcase worlds." data-ko="디지털 트윈, 가상 건축과 쇼케이스 월드를 제작합니다.">Create digital twins, virtual buildings and showcase worlds.</p></div></div><div class="card"><div class="num">03</div><div aria-hidden="true" class="cardObject exploreObject">
+<span class="portalRing portalOuter"></span>
+<span class="portalRing portalInner"></span>
+<span class="portalFloor"></span>
+<span class="portalRay rayA"></span>
+<span class="portalRay rayB"></span>
+<span class="portalCore"></span>
+</div><div><h2 data-en="EXPLORE" data-ko="익스플로어">EXPLORE</h2><p data-en="Publish web-accessible environments for audiences, collections and communities." data-ko="관객, 컬렉션과 커뮤니티가 웹에서 경험할 수 있는 공간으로 공개합니다.">Publish web-accessible environments for audiences, collections and communities.</p></div></div></section>
 <section class="statement">
 <div class="wrap statementBox">
-<h3 class="refStatement" data-en="SPACE BECOMES A WORLD." data-ko="하나의 공간이, 하나의 세계가 됩니다."><span class="soft">하나의 공간이,</span><span class="strong">하나의 세계가 됩니다.</span></h3>
-<p data-en="OURBANG transforms physical places into living digital worlds ready to explore and share." data-ko="OURBANG은 실제 공간을 디지털 세계로 확장하여 누구나 탐험하고 연결될 수 있는 새로운 경험을 제공합니다.">OURBANG transforms physical places into living digital worlds ready to explore and share.</p>
+<h3 class="spaceStatement" data-en="SPACE BECOMES A WORLD." data-ko="하나의 공간이, 하나의 세계가 됩니다."><span class="soft">하나의 공간이,</span><span class="strong">하나의 세계가 됩니다.</span></h3>
+<p data-en="OURBANG transforms physical places into living digital worlds ready to explore, share and experience." data-ko="OURBANG은 실제 공간을 살아 있는 디지털 세계로 확장하여 누구나 탐험하고 공유하며 경험할 수 있도록 만듭니다.">
+OURBANG transforms physical places into living digital worlds ready to explore, share and experience.
+</p>
 </div>
 </section>
 </main>
@@ -627,7 +820,11 @@ html[lang="en"] .refStatement{
     const safe=lang==='ko'?'ko':'en';
     document.documentElement.lang=safe;
     translatables.forEach(el=>{
-    if(el.closest('.statementBox') && el.tagName==='H3'){
+    if(el.classList.contains('spaceLead')){
+      el.innerHTML=safe==='ko'
+        ? '<span class="line">공간은 살아 있는 세계가 되고,</span><span class="line accent">누구나 자유롭게 탐험할 수 있습니다.</span>'
+        : '<span class="line">Spaces become</span><span class="line accent">living worlds.</span><span class="line">Explore freely.</span>';
+    }else if(el.classList.contains('spaceStatement')){
       el.innerHTML=safe==='ko'
         ? '<span class="soft">하나의 공간이,</span><span class="strong">하나의 세계가 됩니다.</span>'
         : '<span class="soft">SPACE BECOMES</span><span class="strong">A WORLD.</span>';
