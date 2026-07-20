@@ -571,24 +571,292 @@
     }
   </style>
 
+
+  <style>
+    /* FINAL TIKOONZ EXHIBITION SYSTEM */
+    body{
+      background:
+        radial-gradient(1100px 760px at 82% 0%,rgba(90,137,255,.12),transparent 62%),
+        radial-gradient(900px 720px at 5% 88%,rgba(142,112,255,.09),transparent 65%),
+        #05070b;
+    }
+    .topbar{position:fixed;left:0;right:0}
+    main{padding-top:calc(var(--header) + 26px)}
+    .hero{
+      min-height:76svh;
+      border-radius:38px;
+    }
+    .heroInner{
+      padding:clamp(38px,5.5vw,78px);
+    }
+    .heroCopy{position:relative;z-index:2}
+    .hero h1{
+      display:flex;
+      flex-direction:column;
+      width:auto;
+      font-size:clamp(82px,13.2vw,188px);
+      line-height:.68;
+      letter-spacing:-.095em;
+      max-width:8ch;
+    }
+    .hero h1::after{display:none}
+    .heroWord{display:block;width:max-content}
+    
+    .heroTag{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding-left:0;
+      margin-top:38px;
+    }
+    .heroTag::before{display:none}
+    .heroTag span{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:9px;
+      font-weight:780;
+      letter-spacing:.22em;
+      color:rgba(255,255,255,.58);
+      background:rgba(255,255,255,.025);
+    }
+    .halo{
+      width:min(50vw,690px);
+      right:-1%;
+      top:1%;
+      border-color:rgba(255,255,255,.09);
+    }
+    .halo::before{inset:18%}
+    .halo::after{width:10%;height:10%;left:45%;top:45%}
+    .back{
+      position:absolute;
+      right:clamp(30px,4vw,58px);
+      top:clamp(30px,4vw,58px);
+      z-index:4;
+      padding:10px 14px;
+      font-size:10px;
+      color:rgba(255,255,255,.64);
+    }
+
+    .exhibition{gap:18px}
+    .exhibit{
+      min-height:88svh;
+      border-radius:38px;
+      border-color:rgba(255,255,255,.10);
+      transform:none;
+    }
+    .exhibit:hover{
+      transform:translateY(-4px);
+    }
+    .exhibitBody{
+      padding:clamp(38px,5.5vw,82px);
+      padding-bottom:clamp(46px,6vw,92px);
+    }
+    .titleStack{
+      font-size:clamp(78px,11vw,164px) !important;
+      line-height:.7 !important;
+      gap:.19em;
+    }
+    .titleStack span:last-child{margin-left:clamp(16px,2.3vw,38px)}
+    .posterCopy{
+      margin-top:34px !important;
+      max-width:27ch !important;
+      color:rgba(255,255,255,.48) !important;
+    }
+    html[lang="ko"] .posterCopy{
+      max-width:17ch !important;
+      line-height:1.76 !important;
+    }
+    .exhibitIndex{
+      top:clamp(28px,4vw,58px);
+      left:clamp(30px,4.6vw,68px);
+    }
+    .exhibitArrow{
+      width:86px;height:86px;
+      background:rgba(255,255,255,.025);
+      backdrop-filter:blur(12px);
+    }
+
+    /* ICE UNICORN — monumental frozen relic */
+    .iceAura{
+      width:min(47vw,680px);height:min(47vw,680px);
+      right:1%;top:4%;border-radius:50%;
+      background:radial-gradient(circle,rgba(174,224,255,.13),rgba(124,152,255,.03) 42%,transparent 70%);
+      filter:blur(18px);
+    }
+    .iceBase{
+      width:min(36vw,520px);height:90px;
+      right:7%;bottom:8%;
+      border-radius:50%;
+      background:radial-gradient(ellipse,rgba(180,218,255,.12),transparent 68%);
+      filter:blur(10px);
+    }
+    .iceArt .crystalMask{
+      right:8%;top:4%;
+      filter:drop-shadow(0 55px 55px rgba(0,0,0,.38));
+    }
+
+    /* SHOP — jewelry sculpture, not icon */
+    .shopHalo{
+      width:min(48vw,660px);height:min(48vw,660px);
+      right:0;top:3%;border-radius:50%;
+      background:radial-gradient(circle,rgba(242,205,144,.12),rgba(160,100,54,.035) 44%,transparent 72%);
+      filter:blur(16px);
+    }
+    .shopArt .showcase{
+      right:4%;top:5%;
+      border-color:rgba(255,223,166,.15);
+      box-shadow:inset 0 0 120px rgba(255,255,255,.018),0 50px 140px rgba(0,0,0,.32);
+    }
+    .shopArt .jewel{
+      width:116px;height:116px;
+      right:23%;top:34%;
+      transform:rotate(45deg);
+      clip-path:polygon(50% 0,88% 22%,100% 62%,68% 100%,30% 100%,0 62%,12% 22%);
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,226,172,.14) 30%,rgba(119,78,42,.18) 70%,rgba(255,255,255,.22));
+      border:1px solid rgba(255,241,211,.36);
+      box-shadow:0 0 40px rgba(245,207,145,.18),inset 0 0 26px rgba(255,255,255,.12);
+    }
+
+    /* COM — portal as architecture */
+    .portalGlow{
+      width:min(47vw,670px);height:min(47vw,670px);
+      right:-2%;top:2%;border-radius:50%;
+      background:radial-gradient(circle,rgba(100,160,255,.13),transparent 67%);
+      filter:blur(16px);
+    }
+    .portalCore{
+      width:142px;height:142px;
+      right:21%;top:32%;
+      transform:rotate(45deg);
+      border:1px solid rgba(220,239,255,.32);
+      background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(95,145,255,.035));
+      box-shadow:0 0 54px rgba(91,145,255,.14),inset 0 0 34px rgba(255,255,255,.03);
+    }
+
+    /* TV — light sculpture */
+    .tvCore{
+      width:8px;height:8px;
+      right:30%;top:38%;
+      border-radius:50%;
+      background:#fff;
+      box-shadow:0 0 22px #fff,0 0 60px rgba(157,130,255,.58);
+    }
+    .tvArt .screen{
+      border-color:rgba(220,207,255,.16);
+      box-shadow:0 50px 150px rgba(0,0,0,.36),0 0 100px rgba(145,118,255,.055);
+    }
+
+    /* reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(34px);
+      transition:opacity .9s ease,transform 1s cubic-bezier(.2,.75,.2,1);
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:980px){
+      .hero{min-height:68svh}
+      .hero h1{font-size:clamp(72px,17vw,138px)}
+      .back{position:static;margin-top:28px}
+      .exhibit{min-height:78svh}
+      .titleStack{font-size:clamp(68px,15vw,118px) !important}
+    }
+    @media(max-width:640px){
+      main{padding-top:calc(var(--header) + 12px)}
+      .hero{min-height:64svh;border-radius:26px}
+      .heroInner{padding:28px}
+      .hero h1{font-size:clamp(64px,21vw,94px);line-height:.7}
+      
+      .heroTag{margin-top:30px;gap:7px}
+      .heroTag span{padding:8px 10px;font-size:8px}
+      .halo{width:380px;right:-170px;top:5%}
+      .exhibit{min-height:74svh;border-radius:26px}
+      .exhibitBody{padding:28px;padding-bottom:34px}
+      .titleStack{
+        font-size:clamp(58px,17vw,88px) !important;
+        line-height:.74 !important;
+      }
+      .titleStack span:last-child{margin-left:12px}
+      .posterCopy{margin-top:24px !important}
+      .exhibitArrow{width:64px;height:64px;font-size:19px}
+      .iceAura,.shopHalo,.portalGlow{width:360px;height:360px;right:-120px}
+      .iceArt .crystalMask{width:250px;height:335px;right:-35px;top:10%}
+      .iceArt .horn{right:15%;height:210px}
+      .shopArt .showcase{width:300px;height:300px;right:-86px;top:10%}
+      .shopArt .ringOne{right:-1%}
+      .shopArt .ringTwo{right:10%}
+      .shopArt .jewel{width:82px;height:82px;right:13%;top:38%}
+      .webArt .portal{width:285px;height:370px;right:-80px}
+      .portalCore{width:94px;height:94px;right:10%;top:37%}
+      .tvArt .screen{width:310px;height:188px;right:-96px;top:20%}
+      .tvArt .signal{right:18%}
+      html[lang="ko"] .posterCopy{max-width:15ch !important}
+    }
+  </style>
+
+
+  <style>
+    /* TIKOONZ is a brand mark: always keep it as one uninterrupted word. */
+    .hero h1.tikoonzLogo{
+      display:block;
+      width:max-content;
+      max-width:100%;
+      white-space:nowrap;
+      font-size:clamp(72px,11.7vw,174px);
+      line-height:.78;
+      letter-spacing:-.075em;
+    }
+    .hero h1.tikoonzLogo::after{
+      content:"TIKOONZ";
+      display:block;
+      position:absolute;
+      left:.03em;
+      top:.07em;
+      z-index:-1;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(124,198,255,.18);
+      pointer-events:none;
+    }
+    .titleStack span:first-child{
+      white-space:nowrap;
+    }
+    @media(max-width:640px){
+      .hero h1.tikoonzLogo{
+        font-size:clamp(52px,16.2vw,78px);
+        letter-spacing:-.065em;
+      }
+    }
+  </style>
+
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs" aria-label="Language"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 <main>
   <div class="wrap">
-    <section class="hero">
+    <section class="hero reveal">
       <span class="halo" aria-hidden="true"></span>
       <div class="heroInner">
-        <div><div class="eyebrow">003 · TIKOONZ</div><h1 data-outline="TIKOONZ">TIKOONZ</h1><div class="heroTag">SOUND · STYLE · CULTURE</div></div>
-        <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a>
+        <div class="heroCopy">
+          <div class="eyebrow">003 · TIKOONZ</div>
+          <h1 class="tikoonzLogo" aria-label="TIKOONZ">TIKOONZ</h1>
+          <div class="heroTag">
+            <span>SOUND</span><span>STYLE</span><span>CULTURE</span>
+          </div>
+        </div>
+        <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO COLLECTIONS" data-ko="컬렉션으로 돌아가기">BACK TO COLLECTIONS</span></a>
       </div>
     </section>
 
     <section class="section exhibition">
-      <a class="exhibit experience" href="ice-unicorn.html">
+      <a class="exhibit experience reveal" href="ice-unicorn.html">
         <div class="artwork iceArt" aria-hidden="true">
-          <span class="crystalMask"></span><span class="horn"></span>
+          <span class="iceAura"></span><span class="crystalMask"></span><span class="horn"></span><span class="iceBase"></span>
           <span class="shard s1"></span><span class="shard s2"></span><span class="shard s3"></span>
         </div>
         <div class="exhibitIndex"><span>003</span><span>01</span></div>
@@ -596,52 +864,52 @@
           <div>
             <div class="label" data-en="ARTIST WORLD" data-ko="아티스트 세계">ARTIST WORLD</div>
             <h2 class="titleStack"><span>ICE</span><span>UNICORN</span></h2>
-            <p class="posterCopy" data-en-html="THE FIRST<br>TIKOONZ<br>ARTIST WORLD." data-ko-html="TIKOONZ의<br>첫 번째<br>아티스트 세계.">TIKOONZ의<br>첫 번째<br>아티스트 세계.</p>
+            <p class="posterCopy" data-en-html="THE FIRST<br>ARTIST WORLD." data-ko-html="첫 번째<br>아티스트 세계.">TIKOONZ의<br>첫 번째<br>아티스트 세계.</p>
           </div>
           <span class="exhibitArrow">→</span>
         </div>
       </a>
 
-      <a class="exhibit shop" href="https://tikoonz.shop/" target="_blank" rel="noopener">
+      <a class="exhibit shop reveal" href="https://tikoonz.shop/" target="_blank" rel="noopener">
         <div class="artwork shopArt" aria-hidden="true">
-          <span class="showcase"></span><span class="ring ringOne"></span><span class="ring ringTwo"></span><span class="glint"></span>
+          <span class="shopHalo"></span><span class="showcase"></span><span class="ring ringOne"></span><span class="ring ringTwo"></span><span class="jewel"></span><span class="glint"></span>
         </div>
         <div class="exhibitIndex"><span>003</span><span>02</span></div>
         <div class="exhibitBody">
           <div>
             <div class="label" data-en="MARKET" data-ko="마켓">MARKET</div>
             <h2 class="titleStack"><span>TIKOONZ</span><span>.SHOP</span></h2>
-            <p class="posterCopy" data-en-html="WORN BY<br>K-POP ICONS.<br><br>BUILT FOR<br>THE NEXT CULTURE." data-ko-html="K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를 위한 공간.">K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를 위한 공간.</p>
+            <p class="posterCopy" data-en-html="WORN BY<br>K-POP ICONS.<br><br>FOR THE<br>NEXT CULTURE." data-ko-html="K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를<br>위한 공간.">K-POP 아이콘들이<br>선택한 마켓.<br><br>다음 문화를<br>위한 공간.</p>
           </div>
           <span class="exhibitArrow">↗</span>
         </div>
       </a>
 
-      <a class="exhibit official" href="https://tikoonz.com/" target="_blank" rel="noopener">
+      <a class="exhibit official reveal" href="https://tikoonz.com/" target="_blank" rel="noopener">
         <div class="artwork webArt" aria-hidden="true">
-          <span class="portal"></span><span class="chromeLine w1"></span><span class="chromeLine w2"></span><span class="dot"></span>
+          <span class="portalGlow"></span><span class="portal"></span><span class="portalCore"></span><span class="chromeLine w1"></span><span class="chromeLine w2"></span><span class="dot"></span>
         </div>
         <div class="exhibitIndex"><span>003</span><span>03</span></div>
         <div class="exhibitBody">
           <div>
             <div class="label" data-en="OFFICIAL WORLD" data-ko="공식 공간">OFFICIAL WORLD</div>
             <h2 class="titleStack"><span>TIKOONZ</span><span>.COM</span></h2>
-            <p class="posterCopy" data-en-html="OFFICIAL<br>TIKOONZ<br>WORLD." data-ko-html="TIKOONZ의<br>공식<br>세계.">TIKOONZ의<br>공식<br>세계.</p>
+            <p class="posterCopy" data-en-html="THE OFFICIAL<br>TIKOONZ WORLD." data-ko-html="TIKOONZ의<br>공식 세계.">TIKOONZ의<br>공식<br>세계.</p>
           </div>
           <span class="exhibitArrow">↗</span>
         </div>
       </a>
 
-      <a class="exhibit tv" href="https://tikoonz.tv/" target="_blank" rel="noopener">
+      <a class="exhibit tv reveal" href="https://tikoonz.tv/" target="_blank" rel="noopener">
         <div class="artwork tvArt" aria-hidden="true">
-          <span class="beam"></span><span class="screen"></span><span class="signal"></span>
+          <span class="beam"></span><span class="screen"></span><span class="signal"></span><span class="tvCore"></span>
         </div>
         <div class="exhibitIndex"><span>003</span><span>04</span></div>
         <div class="exhibitBody">
           <div>
             <div class="label" data-en="BROADCAST SPACE" data-ko="브로드캐스트 공간">BROADCAST SPACE</div>
             <h2 class="titleStack"><span>TIKOONZ</span><span>.TV</span></h2>
-            <p class="posterCopy" data-en-html="BROADCAST.<br>PERFORMANCE.<br>MOVING CULTURE." data-ko-html="방송.<br>퍼포먼스.<br>움직이는 문화.">방송.<br>퍼포먼스.<br>움직이는 문화.</p>
+            <p class="posterCopy" data-en-html="BROADCAST.<br>PERFORMANCE.<br>CULTURE IN MOTION." data-ko-html="방송.<br>퍼포먼스.<br>움직이는 문화.">방송.<br>퍼포먼스.<br>움직이는 문화.</p>
           </div>
           <span class="exhibitArrow">↗</span>
         </div>
@@ -650,6 +918,6 @@
   </div>
 </main>
 <footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>TIKOONZ · SOUND · STYLE · CULTURE</div></div></footer>
-<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);document.querySelectorAll('[data-en-html][data-ko-html]').forEach(el=>el.innerHTML=el.dataset[safe+'Html']);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const hero=document.querySelector('.hero'),halo=document.querySelector('.halo');if(hero&&halo&&window.matchMedia('(pointer:fine)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;halo.style.setProperty('--hx',`${(x*10).toFixed(1)}px`);halo.style.setProperty('--hy',`${(y*10).toFixed(1)}px`);halo.style.setProperty('--hs',(1+Math.max(0,.5-Math.hypot(x,y))*.05).toFixed(3));hero.classList.add('active')});hero.addEventListener('pointerleave',()=>{halo.style.setProperty('--hx','0px');halo.style.setProperty('--hy','0px');halo.style.setProperty('--hs','1');hero.classList.remove('active')})}document.querySelectorAll('.exhibit').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const obj=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-6px)`;if(obj)obj.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(obj)obj.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);document.querySelectorAll('[data-en-html][data-ko-html]').forEach(el=>el.innerHTML=el.dataset[safe+'Html']);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const hero=document.querySelector('.hero'),halo=document.querySelector('.halo');if(hero&&halo&&window.matchMedia('(pointer:fine)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;halo.style.setProperty('--hx',`${(x*10).toFixed(1)}px`);halo.style.setProperty('--hy',`${(y*10).toFixed(1)}px`);halo.style.setProperty('--hs',(1+Math.max(0,.5-Math.hypot(x,y))*.05).toFixed(3));hero.classList.add('active')});hero.addEventListener('pointerleave',()=>{halo.style.setProperty('--hx','0px');halo.style.setProperty('--hy','0px');halo.style.setProperty('--hs','1');hero.classList.remove('active')})}document.querySelectorAll('.exhibit').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const obj=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-6px)`;if(obj)obj.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(obj)obj.style.transform=''})});const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -8%'});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
