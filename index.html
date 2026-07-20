@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>OURBANG</title>
-  <meta name="description" content="OURBANG — Capture Reality. Create Experiences.">
+  <meta name="description" content="OURBANG — Creative Worlds. One Marketplace.">
   <style>
     :root{
       --bg:#07090f;
@@ -285,6 +285,44 @@
       color:rgba(255,255,255,.6);
       font-weight:520;
     }
+
+    .heroIntro{
+      margin:24px 0 0 24px;
+      color:rgba(255,255,255,.48);
+      font-size:13px;
+      line-height:1.7;
+      letter-spacing:.025em;
+      max-width:38ch;
+    }
+    .scrollHint{
+      position:absolute;
+      left:50%;
+      bottom:30px;
+      transform:translateX(-50%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      color:rgba(255,255,255,.38);
+      font-size:9px;
+      font-weight:760;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      z-index:2;
+    }
+    .scrollHint::before{
+      content:"";
+      width:1px;
+      height:34px;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(124,198,255,.7));
+      box-shadow:0 0 12px rgba(124,198,255,.2);
+      animation:scrollPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollPulse{
+      0%,100%{transform:scaleY(.55);opacity:.35;transform-origin:top}
+      50%{transform:scaleY(1);opacity:1;transform-origin:top}
+    }
+
     .ctaRow{
       margin-top:50px;
       display:flex;
@@ -556,10 +594,50 @@
       h1{font-size:clamp(72px,21vw,108px)}
       .reactiveOrb{width:48px}
       .slogan{font-size:28px}
+      .heroIntro{margin-left:24px;font-size:12px;max-width:28ch}
+      .scrollHint{bottom:18px}
       .orbOne{width:430px;right:-220px;top:8%}
       .orbTwo{width:260px;left:-110px;bottom:7%}
       .orbThree{width:160px;right:10%;top:27%}
-      .ctaRow{margin-top:38px}
+  
+    .heroIntro{
+      margin:24px 0 0 24px;
+      color:rgba(255,255,255,.48);
+      font-size:13px;
+      line-height:1.7;
+      letter-spacing:.025em;
+      max-width:38ch;
+    }
+    .scrollHint{
+      position:absolute;
+      left:50%;
+      bottom:30px;
+      transform:translateX(-50%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      color:rgba(255,255,255,.38);
+      font-size:9px;
+      font-weight:760;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      z-index:2;
+    }
+    .scrollHint::before{
+      content:"";
+      width:1px;
+      height:34px;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(124,198,255,.7));
+      box-shadow:0 0 12px rgba(124,198,255,.2);
+      animation:scrollPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollPulse{
+      0%,100%{transform:scaleY(.55);opacity:.35;transform-origin:top}
+      50%{transform:scaleY(1);opacity:1;transform-origin:top}
+    }
+
+    .ctaRow{margin-top:38px}
       .primary,.secondary{width:100%}
       .preview{padding:0 0 72px}
       .previewCard{
@@ -637,17 +715,19 @@
       <div class="eyebrow">OURBANG</div>
       <div class="heroTitleRow"><h1 data-outline="OURBANG">OURBANG</h1><span class="reactiveOrb" aria-hidden="true"></span></div>
       <div class="slogan">
-        <span>Capture Reality.</span>
-        <span>Create Experiences.</span>
+        <span data-en="Creative Worlds." data-ko="창작의 세계.">Creative Worlds.</span>
+        <span data-en="One Marketplace." data-ko="하나의 마켓플레이스.">One Marketplace.</span>
       </div>
+      <p class="heroIntro" data-en="Beginning with music, art and original IP." data-ko="음악, 예술, 오리지널 IP에서 시작합니다.">Beginning with music, art and original IP.</p>
       <div class="ctaRow">
         <a class="primary" href="explore.html" data-en="EXPLORE" data-ko="EXPLORE">EXPLORE</a>
         <a class="secondary" href="vision.html" data-en="VISION" data-ko="VISION">VISION</a>
       </div>
     </div>
+    <a class="scrollHint" href="#founding" data-en="FOUNDING COLLECTIONS" data-ko="첫 번째 컬렉션">FOUNDING COLLECTIONS</a>
   </section>
 
-  <section class="preview">
+  <section class="preview" id="founding">
     <div class="wrap">
       <a class="previewCard" href="explore.html">
         <div class="homeObject" aria-hidden="true">
@@ -657,9 +737,9 @@
           <div class="beam"></div>
         </div>
         <div>
-          <div class="previewMeta">TIKOONZ · ARA KOREA</div>
-          <h2 data-en="ENTER OUR WORLD" data-ko="OURBANG의 세계">ENTER OUR WORLD</h2>
-          <p data-en="Discover music, performance and digital experiences through OURBANG." data-ko="OURBANG을 통해 음악, 퍼포먼스, 디지털 경험을 만나보세요.">Discover music, performance and digital experiences through OURBANG.</p>
+          <div class="previewMeta" data-en="FOUNDING COLLECTIONS · TIKOONZ · AK ENM · ARA KOREA" data-ko="파운딩 컬렉션 · TIKOONZ · AK ENM · ARA KOREA">FOUNDING COLLECTIONS · TIKOONZ · AK ENM · ARA KOREA</div>
+          <h2 data-en="FOUNDING COLLECTIONS" data-ko="첫 번째 컬렉션">FOUNDING COLLECTIONS</h2>
+          <p data-en="Discover the first creative collections available on OURBANG." data-ko="OURBANG에서 처음 공개하는 창작 컬렉션을 만나보세요.">Discover the first creative collections available on OURBANG.</p>
         </div>
         <span class="circleLink">→</span>
       </a>
@@ -670,7 +750,7 @@
 <footer>
   <div class="wrap foot">
     <div>© <span id="year"></span> OURBANG</div>
-    <div>CAPTURE REALITY · CREATE EXPERIENCES</div>
+    <div data-en="CREATIVE WORLDS · ONE MARKETPLACE" data-ko="창작의 세계 · 하나의 마켓플레이스">CREATIVE WORLDS · ONE MARKETPLACE</div>
   </div>
 </footer>
 
