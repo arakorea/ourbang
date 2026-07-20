@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>OURBANG</title>
-  <meta name="description" content="OURBANG — Creative Worlds. One Marketplace.">
+  <meta name="description" content="OURBANG — Three original worlds. One beginning.">
   <style>
     :root{
       --bg:#07090f;
@@ -286,42 +286,6 @@
       font-weight:520;
     }
 
-    .heroIntro{
-      margin:24px 0 0 24px;
-      color:rgba(255,255,255,.48);
-      font-size:13px;
-      line-height:1.7;
-      letter-spacing:.025em;
-      max-width:38ch;
-    }
-    .scrollHint{
-      position:absolute;
-      left:50%;
-      bottom:30px;
-      transform:translateX(-50%);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      color:rgba(255,255,255,.38);
-      font-size:9px;
-      font-weight:760;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      z-index:2;
-    }
-    .scrollHint::before{
-      content:"";
-      width:1px;
-      height:34px;
-      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(124,198,255,.7));
-      box-shadow:0 0 12px rgba(124,198,255,.2);
-      animation:scrollPulse 2.4s ease-in-out infinite;
-    }
-    @keyframes scrollPulse{
-      0%,100%{transform:scaleY(.55);opacity:.35;transform-origin:top}
-      50%{transform:scaleY(1);opacity:1;transform-origin:top}
-    }
 
     .ctaRow{
       margin-top:50px;
@@ -558,7 +522,106 @@
       letter-spacing:.07em;
     }
 
-    @media (prefers-reduced-motion:reduce){
+    
+    /* OURBANG digital exhibition — home */
+    .heroContent{padding-top:calc(var(--header) + 72px)}
+    .heroTitleRow{align-items:flex-end}
+    h1{
+      display:flex;
+      flex-direction:column;
+      font-size:clamp(82px,13.4vw,194px);
+      line-height:.72;
+      letter-spacing:-.085em;
+    }
+    h1::after{display:none}
+    .heroLine{
+      position:relative;
+      display:block;
+      width:max-content;
+      max-width:100%;
+      background:linear-gradient(180deg,#fff 5%,#eef4ff 54%,rgba(207,218,238,.72) 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow:0 18px 55px rgba(0,0,0,.28);
+    }
+    .heroLine::after{
+      content:attr(data-outline);
+      position:absolute;
+      left:.035em;
+      top:.075em;
+      z-index:-1;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(124,198,255,.22);
+      pointer-events:none;
+    }
+    .heroLine:last-child{margin-left:clamp(34px,5.8vw,86px)}
+    .reactiveOrb{margin-bottom:clamp(8px,1.5vw,22px)}
+    .slogan{
+      margin-top:46px;
+      max-width:18ch;
+      font-size:clamp(23px,2.6vw,39px);
+    }
+    .ctaRow{margin-top:44px}
+    .primary,.secondary{
+      border-radius:999px;
+      min-height:54px;
+      padding:0 23px;
+    }
+    .primary{
+      background:rgba(255,255,255,.95);
+      box-shadow:0 14px 45px rgba(255,255,255,.06);
+    }
+    .preview{padding-top:30px}
+    .previewCard{
+      min-height:76svh;
+      align-items:flex-end;
+      border-radius:36px;
+      padding:clamp(34px,5vw,72px);
+    }
+    .previewCopy{position:relative;z-index:2}
+    .previewMeta{margin-bottom:25px}
+    .previewCard h2{
+      display:flex;
+      flex-direction:column;
+      max-width:9ch;
+      font-size:clamp(62px,9.1vw,132px);
+      line-height:.78;
+      letter-spacing:-.078em;
+    }
+    .previewCard h2 span:last-child{
+      margin-left:clamp(22px,4vw,58px);
+    }
+    .previewCard h2::after{margin-top:30px}
+    .previewCard p{
+      margin-top:20px;
+      font-size:11px;
+      font-weight:760;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.46);
+    }
+    .homeObject{
+      width:min(45vw,590px);
+      right:5%;
+    }
+    .circleLink{
+      width:94px;
+      height:94px;
+    }
+    @media(max-width:640px){
+      h1{font-size:clamp(78px,23vw,114px);line-height:.74}
+      .heroLine:last-child{margin-left:24px}
+      .reactiveOrb{width:44px;margin-bottom:8px}
+      .slogan{font-size:26px;margin-top:38px}
+      .ctaRow{margin-top:34px}
+      .previewCard{min-height:68svh;padding:28px}
+      .previewCard h2{font-size:clamp(52px,17vw,78px)}
+      .previewCard h2 span:last-child{margin-left:18px}
+      .homeObject{width:330px;right:-112px;top:35%}
+      .previewCard p{padding-right:0;max-width:18ch;line-height:1.7}
+    }
+@media (prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
       .previewCard{transition:none}
     }
@@ -600,42 +663,6 @@
       .orbTwo{width:260px;left:-110px;bottom:7%}
       .orbThree{width:160px;right:10%;top:27%}
   
-    .heroIntro{
-      margin:24px 0 0 24px;
-      color:rgba(255,255,255,.48);
-      font-size:13px;
-      line-height:1.7;
-      letter-spacing:.025em;
-      max-width:38ch;
-    }
-    .scrollHint{
-      position:absolute;
-      left:50%;
-      bottom:30px;
-      transform:translateX(-50%);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      color:rgba(255,255,255,.38);
-      font-size:9px;
-      font-weight:760;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      z-index:2;
-    }
-    .scrollHint::before{
-      content:"";
-      width:1px;
-      height:34px;
-      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(124,198,255,.7));
-      box-shadow:0 0 12px rgba(124,198,255,.2);
-      animation:scrollPulse 2.4s ease-in-out infinite;
-    }
-    @keyframes scrollPulse{
-      0%,100%{transform:scaleY(.55);opacity:.35;transform-origin:top}
-      50%{transform:scaleY(1);opacity:1;transform-origin:top}
-    }
 
     .ctaRow{margin-top:38px}
       .primary,.secondary{width:100%}
@@ -678,8 +705,8 @@
     <a class="brand" href="index.html">OURBANG</a>
     <nav class="links" aria-label="Primary">
       <a class="active" href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-      <a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a>
-      <a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a>
+      <a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+      <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
       <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
       <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
       <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
@@ -698,8 +725,8 @@
 
 <div class="mobilePanel" id="mobilePanel">
   <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-  <a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a>
-  <a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a>
+  <a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+  <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
   <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
   <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
   <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
@@ -712,19 +739,24 @@
     <span class="orbThree" aria-hidden="true"></span>
 
     <div class="wrap heroContent">
-      <div class="eyebrow">OURBANG</div>
-      <div class="heroTitleRow"><h1 data-outline="OURBANG">OURBANG</h1><span class="reactiveOrb" aria-hidden="true"></span></div>
-      <div class="slogan">
-        <span data-en="Creative Worlds." data-ko="창작의 세계.">Creative Worlds.</span>
-        <span data-en="One Marketplace." data-ko="하나의 마켓플레이스.">One Marketplace.</span>
+      <div class="eyebrow">001 · OURBANG</div>
+      <div class="heroTitleRow">
+        <h1 aria-label="OURBANG">
+          <span class="heroLine" data-outline="OUR">OUR</span>
+          <span class="heroLine" data-outline="BANG">BANG</span>
+        </h1>
+        <span class="reactiveOrb" aria-hidden="true"></span>
       </div>
-      <p class="heroIntro" data-en="Beginning with music, art and original IP." data-ko="음악, 예술, 오리지널 IP에서 시작합니다.">Beginning with music, art and original IP.</p>
+      <div class="slogan">
+        <span data-en="Three original worlds." data-ko="세 개의 고유한 세계.">Three original worlds.</span>
+        <span data-en="One beginning." data-ko="하나의 시작.">One beginning.</span>
+      </div>
       <div class="ctaRow">
-        <a class="primary" href="explore.html" data-en="EXPLORE" data-ko="EXPLORE">EXPLORE</a>
-        <a class="secondary" href="vision.html" data-en="VISION" data-ko="VISION">VISION</a>
+        <a class="primary" href="explore.html" data-en="ENTER COLLECTIONS" data-ko="컬렉션 입장">ENTER COLLECTIONS</a>
+        <a class="secondary" href="vision.html" data-en="OUR VISION" data-ko="OUR VISION">OUR VISION</a>
       </div>
     </div>
-    <a class="scrollHint" href="#founding" data-en="FOUNDING COLLECTIONS" data-ko="첫 번째 컬렉션">FOUNDING COLLECTIONS</a>
+    <a class="scrollHint" href="#founding" data-en="THE FIRST THREE" data-ko="첫 세 개의 세계">THE FIRST THREE</a>
   </section>
 
   <section class="preview" id="founding">
@@ -736,12 +768,15 @@
           <div class="core"></div>
           <div class="beam"></div>
         </div>
-        <div>
-          <div class="previewMeta" data-en="FOUNDING COLLECTIONS · TIKOONZ · AK ENM · ARA KOREA" data-ko="파운딩 컬렉션 · TIKOONZ · AK ENM · ARA KOREA">FOUNDING COLLECTIONS · TIKOONZ · AK ENM · ARA KOREA</div>
-          <h2 data-en="FOUNDING COLLECTIONS" data-ko="첫 번째 컬렉션">FOUNDING COLLECTIONS</h2>
-          <p data-en="Discover the first creative collections available on OURBANG." data-ko="OURBANG에서 처음 공개하는 창작 컬렉션을 만나보세요.">Discover the first creative collections available on OURBANG.</p>
+        <div class="previewCopy">
+          <div class="previewMeta">002 · FOUNDING COLLECTIONS</div>
+          <h2 aria-label="The First Three">
+            <span>THE FIRST</span>
+            <span>THREE</span>
+          </h2>
+          <p data-en="TIKOONZ · AK ENM · ARA KOREA" data-ko="TIKOONZ · AK ENM · ARA KOREA">TIKOONZ · AK ENM · ARA KOREA</p>
         </div>
-        <span class="circleLink">→</span>
+        <span class="circleLink" aria-hidden="true">→</span>
       </a>
     </div>
   </section>
@@ -750,7 +785,7 @@
 <footer>
   <div class="wrap foot">
     <div>© <span id="year"></span> OURBANG</div>
-    <div data-en="CREATIVE WORLDS · ONE MARKETPLACE" data-ko="창작의 세계 · 하나의 마켓플레이스">CREATIVE WORLDS · ONE MARKETPLACE</div>
+    <div data-en="DIGITAL EXHIBITION · OURBANG" data-ko="디지털 전시 · OURBANG">DIGITAL EXHIBITION · OURBANG</div>
   </div>
 </footer>
 
