@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>STUDIO — OURBANG</title>
+<meta content="Studio for music, visual and spatial experiences by OURBANG." name="description"/>
+
+<style>
+:root{
+  --bg:#06070b;
+  --text:#f7f8fb;
+  --muted:rgba(247,248,251,.58);
+  --line:rgba(255,255,255,.11);
+  --blue:#89d7ff;
+  --violet:#9e8cff;
+  --silver:#e4edf6;
+  --max:1380px;
+  --header:88px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100%;
+  color:var(--text);
+  background:
+    radial-gradient(950px 650px at 86% 6%,rgba(137,215,255,.12),transparent 63%),
+    radial-gradient(820px 600px at 6% 66%,rgba(158,140,255,.1),transparent 66%),
+    linear-gradient(180deg,#07080d 0%,#050609 100%);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  overflow-x:hidden;
+}
+body.menuOpen{overflow:hidden}
+body,a,button,p,h1,h2,h3,.eyebrow,.lead,.num,.statementLabel{
+  word-break:keep-all;
+  overflow-wrap:normal;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(calc(100% - 56px),var(--max));margin:auto}
+
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(6,7,11,.75);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(24px) saturate(140%);
+  -webkit-backdrop-filter:blur(24px) saturate(140%);
+}
+.nav{
+  height:var(--header);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:34px;
+}
+.brand{
+  font-size:24px;
+  font-weight:850;
+  letter-spacing:.18em;
+  line-height:1;
+  white-space:nowrap;
+}
+.links{display:flex;justify-content:center;align-items:center;gap:6px}
+.links a{
+  padding:11px 13px;
+  border-radius:13px;
+  color:rgba(255,255,255,.63);
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.055em;
+  transition:.2s ease;
+}
+.links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}
+.langs{display:flex;gap:8px}
+.langBtn{
+  width:40px;height:34px;
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:13px;
+  background:transparent;
+  color:rgba(255,255,255,.6);
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.langBtn.active{color:#07090f;background:#f7f8fb;border-color:#f7f8fb}
+.menuBtn{display:none;border:0;background:transparent;color:#fff;width:42px;height:42px}
+.menuBtn span{display:block;width:22px;height:1px;background:currentColor;margin:6px auto}
+.mobilePanel{display:none}
+
+/* HERO */
+.hero{padding:34px 0 0}
+.heroPanel{
+  position:relative;
+  min-height:72svh;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:38px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  isolation:isolate;
+  box-shadow:0 34px 110px rgba(0,0,0,.33);
+}
+.heroPanel::before{
+  content:"";
+  position:absolute;inset:0;z-index:-5;
+  background:
+    radial-gradient(circle at 75% 23%,rgba(137,215,255,.2),transparent 24%),
+    radial-gradient(circle at 61% 20%,rgba(158,140,255,.16),transparent 31%),
+    linear-gradient(138deg,#12151d 0%,#08090e 54%,#10121a 100%);
+}
+.heroPanel::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.1) 43%,rgba(3,4,7,.92) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.05),transparent 58%);
+}
+.heroContent{
+  position:relative;
+  width:100%;
+  padding:50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:34px;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  width:max-content;margin:0 0 18px;
+  color:rgba(255,255,255,.48);
+  font-size:11px;font-weight:760;
+  letter-spacing:.22em;text-transform:uppercase;
+}
+.eyebrow::before{
+  content:"";width:42px;height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(137,215,255,.8));
+  box-shadow:0 0 14px rgba(137,215,255,.25);
+}
+h1{
+  margin:0;
+  font-size:clamp(84px,13vw,188px);
+  line-height:.78;
+  letter-spacing:-.08em;
+  font-weight:880;
+  background:linear-gradient(180deg,#fff 2%,#dbeeff 55%,rgba(158,140,255,.82));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 20px 70px rgba(0,0,0,.25);
+}
+.lead{
+  margin:32px 0 0;
+  max-width:14ch;
+  font-size:clamp(24px,3.2vw,46px);
+  line-height:1.12;
+  letter-spacing:-.05em;
+  font-weight:620;
+  text-wrap:balance;
+}
+.back{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 15px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+  color:#fff;
+  font-size:12px;font-weight:750;letter-spacing:.08em;
+  backdrop-filter:blur(14px);
+  transition:.3s ease;
+}
+.back:hover{background:rgba(255,255,255,.11);transform:translateX(-3px)}
+
+/* Hero fused glass sculpture */
+.heroObject{
+  position:absolute;
+  width:min(43vw,560px);
+  aspect-ratio:1;
+  right:3%;top:3%;
+  z-index:-3;
+  transform:translate3d(var(--gx,0),var(--gy,0),0);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;
+}
+.heroObject .orb{
+  position:absolute;inset:16%;
+  border-radius:44% 56% 58% 42% / 46% 42% 58% 54%;
+  border:1px solid rgba(213,238,255,.33);
+  background:
+    radial-gradient(circle at 30% 26%,rgba(255,255,255,.68),transparent 13%),
+    radial-gradient(circle at 66% 68%,rgba(158,140,255,.25),transparent 28%),
+    linear-gradient(145deg,rgba(137,215,255,.25),rgba(158,140,255,.12) 48%,rgba(255,255,255,.04));
+  box-shadow:
+    inset 0 0 50px rgba(255,255,255,.12),
+    0 0 80px rgba(137,215,255,.1);
+  transform:rotate(-11deg);
+}
+.heroObject .ring{
+  position:absolute;border:1px solid rgba(255,255,255,.16);border-radius:50%;
+}
+.heroObject .r1{inset:4%;transform:rotate(18deg);border-radius:48% 52% 42% 58% / 56% 42% 58% 44%}
+.heroObject .r2{inset:24%;transform:rotate(-20deg)}
+.heroObject .r3{inset:38%;border-color:rgba(137,215,255,.3)}
+.heroObject .axis{
+  left:50%;top:10%;bottom:10%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.7),rgba(158,140,255,.18),transparent);
+  transform:rotate(34deg);
+  box-shadow:0 0 14px rgba(137,215,255,.2);
+}
+.heroObject .node{
+  width:12px;height:12px;border-radius:50%;
+  left:63%;top:32%;
+  background:#eef9ff;
+  box-shadow:0 0 16px rgba(137,215,255,.9),0 0 42px rgba(158,140,255,.35);
+}
+
+/* GALLERY */
+.gallery{padding:26px 0 116px}
+.galleryGrid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  grid-template-areas:
+    "music visual"
+    "music space";
+  gap:22px;
+}
+.card{
+  position:relative;
+  min-height:500px;
+  border:1px solid var(--line);
+  border-radius:34px;
+  overflow:hidden;
+  isolation:isolate;
+  display:flex;
+  align-items:flex-end;
+  background:#0a0c11;
+  transition:
+    transform .55s cubic-bezier(.2,.75,.2,1),
+    border-color .3s ease,
+    box-shadow .55s ease;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 26px 90px rgba(0,0,0,.22);
+}
+.card::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.08) 40%,rgba(2,3,5,.94) 100%);
+}
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(255,255,255,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 38px 110px rgba(0,0,0,.32);
+}
+.musicCard{grid-area:music;min-height:760px}
+.visualCard{grid-area:visual;min-height:365px}
+.spaceCard{grid-area:space;min-height:373px}
+.cardBody{width:100%;padding:38px;position:relative;z-index:3}
+.num{
+  display:flex;align-items:center;gap:12px;
+  width:max-content;margin-bottom:18px;
+  color:rgba(255,255,255,.43);
+  font-size:10px;font-weight:760;letter-spacing:.18em;
+}
+.num::before{
+  content:"";width:30px;height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(137,215,255,.7));
+}
+.card h2{
+  margin:0;
+  font-size:clamp(46px,5.6vw,82px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  font-weight:830;
+  background:linear-gradient(180deg,#fff,rgba(221,235,250,.75));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.visualCard h2,.spaceCard h2{font-size:clamp(42px,4.8vw,68px)}
+.card h2::after{
+  content:"";display:block;
+  width:58px;height:1px;margin-top:20px;
+  background:linear-gradient(90deg,rgba(255,255,255,.76),rgba(137,215,255,.04));
+  transition:width .45s ease;
+}
+.card:hover h2::after{width:112px}
+.card p{
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.72;
+  max-width:31ch;
+  text-wrap:pretty;
+}
+.action{
+  margin-top:30px;
+  width:64px;height:64px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);
+  display:grid;place-items:center;
+  font-size:20px;
+  transition:.3s ease;
+}
+.card:hover .action{background:#fff;color:#07090f;transform:translateX(5px)}
+
+.artwork{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;transition:transform .7s ease}
+.artwork *{position:absolute;box-sizing:border-box}
+
+/* MUSIC — Resonance Crystal */
+.musicArt{
+  background:
+    radial-gradient(circle at 66% 19%,rgba(137,215,255,.2),transparent 24%),
+    radial-gradient(circle at 30% 45%,rgba(158,140,255,.12),transparent 30%),
+    linear-gradient(145deg,#111722,#080a10 58%,#11131c);
+}
+.musicArt .crystal{
+  width:350px;height:470px;right:4%;top:4%;
+  clip-path:polygon(50% 0,86% 22%,100% 70%,71% 100%,26% 91%,0 55%,16% 15%);
+  border:1px solid rgba(205,237,255,.35);
+  background:
+    linear-gradient(130deg,rgba(255,255,255,.5),transparent 16%),
+    linear-gradient(160deg,rgba(137,215,255,.32),rgba(158,140,255,.11) 45%,rgba(255,255,255,.04));
+  box-shadow:inset 0 0 60px rgba(255,255,255,.12),0 0 70px rgba(137,215,255,.12);
+  transform:rotate(-8deg);
+  transition:transform .95s cubic-bezier(.2,.8,.2,1);
+}
+.musicArt .crystal::before{
+  content:"";inset:12%;
+  border:1px solid rgba(255,255,255,.16);
+  clip-path:polygon(50% 0,100% 45%,70% 100%,17% 82%,0 24%);
+}
+.musicArt .wave{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(226,248,255,.9),rgba(158,140,255,.35),transparent);
+  box-shadow:0 0 15px rgba(137,215,255,.25);
+}
+.musicArt .w1{width:320px;right:2%;top:32%;transform:rotate(-12deg)}
+.musicArt .w2{width:260px;right:10%;top:43%;transform:rotate(8deg)}
+.musicArt .w3{width:220px;right:17%;top:54%;transform:rotate(-4deg)}
+.musicArt .particle{width:7px;height:7px;border-radius:50%;background:#edfaff;box-shadow:0 0 15px rgba(137,215,255,.95)}
+.musicArt .p1{right:17%;top:17%}.musicArt .p2{right:37%;top:28%;width:4px;height:4px}.musicArt .p3{right:8%;top:48%;width:5px;height:5px}
+.musicCard:hover .crystal{transform:rotate(-2deg) translate(-8px,-8px) scale(1.025)}
+
+/* VISUAL — Light Film Prism */
+.visualArt{
+  background:
+    radial-gradient(circle at 70% 20%,rgba(158,140,255,.22),transparent 26%),
+    linear-gradient(145deg,#151220,#090a10 58%,#12131a);
+}
+.visualArt .frame{
+  width:240px;height:170px;right:5%;top:11%;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:18px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.11),rgba(158,140,255,.04)),
+    repeating-linear-gradient(90deg,transparent 0 38px,rgba(255,255,255,.055) 38px 39px);
+  transform:rotate(8deg);
+  transition:transform .85s cubic-bezier(.2,.8,.2,1);
+}
+.visualArt .lens{
+  width:118px;height:118px;right:21%;top:20%;
+  border-radius:50%;
+  border:1px solid rgba(228,241,255,.4);
+  background:
+    radial-gradient(circle at 34% 30%,rgba(255,255,255,.75),transparent 12%),
+    radial-gradient(circle,rgba(137,215,255,.18),rgba(158,140,255,.2) 48%,rgba(255,255,255,.04) 70%);
+  box-shadow:inset 0 0 30px rgba(255,255,255,.1),0 0 35px rgba(158,140,255,.15);
+}
+.visualArt .beam{
+  width:250px;height:1px;right:-2%;top:40%;
+  background:linear-gradient(90deg,transparent,#fff,rgba(137,215,255,.38),transparent);
+  transform:rotate(-18deg);
+  box-shadow:0 0 12px rgba(255,255,255,.25);
+}
+.visualCard:hover .frame{transform:rotate(2deg) translate(-6px,-5px)}
+
+/* SPACE — Portal Architecture */
+.spaceArt{
+  background:
+    radial-gradient(circle at 68% 22%,rgba(228,237,246,.15),transparent 24%),
+    linear-gradient(145deg,#12171d,#080a0d 58%,#11141a);
+}
+.spaceArt .arch{
+  width:210px;height:245px;right:8%;top:5%;
+  border:1px solid rgba(221,236,247,.26);
+  border-radius:105px 105px 18px 18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(137,215,255,.025));
+  box-shadow:inset 0 0 36px rgba(255,255,255,.05),0 0 45px rgba(137,215,255,.06);
+  transform:perspective(700px) rotateY(-9deg);
+  transition:transform .85s cubic-bezier(.2,.8,.2,1);
+}
+.spaceArt .arch::before{
+  content:"";inset:24px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:80px 80px 10px 10px;
+}
+.spaceArt .step{height:1px;background:linear-gradient(90deg,transparent,rgba(228,237,246,.7),transparent);right:1%}
+.spaceArt .s1{width:250px;top:64%}.spaceArt .s2{width:220px;top:72%;right:5%}.spaceArt .s3{width:190px;top:80%;right:9%}
+.spaceArt .portal{
+  width:76px;height:76px;right:27%;top:28%;
+  border-radius:50%;
+  border:1px solid rgba(225,244,255,.36);
+  box-shadow:0 0 30px rgba(137,215,255,.16),inset 0 0 22px rgba(255,255,255,.08);
+}
+.spaceCard:hover .arch{transform:perspective(700px) rotateY(-2deg) translate(-7px,-5px)}
+
+/* STATEMENT */
+.statement{padding:0 0 116px}
+.statementBox{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:54px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:56px;
+  align-items:start;
+}
+.statementLabel{
+  color:rgba(255,255,255,.4);
+  font-size:11px;font-weight:760;letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+.statementBox h3{
+  margin:0;
+  font-size:clamp(48px,7vw,104px);
+  line-height:.89;
+  letter-spacing:-.07em;
+  font-weight:800;
+}
+.statementBox h3 .soft{
+  display:block;
+  color:rgba(247,248,251,.46);
+  font-size:.58em;
+  line-height:1.08;
+  letter-spacing:-.04em;
+  margin-bottom:.24em;
+}
+.statementBox h3 .strong{display:block}
+.statementBox p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.85;
+  max-width:38ch;
+}
+
+footer{padding:0 0 34px}
+.foot{
+  display:flex;
+  justify-content:space-between;
+  color:rgba(255,255,255,.36);
+  font-size:12px;
+  letter-spacing:.07em;
+}
+
+@media(max-width:980px){
+  .links{display:none}
+  .langs{margin-left:auto}
+  .menuBtn{display:block}
+  .mobilePanel{
+    position:fixed;
+    inset:var(--header) 0 0;
+    z-index:90;
+    background:rgba(6,7,11,.98);
+    padding:34px 28px;
+  }
+  .mobilePanel.open{display:block}
+  .mobilePanel a{
+    display:block;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    font-size:22px;
+    font-weight:700;
+  }
+  .heroContent{padding:40px}
+  .galleryGrid{
+    grid-template-columns:1fr;
+    grid-template-areas:"music" "visual" "space";
+  }
+  .musicCard,.visualCard,.spaceCard{min-height:480px}
+  .statementBox{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  :root{--header:76px}
+  .wrap{width:min(calc(100% - 24px),var(--max))}
+  .brand{font-size:20px}
+  .langBtn{width:36px;height:32px}
+  .hero{padding-top:14px}
+  .heroPanel{min-height:66svh;border-radius:25px}
+  .heroContent{padding:26px;display:block}
+  h1{font-size:clamp(76px,23vw,118px)}
+  .lead{
+    margin-top:24px;
+    max-width:15ch;
+    font-size:clamp(27px,8vw,34px);
+    line-height:1.17;
+  }
+  .back{margin-top:26px}
+  .heroObject{width:330px;right:-95px;top:4%}
+  .eyebrow{gap:10px}.eyebrow::before{width:28px}
+  .gallery{padding-top:14px;padding-bottom:78px}
+  .galleryGrid{gap:14px}
+  .card{border-radius:25px;min-height:58svh!important}
+  .cardBody{padding:26px}
+  .card h2,.visualCard h2,.spaceCard h2{font-size:clamp(44px,14vw,60px)}
+  .card p{max-width:31ch;font-size:13.5px}
+  .musicArt .crystal{width:260px;height:360px;right:-8%;top:4%}
+  .visualArt .frame{width:205px;height:148px;right:-4%;top:10%}
+  .visualArt .lens{right:14%}
+  .spaceArt .arch{width:180px;height:220px;right:-2%;top:5%}
+  .statement{padding-bottom:78px}
+  .statementBox{padding-top:40px;gap:30px}
+  .statementBox h3{font-size:clamp(42px,13vw,64px)}
+  .foot{display:block;line-height:1.9}
+}
+@media(prefers-reduced-motion:reduce){
+  .card,.artwork,.heroObject,.musicArt .crystal,.visualArt .frame,.spaceArt .arch{transition:none!important}
+}
+
+/* ===== CREATE ART DIRECTION V2 — restrained museum sculpture ===== */
+.heroPanel{
+  background:#090a0f;
+}
+.heroPanel::before{
+  background:
+    radial-gradient(520px 420px at 74% 28%,rgba(180,210,232,.09),transparent 68%),
+    radial-gradient(380px 300px at 57% 18%,rgba(151,139,201,.07),transparent 72%),
+    linear-gradient(138deg,#111318 0%,#08090d 56%,#101217 100%);
+}
+.heroObject{
+  width:min(45vw,590px);
+  right:2%;
+  top:1%;
+  filter:drop-shadow(0 45px 80px rgba(0,0,0,.34));
+}
+.heroObject .veil{
+  position:absolute;
+  border-radius:48% 52% 50% 50% / 58% 42% 58% 42%;
+  border:1px solid rgba(236,244,250,.14);
+  background:
+    linear-gradient(140deg,rgba(255,255,255,.18),rgba(188,212,228,.035) 42%,rgba(142,129,190,.045));
+  backdrop-filter:blur(2px);
+  box-shadow:
+    inset 0 0 40px rgba(255,255,255,.04),
+    0 0 60px rgba(159,194,215,.03);
+}
+.heroObject .veilA{
+  inset:11% 23% 20% 16%;
+  transform:rotate(-18deg) skewY(-3deg);
+}
+.heroObject .veilB{
+  inset:24% 11% 9% 31%;
+  transform:rotate(16deg) skewY(4deg);
+  opacity:.72;
+}
+.heroObject .monolith{
+  position:absolute;
+  width:16%;
+  height:58%;
+  left:43%;
+  top:18%;
+  border-radius:999px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.08),rgba(234,241,246,.72) 46%,rgba(255,255,255,.1));
+  box-shadow:
+    inset -10px 0 18px rgba(93,104,121,.24),
+    0 0 28px rgba(217,237,248,.08);
+  transform:rotate(11deg);
+}
+.heroObject .halo{
+  position:absolute;
+  width:58%;
+  height:19%;
+  left:22%;
+  top:39%;
+  border:1px solid rgba(232,242,248,.16);
+  border-radius:50%;
+  transform:rotate(-14deg);
+  box-shadow:0 0 30px rgba(188,218,235,.04);
+}
+.heroObject .lightCore{
+  position:absolute;
+  width:9px;height:9px;border-radius:50%;
+  left:55%;top:46%;
+  background:#f5fbff;
+  box-shadow:
+    0 0 18px rgba(231,247,255,.9),
+    0 0 52px rgba(171,208,231,.28);
+}
+
+/* Remove visual noise and increase gallery restraint */
+.card{
+  border-color:rgba(255,255,255,.095);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 28px 90px rgba(0,0,0,.24);
+}
+.card::after{
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.03) 42%,rgba(3,4,6,.92) 100%);
+}
+.card:hover{
+  border-color:rgba(255,255,255,.17);
+}
+.card h2::after{width:42px;opacity:.7}
+.card:hover h2::after{width:76px}
+.action{
+  width:58px;height:58px;
+  background:rgba(255,255,255,.015);
+}
+
+/* MUSIC — abstract resonance sculpture */
+.musicArt{
+  background:
+    radial-gradient(500px 430px at 70% 25%,rgba(116,176,208,.11),transparent 66%),
+    linear-gradient(145deg,#10151b,#080a0e 60%,#101219);
+}
+.musicArt .soundForm{
+  position:absolute;
+  border:1px solid rgba(218,235,244,.18);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.13),rgba(126,180,206,.025) 55%,rgba(255,255,255,.02));
+  box-shadow:
+    inset 0 0 40px rgba(255,255,255,.04),
+    0 34px 60px rgba(0,0,0,.18);
+  backdrop-filter:blur(1.5px);
+  transition:transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.musicArt .formA{
+  width:300px;height:390px;right:7%;top:7%;
+  border-radius:47% 53% 44% 56% / 62% 38% 58% 42%;
+  transform:rotate(-13deg);
+}
+.musicArt .formB{
+  width:230px;height:310px;right:17%;top:16%;
+  border-radius:59% 41% 55% 45% / 45% 56% 44% 55%;
+  transform:rotate(19deg);
+  opacity:.58;
+}
+.musicArt .soundCut{
+  position:absolute;
+  width:1px;height:360px;right:31%;top:9%;
+  background:linear-gradient(180deg,transparent,rgba(239,248,252,.7),rgba(145,182,203,.12),transparent);
+  transform:rotate(23deg);
+  box-shadow:0 0 10px rgba(219,240,250,.1);
+}
+.musicArt .soundGlow{
+  position:absolute;
+  width:10px;height:10px;border-radius:50%;
+  right:31%;top:36%;
+  background:#effaff;
+  box-shadow:0 0 20px rgba(225,245,255,.85),0 0 58px rgba(119,180,211,.24);
+}
+.musicCard:hover .formA{transform:rotate(-9deg) translate(-7px,-7px)}
+.musicCard:hover .formB{transform:rotate(14deg) translate(5px,-5px)}
+
+/* VISUAL — suspended translucent film installation */
+.visualArt{
+  background:
+    radial-gradient(360px 260px at 72% 22%,rgba(151,133,205,.105),transparent 72%),
+    linear-gradient(145deg,#121119,#090a0e 62%,#111319);
+}
+.visualArt .filmPlane{
+  position:absolute;
+  border:1px solid rgba(235,239,246,.17);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(142,126,190,.035));
+  box-shadow:inset 0 0 28px rgba(255,255,255,.035),0 24px 50px rgba(0,0,0,.18);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.visualArt .planeA{
+  width:220px;height:150px;right:8%;top:9%;
+  transform:rotate(7deg);
+}
+.visualArt .planeB{
+  width:180px;height:125px;right:19%;top:18%;
+  transform:rotate(-11deg);
+  opacity:.55;
+}
+.visualArt .aperture{
+  position:absolute;
+  width:92px;height:92px;border-radius:50%;
+  right:22%;top:23%;
+  border:1px solid rgba(235,242,247,.23);
+  background:radial-gradient(circle,rgba(255,255,255,.08),rgba(124,143,169,.04) 60%,transparent 72%);
+  box-shadow:inset 0 0 24px rgba(255,255,255,.03);
+}
+.visualArt .lightSlice{
+  position:absolute;
+  width:230px;height:1px;right:1%;top:40%;
+  background:linear-gradient(90deg,transparent,rgba(244,248,252,.7),transparent);
+  transform:rotate(-16deg);
+}
+.visualCard:hover .planeA{transform:rotate(3deg) translate(-5px,-4px)}
+.visualCard:hover .planeB{transform:rotate(-7deg) translate(4px,-4px)}
+
+/* SPACE — monolithic architectural composition */
+.spaceArt{
+  background:
+    radial-gradient(380px 300px at 70% 25%,rgba(214,225,234,.08),transparent 70%),
+    linear-gradient(145deg,#11151a,#080a0d 62%,#11141a);
+}
+.spaceArt .spaceMass{
+  position:absolute;
+  border:1px solid rgba(224,234,241,.15);
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(174,191,204,.018));
+  box-shadow:inset 0 0 32px rgba(255,255,255,.025),0 30px 60px rgba(0,0,0,.18);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.spaceArt .massA{
+  width:170px;height:260px;right:9%;top:5%;
+  border-radius:85px 85px 8px 8px;
+  transform:perspective(800px) rotateY(-8deg);
+}
+.spaceArt .massB{
+  width:120px;height:190px;right:27%;top:17%;
+  border-radius:60px 60px 6px 6px;
+  transform:perspective(800px) rotateY(11deg);
+  opacity:.52;
+}
+.spaceArt .void{
+  position:absolute;
+  width:64px;height:128px;right:23%;top:25%;
+  border-radius:40px 40px 5px 5px;
+  background:rgba(1,2,4,.78);
+  box-shadow:inset 0 0 20px rgba(0,0,0,.8),0 0 22px rgba(189,215,229,.035);
+}
+.spaceArt .horizon{
+  position:absolute;
+  width:270px;height:1px;right:0;top:72%;
+  background:linear-gradient(90deg,transparent,rgba(230,238,244,.48),transparent);
+}
+.spaceCard:hover .massA{transform:perspective(800px) rotateY(-3deg) translate(-5px,-5px)}
+.spaceCard:hover .massB{transform:perspective(800px) rotateY(6deg) translate(4px,-4px)}
+
+@media(max-width:640px){
+  .heroObject{width:340px;right:-90px;top:4%}
+  .musicArt .formA{width:240px;height:320px;right:-2%}
+  .musicArt .formB{width:185px;height:250px;right:10%}
+  .visualArt .planeA{width:190px;height:132px;right:-4%}
+  .visualArt .planeB{width:155px;height:108px;right:11%}
+  .spaceArt .massA{width:150px;height:230px;right:-2%}
+  .spaceArt .massB{width:105px;height:170px;right:21%}
+}
+
+</style>
+
+
+
+<style>
+/* ===== STUDIO — FINAL EXHIBITION LAYOUT ===== */
+.galleryGrid{
+  grid-template-columns:1fr;
+  grid-template-areas:
+    "music"
+    "visual"
+    "space";
+  gap:24px;
+}
+.musicCard,
+.visualCard,
+.spaceCard{
+  min-height:68svh;
+}
+.card{
+  border-radius:36px;
+}
+.cardBody{
+  width:min(620px,92%);
+  margin:0 auto 0 0;
+  padding:54px;
+  text-align:left;
+}
+.card h2,
+.visualCard h2,
+.spaceCard h2{
+  font-size:clamp(56px,7vw,104px);
+  max-width:8ch;
+}
+.card p{
+  max-width:38ch;
+  font-size:15px;
+  line-height:1.8;
+}
+.action{
+  margin-left:0;
+  margin-right:auto;
+}
+
+/* Artwork occupies the right side */
+.musicArt .formA{
+  width:min(34vw,430px);
+  height:min(46vw,580px);
+  right:4%;
+  top:4%;
+}
+.musicArt .formB{
+  width:min(27vw,330px);
+  height:min(37vw,450px);
+  right:14%;
+  top:13%;
+}
+.visualArt .planeA{
+  width:min(32vw,400px);
+  height:min(22vw,275px);
+  right:5%;
+  top:10%;
+}
+.visualArt .planeB{
+  width:min(26vw,320px);
+  height:min(18vw,220px);
+  right:17%;
+  top:19%;
+}
+.visualArt .aperture{
+  width:118px;
+  height:118px;
+  right:24%;
+  top:27%;
+}
+.spaceArt .massA{
+  width:min(24vw,300px);
+  height:min(38vw,480px);
+  right:8%;
+  top:5%;
+}
+.spaceArt .massB{
+  width:min(18vw,220px);
+  height:min(29vw,360px);
+  right:25%;
+  top:16%;
+}
+.spaceArt .void{
+  width:82px;
+  height:164px;
+  right:24%;
+  top:25%;
+}
+
+.statementBox{
+  grid-template-columns:1fr 1fr;
+}
+.statementBox h3{
+  max-width:9ch;
+}
+
+.studioDock{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  z-index:70;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:999px;
+  background:rgba(6,7,11,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 18px 60px rgba(0,0,0,.34);
+}
+.studioDock a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  color:rgba(255,255,255,.58);
+  transition:.2s ease;
+}
+.studioDock a:hover{
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+.studioDock span{
+  font-size:9px;
+  letter-spacing:.12em;
+  color:rgba(137,215,255,.66);
+}
+.studioDock b{
+  font-size:9px;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+footer{padding-bottom:92px}
+
+@media(max-width:980px){
+  .musicCard,.visualCard,.spaceCard{min-height:58svh}
+  .cardBody{padding:40px}
+}
+@media(max-width:640px){
+  .musicCard,.visualCard,.spaceCard{min-height:55svh!important}
+  .card{border-radius:24px}
+  .cardBody{width:100%;padding:28px}
+  .card h2,.visualCard h2,.spaceCard h2{
+    font-size:clamp(46px,15vw,70px);
+  }
+  .studioDock{
+    left:12px;
+    right:12px;
+    transform:none;
+    justify-content:space-between;
+    overflow:auto;
+  }
+  .studioDock a{padding:9px 10px}
+  .studioDock b{font-size:8px}
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+<div class="wrap nav">
+<a class="brand" href="index.html">OURBANG</a>
+<nav aria-label="Primary" class="links">
+<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
+<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
+<a class="active" data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
+<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
+<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
+<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<div aria-label="Language" class="langs">
+<button class="langBtn" data-lang="en" type="button">EN</button>
+<button class="langBtn" data-lang="ko" type="button">KO</button>
+</div>
+<button aria-expanded="false" aria-label="메뉴 열기" class="menuBtn" type="button">
+<span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<div class="mobilePanel" id="mobilePanel">
+<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
+<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
+<a data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
+<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
+<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
+<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="heroPanel">
+        <div class="heroObject" aria-hidden="true">
+          <span class="veil veilA"></span>
+          <span class="veil veilB"></span>
+          <span class="monolith"></span>
+          <span class="halo"></span>
+          <span class="lightCore"></span>
+        </div>
+        <div class="heroContent">
+          <div>
+            <div class="eyebrow">OURBANG / STUDIO</div>
+            <h1>STUDIO</h1>
+            <p class="lead" data-en="Build the future through music, visual and space." data-ko="음악, 비주얼, 공간으로 미래를 만듭니다.">Build the future through music, visual and space.</p>
+          </div>
+          <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO COLLECTIONS" data-ko="COLLECTIONS로 돌아가기">BACK TO COLLECTIONS</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="wrap galleryGrid">
+      <a class="card musicCard" id="music" href="music.html">
+        <div class="artwork musicArt" aria-hidden="true">
+          <span class="soundForm formA"></span>
+          <span class="soundForm formB"></span>
+          <span class="soundCut"></span>
+          <span class="soundGlow"></span>
+        </div>
+        <div class="cardBody">
+          <div class="num">STUDIO / 01</div>
+          <h2 data-en="MUSIC" data-ko="음악">MUSIC</h2>
+          <p data-en="Original music, sound identity and performance-driven production." data-ko="오리지널 음악, 사운드 아이덴티티, 퍼포먼스 중심의 제작을 진행합니다.">Original music, sound identity and performance-driven production.</p>
+          <span class="action">→</span>
+        </div>
+      </a>
+
+      <a class="card visualCard" id="visual" href="visual.html">
+        <div class="artwork visualArt" aria-hidden="true">
+          <span class="filmPlane planeA"></span>
+          <span class="filmPlane planeB"></span>
+          <span class="aperture"></span>
+          <span class="lightSlice"></span>
+        </div>
+        <div class="cardBody">
+          <div class="num">STUDIO / 02</div>
+          <h2 data-en="VISUAL" data-ko="비주얼">VISUAL</h2>
+          <p data-en="Moving image, cinematic direction and visual storytelling." data-ko="영상, 시네마틱 연출, 비주얼 스토리텔링을 제작합니다.">Moving image, cinematic direction and visual storytelling.</p>
+          <span class="action">→</span>
+        </div>
+      </a>
+
+      <a class="card spaceCard" id="space" href="space.html">
+        <div class="artwork spaceArt" aria-hidden="true">
+          <span class="spaceMass massA"></span>
+          <span class="spaceMass massB"></span>
+          <span class="void"></span>
+          <span class="horizon"></span>
+        </div>
+        <div class="cardBody">
+          <div class="num">STUDIO / 03</div>
+          <h2 data-en="SPACE" data-ko="공간">SPACE</h2>
+          <p data-en="Digital environments, virtual buildings and immersive experiences." data-ko="디지털 환경, 가상 건축, 몰입형 경험을 설계합니다.">Digital environments, virtual buildings and immersive experiences.</p>
+          <span class="action">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap statementBox">
+      <div>
+        <div class="statementLabel">OURBANG PHILOSOPHY</div>
+        <h3 data-en="CREATE ONCE. LIVE EVERYWHERE." data-ko="한 번의 창작이, 모든 곳에서 살아갑니다.">
+          <span class="soft">CREATE ONCE.</span>
+          <span class="strong">LIVE EVERYWHERE.</span>
+        </h3>
+      </div>
+      <p data-en="OURBANG connects music, visual media and digital space into one continuous world. Each idea becomes a performance, an image and a place people can enter." data-ko="OURBANG은 음악, 영상, 디지털 공간을 하나의 세계로 연결합니다. 하나의 아이디어는 공연이 되고, 이미지가 되며, 사람들이 들어갈 수 있는 공간이 됩니다.">OURBANG connects music, visual media and digital space into one continuous world. Each idea becomes a performance, an image and a place people can enter.</p>
+    </div>
+  </section>
+</main>
+
+<div class="studioDock" aria-label="Studio quick navigation">
+  <a href="#music"><span>01</span><b data-en="MUSIC" data-ko="음악">MUSIC</b></a>
+  <a href="#visual"><span>02</span><b data-en="VISUAL" data-ko="비주얼">VISUAL</b></a>
+  <a href="#space"><span>03</span><b data-en="SPACE" data-ko="공간">SPACE</b></a>
+</div>
+
+<footer>
+<div class="wrap foot">
+<div>© <span id="year"></span> OURBANG</div>
+<div>STUDIO · MUSIC · VISUAL · SPACE</div>
+</div>
+</footer>
+
+<script>
+  const langButtons=[...document.querySelectorAll('.langBtn')];
+  const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
+
+  function setLanguage(lang){
+    const safe=lang==='ko'?'ko':'en';
+    document.documentElement.lang=safe;
+
+    translatables.forEach(el=>{
+      if(el.tagName==='H3' && el.closest('.statementBox')){
+        el.innerHTML=safe==='ko'
+          ? '<span class="soft">한 번의 창작이,</span><span class="strong">모든 곳에서 살아갑니다.</span>'
+          : '<span class="soft">CREATE ONCE.</span><span class="strong">LIVE EVERYWHERE.</span>';
+      }else{
+        el.textContent=el.dataset[safe];
+      }
+    });
+
+    langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
+    localStorage.setItem('ourbang-language',safe);
+  }
+
+  langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+  setLanguage(localStorage.getItem('ourbang-language')||'ko');
+
+  const menuBtn=document.querySelector('.menuBtn');
+  const mobilePanel=document.getElementById('mobilePanel');
+
+  menuBtn.addEventListener('click',()=>{
+    const open=!mobilePanel.classList.contains('open');
+    mobilePanel.classList.toggle('open',open);
+    document.body.classList.toggle('menuOpen',open);
+    menuBtn.setAttribute('aria-expanded',String(open));
+  });
+
+  mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mobilePanel.classList.remove('open');
+    document.body.classList.remove('menuOpen');
+    menuBtn.setAttribute('aria-expanded','false');
+  }));
+
+  const finePointer=window.matchMedia('(pointer:fine)').matches;
+  const heroPanel=document.querySelector('.heroPanel');
+  const heroObject=document.querySelector('.heroObject');
+
+  if(finePointer&&heroPanel&&heroObject){
+    heroPanel.addEventListener('pointermove',e=>{
+      const r=heroPanel.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      heroObject.style.setProperty('--gx',`${(x*12).toFixed(1)}px`);
+      heroObject.style.setProperty('--gy',`${(y*12).toFixed(1)}px`);
+    });
+    heroPanel.addEventListener('pointerleave',()=>{
+      heroObject.style.setProperty('--gx','0px');
+      heroObject.style.setProperty('--gy','0px');
+    });
+  }
+
+  document.querySelectorAll('.card').forEach(card=>{
+    if(!finePointer)return;
+    const art=card.querySelector('.artwork');
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(1200px) rotateX(${(-y*2.1).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-8px)`;
+      if(art)art.style.transform=`translate(${(x*9).toFixed(1)}px,${(y*9).toFixed(1)}px)`;
+    });
+    card.addEventListener('pointerleave',()=>{
+      card.style.transform='';
+      if(art)art.style.transform='';
+    });
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
