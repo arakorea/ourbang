@@ -547,6 +547,54 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
 }
 </style>
 
+
+<style>
+/* Final alignment correction */
+.card .cardBody,
+.card:nth-child(even) .cardBody{
+  width:min(600px,92%);
+  margin-left:0;
+  margin-right:auto;
+  text-align:left;
+}
+.card .num,
+.card:nth-child(even) .num{
+  margin-left:0;
+  margin-right:0;
+}
+.card .num:before,
+.card:nth-child(even) .num:before{
+  order:0;
+}
+.card h2:after,
+.card:nth-child(even) h2:after{
+  margin-left:0;
+  margin-right:0;
+}
+.card p,
+.card:nth-child(even) p{
+  margin-left:0;
+  margin-right:0;
+}
+.card .action,
+.card:nth-child(even) .action{
+  justify-content:flex-start;
+}
+
+/* Finish naturally after the final AK ENM space */
+.content{padding-bottom:110px}
+
+@media(max-width:640px){
+  .card .cardBody,
+  .card:nth-child(even) .cardBody{
+    width:100%;
+    margin:0;
+    padding:28px;
+    text-align:left;
+  }
+}
+</style>
+
 </head><body id="top"><header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header><div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div><main><section class="hero"><div class="wrap"><div class="heroPanel"><div class="heroSculpture ipNexus" aria-hidden="true">
   <span class="nexusHalo haloOuter"></span>
   <span class="nexusHalo haloMiddle"></span>
@@ -619,23 +667,9 @@ body{background:radial-gradient(900px 620px at 78% 7%,rgba(255,210,228,.15),tran
   </div>
 </a>
 </div></section>
-<section class="akNext" id="next-collection">
-  <div class="wrap akNextIn">
-    <div>
-      <div class="akNextNum">005 · NEXT COLLECTION</div>
-      <h2>ARA<br>KOREA</h2>
-      <p data-en="Continue to the next founding collection." data-ko="다음 파운딩 컬렉션으로 이동합니다.">Continue to the next founding collection.</p>
-    </div>
-    <div class="akNextActions">
-      <a href="ara-korea.html" data-en="ENTER ARA KOREA" data-ko="ARA KOREA 입장">ENTER ARA KOREA</a>
-      <a href="#top" data-en="BACK TO TOP" data-ko="맨 위로">BACK TO TOP</a>
-    </div>
-  </div>
-</section>
 <div class="akDock" aria-label="AK ENM quick navigation">
   <a href="#official"><span>004.01</span><b data-en="OFFICIAL" data-ko="공식">OFFICIAL</b></a>
   <a href="#artists"><span>004.02</span><b data-en="ARTISTS" data-ko="아티스트">ARTISTS</b></a>
   <a href="#angels-angle"><span>004.03</span><b>ANGEL'S ANGLE</b></a>
-  <a href="#next-collection"><span>005</span><b data-en="NEXT" data-ko="다음">NEXT</b></a>
 </div>
 </main><footer><div class="wrap foot"><div>© <span id="year"></span> OURBANG</div><div>CAPTURE REALITY · CREATE EXPERIENCES</div></div></footer><script>const langButtons=[...document.querySelectorAll('.langBtn')],translatables=[...document.querySelectorAll('[data-en][data-ko]')];function setLanguage(lang){const safe=lang==='ko'?'ko':'en';document.documentElement.lang=safe;translatables.forEach(el=>el.textContent=el.dataset[safe]);langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));localStorage.setItem('ourbang-language',safe)}langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(localStorage.getItem('ourbang-language')||'ko');const menuBtn=document.querySelector('.menuBtn'),mobilePanel=document.getElementById('mobilePanel');menuBtn.addEventListener('click',()=>{const open=!mobilePanel.classList.contains('open');mobilePanel.classList.toggle('open',open);document.body.classList.toggle('menuOpen',open);menuBtn.setAttribute('aria-expanded',String(open))});mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');document.body.classList.remove('menuOpen');menuBtn.setAttribute('aria-expanded','false')}));const heroPanel=document.querySelector('.heroPanel'),heroSculpture=document.querySelector('.heroSculpture');if(heroPanel&&heroSculpture&&window.matchMedia('(pointer:fine)').matches){heroPanel.addEventListener('pointermove',e=>{const r=heroPanel.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;heroSculpture.style.setProperty('--ax',`${(x*10).toFixed(1)}px`);heroSculpture.style.setProperty('--ay',`${(y*10).toFixed(1)}px`)});heroPanel.addEventListener('pointerleave',()=>{heroSculpture.style.setProperty('--ax','0px');heroSculpture.style.setProperty('--ay','0px')})}document.querySelectorAll('.card').forEach(card=>{if(!window.matchMedia('(pointer:fine)').matches)return;const art=card.querySelector('.artwork');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1100px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-7px)`;if(art)art.style.transform=`translate(${(x*8).toFixed(1)}px,${(y*8).toFixed(1)}px)`});card.addEventListener('pointerleave',()=>{card.style.transform='';if(art)art.style.transform=''})});document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
