@@ -284,20 +284,20 @@
     }
   </style>
 <style>
-.spaceLead{
+.musicLead{
   max-width:19ch;
 }
-.spaceLead .line{
+.musicLead .line{
   display:block;
 }
-.spaceLead .accent{
+.musicLead .accent{
   color:#fff;
   text-shadow:0 0 32px rgba(124,198,255,.18);
 }
-.spaceStatement{
+.musicStatement{
   max-width:11ch;
 }
-.spaceStatement .soft{
+.musicStatement .soft{
   display:block;
   color:rgba(247,248,251,.48);
   font-size:.55em;
@@ -305,20 +305,20 @@
   letter-spacing:-.035em;
   margin-bottom:.18em;
 }
-.spaceStatement .strong{
+.musicStatement .strong{
   display:block;
   color:#fff;
 }
 @media(max-width:640px){
-  .spaceLead{max-width:15ch}
-  .spaceStatement{max-width:9ch}
+  .musicLead{max-width:15ch}
+  .musicStatement{max-width:9ch}
 }
 </style>
 <style>
 /* OURBANG child-page typography */
 .statementBox h3,
 .refStatement,
-.spaceStatement{
+.musicStatement{
   font-size:clamp(34px,4.9vw,72px)!important;
   line-height:.96!important;
   letter-spacing:-.055em!important;
@@ -326,7 +326,7 @@
 }
 .statementBox h3 .soft,
 .refStatement .soft,
-.spaceStatement .soft{
+.musicStatement .soft{
   display:block;
   color:rgba(247,248,251,.48);
   font-size:.58em;
@@ -336,32 +336,32 @@
 }
 .statementBox h3 .strong,
 .refStatement .strong,
-.spaceStatement .strong{
+.musicStatement .strong{
   display:block;
   white-space:nowrap;
 }
 @media(max-width:900px){
   .statementBox h3,
   .refStatement,
-  .spaceStatement{
+  .musicStatement{
     font-size:clamp(34px,7vw,60px)!important;
   }
   .statementBox h3 .strong,
   .refStatement .strong,
-  .spaceStatement .strong{
+  .musicStatement .strong{
     white-space:normal;
   }
 }
 @media(max-width:640px){
   .statementBox h3,
   .refStatement,
-  .spaceStatement{
+  .musicStatement{
     font-size:clamp(32px,10vw,48px)!important;
   }
 }
 </style>
 <style>
-/* SPACE — language-specific typography refinement */
+/* MUSIC — language-specific typography refinement */
 .createGrid .card > div:last-child{
   min-width:0;
 }
@@ -387,6 +387,7 @@ html[lang="ko"] .createGrid .card h2{
   word-break:keep-all;
 }
 
+html[lang="ko"] .createGrid .card:nth-child(1) h2,
 html[lang="ko"] .createGrid .card:nth-child(3) h2{
   font-size:clamp(35px,3.25vw,48px);
   letter-spacing:-.075em;
@@ -408,6 +409,7 @@ html[lang="en"] .createGrid .card h2{
   letter-spacing:-.055em;
 }
 
+html[lang="en"] .createGrid .card:nth-child(1) h2,
 html[lang="en"] .createGrid .card:nth-child(3) h2{
   font-size:clamp(34px,3.25vw,48px);
 }
@@ -418,7 +420,7 @@ html[lang="en"] .createGrid .card p{
 }
 
 /* Hero copy */
-html[lang="ko"] .spaceLead{
+html[lang="ko"] .musicLead{
   max-width:22ch;
   font-size:clamp(23px,2.65vw,38px);
   line-height:1.23;
@@ -426,22 +428,22 @@ html[lang="ko"] .spaceLead{
   word-break:keep-all;
 }
 
-html[lang="en"] .spaceLead{
+html[lang="en"] .musicLead{
   max-width:18ch;
 }
 
 /* Statement copy */
-html[lang="ko"] .spaceStatement{
+html[lang="ko"] .musicStatement{
   font-size:clamp(35px,4.35vw,64px)!important;
   line-height:1!important;
   letter-spacing:-.06em!important;
 }
 
-html[lang="ko"] .spaceStatement .soft{
+html[lang="ko"] .musicStatement .soft{
   font-size:.62em;
 }
 
-html[lang="ko"] .spaceStatement .strong{
+html[lang="ko"] .musicStatement .strong{
   white-space:nowrap;
 }
 
@@ -469,7 +471,7 @@ html[lang="ko"] .statementBox p{
 }
 
 @media(max-width:640px){
-  html[lang="ko"] .spaceLead{
+  html[lang="ko"] .musicLead{
     max-width:18ch;
     font-size:clamp(23px,7.2vw,29px);
   }
@@ -492,18 +494,17 @@ html[lang="ko"] .statementBox p{
     line-height:1.75;
   }
 
-  html[lang="ko"] .spaceStatement{
+  html[lang="ko"] .musicStatement{
     font-size:clamp(30px,8.9vw,42px)!important;
   }
 
-  html[lang="ko"] .spaceStatement .strong{
+  html[lang="ko"] .musicStatement .strong{
     white-space:nowrap;
   }
 }
 </style>
 <style>
-
-/* SPACE CARD OBJECT SYSTEM — same master layout, distinct objects */
+/* MUSIC CARD OBJECT SYSTEM — each card has its own visual identity */
 .backToCreate{
   display:inline-flex;
   align-items:center;
@@ -537,124 +538,128 @@ html[lang="ko"] .statementBox p{
 }
 .cardObject span{position:absolute;display:block}
 
-/* 01 — SCAN */
-.scanObject{
-  perspective:700px;
-  filter:drop-shadow(0 28px 42px rgba(86,196,255,.10));
+/* 01 — PRODUCTION: fluid sonic wave */
+.productionObject{
+  filter:drop-shadow(0 28px 42px rgba(93,187,255,.08));
 }
-.scanRing{
+.prodHalo{
+  inset:19px;
   border-radius:50%;
-  border:1px solid rgba(190,231,255,.28);
-  box-shadow:inset 0 0 28px rgba(124,198,255,.06),0 0 28px rgba(124,198,255,.06);
-}
-.ringOuter{inset:24px}
-.ringInner{inset:48px;border-color:rgba(255,255,255,.20)}
-.scanGrid{
-  width:118px;height:82px;
-  left:31px;top:49px;
-  transform:rotateX(66deg) rotateZ(-6deg);
-  border:1px solid rgba(180,229,255,.26);
+  border:1px solid rgba(151,218,255,.20);
   background:
-    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
-  background-size:16px 16px;
+    radial-gradient(circle at 38% 34%,rgba(255,255,255,.16),transparent 28%),
+    radial-gradient(circle,rgba(124,198,255,.09),transparent 68%);
+  box-shadow:
+    inset 0 0 30px rgba(124,198,255,.08),
+    0 0 42px rgba(124,198,255,.06);
 }
-.scanBeam{
-  width:2px;height:116px;
-  left:89px;top:30px;
-  background:linear-gradient(180deg,transparent,rgba(255,255,255,.72),rgba(124,198,255,.24),transparent);
-  box-shadow:0 0 16px rgba(124,198,255,.34);
-}
-.scanCore{
-  width:22px;height:22px;
-  left:79px;top:79px;
+.prodWave{
+  left:20px;
+  width:140px;
+  height:22px;
+  border:1px solid rgba(196,231,255,.46);
+  border-left-color:transparent;
+  border-right-color:transparent;
   border-radius:50%;
-  background:radial-gradient(circle,#fff 0 8%,#b9e7ff 24%,rgba(124,198,255,.18) 58%,transparent 72%);
-  box-shadow:0 0 26px rgba(124,198,255,.42);
+  transform-origin:center;
+  backdrop-filter:blur(3px);
+}
+.prodWaveA{top:58px;transform:rotate(-9deg) scaleX(.95)}
+.prodWaveB{top:82px;transform:rotate(7deg) scaleX(.78)}
+.prodWaveC{top:106px;transform:rotate(-4deg) scaleX(.58)}
+.prodCore{
+  width:20px;height:20px;
+  left:80px;top:80px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0 12%,#bce6ff 22%,rgba(124,198,255,.28) 58%,transparent 72%);
+  box-shadow:0 0 24px rgba(124,198,255,.54);
 }
 .card:nth-child(1)::after{
   content:"";
   position:absolute;
-  inset:auto -20% -42% 8%;
+  inset:auto -30% -42% 12%;
   height:220px;
   background:radial-gradient(ellipse,rgba(72,160,255,.12),transparent 67%);
   z-index:0;
+  transition:opacity .5s ease,transform .6s ease;
 }
 
-/* 02 — BUILD */
-.buildObject{
-  perspective:760px;
-  filter:drop-shadow(0 28px 42px rgba(155,116,255,.11));
+/* 02 — ARTIST: orbital identity sculpture */
+.artistObject{
+  perspective:600px;
+  filter:drop-shadow(0 26px 40px rgba(160,116,255,.10));
 }
-.buildCube{
-  width:82px;height:82px;
-  left:49px;top:48px;
-  border:1px solid rgba(214,201,255,.32);
-  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(143,124,255,.025));
-  box-shadow:inset 0 0 28px rgba(143,124,255,.05);
-}
-.cubeBack{transform:translate(18px,-18px) rotateY(-18deg);opacity:.48}
-.cubeFront{transform:rotateY(22deg) rotateX(8deg)}
-.buildLine{
-  height:1px;width:100px;
-  left:40px;top:89px;
-  transform-origin:left center;
-  background:linear-gradient(90deg,rgba(255,255,255,.58),rgba(143,124,255,.22),transparent);
-}
-.lineA{transform:rotate(32deg)}
-.lineB{transform:rotate(-30deg);opacity:.62}
-.buildCore{
-  width:26px;height:26px;
-  left:77px;top:77px;
+.artistOrbit{
+  inset:26px;
+  border:1px solid rgba(206,190,255,.30);
   border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fff 0 10%,#d0c3ff 26%,rgba(143,124,255,.18) 60%,transparent 74%);
-  box-shadow:0 0 28px rgba(143,124,255,.35);
+  box-shadow:inset 0 0 22px rgba(143,124,255,.07);
 }
+.orbitA{transform:rotateX(68deg) rotateZ(-16deg)}
+.orbitB{transform:rotateY(66deg) rotateZ(23deg)}
+.artistSphere{
+  width:68px;height:68px;
+  left:56px;top:56px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.92),rgba(198,182,255,.42) 25%,rgba(119,84,220,.20) 55%,rgba(8,10,17,.12) 72%),
+    linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:
+    inset -14px -16px 28px rgba(40,22,94,.22),
+    0 0 32px rgba(143,124,255,.22);
+}
+.artistShard{
+  width:10px;height:36px;
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(143,124,255,.13));
+  border:1px solid rgba(255,255,255,.30);
+  box-shadow:0 0 18px rgba(143,124,255,.12);
+}
+.shardA{left:31px;top:31px;transform:rotate(-34deg)}
+.shardB{right:28px;bottom:31px;transform:rotate(33deg)}
 .card:nth-child(2)::after{
   content:"";
   position:absolute;
-  inset:-25% -18% auto 16%;
+  inset:-25% -20% auto 20%;
   height:240px;
   background:radial-gradient(ellipse,rgba(143,124,255,.13),transparent 70%);
   z-index:0;
 }
 
-/* 03 — EXPLORE */
-.exploreObject{
-  perspective:760px;
+/* 03 — PERFORMANCE: spatial light stage */
+.performanceObject{
+  perspective:680px;
   filter:drop-shadow(0 28px 42px rgba(80,208,255,.10));
 }
-.portalRing{
-  border-radius:50%;
-  border:1px solid rgba(192,236,255,.30);
-  box-shadow:inset 0 0 34px rgba(124,198,255,.07),0 0 30px rgba(124,198,255,.07);
-}
-.portalOuter{inset:26px}
-.portalInner{inset:52px;border-color:rgba(255,255,255,.18)}
-.portalFloor{
-  width:124px;height:76px;
-  left:28px;bottom:24px;
-  transform:rotateX(70deg);
-  border:1px solid rgba(180,229,255,.24);
+.stageFloor{
+  width:132px;height:92px;
+  left:24px;bottom:22px;
+  transform:rotateX(67deg) rotateZ(-4deg);
+  border:1px solid rgba(180,229,255,.30);
   background:
-    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
-  background-size:17px 17px;
+    linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(98,207,255,.12),rgba(143,124,255,.03));
+  background-size:18px 18px;
+  box-shadow:0 0 32px rgba(68,190,255,.09);
 }
-.portalRay{
-  width:1px;height:112px;
-  top:24px;
+.stageBeam{
+  width:1px;
+  height:124px;
+  top:2px;
   transform-origin:top center;
-  background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(124,198,255,.16) 58%,transparent);
-  box-shadow:0 0 12px rgba(124,198,255,.28);
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(124,198,255,.16) 55%,transparent);
+  box-shadow:0 0 12px rgba(124,198,255,.30);
 }
-.rayA{left:62px;transform:rotate(15deg)}
-.rayB{right:58px;transform:rotate(-16deg)}
-.portalCore{
+.beamA{left:50px;transform:rotate(14deg)}
+.beamB{left:90px;transform:rotate(-2deg)}
+.beamC{right:40px;transform:rotate(-17deg)}
+.stagePulse{
   width:24px;height:24px;
-  left:78px;top:78px;
   border-radius:50%;
-  background:radial-gradient(circle,#fff 0 8%,#9bddff 22%,rgba(124,198,255,.20) 52%,transparent 72%);
+  left:78px;bottom:47px;
+  background:radial-gradient(circle,#fff 0 7%,#9bddff 18%,rgba(124,198,255,.20) 48%,transparent 70%);
   box-shadow:0 0 26px rgba(124,198,255,.42);
 }
 .card:nth-child(3)::after{
@@ -666,57 +671,51 @@ html[lang="ko"] .statementBox p{
   z-index:0;
 }
 
-/* Hover behavior */
-.card:nth-child(1):hover .scanObject{
+/* Card-specific hover behavior */
+.card:nth-child(1):hover .productionObject{
   transform:translate3d(-4px,-3px,0) rotate(-2deg) scale(1.025);
   filter:drop-shadow(0 30px 46px rgba(93,187,255,.17));
 }
-.card:nth-child(1):hover .ringOuter{animation:scanRing 5.5s linear infinite}
-.card:nth-child(1):hover .ringInner{animation:scanRing 4.2s linear infinite reverse}
-.card:nth-child(1):hover .scanBeam{animation:scanBeam 1.9s ease-in-out infinite alternate}
-.card:nth-child(1):hover .scanCore{animation:spacePulse 1.8s ease-in-out infinite}
+.card:nth-child(1):hover .prodWaveA{animation:waveShiftA 1.9s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodWaveB{animation:waveShiftB 2.2s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodWaveC{animation:waveShiftC 1.7s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodCore{animation:corePulse 1.8s ease-in-out infinite}
 
-.card:nth-child(2):hover .buildObject{
+.card:nth-child(2):hover .artistObject{
   transform:translateY(-3px) rotateZ(3deg) scale(1.02);
   filter:drop-shadow(0 30px 46px rgba(160,116,255,.18));
 }
-.card:nth-child(2):hover .cubeFront{animation:cubeFront 5.8s ease-in-out infinite alternate}
-.card:nth-child(2):hover .cubeBack{animation:cubeBack 6.6s ease-in-out infinite alternate}
-.card:nth-child(2):hover .lineA{animation:buildLineA 2.5s ease-in-out infinite alternate}
-.card:nth-child(2):hover .lineB{animation:buildLineB 2.8s ease-in-out infinite alternate}
-.card:nth-child(2):hover .buildCore{animation:spacePulse 1.9s ease-in-out infinite}
+.card:nth-child(2):hover .orbitA{animation:orbitA 7s linear infinite}
+.card:nth-child(2):hover .orbitB{animation:orbitB 8.5s linear infinite reverse}
+.card:nth-child(2):hover .artistSphere{transform:translateY(-2px);box-shadow:inset -14px -16px 28px rgba(40,22,94,.22),0 0 40px rgba(143,124,255,.30)}
 
-.card:nth-child(3):hover .exploreObject{
+.card:nth-child(3):hover .performanceObject{
   transform:translateY(-4px) rotateY(-4deg) scale(1.02);
   filter:drop-shadow(0 30px 46px rgba(80,208,255,.18));
 }
-.card:nth-child(3):hover .portalOuter{animation:portalSpin 6.4s linear infinite}
-.card:nth-child(3):hover .portalInner{animation:portalSpin 4.8s linear infinite reverse}
-.card:nth-child(3):hover .rayA{animation:portalRayA 2.4s ease-in-out infinite alternate}
-.card:nth-child(3):hover .rayB{animation:portalRayB 2.8s ease-in-out infinite alternate}
-.card:nth-child(3):hover .portalCore{animation:spacePulse 1.7s ease-in-out infinite}
+.card:nth-child(3):hover .beamA{animation:beamA 2.4s ease-in-out infinite alternate}
+.card:nth-child(3):hover .beamB{animation:beamB 2.9s ease-in-out infinite alternate}
+.card:nth-child(3):hover .beamC{animation:beamC 2.2s ease-in-out infinite alternate}
+.card:nth-child(3):hover .stagePulse{animation:stagePulse 1.7s ease-in-out infinite}
 
-@keyframes scanRing{to{transform:rotate(360deg)}}
-@keyframes scanBeam{to{transform:translateX(12px);opacity:.68}}
-@keyframes cubeFront{to{transform:rotateY(34deg) rotateX(14deg) translateY(-3px)}}
-@keyframes cubeBack{to{transform:translate(14px,-22px) rotateY(-30deg)}}
-@keyframes buildLineA{to{transform:rotate(38deg);opacity:.72}}
-@keyframes buildLineB{to{transform:rotate(-24deg);opacity:.80}}
-@keyframes portalSpin{to{transform:rotate(360deg)}}
-@keyframes portalRayA{to{transform:rotate(10deg);opacity:.70}}
-@keyframes portalRayB{to{transform:rotate(-11deg);opacity:.78}}
-@keyframes spacePulse{50%{transform:scale(1.14);opacity:.82}}
+@keyframes waveShiftA{to{transform:translateX(7px) rotate(-5deg) scaleX(1.01)}}
+@keyframes waveShiftB{to{transform:translateX(-8px) rotate(3deg) scaleX(.84)}}
+@keyframes waveShiftC{to{transform:translateX(5px) rotate(-7deg) scaleX(.64)}}
+@keyframes corePulse{50%{transform:scale(1.12);opacity:.82}}
+@keyframes orbitA{to{transform:rotateX(68deg) rotateZ(344deg)}}
+@keyframes orbitB{to{transform:rotateY(66deg) rotateZ(383deg)}}
+@keyframes beamA{to{transform:rotate(9deg);opacity:.70}}
+@keyframes beamB{to{transform:rotate(3deg);opacity:.82}}
+@keyframes beamC{to{transform:rotate(-12deg);opacity:.68}}
+@keyframes stagePulse{50%{transform:scale(1.18);opacity:.78}}
 
 @media(max-width:980px){
   .cardObject{width:160px;height:160px;right:20px;top:20px}
-  .scanGrid{left:21px;top:39px}
-  .scanBeam{left:79px;top:20px}
-  .scanCore{left:69px;top:69px}
-  .buildCube{left:39px;top:38px}
-  .buildLine{left:30px;top:79px}
-  .buildCore{left:67px;top:67px}
-  .portalFloor{left:18px}
-  .portalCore{left:68px;top:68px}
+  .prodWave{left:16px;width:128px}
+  .prodWaveA{top:50px}.prodWaveB{top:73px}.prodWaveC{top:96px}
+  .prodCore{left:70px;top:70px}
+  .artistSphere{left:46px;top:46px}
+  .stageFloor{left:14px}
 }
 @media(max-width:640px){
   .backToCreate{margin-bottom:18px}
@@ -729,133 +728,1000 @@ html[lang="ko"] .statementBox p{
   }
   .createGrid .card h2{padding-right:10px}
 }
+
 @media(prefers-reduced-motion:reduce){
   .card,.cardObject,.cardObject span,.backToCreate{animation:none!important;transition:none!important}
 }
+</style>
+<style>
+/* MUSIC — OURBANG EXHIBITION SYSTEM */
+.musicHero{
+  min-height:72svh;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.musicHero::before{
+  content:"";
+  position:absolute;
+  width:min(56vw,780px);
+  aspect-ratio:1;
+  right:-8%;
+  top:-12%;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  box-shadow:0 0 170px rgba(124,198,255,.08);
+}
+.musicHero::after{
+  content:"";
+  position:absolute;
+  width:min(31vw,430px);
+  aspect-ratio:1;
+  right:23%;
+  top:24%;
+  border:1px solid rgba(143,124,255,.10);
+  border-radius:42% 58% 48% 52% / 56% 44% 56% 44%;
+  transform:rotate(24deg);
+}
+.musicHeroInner{padding:116px 0 78px;position:relative;z-index:2}
+.backToStudio{
+  display:inline-flex;align-items:center;
+  margin-bottom:28px;
+  color:rgba(255,255,255,.48);
+  font-size:11px;font-weight:760;letter-spacing:.16em;
+  transition:.25s ease;
+}
+.backToStudio:hover{color:#fff;transform:translateX(-4px)}
+.heroMeta{font-size:11px;font-weight:760;letter-spacing:.24em;color:rgba(255,255,255,.42)}
+.musicHero h1{
+  margin:24px 0 0;
+  font-size:clamp(86px,13.8vw,194px);
+  line-height:.79;
+  letter-spacing:-.078em;
+}
+.heroLead{
+  margin:34px 0 0;
+  max-width:22ch;
+  font-size:clamp(21px,2.75vw,40px);
+  line-height:1.2;
+  letter-spacing:-.04em;
+  font-weight:610;
+  color:rgba(255,255,255,.78);
+}
 
-</style></head>
+.musicExhibition{padding:28px 0 108px}
+.exhibit{
+  min-height:78svh;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  margin-bottom:22px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:34px;
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);
+  align-items:center;
+  padding:clamp(38px,5.2vw,76px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 90px rgba(0,0,0,.26);
+  transition:transform .55s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .55s ease;
+}
+.exhibit:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 42px 120px rgba(0,0,0,.34);
+}
+.exhibit::before{
+  content:"";
+  position:absolute;inset:0;z-index:-3;
+}
+.exhibit::after{
+  content:"";
+  position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(90deg,rgba(5,7,12,.94),rgba(5,7,12,.52) 46%,rgba(5,7,12,.10));
+}
+.exhibitProduction::before{
+  background:
+    radial-gradient(circle at 74% 38%,rgba(79,190,255,.25),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(81,115,255,.14),transparent 26%),
+    linear-gradient(145deg,#0a1320,#080b11 58%,#101526);
+}
+.exhibitArtist::before{
+  background:
+    radial-gradient(circle at 74% 40%,rgba(163,117,255,.25),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(255,158,219,.11),transparent 25%),
+    linear-gradient(145deg,#171020,#0a0a11 58%,#151020);
+}
+.exhibitPerformance::before{
+  background:
+    radial-gradient(circle at 72% 36%,rgba(73,211,255,.23),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(115,93,255,.15),transparent 24%),
+    linear-gradient(145deg,#0a1419,#080a10 58%,#0e1320);
+}
+.exhibitIndex{
+  position:absolute;
+  top:clamp(28px,4vw,52px);
+  left:clamp(34px,5.2vw,76px);
+  font-size:11px;font-weight:760;letter-spacing:.22em;
+  color:rgba(255,255,255,.38);
+}
+.exhibitCopy{position:relative;z-index:2;align-self:end;padding-bottom:2vh}
+.exhibitLabel{
+  margin-bottom:20px;
+  font-size:11px;font-weight:760;letter-spacing:.24em;
+  color:rgba(255,255,255,.45);
+}
+.exhibit h2{
+  margin:0;
+  font-size:clamp(60px,8.2vw,126px);
+  line-height:.82;
+  letter-spacing:-.072em;
+  white-space:nowrap;
+}
+.exhibitCopy p{
+  margin:28px 0 0;
+  max-width:36ch;
+  color:rgba(255,255,255,.58);
+  font-size:16px;line-height:1.75;
+}
+.exhibitArt{
+  position:relative;
+  justify-self:center;
+  width:min(38vw,520px);
+  aspect-ratio:1;
+  transition:transform .8s cubic-bezier(.2,.75,.2,1),filter .6s ease;
+}
+.exhibit:hover .exhibitArt{transform:scale(1.035) translateY(-7px);filter:brightness(1.1)}
+.exhibitArt span{position:absolute;display:block}
+
+/* Production sculpture */
+.soundHalo{inset:50% auto auto 50%;transform:translate(-50%,-50%);border-radius:50%}
+.haloA{width:88%;height:88%;border:1px solid rgba(185,229,255,.24);box-shadow:0 0 80px rgba(84,189,255,.10)}
+.haloB{width:54%;height:54%;border:1px solid rgba(155,203,255,.22)}
+.wave{left:12%;width:76%;height:18%;border:1px solid rgba(210,238,255,.42);border-left-color:transparent;border-right-color:transparent;border-radius:50%}
+.waveA{top:30%;transform:rotate(-8deg)}
+.waveB{top:44%;transform:rotate(6deg) scaleX(.82)}
+.waveC{top:58%;transform:rotate(-4deg) scaleX(.62)}
+.soundCore{width:12%;height:12%;left:44%;top:44%;border-radius:50%;background:#e8f7ff;box-shadow:0 0 34px rgba(124,198,255,.65)}
+
+/* Artist sculpture */
+.artistArt{perspective:800px}
+.orbit{inset:12%;border:1px solid rgba(220,205,255,.28);border-radius:50%}
+.orbitOne{transform:rotateX(68deg) rotateZ(-14deg)}
+.orbitTwo{transform:rotateY(67deg) rotateZ(24deg)}
+.artistSphere{width:34%;height:34%;left:33%;top:33%;border-radius:50%;background:radial-gradient(circle at 31% 25%,#fff 0 8%,#d6c7ff 23%,rgba(137,96,231,.36) 54%,rgba(9,10,18,.10) 72%);border:1px solid rgba(255,255,255,.28);box-shadow:inset -24px -26px 42px rgba(44,22,96,.25),0 0 45px rgba(143,124,255,.26)}
+.shard{width:5%;height:22%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(143,124,255,.12));border:1px solid rgba(255,255,255,.3)}
+.shardOne{left:17%;top:18%;transform:rotate(-36deg)}
+.shardTwo{right:16%;bottom:18%;transform:rotate(34deg)}
+
+/* Performance sculpture */
+.performanceArt{perspective:900px}
+.stageGrid{width:76%;height:54%;left:12%;bottom:12%;transform:rotateX(67deg) rotateZ(-4deg);border:1px solid rgba(178,231,255,.30);background:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(180deg,rgba(75,201,255,.12),rgba(143,124,255,.02));background-size:32px 32px;box-shadow:0 0 40px rgba(68,190,255,.10)}
+.beam{width:1px;height:70%;top:5%;background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(124,198,255,.15) 60%,transparent);box-shadow:0 0 14px rgba(124,198,255,.34);transform-origin:top}
+.beamOne{left:28%;transform:rotate(14deg)}
+.beamTwo{left:50%;transform:rotate(-2deg)}
+.beamThree{right:24%;transform:rotate(-17deg)}
+.stageCore{width:13%;height:13%;left:43.5%;bottom:24%;border-radius:50%;background:radial-gradient(circle,#fff 0 8%,#9bddff 19%,rgba(124,198,255,.22) 50%,transparent 72%);box-shadow:0 0 32px rgba(124,198,255,.50)}
+
+.musicStatement{padding:0 0 120px}
+.statementRule{height:1px;background:rgba(255,255,255,.10);margin-bottom:52px}
+.statementGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.statementGrid h3{margin:0;font-size:clamp(42px,6vw,86px);line-height:.92;letter-spacing:-.06em;max-width:10ch}
+.statementGrid p{margin:0;color:rgba(255,255,255,.58);font-size:16px;line-height:1.8;max-width:38ch}
+
+.musicDock{
+  position:fixed;
+  left:50%;bottom:22px;z-index:80;
+  transform:translateX(-50%);
+  display:flex;gap:4px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  background:rgba(7,9,15,.72);
+  backdrop-filter:blur(22px) saturate(140%);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  box-shadow:0 16px 50px rgba(0,0,0,.32);
+}
+.musicDock a{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:12px;color:rgba(255,255,255,.56);transition:.2s}
+.musicDock a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.musicDock span{font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.34)}
+.musicDock b{font-size:11px;letter-spacing:.08em;white-space:nowrap}
+
+@media(max-width:980px){
+  .exhibit{grid-template-columns:1fr;min-height:72svh;padding-top:100px}
+  .exhibitCopy{align-self:end}
+  .exhibitArt{position:absolute;right:-3%;top:8%;width:min(58vw,440px);opacity:.82;z-index:-1}
+  .exhibit::after{background:linear-gradient(180deg,rgba(5,7,12,.12),rgba(5,7,12,.84) 60%,rgba(5,7,12,.97))}
+  .statementGrid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .musicHero{min-height:64svh}
+  .musicHeroInner{padding:86px 0 56px}
+  .musicHero h1{font-size:clamp(78px,24vw,122px)}
+  .heroLead{font-size:clamp(23px,7vw,30px);max-width:18ch}
+  .musicExhibition{padding:14px 0 80px}
+  .exhibit{min-height:68svh;border-radius:24px;margin-bottom:14px;padding:96px 26px 30px}
+  .exhibitIndex{left:26px;top:25px}
+  .exhibit h2{font-size:clamp(52px,16vw,76px);white-space:normal}
+  html[lang="ko"] .exhibit h2{font-size:clamp(44px,13vw,64px)}
+  .exhibitCopy p{font-size:14px;line-height:1.72}
+  .exhibitArt{width:310px;right:-120px;top:12%;opacity:.72}
+  .statementRule{margin-bottom:38px}
+  .musicStatement{padding-bottom:96px}
+  .statementGrid{gap:28px}
+  .statementGrid h3{font-size:clamp(38px,12vw,58px)}
+  .musicDock{bottom:12px;max-width:calc(100% - 20px);overflow:auto}
+  .musicDock a{padding:9px 11px}
+  .musicDock b{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .exhibit,.exhibitArt,.backToStudio,.musicDock a{transition:none!important}
+}
+</style>
+
+
+<style>
+/* MUSIC — FINAL TYPOGRAPHY & ALIGNMENT SYSTEM */
+.musicHeroInner{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-content:end;
+}
+.heroMeta,
+.backToStudio,
+.musicHero h1,
+.heroLead{
+  margin-left:0;
+}
+.heroLead.composedCopy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  width:max-content;
+  max-width:100%;
+  margin-top:34px;
+  font-size:clamp(24px,2.62vw,39px);
+  line-height:1.17;
+  letter-spacing:-.045em;
+  font-weight:620;
+}
+.heroLead.composedCopy span{
+  display:block;
+  white-space:nowrap;
+}
+.heroLead .accentLine{
+  color:#fff;
+  text-shadow:0 0 30px rgba(124,198,255,.18);
+}
+
+.exhibit{
+  grid-template-columns:minmax(0,47%) minmax(0,53%);
+}
+.exhibitCopy{
+  align-self:end;
+  display:grid;
+  grid-template-rows:auto minmax(148px,auto) minmax(112px,auto);
+  align-content:end;
+  width:100%;
+  max-width:620px;
+  padding-bottom:0;
+}
+.exhibitLabel{
+  align-self:end;
+  margin:0 0 22px;
+}
+.exhibitTitle{
+  margin:0!important;
+  min-height:148px;
+  display:flex;
+  align-items:flex-end;
+  font-size:clamp(58px,6.6vw,102px)!important;
+  line-height:.84!important;
+  letter-spacing:-.073em!important;
+  font-weight:850;
+  white-space:nowrap;
+}
+.exhibitTitle span{display:block}
+.titlePerformance{
+  font-size:clamp(50px,5.55vw,88px)!important;
+  letter-spacing:-.068em!important;
+}
+html[lang="ko"] .exhibitTitle{
+  font-size:clamp(55px,5.8vw,88px)!important;
+  letter-spacing:-.075em!important;
+}
+html[lang="ko"] .titlePerformance{
+  font-size:clamp(52px,5.35vw,82px)!important;
+}
+.exhibitCopy p{
+  align-self:start;
+  min-height:112px;
+  margin:25px 0 0;
+  max-width:35ch;
+  font-size:15px;
+  line-height:1.76;
+  letter-spacing:-.012em;
+}
+html[lang="ko"] .exhibitCopy p{
+  max-width:31ch;
+  word-break:keep-all;
+  letter-spacing:-.025em;
+}
+
+.statementGrid{
+  grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
+  gap:clamp(44px,7vw,112px);
+}
+.statementTitle{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  font-size:clamp(42px,5.4vw,78px)!important;
+  line-height:.94!important;
+  letter-spacing:-.06em!important;
+  max-width:none!important;
+}
+.statementTitle span{
+  display:block;
+  white-space:nowrap;
+}
+.statementTitle .statementSoft{
+  margin-bottom:.28em;
+  color:rgba(247,248,251,.46);
+  font-size:.58em;
+  line-height:1.05;
+  letter-spacing:-.035em;
+}
+.statementGrid p{
+  padding-top:4px;
+  max-width:36ch;
+}
+html[lang="ko"] .statementGrid p{
+  word-break:keep-all;
+  letter-spacing:-.02em;
+}
+
+@media(max-width:1100px){
+  .exhibitTitle{
+    font-size:clamp(54px,6.2vw,82px)!important;
+  }
+  .titlePerformance{
+    font-size:clamp(46px,5.15vw,70px)!important;
+  }
+}
+@media(max-width:980px){
+  .exhibitCopy{
+    grid-template-rows:auto minmax(112px,auto) auto;
+    max-width:680px;
+  }
+  .exhibitTitle{
+    min-height:112px;
+    font-size:clamp(54px,9vw,82px)!important;
+  }
+  .titlePerformance{
+    font-size:clamp(48px,8vw,72px)!important;
+  }
+  .exhibitCopy p{min-height:0}
+  .statementGrid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .heroLead.composedCopy{
+    width:100%;
+    font-size:clamp(22px,7vw,29px);
+    line-height:1.2;
+  }
+  .heroLead.composedCopy span{
+    white-space:normal;
+  }
+  .exhibitCopy{
+    grid-template-rows:auto minmax(88px,auto) auto;
+  }
+  .exhibitTitle{
+    min-height:88px;
+    font-size:clamp(45px,13vw,62px)!important;
+    line-height:.88!important;
+  }
+  .titlePerformance{
+    font-size:clamp(39px,10.7vw,52px)!important;
+  }
+  html[lang="ko"] .exhibitTitle,
+  html[lang="ko"] .titlePerformance{
+    font-size:clamp(42px,12vw,56px)!important;
+  }
+  .exhibitCopy p{
+    margin-top:18px;
+    max-width:31ch;
+  }
+  .statementTitle{
+    font-size:clamp(36px,10.6vw,48px)!important;
+  }
+  .statementTitle span{
+    white-space:normal;
+  }
+}
+</style>
+
+
+<style>
+/* VISUAL — EXHIBITION ART SYSTEM */
+.visualHero{
+  background:
+    radial-gradient(720px 520px at 80% 18%,rgba(100,180,225,.13),transparent 64%),
+    radial-gradient(620px 500px at 12% 86%,rgba(138,112,198,.10),transparent 68%);
+}
+.visualHero::before,
+.visualHero::after{display:none}
+
+.visualInstallation{
+  position:absolute;
+  width:min(52vw,760px);
+  aspect-ratio:1.08;
+  right:-2%;
+  top:1%;
+  z-index:1;
+  pointer-events:none;
+  transform:translate3d(var(--vx,0),var(--vy,0),0);
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+  filter:drop-shadow(0 46px 92px rgba(0,0,0,.34));
+}
+.visualInstallation span{position:absolute;display:block}
+.glassPlane{
+  border:1px solid rgba(230,243,250,.15);
+  background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(125,190,220,.018) 48%,rgba(135,118,190,.035));
+  box-shadow:inset 0 0 38px rgba(255,255,255,.028),0 24px 64px rgba(0,0,0,.15);
+  backdrop-filter:blur(2px);
+  transition:transform 1.1s cubic-bezier(.2,.8,.2,1);
+}
+.planeOne{
+  width:24%;height:73%;left:24%;top:10%;
+  border-radius:120px 18px 100px 20px;
+  transform:rotate(-13deg);
+}
+.planeTwo{
+  width:22%;height:66%;left:48%;top:17%;
+  border-radius:18px 110px 22px 96px;
+  transform:rotate(11deg);opacity:.7;
+}
+.planeThree{
+  width:17%;height:52%;left:64%;top:26%;
+  border-radius:90px 14px 78px 18px;
+  transform:rotate(-4deg);opacity:.42;
+}
+.lightLine{
+  height:1px;transform-origin:left center;
+  background:linear-gradient(90deg,transparent,rgba(240,248,252,.78),rgba(135,195,224,.16),transparent);
+  box-shadow:0 0 12px rgba(197,230,245,.09);
+}
+.lineOne{width:67%;left:14%;top:43%;transform:rotate(-18deg)}
+.lineTwo{width:56%;left:26%;top:55%;transform:rotate(13deg);opacity:.58}
+.visualCore{
+  width:10px;height:10px;left:55%;top:45%;
+  border-radius:50%;background:#f4fbff;
+  box-shadow:0 0 18px rgba(235,248,255,.95),0 0 64px rgba(127,194,226,.3);
+}
+.visualHero:hover .planeOne{transform:rotate(-9deg) translate(-7px,-6px)}
+.visualHero:hover .planeTwo{transform:rotate(7deg) translate(7px,-4px)}
+.visualHero:hover .planeThree{transform:rotate(-1deg) translate(5px,-3px)}
+
+.exhibitFilm::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(103,182,220,.22),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(72,117,164,.12),transparent 27%),
+    linear-gradient(145deg,#10161d,#080a0f 58%,#11131a);
+}
+.exhibitMotion::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(151,116,217,.22),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(105,84,165,.12),transparent 27%),
+    linear-gradient(145deg,#14121c,#08090e 58%,#11121a);
+}
+.exhibitIdentity::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(95,190,220,.20),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(70,118,150,.11),transparent 27%),
+    linear-gradient(145deg,#10161b,#080a0e 58%,#111319);
+}
+
+.filmArt,.motionArt,.identityArt{perspective:900px}
+.filmPane{
+  border:1px solid rgba(221,239,248,.20);
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(121,184,214,.02));
+  box-shadow:inset 0 0 38px rgba(255,255,255,.03),0 28px 62px rgba(0,0,0,.18);
+}
+.paneA{
+  width:48%;height:61%;right:12%;top:11%;
+  border-radius:34px;
+  transform:perspective(900px) rotateY(-17deg) rotateZ(-4deg);
+}
+.paneB{
+  width:38%;height:50%;right:29%;top:21%;
+  border-radius:28px;
+  transform:perspective(900px) rotateY(13deg) rotateZ(6deg);
+  opacity:.52;
+}
+.filmCut{
+  width:1px;height:58%;right:40%;top:12%;
+  background:linear-gradient(180deg,transparent,rgba(236,247,252,.72),rgba(126,190,220,.1),transparent);
+  transform:rotate(16deg);
+}
+.filmLight{
+  width:11px;height:11px;right:41%;top:37%;
+  border-radius:50%;background:#effaff;
+  box-shadow:0 0 20px rgba(230,247,255,.9),0 0 62px rgba(117,185,217,.3);
+}
+.exhibitFilm:hover .paneA{transform:perspective(900px) rotateY(-9deg) rotateZ(-2deg) translate(-8px,-6px)}
+.exhibitFilm:hover .paneB{transform:perspective(900px) rotateY(7deg) rotateZ(3deg) translate(7px,-4px)}
+
+.motionArc{
+  border:1px solid rgba(226,216,248,.22);
+  border-left-color:transparent;border-right-color:transparent;
+  border-radius:50%;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),transparent);
+  transform-origin:center;
+}
+.arcA{width:70%;height:30%;right:3%;top:23%;transform:rotate(-17deg)}
+.arcB{width:59%;height:26%;right:12%;top:37%;transform:rotate(13deg);opacity:.68}
+.arcC{width:45%;height:20%;right:22%;top:50%;transform:rotate(-8deg);opacity:.38}
+.motionLight{
+  width:12px;height:12px;right:35%;top:43%;
+  border-radius:50%;background:#f5f0ff;
+  box-shadow:0 0 20px rgba(239,231,255,.9),0 0 66px rgba(145,115,207,.34);
+}
+.exhibitMotion:hover .arcA{transform:rotate(-10deg) translateX(-8px)}
+.exhibitMotion:hover .arcB{transform:rotate(7deg) translateX(8px)}
+.exhibitMotion:hover .arcC{transform:rotate(-3deg) translateX(-5px)}
+
+.identityMass{
+  border:1px solid rgba(220,239,247,.20);
+  background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(123,185,214,.018));
+  box-shadow:inset 0 0 36px rgba(255,255,255,.03),0 30px 62px rgba(0,0,0,.18);
+}
+.massA{
+  width:23%;height:65%;right:20%;top:8%;
+  border-radius:110px 110px 14px 14px;
+  transform:perspective(850px) rotateY(-10deg);
+}
+.massB{
+  width:16%;height:49%;right:40%;top:22%;
+  border-radius:78px 78px 10px 10px;
+  transform:perspective(850px) rotateY(13deg);
+  opacity:.47;
+}
+.identityCut{
+  width:1px;height:57%;right:35%;top:13%;
+  background:linear-gradient(180deg,transparent,rgba(233,246,251,.7),rgba(123,187,216,.08),transparent);
+  transform:rotate(-12deg);
+}
+.identityLight{
+  width:10px;height:10px;right:35%;top:38%;
+  border-radius:50%;background:#effbff;
+  box-shadow:0 0 18px rgba(232,248,255,.9),0 0 58px rgba(112,189,222,.28);
+}
+.exhibitIdentity:hover .massA{transform:perspective(850px) rotateY(-4deg) translate(-7px,-5px)}
+.exhibitIdentity:hover .massB{transform:perspective(850px) rotateY(7deg) translate(6px,-4px)}
+
+.titleIdentity{
+  font-size:clamp(48px,5.2vw,82px)!important;
+}
+html[lang="ko"] .titleIdentity{
+  font-size:clamp(48px,5vw,78px)!important;
+}
+
+@keyframes visualBreath{
+  0%,100%{transform:scale(.92);opacity:.72}
+  50%{transform:scale(1.18);opacity:1}
+}
+.visualCore,.filmLight,.motionLight,.identityLight{
+  animation:visualBreath 3.2s ease-in-out infinite;
+}
+.motionLight{animation-delay:.5s}
+.identityLight{animation-delay:1s}
+
+@media(max-width:980px){
+  .visualInstallation{width:520px;right:-110px}
+  .titleIdentity{font-size:clamp(46px,7.2vw,68px)!important}
+}
+@media(max-width:640px){
+  .visualInstallation{width:350px;right:-118px;top:6%;opacity:.84}
+  .titleIdentity,
+  html[lang="ko"] .titleIdentity{
+    font-size:clamp(37px,10.5vw,48px)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .visualInstallation,.glassPlane,.filmPane,.motionArc,.identityMass,
+  .visualCore,.filmLight,.motionLight,.identityLight{
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
+
+<style>
+/* SPACE — EXHIBITION ART SYSTEM */
+.spaceHero{
+  background:
+    radial-gradient(760px 540px at 80% 16%,rgba(92,188,224,.13),transparent 64%),
+    radial-gradient(620px 520px at 10% 84%,rgba(129,108,190,.10),transparent 68%);
+}
+.spaceHero::before,
+.spaceHero::after{display:none}
+
+.spaceInstallation{
+  position:absolute;
+  width:min(50vw,720px);
+  aspect-ratio:1;
+  right:0;
+  top:2%;
+  z-index:1;
+  pointer-events:none;
+  transform:translate3d(var(--sx,0),var(--sy,0),0);
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+  filter:drop-shadow(0 48px 90px rgba(0,0,0,.34));
+}
+.spaceInstallation span{position:absolute;display:block}
+.spaceRing{
+  border-radius:50%;
+  border:1px solid rgba(218,240,249,.16);
+  box-shadow:inset 0 0 42px rgba(124,198,255,.025),0 0 56px rgba(124,198,255,.04);
+  transition:transform 1.1s cubic-bezier(.2,.8,.2,1);
+}
+.ringOne{inset:12%;transform:rotateX(66deg) rotateZ(-10deg)}
+.ringTwo{inset:25%;transform:rotateY(67deg) rotateZ(18deg);opacity:.7}
+.spaceGrid{
+  width:62%;height:46%;left:20%;bottom:15%;
+  transform:rotateX(68deg) rotateZ(-5deg);
+  border:1px solid rgba(196,230,244,.17);
+  background:
+    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.spaceAxis{
+  width:1px;height:62%;
+  top:18%;
+  background:linear-gradient(180deg,transparent,rgba(239,249,253,.72),rgba(118,189,221,.09),transparent);
+  box-shadow:0 0 13px rgba(124,198,255,.12);
+}
+.axisOne{left:45%;transform:rotate(15deg)}
+.axisTwo{left:59%;transform:rotate(-17deg);opacity:.58}
+.spaceCore{
+  width:11px;height:11px;left:52%;top:44%;
+  border-radius:50%;background:#f4fbff;
+  box-shadow:0 0 18px rgba(235,248,255,.95),0 0 64px rgba(127,194,226,.3);
+}
+.spaceHero:hover .ringOne{transform:rotateX(66deg) rotateZ(-4deg) translate(-4px,-5px)}
+.spaceHero:hover .ringTwo{transform:rotateY(67deg) rotateZ(11deg) translate(5px,-3px)}
+
+.exhibitScan::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(91,191,229,.22),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(59,112,153,.12),transparent 27%),
+    linear-gradient(145deg,#0f171d,#080a0f 58%,#10141a);
+}
+.exhibitBuild::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(142,113,210,.22),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(96,79,156,.12),transparent 27%),
+    linear-gradient(145deg,#14121c,#08090e 58%,#11121a);
+}
+.exhibitExplore::before{
+  background:
+    radial-gradient(circle at 73% 34%,rgba(88,198,230,.20),transparent 24%),
+    radial-gradient(circle at 64% 73%,rgba(61,113,148,.11),transparent 27%),
+    linear-gradient(145deg,#0f171b,#080a0e 58%,#101319);
+}
+
+.scanArt,.buildArt,.exploreArt{perspective:900px}
+
+.scanRing{
+  border-radius:50%;
+  border:1px solid rgba(196,232,247,.23);
+  box-shadow:inset 0 0 34px rgba(124,198,255,.04),0 0 32px rgba(124,198,255,.05);
+}
+.scanOuter{inset:13%}
+.scanInner{inset:29%;border-color:rgba(255,255,255,.16)}
+.scanGrid{
+  width:63%;height:43%;left:18%;top:35%;
+  transform:rotateX(66deg) rotateZ(-6deg);
+  border:1px solid rgba(180,229,255,.23);
+  background:
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:23px 23px;
+}
+.scanBeam{
+  width:2px;height:65%;left:50%;top:16%;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.74),rgba(124,198,255,.23),transparent);
+  box-shadow:0 0 16px rgba(124,198,255,.30);
+}
+.scanCore{
+  width:13px;height:13px;left:48.7%;top:48%;
+  border-radius:50%;background:#f1fbff;
+  box-shadow:0 0 20px rgba(232,248,255,.9),0 0 62px rgba(112,189,222,.28);
+}
+
+.buildCube{
+  width:32%;height:32%;left:34%;top:31%;
+  border:1px solid rgba(214,201,255,.25);
+  background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(143,124,255,.025));
+  box-shadow:inset 0 0 28px rgba(143,124,255,.05),0 24px 62px rgba(0,0,0,.18);
+}
+.cubeBack{transform:translate(18%,-18%) rotateY(-18deg);opacity:.48}
+.cubeFront{transform:rotateY(22deg) rotateX(8deg)}
+.buildLine{
+  height:1px;width:55%;left:24%;top:49%;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.58),rgba(143,124,255,.22),transparent);
+}
+.buildLineA{transform:rotate(32deg)}
+.buildLineB{transform:rotate(-30deg);opacity:.62}
+.buildCore{
+  width:14px;height:14px;left:48.5%;top:47.5%;
+  border-radius:50%;background:#f4f0ff;
+  box-shadow:0 0 20px rgba(239,231,255,.9),0 0 66px rgba(145,115,207,.34);
+}
+.exhibitBuild:hover .cubeFront{transform:rotateY(34deg) rotateX(14deg) translateY(-3px)}
+.exhibitBuild:hover .cubeBack{transform:translate(14%,-22%) rotateY(-30deg)}
+
+.portalRing{
+  border-radius:50%;
+  border:1px solid rgba(192,236,255,.24);
+  box-shadow:inset 0 0 34px rgba(124,198,255,.05),0 0 30px rgba(124,198,255,.05);
+}
+.portalOuter{inset:14%}
+.portalInner{inset:31%;border-color:rgba(255,255,255,.15)}
+.portalFloor{
+  width:66%;height:42%;left:17%;bottom:11%;
+  transform:rotateX(70deg);
+  border:1px solid rgba(180,229,255,.22);
+  background:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.portalRay{
+  width:1px;height:63%;top:13%;
+  transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(124,198,255,.16) 58%,transparent);
+  box-shadow:0 0 12px rgba(124,198,255,.28);
+}
+.portalRayA{left:36%;transform:rotate(15deg)}
+.portalRayB{right:34%;transform:rotate(-16deg)}
+.portalCore{
+  width:14px;height:14px;left:48.5%;top:48%;
+  border-radius:50%;background:#effbff;
+  box-shadow:0 0 18px rgba(232,248,255,.9),0 0 58px rgba(112,189,222,.28);
+}
+
+.titleExplore{
+  font-size:clamp(47px,5.05vw,80px)!important;
+}
+html[lang="ko"] .titleExplore{
+  font-size:clamp(45px,4.75vw,73px)!important;
+}
+
+@keyframes spaceBreath{
+  0%,100%{transform:scale(.92);opacity:.72}
+  50%{transform:scale(1.18);opacity:1}
+}
+.spaceCore,.scanCore,.buildCore,.portalCore{
+  animation:spaceBreath 3.2s ease-in-out infinite;
+}
+.buildCore{animation-delay:.5s}
+.portalCore{animation-delay:1s}
+
+@media(max-width:980px){
+  .spaceInstallation{width:500px;right:-90px}
+  .titleExplore{font-size:clamp(44px,7vw,66px)!important}
+}
+@media(max-width:640px){
+  .spaceInstallation{width:345px;right:-118px;top:7%;opacity:.84}
+  .titleExplore,
+  html[lang="ko"] .titleExplore{
+    font-size:clamp(35px,9.8vw,45px)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .spaceInstallation,.spaceRing,.scanRing,.buildCube,.portalRing,
+  .spaceCore,.scanCore,.buildCore,.portalCore{
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
+</head>
 <body>
-<header class="topbar">
-<div class="wrap nav">
-<a class="brand" href="index.html">OURBANG</a>
-<nav aria-label="Primary" class="links">
-<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
-<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
-<a class="active" data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
-<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
-<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
-<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
-</nav>
-<div style="display:flex;align-items:center;gap:8px">
-<div aria-label="Language" class="langs">
-<button class="langBtn" data-lang="en" type="button">EN</button>
-<button class="langBtn" data-lang="ko" type="button">KO</button>
-</div>
-<button aria-expanded="false" aria-label="메뉴 열기" class="menuBtn" type="button">
-<span></span><span></span>
-</button>
-</div>
-</div>
-</header>
-<div class="mobilePanel" id="mobilePanel">
-<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
-<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
-<a data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
-<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
-<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
-<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
-</div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+
+
+
 <main>
-<section class="hero">
-<div class="wrap heroContent">
-<a class="backToCreate" data-en="← BACK TO CREATE" data-ko="← CREATE로 돌아가기" href="create.html">← CREATE로 돌아가기</a><div class="eyebrow">OURBANG / CREATE / SPACE</div>
-<h1>SPACE</h1>
-<p class="lead spaceLead" data-en="Spaces become living worlds. Explore freely." data-ko="공간은 살아 있는 세계가 되고, 누구나 자유롭게 탐험할 수 있습니다.">
-<span class="line">Spaces become</span>
-<span class="line accent">living worlds.</span>
-<span class="line">Explore freely.</span>
-</p>
-</div>
+<section class="musicHero spaceHero">
+  <div class="spaceInstallation" aria-hidden="true">
+    <span class="spaceRing ringOne"></span>
+    <span class="spaceRing ringTwo"></span>
+    <span class="spaceGrid"></span>
+    <span class="spaceAxis axisOne"></span>
+    <span class="spaceAxis axisTwo"></span>
+    <span class="spaceCore"></span>
+  </div>
+  <div class="wrap musicHeroInner">
+    <a class="backToStudio" href="create.html" data-en="← BACK TO STUDIO" data-ko="← STUDIO로 돌아가기">← STUDIO로 돌아가기</a>
+    <div class="heroMeta">OURBANG / STUDIO / SPACE</div>
+    <h1>SPACE</h1>
+    <p class="heroLead composedCopy" data-copy="hero">
+      <span>공간은 새로운 세계가 되고,</span>
+      <span class="accentLine">관객은 그 안을</span>
+      <span>자유롭게 탐험합니다.</span>
+    </p>
+  </div>
 </section>
-<section class="wrap createGrid"><div class="card"><div class="num">01</div><div aria-hidden="true" class="cardObject scanObject">
-<span class="scanRing ringOuter"></span>
-<span class="scanRing ringInner"></span>
-<span class="scanGrid"></span>
-<span class="scanBeam"></span>
-<span class="scanCore"></span>
-</div><div><h2 data-en="SCAN" data-ko="스캔">SCAN</h2><p data-en="Capture real spaces through photography, LiDAR and spatial data." data-ko="사진, LiDAR와 공간 데이터를 활용해 실제 공간을 기록합니다.">Capture real spaces through photography, LiDAR and spatial data.</p></div></div><div class="card"><div class="num">02</div><div aria-hidden="true" class="cardObject buildObject">
-<span class="buildCube cubeBack"></span>
-<span class="buildCube cubeFront"></span>
-<span class="buildLine lineA"></span>
-<span class="buildLine lineB"></span>
-<span class="buildCore"></span>
-</div><div><h2 data-en="BUILD" data-ko="빌드">BUILD</h2><p data-en="Create digital twins, virtual buildings and showcase worlds." data-ko="디지털 트윈, 가상 건축과 쇼케이스 월드를 제작합니다.">Create digital twins, virtual buildings and showcase worlds.</p></div></div><div class="card"><div class="num">03</div><div aria-hidden="true" class="cardObject exploreObject">
-<span class="portalRing portalOuter"></span>
-<span class="portalRing portalInner"></span>
-<span class="portalFloor"></span>
-<span class="portalRay rayA"></span>
-<span class="portalRay rayB"></span>
-<span class="portalCore"></span>
-</div><div><h2 data-en="EXPLORE" data-ko="익스플로어">EXPLORE</h2><p data-en="Publish web-accessible environments for audiences, collections and communities." data-ko="관객, 컬렉션과 커뮤니티가 웹에서 경험할 수 있는 공간으로 공개합니다.">Publish web-accessible environments for audiences, collections and communities.</p></div></div></section>
-<section class="statement">
-<div class="wrap statementBox">
-<h3 class="spaceStatement" data-en="SPACE BECOMES A WORLD." data-ko="하나의 공간이, 하나의 세계가 됩니다."><span class="soft">하나의 공간이,</span><span class="strong">하나의 세계가 됩니다.</span></h3>
-<p data-en="OURBANG transforms physical places into living digital worlds ready to explore, share and experience." data-ko="OURBANG은 실제 공간을 살아 있는 디지털 세계로 확장하여 누구나 탐험하고 공유하며 경험할 수 있도록 만듭니다.">
-OURBANG transforms physical places into living digital worlds ready to explore, share and experience.
-</p>
-</div>
+
+<section class="wrap musicExhibition spaceExhibition">
+  <article class="exhibit exhibitScan" id="scan">
+    <div class="exhibitIndex">STUDIO / SPACE / 01</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="SPATIAL CAPTURE" data-ko="공간 기록">공간 기록</div>
+      <h2 class="exhibitTitle titleScan" data-copy="scan-title"><span>스캔</span></h2>
+      <p data-en="Capture real spaces through photography, LiDAR and spatial data."
+         data-ko="사진과 LiDAR, 공간 데이터를 활용하여 실제 공간을 정밀하게 기록합니다.">
+        사진과 LiDAR, 공간 데이터를 활용하여 실제 공간을 정밀하게 기록합니다.
+      </p>
+    </div>
+    <div class="exhibitArt scanArt" aria-hidden="true">
+      <span class="scanRing scanOuter"></span>
+      <span class="scanRing scanInner"></span>
+      <span class="scanGrid"></span>
+      <span class="scanBeam"></span>
+      <span class="scanCore"></span>
+    </div>
+  </article>
+
+  <article class="exhibit exhibitBuild" id="build">
+    <div class="exhibitIndex">STUDIO / SPACE / 02</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="DIGITAL CONSTRUCTION" data-ko="디지털 구축">디지털 구축</div>
+      <h2 class="exhibitTitle titleBuild" data-copy="build-title"><span>빌드</span></h2>
+      <p data-en="Create digital twins, virtual buildings and showcase worlds."
+         data-ko="디지털 트윈과 가상 건축, 전시를 위한 쇼케이스 월드를 구축합니다.">
+        디지털 트윈과 가상 건축, 전시를 위한 쇼케이스 월드를 구축합니다.
+      </p>
+    </div>
+    <div class="exhibitArt buildArt" aria-hidden="true">
+      <span class="buildCube cubeBack"></span>
+      <span class="buildCube cubeFront"></span>
+      <span class="buildLine buildLineA"></span>
+      <span class="buildLine buildLineB"></span>
+      <span class="buildCore"></span>
+    </div>
+  </article>
+
+  <article class="exhibit exhibitExplore" id="explore-space">
+    <div class="exhibitIndex">STUDIO / SPACE / 03</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="OPEN EXPERIENCE" data-ko="열린 경험">열린 경험</div>
+      <h2 class="exhibitTitle titleExplore" data-copy="explore-title"><span>익스플로어</span></h2>
+      <p data-en="Publish web-accessible environments for audiences, collections and communities."
+         data-ko="관객과 컬렉션, 커뮤니티가 웹에서 직접 경험할 수 있는 공간으로 공개합니다.">
+        관객과 컬렉션, 커뮤니티가 웹에서 직접 경험할 수 있는 공간으로 공개합니다.
+      </p>
+    </div>
+    <div class="exhibitArt exploreArt" aria-hidden="true">
+      <span class="portalRing portalOuter"></span>
+      <span class="portalRing portalInner"></span>
+      <span class="portalFloor"></span>
+      <span class="portalRay portalRayA"></span>
+      <span class="portalRay portalRayB"></span>
+      <span class="portalCore"></span>
+    </div>
+  </article>
 </section>
+
+<section class="wrap musicStatement">
+  <div class="statementRule"></div>
+  <div class="statementGrid">
+    <h3 class="statementTitle composedCopy" data-copy="statement">
+      <span class="statementSoft">하나의 공간이,</span>
+      <span>하나의 세계를</span>
+      <span>완성합니다.</span>
+    </h3>
+    <p data-en="OURBANG transforms physical places into living digital worlds ready to explore, share and experience."
+       data-ko="OURBANG은 실제 공간을 살아 있는 디지털 세계로 확장하여 누구나 탐험하고 공유하며 경험할 수 있도록 만듭니다.">
+      OURBANG은 실제 공간을 살아 있는 디지털 세계로 확장하여 누구나 탐험하고 공유하며 경험할 수 있도록 만듭니다.
+    </p>
+  </div>
+</section>
+
+<nav class="musicDock" aria-label="Space sections">
+  <a href="#scan"><span>01</span><b data-en="SCAN" data-ko="스캔">스캔</b></a>
+  <a href="#build"><span>02</span><b data-en="BUILD" data-ko="빌드">빌드</b></a>
+  <a href="#explore-space"><span>03</span><b data-en="EXPLORE" data-ko="익스플로어">익스플로어</b></a>
+</nav>
 </main>
 <footer>
 <div class="wrap foot">
 <div>© <span id="year"></span> OURBANG</div>
-<div>CREATE · SPACE · DIGITAL · EXPERIENCE</div>
+<div>STUDIO · SPACE · DIGITAL · EXPERIENCE</div>
 </div>
 </footer>
-<script>
-  const langButtons=[...document.querySelectorAll('.langBtn')];
-  const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
-  function setLanguage(lang){
-    const safe=lang==='ko'?'ko':'en';
-    document.documentElement.lang=safe;
-    translatables.forEach(el=>{
-    if(el.classList.contains('spaceLead')){
-      el.innerHTML=safe==='ko'
-        ? '<span class="line">공간은 살아 있는 세계가 되고,</span><span class="line accent">누구나 자유롭게 탐험할 수 있습니다.</span>'
-        : '<span class="line">Spaces become</span><span class="line accent">living worlds.</span><span class="line">Explore freely.</span>';
-    }else if(el.classList.contains('spaceStatement')){
-      el.innerHTML=safe==='ko'
-        ? '<span class="soft">하나의 공간이,</span><span class="strong">하나의 세계가 됩니다.</span>'
-        : '<span class="soft">SPACE BECOMES</span><span class="strong">A WORLD.</span>';
-    }else{
-      el.textContent=el.dataset[safe];
-    }
+<script>
+const langButtons=[...document.querySelectorAll('.langBtn')];
+const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
+
+function setLanguage(lang){
+  const safe=lang==='ko'?'ko':'en';
+  document.documentElement.lang=safe;
+
+  document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
+    el.textContent=el.dataset[safe];
   });
-    langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
-    localStorage.setItem('ourbang-language',safe);
+
+  const hero=document.querySelector('[data-copy="hero"]');
+  if(hero){
+    hero.innerHTML=safe==='ko'
+      ? '<span>공간은 새로운 세계가 되고,</span><span class="accentLine">관객은 그 안을</span><span>자유롭게 탐험합니다.</span>'
+      : '<span>Spaces become worlds.</span><span class="accentLine">Audiences enter</span><span>and explore freely.</span>';
   }
 
-  langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-  setLanguage(localStorage.getItem('ourbang-language')||'ko');
-
-  const menuBtn=document.querySelector('.menuBtn');
-  const mobilePanel=document.getElementById('mobilePanel');
-
-  menuBtn.addEventListener('click',()=>{
-    const open=!mobilePanel.classList.contains('open');
-    mobilePanel.classList.toggle('open',open);
-    document.body.classList.toggle('menuOpen',open);
-    menuBtn.setAttribute('aria-expanded',String(open));
+  const titleCopies={
+    'scan-title':safe==='ko'?'스캔':'SCAN',
+    'build-title':safe==='ko'?'빌드':'BUILD',
+    'explore-title':safe==='ko'?'익스플로어':'EXPLORE'
+  };
+  Object.entries(titleCopies).forEach(([key,value])=>{
+    const el=document.querySelector(`[data-copy="${key}"]`);
+    if(el) el.innerHTML=`<span>${value}</span>`;
   });
 
-  mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    mobilePanel.classList.remove('open');
-    document.body.classList.remove('menuOpen');
-    menuBtn.setAttribute('aria-expanded','false');
-  }));
+  const statement=document.querySelector('[data-copy="statement"]');
+  if(statement){
+    statement.innerHTML=safe==='ko'
+      ? '<span class="statementSoft">하나의 공간이,</span><span>하나의 세계를</span><span>완성합니다.</span>'
+      : '<span class="statementSoft">SPACE BECOMES</span><span>A WORLD.</span>';
+  }
 
-  document.getElementById('year').textContent=new Date().getFullYear();
+  langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
+  localStorage.setItem('ourbang-language',safe);
+}
+langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+setLanguage(localStorage.getItem('ourbang-language')||'ko');
+
+const menuBtn=document.querySelector('.menuBtn');
+const mobilePanel=document.getElementById('mobilePanel');
+menuBtn.addEventListener('click',()=>{
+  const open=!mobilePanel.classList.contains('open');
+  mobilePanel.classList.toggle('open',open);
+  document.body.classList.toggle('menuOpen',open);
+  menuBtn.setAttribute('aria-expanded',String(open));
+});
+mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobilePanel.classList.remove('open');
+  document.body.classList.remove('menuOpen');
+  menuBtn.setAttribute('aria-expanded','false');
+}));
+
+const finePointer=window.matchMedia('(pointer:fine)').matches;
+const spaceHero=document.querySelector('.spaceHero');
+const installation=document.querySelector('.spaceInstallation');
+if(finePointer&&spaceHero&&installation){
+  spaceHero.addEventListener('pointermove',e=>{
+    const r=spaceHero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    installation.style.setProperty('--sx',`${(x*13).toFixed(1)}px`);
+    installation.style.setProperty('--sy',`${(y*11).toFixed(1)}px`);
+  });
+  spaceHero.addEventListener('pointerleave',()=>{
+    installation.style.setProperty('--sx','0px');
+    installation.style.setProperty('--sy','0px');
+  });
+}
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
