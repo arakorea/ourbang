@@ -2901,6 +2901,101 @@ html[lang="ko"] .closingInvitation p{
 }
 </style>
 
+
+<style>
+/* CONTACT — AK ENM card and closing-copy stability fix */
+.worldCopy h3{
+  position:relative;
+  z-index:4;
+}
+.angelWorld .worldCopy h3{
+  white-space:nowrap;
+}
+.closingInvitation{
+  min-width:0;
+}
+.closingInvitation p{
+  position:relative;
+  display:block!important;
+  width:100%;
+  max-width:36ch;
+  min-height:3.6em;
+  margin:0;
+  padding:0;
+  line-height:1.8;
+  overflow:visible;
+}
+.closingInvitation p span{
+  position:static!important;
+  display:block!important;
+  transform:none!important;
+  margin:0;
+  padding:0;
+  line-height:1.8;
+  white-space:normal!important;
+}
+.closingInvitation p span + span{
+  margin-top:2px;
+}
+@media(max-width:640px){
+  .angelWorld .worldCopy h3{white-space:normal}
+  .closingInvitation p{min-height:auto;max-width:31ch}
+}
+</style>
+
+<style>
+/* CONTACT — definitive closing text repair */
+.contactClosingGrid{
+  align-items:start!important;
+}
+.closingInvitation{
+  position:relative!important;
+  min-width:0!important;
+  padding-top:8px!important;
+  overflow:visible!important;
+}
+.closingInvitation .closingText{
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  width:100%!important;
+  max-width:38ch!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  opacity:1!important;
+  color:rgba(255,255,255,.58)!important;
+  font-size:16px!important;
+  font-weight:400!important;
+  line-height:1.8!important;
+  letter-spacing:-.012em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  text-shadow:none!important;
+}
+html[lang="ko"] .closingInvitation .closingText{
+  max-width:30ch!important;
+  word-break:keep-all!important;
+  letter-spacing:-.025em!important;
+}
+.closingInvitation .closingButton{
+  position:relative!important;
+  clear:both!important;
+  margin-top:32px!important;
+}
+@media(max-width:980px){
+  .closingInvitation{padding-top:0!important}
+}
+@media(max-width:640px){
+  .closingInvitation .closingText{
+    max-width:31ch!important;
+    font-size:14px!important;
+    line-height:1.75!important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a class="active" href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
@@ -3008,8 +3103,8 @@ html[lang="ko"] .closingInvitation p{
           <span class="worldCore"></span>
         </div>
         <div class="worldCopy">
-          <h3>ANGEL'S<br>ANGLE</h3>
-          <p data-en="MEDIA · CULTURE · STORY" data-ko="미디어 · 문화 · 이야기">미디어 · 문화 · 이야기</p>
+          <h3>AK ENM</h3>
+          <p data-en="ENTERTAINMENT · MEDIA · CULTURE" data-ko="엔터테인먼트 · 미디어 · 문화">엔터테인먼트 · 미디어 · 문화</p>
           <span class="worldAction" data-en="ENTER WORLD" data-ko="세계로 이동">세계로 이동 <i>↗</i></span>
         </div>
       </a>
@@ -3043,12 +3138,7 @@ html[lang="ko"] .closingInvitation p{
     </h3>
 
     <div class="closingInvitation">
-      <p data-copy="closing-copy"
-         data-en="A project can begin with one message. Share your idea, space or story with OURBANG."
-         data-ko="하나의 메시지에서 새로운 프로젝트가 시작됩니다. 당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.">
-        <span>하나의 메시지에서 새로운 프로젝트가 시작됩니다.</span>
-        <span>당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.</span>
-      </p>
+      <p class="closingText" data-copy="closing-copy">하나의 메시지에서 새로운 프로젝트가 시작됩니다.<br>당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.</p>
       <a href="mailto:info@akenm.com?subject=OURBANG%20Inquiry" class="closingButton">
         <span>info@akenm.com</span><i>↗</i>
       </a>
@@ -3063,7 +3153,7 @@ html[lang="ko"] .closingInvitation p{
 </main>
 <footer>
 <div class="wrap foot">
-<div>© <span id="year"></span> OURBANG</div>
+<div>© <span id="year"></span> AK ENM. All Rights Reserved.</div>
 <div>PROJECTS · PARTNERSHIPS · CREATIVE CONVERSATIONS</div>
 </div>
 </footer>
@@ -3113,8 +3203,8 @@ function setLanguage(lang){
   const closingCopy=document.querySelector('[data-copy="closing-copy"]');
   if(closingCopy){
     closingCopy.innerHTML=safe==='ko'
-      ? '<span>하나의 메시지에서 새로운 프로젝트가 시작됩니다.</span><span>당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.</span>'
-      : '<span>A project can begin with one message.</span><span>Share your idea, space or story with OURBANG.</span>';
+      ? '하나의 메시지에서 새로운 프로젝트가 시작됩니다.<br>당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.'
+      : 'A project can begin with one message.<br>Share your idea, space or story with OURBANG.';
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
