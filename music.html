@@ -732,129 +732,580 @@ html[lang="ko"] .statementBox p{
 @media(prefers-reduced-motion:reduce){
   .card,.cardObject,.cardObject span,.backToCreate{animation:none!important;transition:none!important}
 }
-</style></head>
+</style>
+<style>
+/* MUSIC — OURBANG EXHIBITION SYSTEM */
+.musicHero{
+  min-height:72svh;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.musicHero::before{
+  content:"";
+  position:absolute;
+  width:min(56vw,780px);
+  aspect-ratio:1;
+  right:-8%;
+  top:-12%;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  box-shadow:0 0 170px rgba(124,198,255,.08);
+}
+.musicHero::after{
+  content:"";
+  position:absolute;
+  width:min(31vw,430px);
+  aspect-ratio:1;
+  right:23%;
+  top:24%;
+  border:1px solid rgba(143,124,255,.10);
+  border-radius:42% 58% 48% 52% / 56% 44% 56% 44%;
+  transform:rotate(24deg);
+}
+.musicHeroInner{padding:116px 0 78px;position:relative;z-index:2}
+.backToStudio{
+  display:inline-flex;align-items:center;
+  margin-bottom:28px;
+  color:rgba(255,255,255,.48);
+  font-size:11px;font-weight:760;letter-spacing:.16em;
+  transition:.25s ease;
+}
+.backToStudio:hover{color:#fff;transform:translateX(-4px)}
+.heroMeta{font-size:11px;font-weight:760;letter-spacing:.24em;color:rgba(255,255,255,.42)}
+.musicHero h1{
+  margin:24px 0 0;
+  font-size:clamp(86px,13.8vw,194px);
+  line-height:.79;
+  letter-spacing:-.078em;
+}
+.heroLead{
+  margin:34px 0 0;
+  max-width:22ch;
+  font-size:clamp(21px,2.75vw,40px);
+  line-height:1.2;
+  letter-spacing:-.04em;
+  font-weight:610;
+  color:rgba(255,255,255,.78);
+}
+
+.musicExhibition{padding:28px 0 108px}
+.exhibit{
+  min-height:78svh;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  margin-bottom:22px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:34px;
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);
+  align-items:center;
+  padding:clamp(38px,5.2vw,76px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 90px rgba(0,0,0,.26);
+  transition:transform .55s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .55s ease;
+}
+.exhibit:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 42px 120px rgba(0,0,0,.34);
+}
+.exhibit::before{
+  content:"";
+  position:absolute;inset:0;z-index:-3;
+}
+.exhibit::after{
+  content:"";
+  position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(90deg,rgba(5,7,12,.94),rgba(5,7,12,.52) 46%,rgba(5,7,12,.10));
+}
+.exhibitProduction::before{
+  background:
+    radial-gradient(circle at 74% 38%,rgba(79,190,255,.25),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(81,115,255,.14),transparent 26%),
+    linear-gradient(145deg,#0a1320,#080b11 58%,#101526);
+}
+.exhibitArtist::before{
+  background:
+    radial-gradient(circle at 74% 40%,rgba(163,117,255,.25),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(255,158,219,.11),transparent 25%),
+    linear-gradient(145deg,#171020,#0a0a11 58%,#151020);
+}
+.exhibitPerformance::before{
+  background:
+    radial-gradient(circle at 72% 36%,rgba(73,211,255,.23),transparent 22%),
+    radial-gradient(circle at 62% 72%,rgba(115,93,255,.15),transparent 24%),
+    linear-gradient(145deg,#0a1419,#080a10 58%,#0e1320);
+}
+.exhibitIndex{
+  position:absolute;
+  top:clamp(28px,4vw,52px);
+  left:clamp(34px,5.2vw,76px);
+  font-size:11px;font-weight:760;letter-spacing:.22em;
+  color:rgba(255,255,255,.38);
+}
+.exhibitCopy{position:relative;z-index:2;align-self:end;padding-bottom:2vh}
+.exhibitLabel{
+  margin-bottom:20px;
+  font-size:11px;font-weight:760;letter-spacing:.24em;
+  color:rgba(255,255,255,.45);
+}
+.exhibit h2{
+  margin:0;
+  font-size:clamp(60px,8.2vw,126px);
+  line-height:.82;
+  letter-spacing:-.072em;
+  white-space:nowrap;
+}
+.exhibitCopy p{
+  margin:28px 0 0;
+  max-width:36ch;
+  color:rgba(255,255,255,.58);
+  font-size:16px;line-height:1.75;
+}
+.exhibitArt{
+  position:relative;
+  justify-self:center;
+  width:min(38vw,520px);
+  aspect-ratio:1;
+  transition:transform .8s cubic-bezier(.2,.75,.2,1),filter .6s ease;
+}
+.exhibit:hover .exhibitArt{transform:scale(1.035) translateY(-7px);filter:brightness(1.1)}
+.exhibitArt span{position:absolute;display:block}
+
+/* Production sculpture */
+.soundHalo{inset:50% auto auto 50%;transform:translate(-50%,-50%);border-radius:50%}
+.haloA{width:88%;height:88%;border:1px solid rgba(185,229,255,.24);box-shadow:0 0 80px rgba(84,189,255,.10)}
+.haloB{width:54%;height:54%;border:1px solid rgba(155,203,255,.22)}
+.wave{left:12%;width:76%;height:18%;border:1px solid rgba(210,238,255,.42);border-left-color:transparent;border-right-color:transparent;border-radius:50%}
+.waveA{top:30%;transform:rotate(-8deg)}
+.waveB{top:44%;transform:rotate(6deg) scaleX(.82)}
+.waveC{top:58%;transform:rotate(-4deg) scaleX(.62)}
+.soundCore{width:12%;height:12%;left:44%;top:44%;border-radius:50%;background:#e8f7ff;box-shadow:0 0 34px rgba(124,198,255,.65)}
+
+/* Artist sculpture */
+.artistArt{perspective:800px}
+.orbit{inset:12%;border:1px solid rgba(220,205,255,.28);border-radius:50%}
+.orbitOne{transform:rotateX(68deg) rotateZ(-14deg)}
+.orbitTwo{transform:rotateY(67deg) rotateZ(24deg)}
+.artistSphere{width:34%;height:34%;left:33%;top:33%;border-radius:50%;background:radial-gradient(circle at 31% 25%,#fff 0 8%,#d6c7ff 23%,rgba(137,96,231,.36) 54%,rgba(9,10,18,.10) 72%);border:1px solid rgba(255,255,255,.28);box-shadow:inset -24px -26px 42px rgba(44,22,96,.25),0 0 45px rgba(143,124,255,.26)}
+.shard{width:5%;height:22%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(143,124,255,.12));border:1px solid rgba(255,255,255,.3)}
+.shardOne{left:17%;top:18%;transform:rotate(-36deg)}
+.shardTwo{right:16%;bottom:18%;transform:rotate(34deg)}
+
+/* Performance sculpture */
+.performanceArt{perspective:900px}
+.stageGrid{width:76%;height:54%;left:12%;bottom:12%;transform:rotateX(67deg) rotateZ(-4deg);border:1px solid rgba(178,231,255,.30);background:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(180deg,rgba(75,201,255,.12),rgba(143,124,255,.02));background-size:32px 32px;box-shadow:0 0 40px rgba(68,190,255,.10)}
+.beam{width:1px;height:70%;top:5%;background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(124,198,255,.15) 60%,transparent);box-shadow:0 0 14px rgba(124,198,255,.34);transform-origin:top}
+.beamOne{left:28%;transform:rotate(14deg)}
+.beamTwo{left:50%;transform:rotate(-2deg)}
+.beamThree{right:24%;transform:rotate(-17deg)}
+.stageCore{width:13%;height:13%;left:43.5%;bottom:24%;border-radius:50%;background:radial-gradient(circle,#fff 0 8%,#9bddff 19%,rgba(124,198,255,.22) 50%,transparent 72%);box-shadow:0 0 32px rgba(124,198,255,.50)}
+
+.musicStatement{padding:0 0 120px}
+.statementRule{height:1px;background:rgba(255,255,255,.10);margin-bottom:52px}
+.statementGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.statementGrid h3{margin:0;font-size:clamp(42px,6vw,86px);line-height:.92;letter-spacing:-.06em;max-width:10ch}
+.statementGrid p{margin:0;color:rgba(255,255,255,.58);font-size:16px;line-height:1.8;max-width:38ch}
+
+.musicDock{
+  position:fixed;
+  left:50%;bottom:22px;z-index:80;
+  transform:translateX(-50%);
+  display:flex;gap:4px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  background:rgba(7,9,15,.72);
+  backdrop-filter:blur(22px) saturate(140%);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  box-shadow:0 16px 50px rgba(0,0,0,.32);
+}
+.musicDock a{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:12px;color:rgba(255,255,255,.56);transition:.2s}
+.musicDock a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.musicDock span{font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.34)}
+.musicDock b{font-size:11px;letter-spacing:.08em;white-space:nowrap}
+
+@media(max-width:980px){
+  .exhibit{grid-template-columns:1fr;min-height:72svh;padding-top:100px}
+  .exhibitCopy{align-self:end}
+  .exhibitArt{position:absolute;right:-3%;top:8%;width:min(58vw,440px);opacity:.82;z-index:-1}
+  .exhibit::after{background:linear-gradient(180deg,rgba(5,7,12,.12),rgba(5,7,12,.84) 60%,rgba(5,7,12,.97))}
+  .statementGrid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .musicHero{min-height:64svh}
+  .musicHeroInner{padding:86px 0 56px}
+  .musicHero h1{font-size:clamp(78px,24vw,122px)}
+  .heroLead{font-size:clamp(23px,7vw,30px);max-width:18ch}
+  .musicExhibition{padding:14px 0 80px}
+  .exhibit{min-height:68svh;border-radius:24px;margin-bottom:14px;padding:96px 26px 30px}
+  .exhibitIndex{left:26px;top:25px}
+  .exhibit h2{font-size:clamp(52px,16vw,76px);white-space:normal}
+  html[lang="ko"] .exhibit h2{font-size:clamp(44px,13vw,64px)}
+  .exhibitCopy p{font-size:14px;line-height:1.72}
+  .exhibitArt{width:310px;right:-120px;top:12%;opacity:.72}
+  .statementRule{margin-bottom:38px}
+  .musicStatement{padding-bottom:96px}
+  .statementGrid{gap:28px}
+  .statementGrid h3{font-size:clamp(38px,12vw,58px)}
+  .musicDock{bottom:12px;max-width:calc(100% - 20px);overflow:auto}
+  .musicDock a{padding:9px 11px}
+  .musicDock b{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .exhibit,.exhibitArt,.backToStudio,.musicDock a{transition:none!important}
+}
+</style>
+
+
+<style>
+/* MUSIC — FINAL TYPOGRAPHY & ALIGNMENT SYSTEM */
+.musicHeroInner{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-content:end;
+}
+.heroMeta,
+.backToStudio,
+.musicHero h1,
+.heroLead{
+  margin-left:0;
+}
+.heroLead.composedCopy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  width:max-content;
+  max-width:100%;
+  margin-top:34px;
+  font-size:clamp(24px,2.62vw,39px);
+  line-height:1.17;
+  letter-spacing:-.045em;
+  font-weight:620;
+}
+.heroLead.composedCopy span{
+  display:block;
+  white-space:nowrap;
+}
+.heroLead .accentLine{
+  color:#fff;
+  text-shadow:0 0 30px rgba(124,198,255,.18);
+}
+
+.exhibit{
+  grid-template-columns:minmax(0,47%) minmax(0,53%);
+}
+.exhibitCopy{
+  align-self:end;
+  display:grid;
+  grid-template-rows:auto minmax(148px,auto) minmax(112px,auto);
+  align-content:end;
+  width:100%;
+  max-width:620px;
+  padding-bottom:0;
+}
+.exhibitLabel{
+  align-self:end;
+  margin:0 0 22px;
+}
+.exhibitTitle{
+  margin:0!important;
+  min-height:148px;
+  display:flex;
+  align-items:flex-end;
+  font-size:clamp(58px,6.6vw,102px)!important;
+  line-height:.84!important;
+  letter-spacing:-.073em!important;
+  font-weight:850;
+  white-space:nowrap;
+}
+.exhibitTitle span{display:block}
+.titlePerformance{
+  font-size:clamp(50px,5.55vw,88px)!important;
+  letter-spacing:-.068em!important;
+}
+html[lang="ko"] .exhibitTitle{
+  font-size:clamp(55px,5.8vw,88px)!important;
+  letter-spacing:-.075em!important;
+}
+html[lang="ko"] .titlePerformance{
+  font-size:clamp(52px,5.35vw,82px)!important;
+}
+.exhibitCopy p{
+  align-self:start;
+  min-height:112px;
+  margin:25px 0 0;
+  max-width:35ch;
+  font-size:15px;
+  line-height:1.76;
+  letter-spacing:-.012em;
+}
+html[lang="ko"] .exhibitCopy p{
+  max-width:31ch;
+  word-break:keep-all;
+  letter-spacing:-.025em;
+}
+
+.statementGrid{
+  grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
+  gap:clamp(44px,7vw,112px);
+}
+.statementTitle{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  font-size:clamp(42px,5.4vw,78px)!important;
+  line-height:.94!important;
+  letter-spacing:-.06em!important;
+  max-width:none!important;
+}
+.statementTitle span{
+  display:block;
+  white-space:nowrap;
+}
+.statementTitle .statementSoft{
+  margin-bottom:.28em;
+  color:rgba(247,248,251,.46);
+  font-size:.58em;
+  line-height:1.05;
+  letter-spacing:-.035em;
+}
+.statementGrid p{
+  padding-top:4px;
+  max-width:36ch;
+}
+html[lang="ko"] .statementGrid p{
+  word-break:keep-all;
+  letter-spacing:-.02em;
+}
+
+@media(max-width:1100px){
+  .exhibitTitle{
+    font-size:clamp(54px,6.2vw,82px)!important;
+  }
+  .titlePerformance{
+    font-size:clamp(46px,5.15vw,70px)!important;
+  }
+}
+@media(max-width:980px){
+  .exhibitCopy{
+    grid-template-rows:auto minmax(112px,auto) auto;
+    max-width:680px;
+  }
+  .exhibitTitle{
+    min-height:112px;
+    font-size:clamp(54px,9vw,82px)!important;
+  }
+  .titlePerformance{
+    font-size:clamp(48px,8vw,72px)!important;
+  }
+  .exhibitCopy p{min-height:0}
+  .statementGrid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .heroLead.composedCopy{
+    width:100%;
+    font-size:clamp(22px,7vw,29px);
+    line-height:1.2;
+  }
+  .heroLead.composedCopy span{
+    white-space:normal;
+  }
+  .exhibitCopy{
+    grid-template-rows:auto minmax(88px,auto) auto;
+  }
+  .exhibitTitle{
+    min-height:88px;
+    font-size:clamp(45px,13vw,62px)!important;
+    line-height:.88!important;
+  }
+  .titlePerformance{
+    font-size:clamp(39px,10.7vw,52px)!important;
+  }
+  html[lang="ko"] .exhibitTitle,
+  html[lang="ko"] .titlePerformance{
+    font-size:clamp(42px,12vw,56px)!important;
+  }
+  .exhibitCopy p{
+    margin-top:18px;
+    max-width:31ch;
+  }
+  .statementTitle{
+    font-size:clamp(36px,10.6vw,48px)!important;
+  }
+  .statementTitle span{
+    white-space:normal;
+  }
+}
+</style>
+
+</head>
 <body>
-<header class="topbar">
-<div class="wrap nav">
-<a class="brand" href="index.html">OURBANG</a>
-<nav aria-label="Primary" class="links">
-<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
-<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
-<a class="active" data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
-<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
-<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
-<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
-</nav>
-<div style="display:flex;align-items:center;gap:8px">
-<div aria-label="Language" class="langs">
-<button class="langBtn" data-lang="en" type="button">EN</button>
-<button class="langBtn" data-lang="ko" type="button">KO</button>
-</div>
-<button aria-expanded="false" aria-label="메뉴 열기" class="menuBtn" type="button">
-<span></span><span></span>
-</button>
-</div>
-</div>
-</header>
-<div class="mobilePanel" id="mobilePanel">
-<a data-en="HOME" data-ko="홈" href="index.html">HOME</a>
-<a data-en="EXPLORE" data-ko="탐험" href="explore.html">EXPLORE</a>
-<a data-en="CREATE" data-ko="크리에이트" href="create.html">CREATE</a>
-<a data-en="LIVE" data-ko="라이브" href="live.html">LIVE</a>
-<a data-en="VISION" data-ko="비전" href="vision.html">VISION</a>
-<a data-en="CONTACT" data-ko="문의" href="contact.html">CONTACT</a>
-</div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+
 <main>
-<section class="hero">
-<div class="wrap heroContent">
-<a class="backToCreate" data-en="← BACK TO CREATE" data-ko="← CREATE로 돌아가기" href="create.html">← CREATE로 돌아가기</a><div class="eyebrow">OURBANG / CREATE / MUSIC</div>
-<h1>MUSIC</h1>
-<p class="lead musicLead" data-en="Sound shapes identity. Production brings it to life." data-ko="사운드는 정체성을 만들고, 프로덕션은 그 세계를 현실로 확장합니다.">
-<span class="line">Sound shapes</span>
-<span class="line accent">identity.</span>
-<span class="line">Production brings</span>
-<span class="line">it to life.</span>
-</p>
-</div>
+<section class="musicHero">
+  <div class="wrap musicHeroInner">
+    <a class="backToStudio" href="create.html" data-en="← BACK TO STUDIO" data-ko="← STUDIO로 돌아가기">← STUDIO로 돌아가기</a>
+    <div class="heroMeta">OURBANG / STUDIO / MUSIC</div>
+    <h1>MUSIC</h1>
+    <p class="heroLead composedCopy" data-copy="hero">
+      <span>사운드는 정체성을 만들고,</span>
+      <span class="accentLine">프로덕션은 그 세계를</span>
+      <span>현실로 확장합니다.</span>
+    </p>
+  </div>
 </section>
-<section class="wrap createGrid"><div class="card"><div class="num">01</div><div aria-hidden="true" class="cardObject productionObject">
-<span class="prodHalo"></span>
-<span class="prodWave prodWaveA"></span>
-<span class="prodWave prodWaveB"></span>
-<span class="prodWave prodWaveC"></span>
-<span class="prodCore"></span>
-</div><div><h2 data-en="PRODUCTION" data-ko="프로덕션">PRODUCTION</h2><p data-en="Original music, arranging, recording and release-ready production." data-ko="오리지널 음악, 편곡, 녹음과 발매를 위한 프로덕션을 진행합니다.">Original music, arranging, recording and release-ready production.</p></div></div><div class="card"><div class="num">02</div><div aria-hidden="true" class="cardObject artistObject">
-<span class="artistOrbit orbitA"></span>
-<span class="artistOrbit orbitB"></span>
-<span class="artistSphere"></span>
-<span class="artistShard shardA"></span>
-<span class="artistShard shardB"></span>
-</div><div><h2 data-en="ARTIST" data-ko="아티스트">ARTIST</h2><p data-en="Artist development, musical direction and long-term creative identity." data-ko="아티스트 개발, 음악적 디렉션과 장기적인 창작 정체성을 설계합니다.">Artist development, musical direction and long-term creative identity.</p></div></div><div class="card"><div class="num">03</div><div aria-hidden="true" class="cardObject performanceObject">
-<span class="stageFloor"></span>
-<span class="stageBeam beamA"></span>
-<span class="stageBeam beamB"></span>
-<span class="stageBeam beamC"></span>
-<span class="stagePulse"></span>
-</div><div><h2 data-en="PERFORMANCE" data-ko="퍼포먼스">PERFORMANCE</h2><p data-en="Live sets, audiovisual shows and performance-driven experiences." data-ko="라이브 세트, 오디오비주얼 쇼와 퍼포먼스 중심의 경험을 제작합니다.">Live sets, audiovisual shows and performance-driven experiences.</p></div></div></section>
-<section class="statement">
-<div class="wrap statementBox">
-<h3 class="musicStatement" data-en="SOUND BECOMES IDENTITY." data-ko="하나의 사운드가, 하나의 세계를 완성합니다."><span class="soft">하나의 사운드가,</span><span class="strong">하나의 세계를 완성합니다.</span></h3>
-<p data-en="OURBANG develops sound beyond a single track—into identity, content, performance and a world audiences can enter." data-ko="OURBANG은 한 곡의 음악을 넘어, 사운드를 정체성과 콘텐츠, 퍼포먼스 그리고 관객이 들어갈 수 있는 하나의 세계로 확장합니다.">
- OURBANG develops sound beyond a single track—into identity, content, performance and a world audiences can enter.
-</p>
-</div>
+
+<section class="wrap musicExhibition">
+  <article class="exhibit exhibitProduction" id="production">
+    <div class="exhibitIndex">STUDIO / MUSIC / 01</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="ORIGINAL SOUND" data-ko="오리지널 사운드">오리지널 사운드</div>
+      <h2 class="exhibitTitle titleProduction" data-copy="production-title"><span>프로덕션</span></h2>
+      <p data-en="Original music, arranging, recording and release-ready production."
+         data-ko="오리지널 음악, 편곡, 녹음과 발매를 위한 완성도 높은 프로덕션을 진행합니다.">
+        오리지널 음악, 편곡, 녹음과 발매를 위한 완성도 높은 프로덕션을 진행합니다.
+      </p>
+    </div>
+    <div class="exhibitArt productionArt" aria-hidden="true">
+      <span class="soundHalo haloA"></span>
+      <span class="soundHalo haloB"></span>
+      <span class="wave waveA"></span>
+      <span class="wave waveB"></span>
+      <span class="wave waveC"></span>
+      <span class="soundCore"></span>
+    </div>
+  </article>
+
+  <article class="exhibit exhibitArtist" id="artist">
+    <div class="exhibitIndex">STUDIO / MUSIC / 02</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="CREATIVE IDENTITY" data-ko="창작 정체성">창작 정체성</div>
+      <h2 class="exhibitTitle titleArtist" data-copy="artist-title"><span>아티스트</span></h2>
+      <p data-en="Artist development, musical direction and long-term creative identity."
+         data-ko="아티스트 개발과 음악적 디렉션을 통해 오래 지속될 창작 정체성을 설계합니다.">
+        아티스트 개발과 음악적 디렉션을 통해 오래 지속될 창작 정체성을 설계합니다.
+      </p>
+    </div>
+    <div class="exhibitArt artistArt" aria-hidden="true">
+      <span class="orbit orbitOne"></span>
+      <span class="orbit orbitTwo"></span>
+      <span class="artistSphere"></span>
+      <span class="shard shardOne"></span>
+      <span class="shard shardTwo"></span>
+    </div>
+  </article>
+
+  <article class="exhibit exhibitPerformance" id="performance">
+    <div class="exhibitIndex">STUDIO / MUSIC / 03</div>
+    <div class="exhibitCopy">
+      <div class="exhibitLabel" data-en="LIVE EXPERIENCE" data-ko="라이브 경험">라이브 경험</div>
+      <h2 class="exhibitTitle titlePerformance" data-copy="performance-title"><span>퍼포먼스</span></h2>
+      <p data-en="Live sets, audiovisual shows and performance-driven experiences."
+         data-ko="라이브 세트와 오디오비주얼 쇼, 퍼포먼스 중심의 몰입형 경험을 제작합니다.">
+        라이브 세트와 오디오비주얼 쇼, 퍼포먼스 중심의 몰입형 경험을 제작합니다.
+      </p>
+    </div>
+    <div class="exhibitArt performanceArt" aria-hidden="true">
+      <span class="stageGrid"></span>
+      <span class="beam beamOne"></span>
+      <span class="beam beamTwo"></span>
+      <span class="beam beamThree"></span>
+      <span class="stageCore"></span>
+    </div>
+  </article>
 </section>
+
+<section class="wrap musicStatement">
+  <div class="statementRule"></div>
+  <div class="statementGrid">
+    <h3 class="statementTitle composedCopy" data-copy="statement">
+      <span class="statementSoft">하나의 사운드가,</span>
+      <span>하나의 세계를</span>
+      <span>완성합니다.</span>
+    </h3>
+    <p data-en="OURBANG develops sound beyond a single track—into identity, content, performance and a world audiences can enter."
+       data-ko="OURBANG은 한 곡의 음악을 넘어 사운드를 정체성과 콘텐츠, 퍼포먼스 그리고 관객이 들어갈 수 있는 세계로 확장합니다.">
+      OURBANG은 한 곡의 음악을 넘어 사운드를 정체성과 콘텐츠, 퍼포먼스 그리고 관객이 들어갈 수 있는 세계로 확장합니다.
+    </p>
+  </div>
+</section>
+
+<nav class="musicDock" aria-label="Music sections">
+  <a href="#production"><span>01</span><b data-en="PRODUCTION" data-ko="프로덕션">프로덕션</b></a>
+  <a href="#artist"><span>02</span><b data-en="ARTIST" data-ko="아티스트">아티스트</b></a>
+  <a href="#performance"><span>03</span><b data-en="PERFORMANCE" data-ko="퍼포먼스">퍼포먼스</b></a>
+</nav>
 </main>
 <footer>
 <div class="wrap foot">
 <div>© <span id="year"></span> OURBANG</div>
-<div>CREATE · MUSIC · SOUND · PERFORMANCE</div>
+<div>STUDIO · MUSIC · SOUND · PERFORMANCE</div>
 </div>
 </footer>
-<script>
-  const langButtons=[...document.querySelectorAll('.langBtn')];
-  const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
-  function setLanguage(lang){
-    const safe=lang==='ko'?'ko':'en';
-    document.documentElement.lang=safe;
-    translatables.forEach(el=>{
-    if(el.classList.contains('musicLead')){
-      el.innerHTML=safe==='ko'
-        ? '<span class="line">사운드는 정체성을 만들고,</span><span class="line accent">프로덕션은 그 세계를</span><span class="line">현실로 확장합니다.</span>'
-        : '<span class="line">Sound shapes</span><span class="line accent">identity.</span><span class="line">Production brings</span><span class="line">it to life.</span>';
-    }else if(el.classList.contains('musicStatement')){
-      el.innerHTML=safe==='ko'
-        ? '<span class="soft">하나의 사운드가,</span><span class="strong">하나의 세계를 완성합니다.</span>'
-        : '<span class="soft">SOUND BECOMES</span><span class="strong">IDENTITY.</span>';
-    }else{
-      el.textContent=el.dataset[safe];
-    }
+<script>
+const langButtons=[...document.querySelectorAll('.langBtn')];
+const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
+
+function setLanguage(lang){
+  const safe=lang==='ko'?'ko':'en';
+  document.documentElement.lang=safe;
+
+  document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
+    el.textContent=el.dataset[safe];
   });
-    langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
-    localStorage.setItem('ourbang-language',safe);
+
+  const hero=document.querySelector('[data-copy="hero"]');
+  if(hero){
+    hero.innerHTML=safe==='ko'
+      ? '<span>사운드는 정체성을 만들고,</span><span class="accentLine">프로덕션은 그 세계를</span><span>현실로 확장합니다.</span>'
+      : '<span>Sound shapes identity.</span><span class="accentLine">Production brings</span><span>the world to life.</span>';
   }
 
-  langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-  setLanguage(localStorage.getItem('ourbang-language')||'ko');
-
-  const menuBtn=document.querySelector('.menuBtn');
-  const mobilePanel=document.getElementById('mobilePanel');
-
-  menuBtn.addEventListener('click',()=>{
-    const open=!mobilePanel.classList.contains('open');
-    mobilePanel.classList.toggle('open',open);
-    document.body.classList.toggle('menuOpen',open);
-    menuBtn.setAttribute('aria-expanded',String(open));
+  const titleCopies={
+    'production-title':safe==='ko'?'프로덕션':'PRODUCTION',
+    'artist-title':safe==='ko'?'아티스트':'ARTIST',
+    'performance-title':safe==='ko'?'퍼포먼스':'PERFORMANCE'
+  };
+  Object.entries(titleCopies).forEach(([key,value])=>{
+    const el=document.querySelector(`[data-copy="${key}"]`);
+    if(el) el.innerHTML=`<span>${value}</span>`;
   });
 
-  mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    mobilePanel.classList.remove('open');
-    document.body.classList.remove('menuOpen');
-    menuBtn.setAttribute('aria-expanded','false');
-  }));
+  const statement=document.querySelector('[data-copy="statement"]');
+  if(statement){
+    statement.innerHTML=safe==='ko'
+      ? '<span class="statementSoft">하나의 사운드가,</span><span>하나의 세계를</span><span>완성합니다.</span>'
+      : '<span class="statementSoft">SOUND BECOMES</span><span>IDENTITY.</span>';
+  }
 
-  document.getElementById('year').textContent=new Date().getFullYear();
+  langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
+  localStorage.setItem('ourbang-language',safe);
+}
+langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+setLanguage(localStorage.getItem('ourbang-language')||'ko');
+
+const menuBtn=document.querySelector('.menuBtn');
+const mobilePanel=document.getElementById('mobilePanel');
+menuBtn.addEventListener('click',()=>{
+  const open=!mobilePanel.classList.contains('open');
+  mobilePanel.classList.toggle('open',open);
+  document.body.classList.toggle('menuOpen',open);
+  menuBtn.setAttribute('aria-expanded',String(open));
+});
+mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobilePanel.classList.remove('open');
+  document.body.classList.remove('menuOpen');
+  menuBtn.setAttribute('aria-expanded','false');
+}));
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
