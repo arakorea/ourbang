@@ -503,8 +503,236 @@ html[lang="ko"] .statementBox p{
   }
 }
 </style>
+<style>
+/* MUSIC CARD OBJECT SYSTEM — each card has its own visual identity */
+.backToCreate{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:24px;
+  color:rgba(255,255,255,.46);
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.16em;
+  transition:color .25s ease,transform .25s ease;
+}
+.backToCreate:hover{color:#fff;transform:translateX(-3px)}
 
-</head>
+.createGrid .card{
+  isolation:isolate;
+  padding-top:30px;
+}
+.createGrid .card::before{display:none}
+.createGrid .card > *{position:relative;z-index:2}
+
+.cardObject{
+  position:absolute!important;
+  z-index:1!important;
+  top:26px;
+  right:24px;
+  width:180px;
+  height:180px;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .65s ease,opacity .65s ease;
+}
+.cardObject span{position:absolute;display:block}
+
+/* 01 — PRODUCTION: fluid sonic wave */
+.productionObject{
+  filter:drop-shadow(0 28px 42px rgba(93,187,255,.08));
+}
+.prodHalo{
+  inset:19px;
+  border-radius:50%;
+  border:1px solid rgba(151,218,255,.20);
+  background:
+    radial-gradient(circle at 38% 34%,rgba(255,255,255,.16),transparent 28%),
+    radial-gradient(circle,rgba(124,198,255,.09),transparent 68%);
+  box-shadow:
+    inset 0 0 30px rgba(124,198,255,.08),
+    0 0 42px rgba(124,198,255,.06);
+}
+.prodWave{
+  left:20px;
+  width:140px;
+  height:22px;
+  border:1px solid rgba(196,231,255,.46);
+  border-left-color:transparent;
+  border-right-color:transparent;
+  border-radius:50%;
+  transform-origin:center;
+  backdrop-filter:blur(3px);
+}
+.prodWaveA{top:58px;transform:rotate(-9deg) scaleX(.95)}
+.prodWaveB{top:82px;transform:rotate(7deg) scaleX(.78)}
+.prodWaveC{top:106px;transform:rotate(-4deg) scaleX(.58)}
+.prodCore{
+  width:20px;height:20px;
+  left:80px;top:80px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0 12%,#bce6ff 22%,rgba(124,198,255,.28) 58%,transparent 72%);
+  box-shadow:0 0 24px rgba(124,198,255,.54);
+}
+.card:nth-child(1)::after{
+  content:"";
+  position:absolute;
+  inset:auto -30% -42% 12%;
+  height:220px;
+  background:radial-gradient(ellipse,rgba(72,160,255,.12),transparent 67%);
+  z-index:0;
+  transition:opacity .5s ease,transform .6s ease;
+}
+
+/* 02 — ARTIST: orbital identity sculpture */
+.artistObject{
+  perspective:600px;
+  filter:drop-shadow(0 26px 40px rgba(160,116,255,.10));
+}
+.artistOrbit{
+  inset:26px;
+  border:1px solid rgba(206,190,255,.30);
+  border-radius:50%;
+  box-shadow:inset 0 0 22px rgba(143,124,255,.07);
+}
+.orbitA{transform:rotateX(68deg) rotateZ(-16deg)}
+.orbitB{transform:rotateY(66deg) rotateZ(23deg)}
+.artistSphere{
+  width:68px;height:68px;
+  left:56px;top:56px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.92),rgba(198,182,255,.42) 25%,rgba(119,84,220,.20) 55%,rgba(8,10,17,.12) 72%),
+    linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:
+    inset -14px -16px 28px rgba(40,22,94,.22),
+    0 0 32px rgba(143,124,255,.22);
+}
+.artistShard{
+  width:10px;height:36px;
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(143,124,255,.13));
+  border:1px solid rgba(255,255,255,.30);
+  box-shadow:0 0 18px rgba(143,124,255,.12);
+}
+.shardA{left:31px;top:31px;transform:rotate(-34deg)}
+.shardB{right:28px;bottom:31px;transform:rotate(33deg)}
+.card:nth-child(2)::after{
+  content:"";
+  position:absolute;
+  inset:-25% -20% auto 20%;
+  height:240px;
+  background:radial-gradient(ellipse,rgba(143,124,255,.13),transparent 70%);
+  z-index:0;
+}
+
+/* 03 — PERFORMANCE: spatial light stage */
+.performanceObject{
+  perspective:680px;
+  filter:drop-shadow(0 28px 42px rgba(80,208,255,.10));
+}
+.stageFloor{
+  width:132px;height:92px;
+  left:24px;bottom:22px;
+  transform:rotateX(67deg) rotateZ(-4deg);
+  border:1px solid rgba(180,229,255,.30);
+  background:
+    linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(98,207,255,.12),rgba(143,124,255,.03));
+  background-size:18px 18px;
+  box-shadow:0 0 32px rgba(68,190,255,.09);
+}
+.stageBeam{
+  width:1px;
+  height:124px;
+  top:2px;
+  transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(124,198,255,.16) 55%,transparent);
+  box-shadow:0 0 12px rgba(124,198,255,.30);
+}
+.beamA{left:50px;transform:rotate(14deg)}
+.beamB{left:90px;transform:rotate(-2deg)}
+.beamC{right:40px;transform:rotate(-17deg)}
+.stagePulse{
+  width:24px;height:24px;
+  border-radius:50%;
+  left:78px;bottom:47px;
+  background:radial-gradient(circle,#fff 0 7%,#9bddff 18%,rgba(124,198,255,.20) 48%,transparent 70%);
+  box-shadow:0 0 26px rgba(124,198,255,.42);
+}
+.card:nth-child(3)::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 -36% 0;
+  height:250px;
+  background:radial-gradient(ellipse,rgba(76,194,255,.12),transparent 68%);
+  z-index:0;
+}
+
+/* Card-specific hover behavior */
+.card:nth-child(1):hover .productionObject{
+  transform:translate3d(-4px,-3px,0) rotate(-2deg) scale(1.025);
+  filter:drop-shadow(0 30px 46px rgba(93,187,255,.17));
+}
+.card:nth-child(1):hover .prodWaveA{animation:waveShiftA 1.9s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodWaveB{animation:waveShiftB 2.2s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodWaveC{animation:waveShiftC 1.7s ease-in-out infinite alternate}
+.card:nth-child(1):hover .prodCore{animation:corePulse 1.8s ease-in-out infinite}
+
+.card:nth-child(2):hover .artistObject{
+  transform:translateY(-3px) rotateZ(3deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(160,116,255,.18));
+}
+.card:nth-child(2):hover .orbitA{animation:orbitA 7s linear infinite}
+.card:nth-child(2):hover .orbitB{animation:orbitB 8.5s linear infinite reverse}
+.card:nth-child(2):hover .artistSphere{transform:translateY(-2px);box-shadow:inset -14px -16px 28px rgba(40,22,94,.22),0 0 40px rgba(143,124,255,.30)}
+
+.card:nth-child(3):hover .performanceObject{
+  transform:translateY(-4px) rotateY(-4deg) scale(1.02);
+  filter:drop-shadow(0 30px 46px rgba(80,208,255,.18));
+}
+.card:nth-child(3):hover .beamA{animation:beamA 2.4s ease-in-out infinite alternate}
+.card:nth-child(3):hover .beamB{animation:beamB 2.9s ease-in-out infinite alternate}
+.card:nth-child(3):hover .beamC{animation:beamC 2.2s ease-in-out infinite alternate}
+.card:nth-child(3):hover .stagePulse{animation:stagePulse 1.7s ease-in-out infinite}
+
+@keyframes waveShiftA{to{transform:translateX(7px) rotate(-5deg) scaleX(1.01)}}
+@keyframes waveShiftB{to{transform:translateX(-8px) rotate(3deg) scaleX(.84)}}
+@keyframes waveShiftC{to{transform:translateX(5px) rotate(-7deg) scaleX(.64)}}
+@keyframes corePulse{50%{transform:scale(1.12);opacity:.82}}
+@keyframes orbitA{to{transform:rotateX(68deg) rotateZ(344deg)}}
+@keyframes orbitB{to{transform:rotateY(66deg) rotateZ(383deg)}}
+@keyframes beamA{to{transform:rotate(9deg);opacity:.70}}
+@keyframes beamB{to{transform:rotate(3deg);opacity:.82}}
+@keyframes beamC{to{transform:rotate(-12deg);opacity:.68}}
+@keyframes stagePulse{50%{transform:scale(1.18);opacity:.78}}
+
+@media(max-width:980px){
+  .cardObject{width:160px;height:160px;right:20px;top:20px}
+  .prodWave{left:16px;width:128px}
+  .prodWaveA{top:50px}.prodWaveB{top:73px}.prodWaveC{top:96px}
+  .prodCore{left:70px;top:70px}
+  .artistSphere{left:46px;top:46px}
+  .stageFloor{left:14px}
+}
+@media(max-width:640px){
+  .backToCreate{margin-bottom:18px}
+  .cardObject{
+    width:132px;height:132px;
+    top:16px;right:14px;
+    opacity:.92;
+    transform:scale(.86);
+    transform-origin:top right;
+  }
+  .createGrid .card h2{padding-right:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .card,.cardObject,.cardObject span,.backToCreate{animation:none!important;transition:none!important}
+}
+</style></head>
 <body>
 <header class="topbar">
 <div class="wrap nav">
@@ -539,7 +767,7 @@ html[lang="ko"] .statementBox p{
 <main>
 <section class="hero">
 <div class="wrap heroContent">
-<div class="eyebrow">OURBANG / CREATE / MUSIC</div>
+<a class="backToCreate" data-en="← BACK TO CREATE" data-ko="← CREATE로 돌아가기" href="create.html">← CREATE로 돌아가기</a><div class="eyebrow">OURBANG / CREATE / MUSIC</div>
 <h1>MUSIC</h1>
 <p class="lead musicLead" data-en="Sound shapes identity. Production brings it to life." data-ko="사운드는 정체성을 만들고, 프로덕션은 그 세계를 현실로 확장합니다.">
 <span class="line">Sound shapes</span>
@@ -549,7 +777,25 @@ html[lang="ko"] .statementBox p{
 </p>
 </div>
 </section>
-<section class="wrap createGrid"><div class="card"><div class="num">01</div><div><h2 data-en="PRODUCTION" data-ko="프로덕션">PRODUCTION</h2><p data-en="Original music, arranging, recording and release-ready production." data-ko="오리지널 음악, 편곡, 녹음과 발매를 위한 프로덕션을 진행합니다.">Original music, arranging, recording and release-ready production.</p></div></div><div class="card"><div class="num">02</div><div><h2 data-en="ARTIST" data-ko="아티스트">ARTIST</h2><p data-en="Artist development, musical direction and long-term creative identity." data-ko="아티스트 개발, 음악적 디렉션과 장기적인 창작 정체성을 설계합니다.">Artist development, musical direction and long-term creative identity.</p></div></div><div class="card"><div class="num">03</div><div><h2 data-en="PERFORMANCE" data-ko="퍼포먼스">PERFORMANCE</h2><p data-en="Live sets, audiovisual shows and performance-driven experiences." data-ko="라이브 세트, 오디오비주얼 쇼와 퍼포먼스 중심의 경험을 제작합니다.">Live sets, audiovisual shows and performance-driven experiences.</p></div></div></section>
+<section class="wrap createGrid"><div class="card"><div class="num">01</div><div aria-hidden="true" class="cardObject productionObject">
+<span class="prodHalo"></span>
+<span class="prodWave prodWaveA"></span>
+<span class="prodWave prodWaveB"></span>
+<span class="prodWave prodWaveC"></span>
+<span class="prodCore"></span>
+</div><div><h2 data-en="PRODUCTION" data-ko="프로덕션">PRODUCTION</h2><p data-en="Original music, arranging, recording and release-ready production." data-ko="오리지널 음악, 편곡, 녹음과 발매를 위한 프로덕션을 진행합니다.">Original music, arranging, recording and release-ready production.</p></div></div><div class="card"><div class="num">02</div><div aria-hidden="true" class="cardObject artistObject">
+<span class="artistOrbit orbitA"></span>
+<span class="artistOrbit orbitB"></span>
+<span class="artistSphere"></span>
+<span class="artistShard shardA"></span>
+<span class="artistShard shardB"></span>
+</div><div><h2 data-en="ARTIST" data-ko="아티스트">ARTIST</h2><p data-en="Artist development, musical direction and long-term creative identity." data-ko="아티스트 개발, 음악적 디렉션과 장기적인 창작 정체성을 설계합니다.">Artist development, musical direction and long-term creative identity.</p></div></div><div class="card"><div class="num">03</div><div aria-hidden="true" class="cardObject performanceObject">
+<span class="stageFloor"></span>
+<span class="stageBeam beamA"></span>
+<span class="stageBeam beamB"></span>
+<span class="stageBeam beamC"></span>
+<span class="stagePulse"></span>
+</div><div><h2 data-en="PERFORMANCE" data-ko="퍼포먼스">PERFORMANCE</h2><p data-en="Live sets, audiovisual shows and performance-driven experiences." data-ko="라이브 세트, 오디오비주얼 쇼와 퍼포먼스 중심의 경험을 제작합니다.">Live sets, audiovisual shows and performance-driven experiences.</p></div></div></section>
 <section class="statement">
 <div class="wrap statementBox">
 <h3 class="musicStatement" data-en="SOUND BECOMES IDENTITY." data-ko="하나의 사운드가, 하나의 세계를 완성합니다."><span class="soft">하나의 사운드가,</span><span class="strong">하나의 세계를 완성합니다.</span></h3>
