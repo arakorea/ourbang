@@ -508,6 +508,150 @@
     }
 
   </style>
+
+<style>
+/* ===== ARA KOREA — FINAL GALLERY LAYOUT ===== */
+.heroPanel{
+  min-height:70svh;
+  border-radius:38px;
+}
+.heroContent{
+  padding:54px;
+}
+h1{
+  max-width:6ch;
+  line-height:.78;
+}
+.descriptor{
+  letter-spacing:.2em;
+}
+
+/* Two full-width exhibition spaces */
+.choiceGrid{
+  grid-template-columns:1fr;
+  gap:24px;
+}
+.card,
+.card.secondary{
+  min-height:68svh;
+  border-radius:36px;
+}
+.cardBody{
+  width:min(620px,92%);
+  margin:0 auto 0 0;
+  padding:54px;
+  text-align:left;
+}
+.card h2{
+  font-size:clamp(54px,7vw,102px);
+  max-width:8ch;
+}
+.card p{
+  max-width:38ch;
+  font-size:15px;
+  line-height:1.8;
+}
+.action{
+  justify-content:flex-start;
+}
+
+/* Keep artwork to the right so the left never feels empty */
+.buildingArt .pavilion{
+  width:min(42vw,520px);
+  height:min(42vw,520px);
+  right:2%;
+  top:2%;
+}
+.buildingArt .floor{
+  width:min(40vw,500px);
+  right:0;
+  top:70%;
+}
+.buildingArt .light{
+  right:20%;
+  top:24%;
+}
+.siteArt .folio{
+  width:min(28vw,340px);
+  height:min(39vw,470px);
+  right:8%;
+  top:6%;
+}
+.siteArt .seal{
+  width:92px;
+  height:92px;
+  right:24%;
+  top:34%;
+}
+
+.araDock{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  z-index:70;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:999px;
+  background:rgba(7,8,6,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 18px 60px rgba(0,0,0,.34);
+}
+.araDock a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  color:rgba(255,255,255,.58);
+  transition:.2s ease;
+}
+.araDock a:hover{
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+.araDock span{
+  font-size:9px;
+  letter-spacing:.12em;
+  color:rgba(217,184,112,.62);
+}
+.araDock b{
+  font-size:9px;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+
+footer{padding-bottom:92px}
+
+@media(max-width:980px){
+  .heroContent{padding:40px}
+  .card,.card.secondary{min-height:58svh}
+  .cardBody{padding:40px}
+}
+@media(max-width:640px){
+  .heroPanel{min-height:60svh;border-radius:24px}
+  .heroContent{padding:28px}
+  h1{font-size:clamp(60px,20vw,96px)}
+  .card,.card.secondary{min-height:55svh;border-radius:24px}
+  .cardBody{width:100%;padding:28px}
+  .card h2{font-size:clamp(44px,14vw,68px)}
+  .buildingArt .pavilion{width:300px;height:300px;right:-12%;top:8%}
+  .siteArt .folio{width:205px;height:285px;right:-10px;top:8%}
+  .araDock{
+    left:12px;
+    right:12px;
+    transform:none;
+    justify-content:space-between;
+    overflow:auto;
+  }
+  .araDock a{padding:9px 10px}
+  .araDock b{font-size:8px}
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -515,8 +659,8 @@
     <a class="brand" href="index.html">OURBANG</a>
     <nav class="links" aria-label="Primary">
       <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-      <a class="active" href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a>
-      <a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a>
+      <a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+      <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
       <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
       <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
       <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
@@ -535,8 +679,8 @@
 
 <div class="mobilePanel" id="mobilePanel">
   <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-  <a href="explore.html" data-en="EXPLORE" data-ko="탐험">EXPLORE</a>
-  <a href="create.html" data-en="CREATE" data-ko="크리에이트">CREATE</a>
+  <a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+  <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
   <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
   <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
   <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
@@ -554,7 +698,7 @@
         </div>
         <div class="heroContent">
           <div>
-            <div class="eyebrow">OURBANG / ARA KOREA</div>
+            <div class="eyebrow">005 · ARA KOREA</div>
             <h1 data-outline="ARA KOREA">ARA KOREA</h1>
             <div class="descriptor">ART · PERFORMANCE</div>
           </div>
@@ -566,7 +710,7 @@
 
   <section class="choices">
     <div class="wrap choiceGrid">
-      <a class="card building" href="https://arakorea.shop" target="_blank" rel="noopener">
+      <a class="card building" id="virtual-building" href="https://arakorea.shop" target="_blank" rel="noopener">
         <div class="artwork buildingArt" aria-hidden="true">
           <span class="pavilion"></span>
           <span class="column c1"></span>
@@ -576,14 +720,14 @@
           <span class="light"></span>
         </div>
         <div class="cardBody">
-          <div class="num">OURBANG / 01</div>
+          <div class="num">005.01</div>
           <h2 data-en="VIRTUAL BUILDING" data-ko="가상 공간">VIRTUAL BUILDING</h2>
           <p data-en="Enter the ARA KOREA virtual building through OURBANG." data-ko="OURBANG을 통해 ARA KOREA의 가상 공간으로 들어갑니다.">Enter the ARA KOREA virtual building through OURBANG.</p>
           <div class="action" data-en="ENTER" data-ko="입장">ENTER <span>→</span></div>
         </div>
       </a>
 
-      <a class="card secondary site" href="https://arakorea.org" target="_blank" rel="noopener">
+      <a class="card secondary site" id="official-website" href="https://arakorea.org" target="_blank" rel="noopener">
         <div class="artwork siteArt" aria-hidden="true">
           <span class="folio"></span>
           <span class="seal"></span>
@@ -591,7 +735,7 @@
           <span class="line l2"></span>
         </div>
         <div class="cardBody">
-          <div class="num">OURBANG / 02</div>
+          <div class="num">005.02</div>
           <h2 data-en="OFFICIAL WEBSITE" data-ko="공식 웹사이트">OFFICIAL WEBSITE</h2>
           <p data-en="Visit the official ARA KOREA website." data-ko="ARA KOREA 공식 웹사이트를 방문합니다.">Visit the official ARA KOREA website.</p>
           <div class="action" data-en="VISIT" data-ko="방문">VISIT <span>→</span></div>
@@ -604,6 +748,11 @@
     <a class="back" href="explore.html" data-en="← BACK TO EXPLORE" data-ko="← EXPLORE로 돌아가기">← BACK TO EXPLORE</a>
   </div>
 </main>
+
+<div class="araDock" aria-label="ARA KOREA quick navigation">
+  <a href="#virtual-building"><span>005.01</span><b data-en="VIRTUAL BUILDING" data-ko="가상 공간">VIRTUAL BUILDING</b></a>
+  <a href="#official-website"><span>005.02</span><b data-en="OFFICIAL WEBSITE" data-ko="공식 웹사이트">OFFICIAL WEBSITE</b></a>
+</div>
 
 <footer>
   <div class="wrap foot">
