@@ -6,6 +6,9 @@
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <title>LIVE — OURBANG</title>
 <meta content="OURBANG LIVE broadcasts and upcoming events." name="description"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
     :root{
       --bg:#07090f;
@@ -26,7 +29,11 @@
         radial-gradient(900px 620px at 78% 10%,rgba(124,198,255,.14),transparent 60%),
         radial-gradient(760px 560px at 10% 72%,rgba(143,124,255,.12),transparent 64%),
         #07090f;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+      font-family:"Inter","Noto Sans KR",Arial,sans-serif;
+      font-synthesis:none;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:geometricPrecision;
       overflow-x:hidden;
     }
     body.menuOpen{overflow:hidden}
@@ -2029,6 +2036,57 @@ html[lang="en"] .liveStatementDescription{
 }
 </style>
 
+
+<style>
+/* LIVE PLAYER — YouTube-first broadcast experience */
+.liveFeature.playerReady{
+  min-height:auto;
+  padding:clamp(24px,3.6vw,48px);
+  gap:26px;
+}
+.livePlayerShell{
+  position:relative;
+  z-index:4;
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;
+  background:#020305;
+  box-shadow:0 28px 80px rgba(0,0,0,.34);
+  display:none;
+}
+.livePlayerShell.active{display:block}
+.livePlayerShell iframe{width:100%;height:100%;border:0;display:block}
+.livePlayerMeta{
+  display:none;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:22px;
+  align-items:end;
+}
+.livePlayerMeta.active{display:grid}
+.liveProgramKicker{font-size:11px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.46);margin-bottom:12px}
+.liveProgramTitle{margin:0;font-size:clamp(34px,4.7vw,68px);line-height:.92;letter-spacing:-.055em;font-weight:850}
+.liveProgramText{margin:16px 0 0;color:rgba(255,255,255,.58);font-size:14px;line-height:1.7;max-width:48ch}
+.youtubeButton{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 20px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);background:#fff;color:#07090f;
+  font-size:11px;font-weight:850;letter-spacing:.1em;white-space:nowrap;
+}
+.youtubeButton:hover{transform:translateY(-2px)}
+.liveFeature.isLive .offlineArtwork,.liveFeature.isLive .liveFeatureCopy{display:none}
+.liveFeature.isLive .liveStatus{color:#fff}
+.liveFeature.isLive .statusDot{animation:liveBlink 1.5s ease-in-out infinite}
+@keyframes liveBlink{50%{opacity:.35;transform:scale(.82)}}
+html[lang="ko"] body,html[lang="ko"] button,html[lang="ko"] input,html[lang="ko"] textarea,html[lang="ko"] select{font-family:"Noto Sans KR","Inter",Arial,sans-serif}
+html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"] textarea,html[lang="en"] select{font-family:"Inter","Noto Sans KR",Arial,sans-serif}
+@media(max-width:700px){
+  .livePlayerMeta.active{grid-template-columns:1fr}
+  .youtubeButton{width:100%}
+  .livePlayerShell{border-radius:17px}
+}
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a class="active" href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
@@ -2068,7 +2126,17 @@ html[lang="en"] .liveStatementDescription{
   <article class="liveFeature" id="next-live">
     <div class="liveStatus">
       <span class="statusDot"></span>
-      <span data-en="NO LIVE BROADCAST NOW" data-ko="현재 진행 중인 방송 없음">현재 진행 중인 방송 없음</span>
+      <span id="liveStatusText" data-en="NO LIVE BROADCAST NOW" data-ko="현재 진행 중인 방송 없음">현재 진행 중인 방송 없음</span>
+    </div>
+
+    <div class="livePlayerShell" id="livePlayerShell" aria-label="OURBANG YouTube Live player"></div>
+    <div class="livePlayerMeta" id="livePlayerMeta">
+      <div>
+        <div class="liveProgramKicker">OURBANG / YOUTUBE LIVE</div>
+        <h2 class="liveProgramTitle" id="liveProgramTitle">AK ENM LIVE</h2>
+        <p class="liveProgramText" id="liveProgramText" data-en="Watch the official live broadcast here and join the conversation on YouTube." data-ko="공식 라이브 방송을 이곳에서 시청하고 유튜브에서 실시간 대화에 참여하세요.">공식 라이브 방송을 이곳에서 시청하고 유튜브에서 실시간 대화에 참여하세요.</p>
+      </div>
+      <a class="youtubeButton" id="youtubeButton" href="#" target="_blank" rel="noopener" data-en="WATCH ON YOUTUBE ↗" data-ko="유튜브에서 보기 ↗">유튜브에서 보기 ↗</a>
     </div>
 
     <div class="offlineArtwork" aria-hidden="true">
@@ -2125,8 +2193,8 @@ html[lang="en"] .liveStatementDescription{
           <span class="channelCore"></span>
         </div>
         <div class="channelCopy">
-          <h4>ANGEL'S<br>ANGLE</h4>
-          <p>MEDIA · CULTURE</p>
+          <h4>AK ENM</h4>
+          <p>ANGEL'S ANGLE · ORIGINALS</p>
           <span class="channelAction" data-en="OPEN CHANNEL" data-ko="채널 열기">채널 열기 <i>↗</i></span>
         </div>
       </a>
@@ -2180,6 +2248,16 @@ html[lang="en"] .liveStatementDescription{
 </footer>
 
 <script>
+/*
+  라이브 방송 연결 방법
+  1) YouTube Studio에서 라이브를 만든 뒤 영상 주소의 v= 뒤 11자리 ID를 복사합니다.
+  2) 아래 LIVE_VIDEO_ID 안에 붙여 넣습니다.
+  3) 비워 두면 현재의 대기 화면이 표시됩니다.
+*/
+const LIVE_VIDEO_ID = "";
+const LIVE_PROGRAM_TITLE_KO = "AK ENM LIVE";
+const LIVE_PROGRAM_TITLE_EN = "AK ENM LIVE";
+
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
@@ -2230,9 +2308,36 @@ function setLanguage(lang){
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
   localStorage.setItem('ourbang-language',safe);
+  if((LIVE_VIDEO_ID||'').trim()){
+    const status=document.getElementById('liveStatusText');
+    const title=document.getElementById('liveProgramTitle');
+    if(status) status.textContent=safe==='ko'?'현재 라이브 방송 중':'LIVE NOW';
+    if(title) title.textContent=safe==='ko'?LIVE_PROGRAM_TITLE_KO:LIVE_PROGRAM_TITLE_EN;
+  }
 }
 langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
 setLanguage(localStorage.getItem('ourbang-language')||'ko');
+
+function mountYouTubeLive(){
+  const id=(LIVE_VIDEO_ID||'').trim();
+  if(!id) return;
+  const feature=document.getElementById('next-live');
+  const shell=document.getElementById('livePlayerShell');
+  const meta=document.getElementById('livePlayerMeta');
+  const status=document.getElementById('liveStatusText');
+  const title=document.getElementById('liveProgramTitle');
+  const button=document.getElementById('youtubeButton');
+  const lang=document.documentElement.lang==='en'?'en':'ko';
+  const watchUrl=`https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+  feature.classList.add('isLive','playerReady');
+  shell.classList.add('active');
+  meta.classList.add('active');
+  status.textContent=lang==='ko'?'현재 라이브 방송 중':'LIVE NOW';
+  title.textContent=lang==='ko'?LIVE_PROGRAM_TITLE_KO:LIVE_PROGRAM_TITLE_EN;
+  button.href=watchUrl;
+  shell.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1" title="OURBANG YouTube Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+}
+mountYouTubeLive();
 
 const menuBtn=document.querySelector('.menuBtn');
 const mobilePanel=document.getElementById('mobilePanel');
