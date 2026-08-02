@@ -1,9 +1,13 @@
 {
   "isLive": false,
+  "liveCount": 0,
+  "streams": [],
+  "checkedAt": "2026-08-02T02:12:07.588690Z",
   "videoId": "",
   "title": "",
   "channelKey": "",
   "channelName": "",
   "channelUrl": "",
-  "checkedAt": ""
+  "videoUrl": "",
+  "embedUrl": ""
 }
