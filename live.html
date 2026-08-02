@@ -1783,6 +1783,20 @@ html[lang="ko"] .liveFeatureCopy p{
   font-style:normal;
 }
 .channelCard:hover .channelAction i{background:#fff;color:#07090f}
+.channelLiveBadge{
+  position:absolute;right:24px;top:22px;z-index:6;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 11px;border-radius:999px;
+  background:#ff2439;color:#fff;
+  font:800 11px/1 Inter,Arial,sans-serif;letter-spacing:.12em;
+  box-shadow:0 10px 30px rgba(255,36,57,.28);
+}
+.channelLiveBadge::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:#fff;
+  box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:liveBadgePulse 1.7s infinite;
+}
+.channelIsLive{border-color:rgba(255,72,91,.48)}
+@keyframes liveBadgePulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.65)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 
 .tikoonzArtwork{
   background:
@@ -2169,7 +2183,7 @@ html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"
     </div>
 
     <div class="channelGrid">
-      <a class="channelCard tikoonzCard" href="https://www.youtube.com/@tikoonz" target="_blank" rel="noopener">
+      <a class="channelCard tikoonzCard" data-channel-key="tikoonz" href="https://www.youtube.com/@tikoonz" target="_blank" rel="noopener">
         <div class="channelIndex">01</div>
         <div class="channelArtwork tikoonzArtwork" aria-hidden="true">
           <span class="soundBand bandA"></span>
@@ -2184,7 +2198,7 @@ html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"
         </div>
       </a>
 
-      <a class="channelCard angelCard" href="https://www.youtube.com/@akenm79" target="_blank" rel="noopener">
+      <a class="channelCard angelCard" data-channel-key="akenm" href="https://www.youtube.com/@akenm79" target="_blank" rel="noopener">
         <div class="channelIndex">02</div>
         <div class="channelArtwork angelArtwork" aria-hidden="true">
           <span class="lensArc lensA"></span>
@@ -2199,7 +2213,7 @@ html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"
         </div>
       </a>
 
-      <a class="channelCard araCard" href="https://www.youtube.com/@ampkind" target="_blank" rel="noopener">
+      <a class="channelCard araCard" data-channel-key="arakorea" href="https://www.youtube.com/@ampkind" target="_blank" rel="noopener">
         <div class="channelIndex">03</div>
         <div class="channelArtwork araArtwork" aria-hidden="true">
           <span class="stagePlane stageA"></span>
@@ -2249,14 +2263,15 @@ html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"
 
 <script>
 /*
-  라이브 방송 연결 방법
-  1) YouTube Studio에서 라이브를 만든 뒤 영상 주소의 v= 뒤 11자리 ID를 복사합니다.
-  2) 아래 LIVE_VIDEO_ID 안에 붙여 넣습니다.
-  3) 비워 두면 현재의 대기 화면이 표시됩니다.
+  OURBANG 자동 라이브 표시
+  - GitHub Actions가 TIKOONZ / AK ENM / ARA KOREA 세 YouTube 채널을 확인합니다.
+  - 현재 LIVE 중인 영상이 있으면 live-status.json에 videoId와 채널 정보를 기록합니다.
+  - 이 페이지는 live-status.json을 주기적으로 읽고 상단 플레이어를 자동 전환합니다.
+  - 방송이 끝나면 다시 대기 화면으로 돌아갑니다.
 */
-const LIVE_VIDEO_ID = "";
-const LIVE_PROGRAM_TITLE_KO = "AK ENM LIVE";
-const LIVE_PROGRAM_TITLE_EN = "AK ENM LIVE";
+const LIVE_STATUS_URL = "./live-status.json";
+const LIVE_STATUS_REFRESH_MS = 60 * 1000;
+let currentLive = null;
 
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
@@ -2308,36 +2323,95 @@ function setLanguage(lang){
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
   localStorage.setItem('ourbang-language',safe);
-  if((LIVE_VIDEO_ID||'').trim()){
-    const status=document.getElementById('liveStatusText');
-    const title=document.getElementById('liveProgramTitle');
-    if(status) status.textContent=safe==='ko'?'현재 라이브 방송 중':'LIVE NOW';
-    if(title) title.textContent=safe==='ko'?LIVE_PROGRAM_TITLE_KO:LIVE_PROGRAM_TITLE_EN;
-  }
+  renderLiveState();
 }
 langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
 setLanguage(localStorage.getItem('ourbang-language')||'ko');
 
-function mountYouTubeLive(){
-  const id=(LIVE_VIDEO_ID||'').trim();
-  if(!id) return;
+function setChannelLiveBadge(channelKey, isLive){
+  const card = document.querySelector(`[data-channel-key="${channelKey}"]`);
+  if(!card) return;
+  card.classList.toggle('channelIsLive', !!isLive);
+  let badge = card.querySelector('.channelLiveBadge');
+  if(isLive && !badge){
+    badge=document.createElement('span');
+    badge.className='channelLiveBadge';
+    badge.textContent='LIVE';
+    card.appendChild(badge);
+  }else if(!isLive && badge){
+    badge.remove();
+  }
+}
+
+function renderOffline(){
+  const feature=document.getElementById('next-live');
+  const shell=document.getElementById('livePlayerShell');
+  const meta=document.getElementById('livePlayerMeta');
+  const status=document.getElementById('liveStatusText');
+  const lang=document.documentElement.lang==='en'?'en':'ko';
+  feature.classList.remove('isLive','playerReady');
+  shell.classList.remove('active');
+  meta.classList.remove('active');
+  shell.innerHTML='';
+  status.textContent=lang==='ko'?'현재 진행 중인 방송 없음':'NO LIVE BROADCAST NOW';
+  ['tikoonz','akenm','arakorea'].forEach(key=>setChannelLiveBadge(key,false));
+}
+
+function renderLiveState(){
+  if(!currentLive || !currentLive.videoId){
+    renderOffline();
+    return;
+  }
+
   const feature=document.getElementById('next-live');
   const shell=document.getElementById('livePlayerShell');
   const meta=document.getElementById('livePlayerMeta');
   const status=document.getElementById('liveStatusText');
   const title=document.getElementById('liveProgramTitle');
+  const text=document.getElementById('liveProgramText');
   const button=document.getElementById('youtubeButton');
   const lang=document.documentElement.lang==='en'?'en':'ko';
+  const id=currentLive.videoId;
   const watchUrl=`https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+  const channelName=currentLive.channelName || 'OURBANG';
+  const videoTitle=currentLive.title || `${channelName} LIVE`;
+
   feature.classList.add('isLive','playerReady');
   shell.classList.add('active');
   meta.classList.add('active');
-  status.textContent=lang==='ko'?'현재 라이브 방송 중':'LIVE NOW';
-  title.textContent=lang==='ko'?LIVE_PROGRAM_TITLE_KO:LIVE_PROGRAM_TITLE_EN;
+  status.textContent=lang==='ko'?`${channelName} · 현재 라이브 방송 중`:`${channelName} · LIVE NOW`;
+  title.textContent=videoTitle;
+  text.textContent=lang==='ko'
+    ? `${channelName}의 공식 YouTube 라이브입니다. OURBANG에서 시청하거나 YouTube에서 실시간 대화에 참여하세요.`
+    : `Official YouTube Live from ${channelName}. Watch here on OURBANG or join the conversation on YouTube.`;
+  button.textContent=lang==='ko'?'유튜브에서 보기 ↗':'WATCH ON YOUTUBE ↗';
   button.href=watchUrl;
-  shell.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1" title="OURBANG YouTube Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+
+  ['tikoonz','akenm','arakorea'].forEach(key=>setChannelLiveBadge(key,key===currentLive.channelKey));
+
+  const existing=shell.querySelector('iframe');
+  if(!existing || !existing.src.includes(`/embed/${id}`)){
+    shell.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1" title="${videoTitle.replace(/"/g,'&quot;')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  }
 }
-mountYouTubeLive();
+
+async function refreshLiveStatus(){
+  try{
+    const url=`${LIVE_STATUS_URL}?t=${Date.now()}`;
+    const response=await fetch(url,{cache:'no-store'});
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data=await response.json();
+    currentLive=(data && data.isLive && data.videoId) ? data : null;
+    renderLiveState();
+  }catch(error){
+    console.warn('OURBANG live status check failed:',error);
+    // 상태 파일을 일시적으로 읽지 못해도 현재 화면을 갑자기 지우지 않습니다.
+    if(!currentLive) renderOffline();
+  }
+}
+
+refreshLiveStatus();
+setInterval(refreshLiveStatus,LIVE_STATUS_REFRESH_MS);
 
 const menuBtn=document.querySelector('.menuBtn');
 const mobilePanel=document.getElementById('mobilePanel');
