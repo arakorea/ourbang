@@ -2269,8 +2269,9 @@ html[lang="en"] body,html[lang="en"] button,html[lang="en"] input,html[lang="en"
   - 이 페이지는 live-status.json을 주기적으로 읽고 상단 플레이어를 자동 전환합니다.
   - 방송이 끝나면 다시 대기 화면으로 돌아갑니다.
 */
-const LIVE_STATUS_URL = "./live-status.json";
-const LIVE_STATUS_REFRESH_MS = 60 * 1000;
+const LIVE_STATUS_URL = "/live-status.json";
+const LIVE_STATUS_RAW_URL = "https://raw.githubusercontent.com/arakorea/ourbang/main/live-status.json";
+const LIVE_STATUS_REFRESH_MS = 20 * 1000;
 let currentLive = null;
 
 const langButtons=[...document.querySelectorAll('.langBtn')];
@@ -2395,23 +2396,91 @@ function renderLiveState(){
   }
 }
 
+function normalizeLiveData(data){
+  if(!data || !data.isLive) return null;
+
+  if(data.videoId){
+    return {
+      ...data,
+      channelKey: data.channelKey || "",
+      channelName: data.channelName || "OURBANG"
+    };
+  }
+
+  if(Array.isArray(data.streams) && data.streams.length){
+    const first=data.streams.find(stream=>stream && stream.videoId) || data.streams[0];
+    if(first && first.videoId){
+      return {
+        ...data,
+        ...first,
+        isLive:true
+      };
+    }
+  }
+
+  return null;
+}
+
+async function fetchLiveJson(baseUrl){
+  const sep=baseUrl.includes('?')?'&':'?';
+  const url=`${baseUrl}${sep}t=${Date.now()}`;
+  const response=await fetch(url,{
+    cache:'no-store',
+    headers:{'Accept':'application/json'}
+  });
+  if(!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
+
 async function refreshLiveStatus(){
+  let siteError=null;
+
   try{
-    const url=`${LIVE_STATUS_URL}?t=${Date.now()}`;
-    const response=await fetch(url,{cache:'no-store'});
-    if(!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data=await response.json();
-    currentLive=(data && data.isLive && data.videoId) ? data : null;
-    renderLiveState();
+    const siteData=await fetchLiveJson(LIVE_STATUS_URL);
+    const siteLive=normalizeLiveData(siteData);
+
+    if(siteLive){
+      currentLive=siteLive;
+      renderLiveState();
+      return;
+    }
   }catch(error){
-    console.warn('OURBANG live status check failed:',error);
-    // 상태 파일을 일시적으로 읽지 못해도 현재 화면을 갑자기 지우지 않습니다.
-    if(!currentLive) renderOffline();
+    siteError=error;
+    console.warn('OURBANG site live-status check failed:',error);
+  }
+
+  try{
+    const rawData=await fetchLiveJson(LIVE_STATUS_RAW_URL);
+    const rawLive=normalizeLiveData(rawData);
+
+    if(rawLive){
+      currentLive=rawLive;
+      renderLiveState();
+      return;
+    }
+
+    currentLive=null;
+    renderOffline();
+  }catch(rawError){
+    console.warn('OURBANG GitHub live-status fallback failed:',rawError);
+
+    if(!currentLive){
+      renderOffline();
+    }
+
+    if(siteError){
+      console.warn('Primary live-status error:',siteError);
+    }
   }
 }
 
 refreshLiveStatus();
 setInterval(refreshLiveStatus,LIVE_STATUS_REFRESH_MS);
+
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden) refreshLiveStatus();
+});
+window.addEventListener('focus',refreshLiveStatus);
 
 const menuBtn=document.querySelector('.menuBtn');
 const mobilePanel=document.getElementById('mobilePanel');
