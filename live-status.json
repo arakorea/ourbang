@@ -1,23 +1,13 @@
 {
-  "isLive": true,
-  "liveCount": 1,
-  "streams": [
-    {
-      "channelKey": "akenm",
-      "channelName": "AK ENM",
-      "channelUrl": "https://www.youtube.com/@akenm79",
-      "videoId": "a8QZ27NZp24",
-      "videoUrl": "https://www.youtube.com/watch?v=a8QZ27NZp24",
-      "embedUrl": "https://www.youtube.com/embed/a8QZ27NZp24",
-      "title": "ourbang test"
-    }
-  ],
-  "checkedAt": "2026-08-03T23:45:05.505163Z",
-  "videoId": "a8QZ27NZp24",
-  "title": "ourbang test",
-  "channelKey": "akenm",
-  "channelName": "AK ENM",
-  "channelUrl": "https://www.youtube.com/@akenm79",
-  "videoUrl": "https://www.youtube.com/watch?v=a8QZ27NZp24",
-  "embedUrl": "https://www.youtube.com/embed/a8QZ27NZp24"
+  "isLive": false,
+  "liveCount": 0,
+  "streams": [],
+  "checkedAt": "2026-08-04T01:10:00.117684Z",
+  "videoId": "",
+  "title": "",
+  "channelKey": "",
+  "channelName": "",
+  "channelUrl": "",
+  "videoUrl": "",
+  "embedUrl": ""
 }
