@@ -1,13 +1,23 @@
 {
-  "isLive": false,
-  "liveCount": 0,
-  "streams": [],
-  "checkedAt": "2026-08-07T03:22:42.259065Z",
-  "videoId": "",
-  "title": "",
-  "channelKey": "",
-  "channelName": "",
-  "channelUrl": "",
-  "videoUrl": "",
-  "embedUrl": ""
+  "isLive": true,
+  "liveCount": 1,
+  "streams": [
+    {
+      "channelKey": "akenm",
+      "channelName": "AK ENM",
+      "channelUrl": "https://www.youtube.com/@akenm79",
+      "videoId": "o_kPY6h7foQ",
+      "videoUrl": "https://www.youtube.com/watch?v=o_kPY6h7foQ",
+      "embedUrl": "https://www.youtube.com/embed/o_kPY6h7foQ",
+      "title": "MIXING TEST"
+    }
+  ],
+  "checkedAt": "2026-08-07T05:14:49.817072Z",
+  "videoId": "o_kPY6h7foQ",
+  "title": "MIXING TEST",
+  "channelKey": "akenm",
+  "channelName": "AK ENM",
+  "channelUrl": "https://www.youtube.com/@akenm79",
+  "videoUrl": "https://www.youtube.com/watch?v=o_kPY6h7foQ",
+  "embedUrl": "https://www.youtube.com/embed/o_kPY6h7foQ"
 }
