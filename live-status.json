@@ -1,13 +1,23 @@
 {
-  "isLive": false,
-  "liveCount": 0,
-  "streams": [],
-  "checkedAt": "2026-08-13T05:59:34.942981Z",
-  "videoId": "",
-  "title": "",
-  "channelKey": "",
-  "channelName": "",
-  "channelUrl": "",
-  "videoUrl": "",
-  "embedUrl": ""
+  "isLive": true,
+  "liveCount": 1,
+  "streams": [
+    {
+      "channelKey": "akenm",
+      "channelName": "AK ENM",
+      "channelUrl": "https://www.youtube.com/@akenm79",
+      "videoId": "_uYt4a0KZag",
+      "videoUrl": "https://www.youtube.com/watch?v=_uYt4a0KZag",
+      "embedUrl": "https://www.youtube.com/embed/_uYt4a0KZag",
+      "title": "OURBANG TEST JEJU"
+    }
+  ],
+  "checkedAt": "2026-08-13T07:46:50.292416Z",
+  "videoId": "_uYt4a0KZag",
+  "title": "OURBANG TEST JEJU",
+  "channelKey": "akenm",
+  "channelName": "AK ENM",
+  "channelUrl": "https://www.youtube.com/@akenm79",
+  "videoUrl": "https://www.youtube.com/watch?v=_uYt4a0KZag",
+  "embedUrl": "https://www.youtube.com/embed/_uYt4a0KZag"
 }
