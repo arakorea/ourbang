@@ -1534,7 +1534,7 @@ html[lang="ko"] .titleExplore{
 
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
 <div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 
@@ -1648,14 +1648,13 @@ html[lang="ko"] .titleExplore{
 <div>STUDIO · SPACE · DIGITAL · EXPERIENCE</div>
 </div>
 </footer>
-
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
 function setLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
 
   document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
     el.textContent=el.dataset[safe];
@@ -1663,15 +1662,13 @@ function setLanguage(lang){
 
   const hero=document.querySelector('[data-copy="hero"]');
   if(hero){
-    hero.innerHTML=safe==='ko'
-      ? '<span>공간은 새로운 세계가 되고,</span><span class="accentLine">관객은 그 안을</span><span>자유롭게 탐험합니다.</span>'
-      : '<span>Spaces become worlds.</span><span class="accentLine">Audiences enter</span><span>and explore freely.</span>';
+    hero.innerHTML=window.OURBANG_I18N.customHtml('space','hero',safe);
   }
 
   const titleCopies={
-    'scan-title':safe==='ko'?'스캔':'SCAN',
-    'build-title':safe==='ko'?'빌드':'BUILD',
-    'explore-title':safe==='ko'?'익스플로어':'EXPLORE'
+    'scan-title':window.OURBANG_I18N.choose('SCAN','스캔',safe),
+    'build-title':window.OURBANG_I18N.choose('BUILD','빌드',safe),
+    'explore-title':window.OURBANG_I18N.choose('EXPLORE','익스플로어',safe)
   };
   Object.entries(titleCopies).forEach(([key,value])=>{
     const el=document.querySelector(`[data-copy="${key}"]`);
@@ -1680,9 +1677,7 @@ function setLanguage(lang){
 
   const statement=document.querySelector('[data-copy="statement"]');
   if(statement){
-    statement.innerHTML=safe==='ko'
-      ? '<span class="statementSoft">하나의 공간이,</span><span>하나의 세계를</span><span>완성합니다.</span>'
-      : '<span class="statementSoft">SPACE BECOMES</span><span>A WORLD.</span>';
+    statement.innerHTML=window.OURBANG_I18N.customHtml('space','statement',safe);
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));

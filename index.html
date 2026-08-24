@@ -724,6 +724,8 @@
 <div aria-label="Language" class="langs">
 <button class="langBtn" data-lang="en" type="button">EN</button>
 <button class="langBtn" data-lang="ko" type="button">KO</button>
+<button class="langBtn" data-lang="ja" type="button">JA</button>
+<button class="langBtn" data-lang="zh" type="button">中文</button>
 </div>
 <button aria-expanded="false" aria-label="메뉴 열기" class="menuBtn" type="button">
 <span></span><span></span>
@@ -791,13 +793,13 @@
 <div data-en="DIGITAL EXHIBITION · OURBANG" data-ko="디지털 전시 · OURBANG">DIGITAL EXHIBITION · OURBANG</div>
 </div>
 </footer>
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
   const langButtons=[...document.querySelectorAll('.langBtn')];
   const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
   function setLanguage(lang){
-    const safe=lang==='ko'?'ko':'en';
-    document.documentElement.lang=safe;
+    const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
     translatables.forEach(el=>el.textContent=el.dataset[safe]);
     langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
     localStorage.setItem('ourbang-language',safe);

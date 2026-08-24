@@ -472,7 +472,7 @@ footer{padding:0 0 34px}
     <div style="display:flex;align-items:center;gap:8px">
       <div class="langs" aria-label="Language">
         <button class="langBtn" type="button" data-lang="en">EN</button>
-        <button class="langBtn" type="button" data-lang="ko">KO</button>
+        <button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button>
       </div>
       <button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">
         <span></span><span></span>
@@ -622,14 +622,13 @@ footer{padding:0 0 34px}
     <div>ICE UNICORN · BOOM BOOM BOOM</div>
   </div>
 </footer>
-
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
 function setLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
   translatables.forEach(el=>el.textContent=el.dataset[safe]);
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
   localStorage.setItem('ourbang-language',safe);

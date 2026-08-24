@@ -2998,7 +2998,7 @@ html[lang="ko"] .closingInvitation .closingText{
 </style>
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a class="active" href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a class="active" href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
 <div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a class="active" href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 
@@ -3157,14 +3157,13 @@ html[lang="ko"] .closingInvitation .closingText{
 <div>PROJECTS · PARTNERSHIPS · CREATIVE CONVERSATIONS</div>
 </div>
 </footer>
-
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
 function setLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
 
   document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
     if(!el.hasAttribute('data-copy')){
@@ -3174,37 +3173,27 @@ function setLanguage(lang){
 
   const hero=document.querySelector('[data-copy="hero"]');
   if(hero){
-    hero.innerHTML=safe==='ko'
-      ? '<span>새로운 프로젝트가 시작되고,</span><span class="accentLine">서로 다른 세계가</span><span>하나의 연결로 완성됩니다.</span>'
-      : '<span>New projects begin.</span><span class="accentLine">Different worlds meet</span><span>through one connection.</span>';
+    hero.innerHTML=window.OURBANG_I18N.customHtml('contact','hero',safe);
   }
 
   const emailDescription=document.querySelector('[data-copy="email-description"]');
   if(emailDescription){
-    emailDescription.innerHTML=safe==='ko'
-      ? '<span>프로젝트와 파트너십, 새로운 창작 협업을 위해</span><span>OURBANG에 메시지를 보내주세요.</span>'
-      : '<span>Contact OURBANG for projects, partnerships</span><span>and new creative collaborations.</span>';
+    emailDescription.innerHTML=window.OURBANG_I18N.customHtml('contact','email-description',safe);
   }
 
   const networkTitle=document.querySelector('[data-copy="network-title"]');
   if(networkTitle){
-    networkTitle.innerHTML=safe==='ko'
-      ? '<span>OURBANG의 세계는</span><span>하나의 네트워크로 연결됩니다.</span>'
-      : '<span>OUR WORLDS CONNECT</span><span>AS ONE NETWORK.</span>';
+    networkTitle.innerHTML=window.OURBANG_I18N.customHtml('contact','network-title',safe);
   }
 
   const statement=document.querySelector('[data-copy="statement"]');
   if(statement){
-    statement.innerHTML=safe==='ko'
-      ? '<span class="statementSoft">새로운 연결이,</span><span>다음 세계를</span><span>시작합니다.</span>'
-      : '<span class="statementSoft">ONE CONNECTION</span><span>BEGINS</span><span>THE NEXT WORLD.</span>';
+    statement.innerHTML=window.OURBANG_I18N.customHtml('contact','statement',safe);
   }
 
   const closingCopy=document.querySelector('[data-copy="closing-copy"]');
   if(closingCopy){
-    closingCopy.innerHTML=safe==='ko'
-      ? '하나의 메시지에서 새로운 프로젝트가 시작됩니다.<br>당신의 아이디어와 공간, 이야기를 OURBANG과 나눠주세요.'
-      : 'A project can begin with one message.<br>Share your idea, space or story with OURBANG.';
+    closingCopy.innerHTML=window.OURBANG_I18N.customHtml('contact','closing-copy',safe);
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));

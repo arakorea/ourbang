@@ -196,7 +196,7 @@ body.menuOpen{overflow:hidden}
     <div class="ourActions">
       <div class="ourLangs" aria-label="Language">
         <button class="ourLangBtn" type="button" data-lang="en">EN</button>
-        <button class="ourLangBtn" type="button" data-lang="ko">KO</button>
+        <button class="ourLangBtn" type="button" data-lang="ko">KO</button><button class="ourLangBtn" type="button" data-lang="ja">JA</button><button class="ourLangBtn" type="button" data-lang="zh">中文</button>
       </div>
       <button class="ourMenuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
     </div>
@@ -304,6 +304,7 @@ body.menuOpen{overflow:hidden}
 </div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button" aria-label="닫기">×</button><article class="card"><div class="card-media" id="cardMedia"></div><div class="card-body"><div class="tag" id="cardTag">OURBANG DISCOVERY</div><h3 id="modalTitle"></h3><div class="price" id="cardPrice"></div><button class="buy" id="buyBtn" type="button"></button></div></article></div>
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const YOUTUBE_CHANNEL='https://www.youtube.com/channel/UCjucM3L1V_tbBGmuLzN21kg';
 const YOUTUBE_WATCH='https://www.youtube.com/watch?v=1UTqafvnSNg';
@@ -334,8 +335,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden){const act
 const ourLangButtons=[...document.querySelectorAll('.ourLangBtn')];
 const ourTranslatables=[...document.querySelectorAll('[data-en][data-ko]')];
 function setOurLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
   ourTranslatables.forEach(el=>el.textContent=el.dataset[safe]);
   ourLangButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
   localStorage.setItem('ourbang-language',safe);

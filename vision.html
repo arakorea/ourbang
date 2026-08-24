@@ -2468,7 +2468,7 @@ html[lang="en"] .visionClosingCopy span{
 
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a class="active" href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a class="active" href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
 <div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a class="active" href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 
@@ -2618,14 +2618,13 @@ html[lang="en"] .visionClosingCopy span{
 <div>EVERY SPACE · EVERY STORY · EVERY VALUE</div>
 </div>
 </footer>
-
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
 function setLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
 
   document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
     if(!el.hasAttribute('data-copy')){
@@ -2635,44 +2634,32 @@ function setLanguage(lang){
 
   const hero=document.querySelector('[data-copy="hero"]');
   if(hero){
-    hero.innerHTML=safe==='ko'
-      ? '<span>모든 공간에는 가치가 있고,</span><span class="accentLine">모든 이야기는</span><span>새로운 세계로 확장됩니다.</span>'
-      : '<span>Every space holds value.</span><span class="accentLine">Every story expands</span><span>into a new world.</span>';
+    hero.innerHTML=window.OURBANG_I18N.customHtml('vision','hero',safe);
   }
 
   const visionTitle=document.querySelector('[data-copy="vision-title"]');
   if(visionTitle){
-    visionTitle.innerHTML=safe==='ko'
-      ? '<span class="visionSoft">모든 공간은,</span><span>하나의 이야기가</span><span>됩니다.</span>'
-      : '<span class="visionSoft">EVERY SPACE</span><span>BECOMES</span><span>A STORY.</span>';
+    visionTitle.innerHTML=window.OURBANG_I18N.customHtml('vision','vision-title',safe);
   }
 
   const copy1=document.querySelector('[data-copy="vision-copy-1"]');
   if(copy1){
-    copy1.innerHTML=safe==='ko'
-      ? '<span>OURBANG은 독립 브랜드와 아티스트, 창작 프로젝트를</span><span>하나의 연결된 플랫폼으로 이어갑니다.</span><span>Scan, Create, Mirror, Explore를 통해 실제 공간은</span><span>몰입형 디지털 경험으로 확장됩니다.</span>'
-      : '<span>OURBANG brings independent brands, artists</span><span>and creative projects into one connected platform.</span><span>Through Scan, Create, Mirror and Explore,</span><span>physical spaces become immersive digital experiences.</span>';
+    copy1.innerHTML=window.OURBANG_I18N.customHtml('vision','vision-copy-1',safe);
   }
 
   const copy2=document.querySelector('[data-copy="vision-copy-2"]');
   if(copy2){
-    copy2.innerHTML=safe==='ko'
-      ? '<span>기술은 경험의 뒤에 머뭅니다.</span><span>OURBANG은 Showcase World에서 시작하여,</span><span>모든 디지털 공간이 창작자와 커뮤니티, 마켓플레이스를</span><span>연결하는 살아 있는 자산으로 발전하도록 만듭니다.</span>'
-      : '<span>Technology stays behind the experience.</span><span>We begin with curated Showcase Worlds</span><span>and evolve toward living digital spaces</span><span>connecting creators, communities and marketplaces.</span>';
+    copy2.innerHTML=window.OURBANG_I18N.customHtml('vision','vision-copy-2',safe);
   }
 
   const statement=document.querySelector('[data-copy="statement"]');
   if(statement){
-    statement.innerHTML=safe==='ko'
-      ? '<span class="statementSoft">모든 공간이,</span><span>모든 가능성을</span><span>연결합니다.</span>'
-      : '<span class="statementSoft">EVERY SPACE CONNECTS</span><span>EVERY POSSIBILITY.</span>';
+    statement.innerHTML=window.OURBANG_I18N.customHtml('vision','statement',safe);
   }
 
   const closingCopy=document.querySelector('[data-copy="closing-copy"]');
   if(closingCopy){
-    closingCopy.innerHTML=safe==='ko'
-      ? '<span>OURBANG은 공간과 창작자, 커뮤니티를 하나의 성장하는 디지털 생태계로 연결합니다.</span>'
-      : '<span>OURBANG connects spaces, creators and communities into one evolving digital ecosystem.</span>';
+    closingCopy.innerHTML=window.OURBANG_I18N.customHtml('vision','closing-copy',safe);
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));

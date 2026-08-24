@@ -1145,7 +1145,7 @@ html[lang="ko"] .statementGrid p{
 
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
 <div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 <main>
@@ -1249,14 +1249,13 @@ html[lang="ko"] .statementGrid p{
 <div>STUDIO · MUSIC · SOUND · PERFORMANCE</div>
 </div>
 </footer>
-
+<script src="assets/js/ourbang-i18n.js"></script>
 <script>
 const langButtons=[...document.querySelectorAll('.langBtn')];
 const translatables=[...document.querySelectorAll('[data-en][data-ko]')];
 
 function setLanguage(lang){
-  const safe=lang==='ko'?'ko':'en';
-  document.documentElement.lang=safe;
+  const safe=window.OURBANG_I18N.applyDocumentLanguage(lang);
 
   document.querySelectorAll('[data-en][data-ko]').forEach(el=>{
     el.textContent=el.dataset[safe];
@@ -1264,15 +1263,13 @@ function setLanguage(lang){
 
   const hero=document.querySelector('[data-copy="hero"]');
   if(hero){
-    hero.innerHTML=safe==='ko'
-      ? '<span>사운드는 정체성을 만들고,</span><span class="accentLine">프로덕션은 그 세계를</span><span>현실로 확장합니다.</span>'
-      : '<span>Sound shapes identity.</span><span class="accentLine">Production brings</span><span>the world to life.</span>';
+    hero.innerHTML=window.OURBANG_I18N.customHtml('music','hero',safe);
   }
 
   const titleCopies={
-    'production-title':safe==='ko'?'프로덕션':'PRODUCTION',
-    'artist-title':safe==='ko'?'아티스트':'ARTIST',
-    'performance-title':safe==='ko'?'퍼포먼스':'PERFORMANCE'
+    'production-title':window.OURBANG_I18N.choose('PRODUCTION','프로덕션',safe),
+    'artist-title':window.OURBANG_I18N.choose('ARTIST','아티스트',safe),
+    'performance-title':window.OURBANG_I18N.choose('PERFORMANCE','퍼포먼스',safe)
   };
   Object.entries(titleCopies).forEach(([key,value])=>{
     const el=document.querySelector(`[data-copy="${key}"]`);
@@ -1281,9 +1278,7 @@ function setLanguage(lang){
 
   const statement=document.querySelector('[data-copy="statement"]');
   if(statement){
-    statement.innerHTML=safe==='ko'
-      ? '<span class="statementSoft">하나의 사운드가,</span><span>하나의 세계를</span><span>완성합니다.</span>'
-      : '<span class="statementSoft">SOUND BECOMES</span><span>IDENTITY.</span>';
+    statement.innerHTML=window.OURBANG_I18N.customHtml('music','statement',safe);
   }
 
   langButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===safe));
