@@ -1,13 +1,23 @@
 {
-  "isLive": false,
-  "liveCount": 0,
-  "streams": [],
-  "checkedAt": "2026-08-24T23:52:16.050814Z",
-  "videoId": "",
-  "title": "",
-  "channelKey": "",
-  "channelName": "",
-  "channelUrl": "",
-  "videoUrl": "",
-  "embedUrl": ""
+  "isLive": true,
+  "liveCount": 1,
+  "streams": [
+    {
+      "channelKey": "akenm",
+      "channelName": "AK ENM",
+      "channelUrl": "https://www.youtube.com/@akenm79",
+      "videoId": "lzTQ3Jo3ub4",
+      "videoUrl": "https://www.youtube.com/watch?v=lzTQ3Jo3ub4",
+      "embedUrl": "https://www.youtube.com/embed/lzTQ3Jo3ub4",
+      "title": "Angel’s Angle | Contemporary Art &amp; Art Jewelry님의 라이브 방송"
+    }
+  ],
+  "checkedAt": "2026-08-25T01:22:03.172680Z",
+  "videoId": "lzTQ3Jo3ub4",
+  "title": "Angel’s Angle | Contemporary Art &amp; Art Jewelry님의 라이브 방송",
+  "channelKey": "akenm",
+  "channelName": "AK ENM",
+  "channelUrl": "https://www.youtube.com/@akenm79",
+  "videoUrl": "https://www.youtube.com/watch?v=lzTQ3Jo3ub4",
+  "embedUrl": "https://www.youtube.com/embed/lzTQ3Jo3ub4"
 }
