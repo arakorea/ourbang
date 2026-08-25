@@ -910,6 +910,82 @@ footer{padding-bottom:92px}
   gtag('config', 'G-TRR09HRW7J');
 </script>
 
+<style id="ourbang-touch-fix">
+/* OURBANG mobile touch reliability — desktop visuals remain unchanged */
+a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, .10);
+}
+
+@media (max-width: 640px) {
+  html body .langBtn,
+  html body .ourLangBtn {
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+  }
+
+  html body .langBtn[data-lang="zh"],
+  html body .ourLangBtn[data-lang="zh"] {
+    width: 38px !important;
+    min-width: 38px !important;
+  }
+
+  html body .langs,
+  html body .ourLangs {
+    gap: 2px !important;
+  }
+
+  html body .menuBtn,
+  html body .ourMenuBtn {
+    width: 44px !important;
+    min-width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .mobilePanel a,
+  .ourMobilePanel a {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card:hover,
+  .collection:hover,
+  .exhibit:hover,
+  .work:hover,
+  .space:hover,
+  .channelCard:hover,
+  .back:hover,
+  .backToCreate:hover,
+  .backToStudio:hover,
+  .heroBack:hover,
+  .action:hover {
+    transform: none !important;
+  }
+
+  .card,
+  .collection,
+  .exhibit,
+  .work,
+  .space,
+  .channelCard,
+  .back,
+  .backToCreate,
+  .backToStudio,
+  .heroBack,
+  .action {
+    transition-property: color, background-color, border-color, opacity, box-shadow !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
