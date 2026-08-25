@@ -532,6 +532,28 @@ button,
   }
 }
 </style>
+<script id="ourbang-clean-url">
+(() => {
+  'use strict';
+
+  const currentPath = window.location.pathname;
+  let cleanPath = currentPath;
+
+  if (/\/index\.html$/i.test(currentPath)) {
+    cleanPath = currentPath.replace(/index\.html$/i, '');
+  } else if (/\.html$/i.test(currentPath)) {
+    cleanPath = currentPath.replace(/\.html$/i, '');
+  }
+
+  if (cleanPath !== currentPath && window.history?.replaceState) {
+    window.history.replaceState(
+      window.history.state,
+      '',
+      `${cleanPath || '/'}${window.location.search}${window.location.hash}`
+    );
+  }
+})();
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -698,7 +720,7 @@ button,
     <div>ICE UNICORN · BOOM BOOM BOOM</div>
   </div>
 </footer>
-<script>
+<script id="ourbang-i18n-inline">
 (() => {
   'use strict';
 
