@@ -935,6 +935,451 @@ button,
   }
 })();
 </script>
+
+<style id="ourbang-responsive-v1">
+/* =========================================================
+   OURBANG RESPONSIVE V1
+   Desktop visuals preserved.
+   Dedicated tablet portrait / tablet landscape /
+   phone portrait / phone landscape handling.
+   ========================================================= */
+
+/* Safe viewport + touch baseline */
+:root{
+  --ob-safe-top: env(safe-area-inset-top, 0px);
+  --ob-safe-right: env(safe-area-inset-right, 0px);
+  --ob-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ob-safe-left: env(safe-area-inset-left, 0px);
+}
+html,body{max-width:100%;overflow-x:hidden}
+img,video,canvas{max-width:100%}
+button,a,[role="button"]{touch-action:manipulation}
+.obx-shell{
+  height:calc(100dvh - var(--header));
+  min-height:560px;
+}
+@supports not (height:100dvh){
+  .obx-shell{height:calc(100svh - var(--header))}
+}
+
+/* TABLET — shared */
+@media (min-width:641px) and (max-width:1180px){
+  :root{--header:82px}
+  .wrap{width:min(calc(100% - 40px),var(--max))}
+  .nav{gap:18px}
+  .brand{font-size:22px}
+  .links{display:none}
+  .langs{margin-left:auto}
+  .menuBtn{
+    display:block;
+    width:46px;
+    height:46px;
+    min-width:46px;
+  }
+  .langBtn{
+    width:42px;
+    min-width:42px;
+    height:42px;
+  }
+  .mobilePanel{
+    position:fixed;
+    inset:var(--header) 0 0;
+    z-index:90;
+    padding:32px max(28px,calc(28px + var(--ob-safe-left)));
+    background:rgba(7,9,15,.985);
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .mobilePanel.open{display:block}
+  .mobilePanel a{
+    display:flex;
+    min-height:58px;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    font-size:23px;
+    font-weight:700;
+  }
+
+  /* Home hero */
+  .hero{min-height:auto}
+  .heroContent{
+    padding:calc(var(--header) + 72px) 0 84px;
+  }
+  h1{font-size:clamp(92px,15vw,156px)}
+  .slogan{font-size:clamp(28px,4vw,38px)}
+  .previewCard{min-height:66dvh}
+
+  /* Six Rooms */
+  .obx-shell{min-height:680px}
+  .obx-caption{
+    left:clamp(30px,5vw,64px);
+    bottom:clamp(44px,6vh,72px);
+    width:min(610px,68vw);
+  }
+  .obx-caption h2{font-size:clamp(46px,7vw,72px)}
+  .obx-rail{left:22px;width:145px}
+  .obx-preview{right:22px;bottom:78px;width:180px}
+  .obx-preview img{height:102px}
+  .obx-controls{right:22px}
+  .obx-mode{right:22px}
+}
+
+/* iPad / TABLET PORTRAIT */
+@media (min-width:641px) and (max-width:1024px) and (orientation:portrait){
+  .heroContent{
+    padding-top:calc(var(--header) + 82px);
+    padding-bottom:82px;
+  }
+  .heroTitleRow{gap:20px}
+  h1{
+    font-size:clamp(88px,17.2vw,148px);
+    line-height:.74;
+  }
+  .heroLine:last-child{margin-left:clamp(28px,5vw,56px)}
+  .reactiveOrb{width:58px}
+  .slogan{
+    max-width:17ch;
+    font-size:clamp(29px,4.5vw,38px);
+  }
+  .ctaRow{max-width:520px}
+  .primary,.secondary{min-height:58px}
+
+  .preview{padding-bottom:86px}
+  .previewCard{
+    min-height:62dvh;
+    padding:42px;
+  }
+  .previewCard h2{font-size:clamp(68px,11.5vw,104px)}
+  .homeObject{
+    width:min(58vw,520px);
+    right:-8%;
+    top:38%;
+  }
+
+  /* Portrait room UI: preserve the room as the visual center */
+  .obx-shell{
+    height:calc(100dvh - var(--header));
+    min-height:760px;
+  }
+  .obx-rail{
+    top:66px;
+    left:24px;
+    width:150px;
+    transform:none;
+  }
+  .obx-roomButton{min-height:42px}
+  .obx-caption{
+    left:30px;
+    right:30px;
+    bottom:34px;
+    width:auto;
+    padding-right:150px;
+  }
+  .obx-caption h2{
+    max-width:11ch;
+    font-size:clamp(46px,8vw,68px);
+  }
+  .obx-actions{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+  .obx-enter,.obx-back{
+    min-width:240px;
+    min-height:48px;
+  }
+  .obx-actions p{max-width:340px}
+  .obx-preview{
+    width:136px;
+    right:24px;
+    bottom:38px;
+  }
+  .obx-preview img{height:82px}
+  .obx-controls{
+    top:78px;
+    right:22px;
+    transform:none;
+  }
+  .obx-controls button{
+    width:44px;
+    height:44px;
+  }
+  .obx-mode{display:none}
+}
+
+/* iPad / TABLET LANDSCAPE */
+@media (min-width:820px) and (max-width:1366px) and (orientation:landscape){
+  .heroContent{
+    padding-top:calc(var(--header) + 54px);
+    padding-bottom:62px;
+  }
+  h1{font-size:clamp(88px,12.8vw,154px)}
+  .slogan{font-size:clamp(25px,3vw,34px)}
+  .previewCard{min-height:72dvh}
+
+  .obx-shell{
+    height:calc(100dvh - var(--header));
+    min-height:560px;
+  }
+  .obx-caption{
+    left:clamp(36px,5vw,76px);
+    bottom:clamp(34px,5vh,58px);
+    width:min(620px,60vw);
+  }
+  .obx-caption h2{font-size:clamp(42px,5.2vw,68px)}
+  .obx-actions{margin-top:16px}
+  .obx-enter,.obx-back{min-height:46px}
+  .obx-rail{left:22px}
+  .obx-preview{width:170px;right:22px;bottom:66px}
+  .obx-preview img{height:92px}
+  .obx-controls button{width:42px;height:42px}
+}
+
+/* PHONE — shared */
+@media (max-width:640px){
+  :root{--header:72px}
+  .wrap{width:min(calc(100% - 24px),var(--max))}
+  .nav{gap:8px}
+  .brand{font-size:19px}
+  .langs{gap:2px!important}
+  .langBtn{
+    width:34px!important;
+    min-width:34px!important;
+    height:44px!important;
+    min-height:44px!important;
+    padding:0!important;
+  }
+  .langBtn[data-lang="zh"]{width:38px!important;min-width:38px!important}
+  .menuBtn{width:44px!important;height:44px!important;min-width:44px!important}
+  .mobilePanel{
+    padding-left:max(22px,calc(22px + var(--ob-safe-left)));
+    padding-right:max(22px,calc(22px + var(--ob-safe-right)));
+    padding-bottom:max(26px,calc(26px + var(--ob-safe-bottom)));
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .mobilePanel a{min-height:54px}
+
+  .obx-shell{
+    height:calc(100dvh - var(--header));
+    min-height:560px;
+  }
+  .obx-controls button{
+    width:44px;
+    height:44px;
+  }
+  .obx-enter,.obx-back{min-height:48px}
+}
+
+/* PHONE PORTRAIT */
+@media (max-width:640px) and (orientation:portrait){
+  .heroContent{
+    padding-top:calc(var(--header) + 54px);
+    padding-bottom:58px;
+  }
+  .heroTitleRow{align-items:flex-end}
+  h1{
+    font-size:clamp(66px,20.5vw,102px);
+    line-height:.76;
+  }
+  .heroLine:last-child{margin-left:20px}
+  .reactiveOrb{width:42px}
+  .slogan{
+    margin-top:32px;
+    max-width:16ch;
+    font-size:clamp(24px,7.3vw,30px);
+  }
+  .ctaRow{margin-top:30px}
+  .primary,.secondary{width:100%;min-height:54px}
+
+  .preview{padding-bottom:64px}
+  .previewCard{
+    min-height:64dvh;
+    padding:24px;
+    border-radius:24px;
+  }
+  .previewCard h2{
+    font-size:clamp(48px,15.5vw,72px);
+    max-width:9ch;
+  }
+  .previewCard p{
+    max-width:20ch;
+    padding-right:0;
+    font-size:11px;
+  }
+  .homeObject{
+    width:310px;
+    right:-116px;
+    top:33%;
+  }
+
+  .obx-shell{min-height:650px}
+  .obx-topline{top:12px}
+  .obx-rail{
+    top:52px;
+    left:14px;
+    width:126px;
+    gap:2px;
+    transform:none;
+  }
+  .obx-railTitle{margin-bottom:4px}
+  .obx-roomButton{
+    min-height:34px;
+    grid-template-columns:20px 17px 1fr;
+    gap:4px;
+  }
+  .obx-roomButton span,.obx-roomButton em{font-size:7px}
+  .obx-caption{
+    left:16px;
+    right:16px;
+    bottom:max(18px,calc(18px + var(--ob-safe-bottom)));
+    width:auto;
+    padding-right:0;
+  }
+  .obx-kicker{margin-bottom:9px;gap:7px;font-size:7px}
+  .obx-kicker i{width:32px}
+  .obx-caption h2{
+    max-width:9.5ch;
+    font-size:clamp(36px,11.5vw,52px);
+    line-height:.91;
+  }
+  .obx-actions{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .obx-enter,.obx-back{
+    width:min(100%,280px);
+    min-width:0;
+    height:48px;
+  }
+  .obx-actions p{
+    max-width:260px;
+    font-size:6.5px;
+  }
+  .obx-preview{display:none}
+  .obx-controls{
+    top:54px;
+    right:12px;
+    transform:none;
+    gap:5px;
+  }
+  .obx-mode{display:none}
+}
+
+/* PHONE LANDSCAPE — intentionally not a stretched portrait layout */
+@media (max-width:932px) and (max-height:500px) and (orientation:landscape){
+  :root{--header:60px}
+  .brand{font-size:18px}
+  .nav{height:var(--header)}
+  .langs .langBtn{
+    width:32px!important;
+    min-width:32px!important;
+    height:40px!important;
+    min-height:40px!important;
+  }
+  .menuBtn{width:42px!important;height:42px!important}
+
+  .hero{min-height:calc(100dvh - var(--header))}
+  .heroContent{
+    padding:calc(var(--header) + 28px) 0 34px;
+  }
+  .eyebrow{margin-bottom:15px}
+  .heroTitleRow{gap:12px}
+  h1{
+    font-size:clamp(58px,13vw,94px);
+    line-height:.72;
+  }
+  .heroLine:last-child{margin-left:24px}
+  .reactiveOrb{width:38px;margin-bottom:5px}
+  .slogan{
+    margin-top:20px;
+    max-width:22ch;
+    font-size:clamp(20px,3.8vw,27px);
+  }
+  .ctaRow{margin-top:20px}
+  .primary,.secondary{
+    width:auto;
+    min-height:46px;
+    padding:0 18px;
+  }
+  .previewCard{min-height:calc(100dvh - 36px)}
+
+  .obx-shell{
+    height:calc(100dvh - var(--header));
+    min-height:380px;
+  }
+  .obx-topline{top:9px}
+  .obx-rail{
+    top:42px;
+    left:14px;
+    width:120px;
+    gap:0;
+    transform:none;
+  }
+  .obx-railTitle{display:none}
+  .obx-roomButton{
+    min-height:29px;
+    grid-template-columns:18px 14px 1fr;
+    gap:4px;
+  }
+  .obx-roomButton span,.obx-roomButton em{font-size:6.5px}
+  .obx-caption{
+    left:155px;
+    bottom:18px;
+    width:min(470px,58vw);
+  }
+  .obx-kicker{margin-bottom:7px;font-size:6.5px}
+  .obx-caption h2{
+    max-width:12ch;
+    font-size:clamp(30px,5.8vw,48px);
+    line-height:.88;
+  }
+  .obx-actions{
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .obx-enter,.obx-back{
+    min-width:190px;
+    height:44px;
+  }
+  .obx-actions p{display:none}
+  .obx-preview{
+    display:block;
+    width:122px;
+    right:14px;
+    bottom:18px;
+  }
+  .obx-preview img{height:62px}
+  .obx-preview div{height:27px}
+  .obx-controls{
+    top:42px;
+    right:12px;
+    transform:none;
+    display:flex;
+  }
+  .obx-controls button{width:42px;height:42px}
+  .obx-mode{display:none}
+}
+
+/* Touch devices: no sticky hover transforms */
+@media (hover:none),(pointer:coarse){
+  .primary:hover,.secondary:hover,.previewCard:hover,.circleLink:hover,
+  .obx-roomButton:hover,.obx-enter:hover,.obx-back:hover,
+  .obx-controls button:hover,.obx-tools button:hover{
+    transform:none!important;
+  }
+}
+
+/* Keep layouts calm when the device is rotated */
+body.ob-orientation-changing *{
+  transition-duration:.01ms!important;
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -1828,5 +2273,41 @@ button,
     assignImage(els.preview,0);assignImage(els.photo,0);highlightRoom(0);renderHotspots();renderText();
   }
 </script>
+
+<script id="ourbang-orientation-v1">
+(() => {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  let timer = 0;
+
+  function viewportVars(){
+    const vv = window.visualViewport;
+    const w = Math.round(vv ? vv.width : window.innerWidth);
+    const h = Math.round(vv ? vv.height : window.innerHeight);
+    root.style.setProperty('--ob-vw', `${w}px`);
+    root.style.setProperty('--ob-vh', `${h}px`);
+    root.dataset.orientation = w >= h ? 'landscape' : 'portrait';
+
+    /* Three.js in the current page already listens to resize.
+       Dispatch once more after Safari/iPad has settled after rotation. */
+    clearTimeout(timer);
+    body.classList.add('ob-orientation-changing');
+    timer = window.setTimeout(() => {
+      body.classList.remove('ob-orientation-changing');
+      window.dispatchEvent(new Event('resize'));
+    }, 180);
+  }
+
+  viewportVars();
+  window.addEventListener('orientationchange', viewportVars, {passive:true});
+  window.addEventListener('resize', viewportVars, {passive:true});
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', viewportVars, {passive:true});
+  }
+})();
+</script>
+
 </body>
 </html>
