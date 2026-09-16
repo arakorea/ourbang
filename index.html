@@ -1462,6 +1462,26 @@ button,a{touch-action:manipulation}
 }
 </style>
 
+
+<style id="ourbang-roomviewer-v8">
+#ourbangOrbit #obxCanvas{touch-action:none!important;cursor:grab}
+#ourbangOrbit #obxCanvas:active{cursor:grabbing}
+#ourbangOrbit .obx-exploreHint{
+ position:absolute;z-index:28;left:50%;top:48%;transform:translate(-50%,-50%);
+ display:flex;align-items:center;gap:13px;padding:10px 14px;border:1px solid rgba(255,255,255,.11);
+ border-radius:999px;background:rgba(5,7,13,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+ color:rgba(255,255,255,.78);pointer-events:none;opacity:0;transition:opacity .35s ease
+}
+#ourbangOrbit .obx-exploreHint.show{opacity:1}
+#ourbangOrbit .obx-exploreHint span{font-size:21px;font-weight:300;line-height:1}
+#ourbangOrbit .obx-exploreHint b{font-size:7px;letter-spacing:.20em;white-space:nowrap}
+@media(max-width:640px) and (orientation:portrait){
+ #ourbangOrbit .obx-exploreHint{top:43%;gap:9px;padding:8px 11px}
+ #ourbangOrbit .obx-exploreHint span{font-size:18px}
+ #ourbangOrbit .obx-exploreHint b{font-size:6px}
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -1498,7 +1518,7 @@ button,a{touch-action:manipulation}
 </div>
 <main>
 <section aria-label="OURBANG six room orbit" class="obx-shell" id="ourbangOrbit">
-<canvas aria-label="Interactive six room digital twin" class="obx-canvas" id="obxCanvas"></canvas>
+<canvas aria-label="Interactive six room digital twin" class="obx-canvas" id="obxCanvas"></canvas><div class="obx-exploreHint" id="obxExploreHint" aria-hidden="true"><span>‹</span><b>DRAG TO EXPLORE</b><span>›</span></div>
 <div aria-hidden="true" class="obx-shade"></div>
 <div class="obx-topline"><i></i><span id="obxStatus">OURBANG · DIGITAL TWIN</span></div>
 
@@ -2370,5 +2390,22 @@ button,a{touch-action:manipulation}
     assignImage(els.preview,0);assignImage(els.photo,0);highlightRoom(0);renderHotspots();renderText();
   }
 </script>
+
+<script id="ourbang-roomviewer-v8-js">
+(()=>{
+ const shell=document.getElementById('ourbangOrbit'),canvas=document.getElementById('obxCanvas'),hint=document.getElementById('obxExploreHint');
+ if(!shell||!canvas||!hint)return;
+ const key='ourbang-room-drag-hint-seen';
+ const hide=()=>{hint.classList.remove('show');try{localStorage.setItem(key,'1')}catch(e){}};
+ const show=()=>{try{if(localStorage.getItem(key))return}catch(e){} hint.classList.add('show');setTimeout(hide,4200)};
+ canvas.addEventListener('pointerdown',hide,{passive:true});
+ canvas.addEventListener('touchstart',hide,{passive:true});
+ const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting&&e.intersectionRatio>.3)){setTimeout(show,450);io.disconnect()}},{threshold:[.3]});
+ io.observe(shell);
+ const settle=()=>{setTimeout(()=>dispatchEvent(new Event('resize')),120);setTimeout(()=>dispatchEvent(new Event('resize')),380)};
+ addEventListener('orientationchange',settle,{passive:true});
+})();
+</script>
+
 </body>
 </html>
