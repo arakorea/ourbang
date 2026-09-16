@@ -1395,6 +1395,73 @@ button,a{touch-action:manipulation}
 }
 </style>
 
+
+<style id="ourbang-designer-v7">
+/* V7 — landscape control collision fix.
+   Tag editor gets its own top-right zone.
+   Camera +/-/target controls move below it. */
+
+@media screen and (orientation:landscape) and (max-width:1366px){
+  /* The tools container contains the tag edit button.
+     Reserve a clear horizontal zone for it. */
+  #ourbangOrbit .obx-tools{
+    position:absolute!important;
+    top:22px!important;
+    right:92px!important;
+    z-index:50!important;
+    display:flex!important;
+    gap:6px!important;
+    align-items:flex-start!important;
+  }
+
+  #ourbangOrbit .obx-tools button{
+    min-height:42px!important;
+    height:42px!important;
+    padding:0 16px!important;
+    white-space:nowrap!important;
+  }
+
+  /* Camera controls no longer sit over the tag editor. */
+  #ourbangOrbit .obx-controls{
+    position:absolute!important;
+    top:76px!important;
+    right:18px!important;
+    z-index:45!important;
+    transform:none!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:5px!important;
+  }
+
+  #ourbangOrbit .obx-controls button{
+    width:42px!important;
+    height:42px!important;
+  }
+}
+
+/* Short phone landscape: make the separation even tighter. */
+@media screen and (orientation:landscape) and (max-height:500px) and (max-width:932px){
+  #ourbangOrbit .obx-tools{
+    top:10px!important;
+    right:64px!important;
+  }
+  #ourbangOrbit .obx-tools button{
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 12px!important;
+    font-size:7px!important;
+  }
+  #ourbangOrbit .obx-controls{
+    top:54px!important;
+    right:10px!important;
+  }
+  #ourbangOrbit .obx-controls button{
+    width:38px!important;
+    height:38px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
