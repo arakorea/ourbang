@@ -1380,6 +1380,201 @@ body.ob-orientation-changing *{
 }
 </style>
 
+
+<style id="ourbang-responsive-v2">
+/* OURBANG RESPONSIVE V2 — device feedback fixes */
+
+/* iPad/tablet: guarantee the 3D canvas occupies the room stage */
+@media (min-width:641px) and (max-width:1366px){
+  #sixRooms.obx-shell{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+      radial-gradient(circle at 50% 42%,rgba(72,83,190,.13),transparent 36%),
+      #03050a;
+  }
+  #obxCanvas{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    z-index:0;
+    visibility:visible!important;
+    opacity:1;
+  }
+  .obx-shade{z-index:1;pointer-events:none}
+  .obx-topline,.obx-rail,.obx-caption,.obx-preview,.obx-controls,.obx-mode{z-index:3}
+}
+
+/* PHONE PORTRAIT:
+   Six room selector becomes one compact horizontal strip.
+   No long 01–06 column covering the room. */
+@media (max-width:640px) and (orientation:portrait){
+  #sixRooms .obx-rail{
+    top:auto!important;
+    left:10px!important;
+    right:10px!important;
+    bottom:max(10px,calc(10px + env(safe-area-inset-bottom,0px)))!important;
+    width:auto!important;
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:3px!important;
+    transform:none!important;
+    padding:0!important;
+    z-index:8!important;
+  }
+  #sixRooms .obx-railTitle{display:none!important}
+  #sixRooms .obx-roomButton{
+    width:100%!important;
+    min-width:0!important;
+    min-height:42px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0 2px!important;
+    border:1px solid rgba(255,255,255,.11)!important;
+    border-radius:8px!important;
+    background:rgba(4,6,12,.62)!important;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  #sixRooms .obx-roomButton span{
+    display:block!important;
+    font-size:9px!important;
+    font-weight:900!important;
+    letter-spacing:.04em!important;
+  }
+  #sixRooms .obx-roomButton i,
+  #sixRooms .obx-roomButton em{display:none!important}
+  #sixRooms .obx-roomButton.active{
+    background:rgba(89,99,220,.42)!important;
+    border-color:rgba(180,188,255,.7)!important;
+  }
+
+  /* Leave the middle of the screen open for the room */
+  #sixRooms .obx-caption{
+    left:16px!important;
+    right:72px!important;
+    bottom:68px!important;
+    width:auto!important;
+  }
+  #sixRooms .obx-caption h2{
+    font-size:clamp(31px,9.6vw,44px)!important;
+    max-width:10ch!important;
+  }
+  #sixRooms .obx-actions{margin-top:10px!important}
+  #sixRooms .obx-enter,
+  #sixRooms .obx-back{
+    width:min(230px,72vw)!important;
+    height:44px!important;
+    min-height:44px!important;
+  }
+  #sixRooms .obx-actions p{display:none!important}
+  #sixRooms .obx-controls{
+    top:50px!important;
+    right:10px!important;
+  }
+}
+
+/* PHONE LANDSCAPE:
+   remove competing overlays; keep room, compact selector, title and Enter. */
+@media (max-width:932px) and (max-height:500px) and (orientation:landscape){
+  #sixRooms .obx-rail{
+    top:40px!important;
+    left:10px!important;
+    bottom:auto!important;
+    width:102px!important;
+  }
+  #sixRooms .obx-roomButton{
+    min-height:27px!important;
+    padding:2px 4px!important;
+  }
+  #sixRooms .obx-caption{
+    left:126px!important;
+    right:64px!important;
+    bottom:12px!important;
+    width:auto!important;
+  }
+  #sixRooms .obx-caption h2{
+    font-size:clamp(27px,5.2vw,42px)!important;
+    max-width:10ch!important;
+  }
+  #sixRooms .obx-preview{display:none!important}
+  #sixRooms .obx-mode{display:none!important}
+  #sixRooms .obx-actions p{display:none!important}
+  #sixRooms .obx-enter,
+  #sixRooms .obx-back{
+    min-width:170px!important;
+    height:42px!important;
+  }
+  #sixRooms .obx-controls{
+    top:40px!important;
+    right:8px!important;
+    display:grid!important;
+    gap:4px!important;
+  }
+  #sixRooms .obx-controls button{
+    width:40px!important;
+    height:40px!important;
+  }
+}
+
+/* TABLET LANDSCAPE:
+   prevent caption / preview / controls from colliding. */
+@media (min-width:820px) and (max-width:1366px) and (orientation:landscape){
+  #sixRooms .obx-rail{left:18px!important;width:132px!important}
+  #sixRooms .obx-caption{
+    left:clamp(170px,16vw,220px)!important;
+    right:205px!important;
+    bottom:30px!important;
+    width:auto!important;
+  }
+  #sixRooms .obx-caption h2{
+    font-size:clamp(38px,4.8vw,60px)!important;
+    max-width:12ch!important;
+  }
+  #sixRooms .obx-actions{
+    display:flex!important;
+    align-items:center!important;
+    gap:12px!important;
+  }
+  #sixRooms .obx-actions p{
+    max-width:230px!important;
+    font-size:7px!important;
+  }
+  #sixRooms .obx-preview{
+    right:18px!important;
+    bottom:28px!important;
+    width:150px!important;
+  }
+  #sixRooms .obx-preview img{height:78px!important}
+  #sixRooms .obx-controls{right:16px!important;top:78px!important}
+}
+
+/* TABLET PORTRAIT:
+   controls and caption occupy separate zones. */
+@media (min-width:641px) and (max-width:1024px) and (orientation:portrait){
+  #sixRooms .obx-rail{left:18px!important;width:132px!important}
+  #sixRooms .obx-caption{
+    left:174px!important;
+    right:24px!important;
+    bottom:34px!important;
+    width:auto!important;
+    padding-right:0!important;
+  }
+  #sixRooms .obx-caption h2{
+    font-size:clamp(42px,7.2vw,62px)!important;
+    max-width:10ch!important;
+  }
+  #sixRooms .obx-preview{display:none!important}
+  #sixRooms .obx-actions p{max-width:270px!important}
+  #sixRooms .obx-controls{right:16px!important;top:72px!important}
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -2201,13 +2396,27 @@ body.ob-orientation-changing *{
     els.photoStage.addEventListener('pointermove',event=>{if(!drag.active)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;state.panX=THREE.MathUtils.clamp(drag.panX+dx/36,-5,5);state.panY=THREE.MathUtils.clamp(drag.panY+dy/48,-3.5,3.5);updateTrack()});
     els.photoStage.addEventListener('pointerup',event=>{if(drag.active&&state.editing&&!drag.moved){const rect=els.photoTrack.getBoundingClientRect();const x=THREE.MathUtils.clamp((event.clientX-rect.left)/rect.width*100,4,96);const y=THREE.MathUtils.clamp((event.clientY-rect.top)/rect.height*100,9,91);openBuilder(x,y)}drag.active=false;if(els.photoStage.hasPointerCapture(event.pointerId))els.photoStage.releasePointerCapture(event.pointerId)});
 
-    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.98;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    const obxTouchDevice=window.matchMedia('(hover:none),(pointer:coarse)').matches;
+    const obxTabletLike=obxTouchDevice && Math.min(screen.width,screen.height)>=600;
+    const renderer=new THREE.WebGLRenderer({
+      canvas,
+      antialias:!obxTabletLike,
+      alpha:false,
+      powerPreference:'default',
+      preserveDrawingBuffer:false
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,obxTabletLike?1.15:1.55));
+    renderer.outputEncoding=THREE.sRGBEncoding;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.02;
+    renderer.shadowMap.enabled=!obxTabletLike;
+    if(renderer.shadowMap.enabled) renderer.shadowMap.type=THREE.PCFSoftShadowMap;
     const scene=new THREE.Scene();scene.background=new THREE.Color(0x03050a);scene.fog=new THREE.FogExp2(0x03050a,.014);
     const camera=new THREE.PerspectiveCamera(39,1,.05,1200);camera.position.set(18,18,22);
     const controls=new THREE.OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.065;controls.target.set(0,.65,-4);controls.minDistance=6;controls.maxDistance=44;controls.maxPolarAngle=Math.PI*.93;controls.autoRotate=true;controls.autoRotateSpeed=.34;
-    scene.add(new THREE.HemisphereLight(0x879dff,0x070810,.72));const key=new THREE.DirectionalLight(0xe7ecff,1.35);key.position.set(12,22,15);key.castShadow=true;key.shadow.mapSize.set(1024,1024);scene.add(key);
+    scene.add(new THREE.HemisphereLight(0x879dff,0x070810,.72));const key=new THREE.DirectionalLight(0xe7ecff,1.35);key.position.set(12,22,15);key.castShadow=!obxTabletLike;if(key.castShadow)key.shadow.mapSize.set(1024,1024);scene.add(key);
     const building=new THREE.Group();building.rotation.y=-.08;scene.add(building);const floors=[],groups=[],materials=[];
-    const box=(w,h,d,material,r=.04)=>{const geometry=new THREE.BoxGeometry(w,h,d,2,2,2);const mesh=new THREE.Mesh(geometry,material);mesh.castShadow=true;mesh.receiveShadow=true;return mesh};
+    const box=(w,h,d,material,r=.04)=>{const geometry=new THREE.BoxGeometry(w,h,d,2,2,2);const mesh=new THREE.Mesh(geometry,material);mesh.castShadow=!obxTabletLike;mesh.receiveShadow=!obxTabletLike;return mesh};
     const material=(color,roughness=.5,metalness=.15,emissive=0x000000,emissiveIntensity=0)=>new THREE.MeshPhysicalMaterial({color,roughness,metalness,clearcoat:.12,emissive,emissiveIntensity});
     function labelSprite(text,color){const c=document.createElement('canvas');c.width=640;c.height=144;const x=c.getContext('2d');x.clearRect(0,0,640,144);x.fillStyle='rgba(3,5,10,.88)';x.fillRect(10,12,620,120);const g=x.createLinearGradient(10,0,630,0);g.addColorStop(0,cssColor(color));g.addColorStop(.48,'rgba(255,255,255,.22)');g.addColorStop(1,cssColor(color));x.strokeStyle=g;x.lineWidth=2;x.strokeRect(10,12,620,120);x.fillStyle='rgba(255,255,255,.95)';x.font='700 27px Arial';x.letterSpacing='1px';x.textAlign='center';x.textBaseline='middle';x.fillText(text,320,72);const texture=new THREE.CanvasTexture(c);texture.encoding=THREE.sRGBEncoding;const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false}));sprite.scale.set(3.65,.82,1);return sprite}
     function addEdge(group,color){const edge=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(6.72,.28,6.72)),new THREE.LineBasicMaterial({color,transparent:true,opacity:.78}));edge.position.y=-.01;group.add(edge);return edge}
@@ -2265,7 +2474,22 @@ body.ob-orientation-changing *{
     function overview(){goalTarget.set(0,.65,-4);goalCamera.set(18,18,22);transition=true;controls.autoRotate=true}
     const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let canvasMoved=false,canvasDown={x:0,y:0};
     canvas.addEventListener('pointerdown',event=>{canvasMoved=false;canvasDown={x:event.clientX,y:event.clientY}});canvas.addEventListener('pointermove',event=>{if(Math.abs(event.clientX-canvasDown.x)+Math.abs(event.clientY-canvasDown.y)>5)canvasMoved=true});canvas.addEventListener('pointerup',event=>{if(canvasMoved)return;const rect=canvas.getBoundingClientRect();pointer.set((event.clientX-rect.left)/rect.width*2-1,-((event.clientY-rect.top)/rect.height)*2+1);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(floors,false)[0];if(hit)selectRoom(hit.object.userData.roomIndex,true)});canvas.addEventListener('dblclick',enterRoom);
-    function resize(){const width=shell.clientWidth,height=shell.clientHeight;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix()}resize();window.addEventListener('resize',resize,{passive:true});
+    function resize(){
+      const rect=shell.getBoundingClientRect();
+      const width=Math.max(1,Math.round(rect.width||shell.clientWidth));
+      const height=Math.max(1,Math.round(rect.height||shell.clientHeight));
+      renderer.setSize(width,height,false);
+      camera.aspect=width/height;
+      camera.updateProjectionMatrix();
+      renderer.render(scene,camera);
+    }
+    resize();
+    requestAnimationFrame(()=>requestAnimationFrame(resize));
+    setTimeout(resize,180);
+    setTimeout(resize,520);
+    window.addEventListener('resize',resize,{passive:true});
+    window.addEventListener('orientationchange',()=>{setTimeout(resize,120);setTimeout(resize,420)},{passive:true});
+    if(window.visualViewport)window.visualViewport.addEventListener('resize',()=>setTimeout(resize,80),{passive:true});
     $('obxZoomIn').addEventListener('click',()=>{if(state.mode==='lobby'){const dir=new THREE.Vector3().subVectors(camera.position,controls.target).normalize();camera.position.addScaledVector(dir,-2.5)}else{state.zoom=Math.min(1.25,state.zoom+.04);updateTrack()}});$('obxZoomOut').addEventListener('click',()=>{if(state.mode==='lobby'){const dir=new THREE.Vector3().subVectors(camera.position,controls.target).normalize();camera.position.addScaledVector(dir,2.5)}else{state.zoom=Math.max(1,state.zoom-.04);updateTrack()}});$('obxReset').addEventListener('click',()=>state.mode==='lobby'?overview():resetPhoto());$('obxPhotoReset').addEventListener('click',resetPhoto);
     new IntersectionObserver(entries=>{visible=entries[0].isIntersecting},{threshold:.02}).observe(shell);
     function animate(){requestAnimationFrame(animate);if(!visible||state.mode!=='lobby')return;if(transition){camera.position.lerp(goalCamera,.055);controls.target.lerp(goalTarget,.07);if(camera.position.distanceTo(goalCamera)<.04)transition=false}controls.update();ring.rotation.z+=.00055;renderer.render(scene,camera)}animate();
