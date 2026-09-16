@@ -1008,6 +1008,52 @@ button,
   }
 })();
 </script>
+
+<style id="ourbang-my-room-v1">
+.myRoomLab{padding:30px 0 72px}
+.myRoomHead{border-top:1px solid rgba(255,255,255,.1);padding:54px 0 30px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+.myRoomEyebrow,.panelLabel,.field span{font-size:10px;font-weight:800;letter-spacing:.19em;color:rgba(255,255,255,.42)}
+.myRoomHead h2{margin:12px 0 12px;font-size:clamp(52px,7vw,105px);line-height:.88;letter-spacing:-.07em}
+.myRoomHead p{margin:0;max-width:58ch;color:rgba(247,248,251,.58);font-size:15px;line-height:1.75}
+.startRoomBtn{min-height:58px;padding:0 20px;border:1px solid rgba(255,255,255,.18);border-radius:999px;display:flex;align-items:center;gap:12px;cursor:pointer;background:rgba(255,255,255,.05)}
+.startRoomBtn span{font-size:22px}.startRoomBtn b{font-size:11px;letter-spacing:.12em}
+.roomBuilder{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px}
+.roomStage{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(255,255,255,.11);border-radius:30px;background:linear-gradient(135deg,#11141c,#07080c);touch-action:none}
+.roomStage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;user-select:none;-webkit-user-drag:none}
+.roomEmpty{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:10px;color:rgba(255,255,255,.55)}
+.roomEmptyIndex{font-size:11px;letter-spacing:.2em}.roomEmpty strong{font-size:clamp(22px,3vw,44px);letter-spacing:-.04em;color:#fff}.roomEmpty small{font-size:12px}
+.roomPanel{border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:22px;background:rgba(255,255,255,.025)}
+.field{display:grid;gap:9px}.field input,.linkEditor input{width:100%;height:46px;border:1px solid rgba(255,255,255,.12);border-radius:13px;background:#090a0f;color:#fff;padding:0 13px;outline:none}
+.panelLabel{margin:24px 0 11px}
+.platformGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.platformGrid button,.roomActions button,.placeTag{min-height:43px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.035);color:#fff;cursor:pointer;font-size:11px;font-weight:750}
+.platformGrid button.active{background:#f5f7fb;color:#08090d}
+.linkEditor{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.09);display:grid;gap:8px}
+.linkEditor[hidden]{display:none}.selectedType{font-size:10px;letter-spacing:.16em;color:#89d7ff}
+.placeTag{background:#f5f7fb;color:#08090d}
+.roomActions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:18px}
+.saveNote{font-size:10px;line-height:1.55;color:rgba(255,255,255,.36);margin:12px 2px 0}
+.roomTag{position:absolute;transform:translate(-50%,-50%);min-width:38px;height:38px;padding:0 11px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(5,7,12,.68);backdrop-filter:blur(10px);color:#fff;display:flex;align-items:center;gap:7px;font-size:9px;font-weight:800;letter-spacing:.08em;cursor:pointer;z-index:8}
+.roomTag::before{content:"+";font-size:15px;color:#89d7ff}
+.dragHint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:8px 12px;border-radius:999px;background:rgba(5,7,12,.5);font-size:8px;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.66);pointer-events:none;opacity:0;transition:.3s}
+.roomStage.hasImage .dragHint{opacity:1}
+@media(max-width:980px){.roomBuilder{grid-template-columns:1fr}.roomPanel{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panelLabel{margin:0}.saveNote{grid-column:1/-1}.roomActions{margin-top:0}}
+@media(max-width:640px){
+ .myRoomLab{padding-top:12px}.myRoomHead{grid-template-columns:1fr;padding-top:36px}.startRoomBtn{justify-content:center}
+ .roomStage{aspect-ratio:16/9;border-radius:22px;min-width:760px}
+ .roomBuilder{overflow:hidden}
+ .roomBuilder>.roomStage{transform-origin:left top}
+ .roomPanel{grid-template-columns:1fr;border-radius:22px}
+ .saveNote{grid-column:auto}
+ .roomStageViewport{overflow-x:auto}
+}
+</style>
+
+
+<style id="ourbang-v2-css">
+.v2Chooser{padding:24px 0 10px}.v2Title{font-size:clamp(26px,4vw,54px);margin:0 0 8px}.v2Sub{color:rgba(255,255,255,.58);max-width:720px;line-height:1.65}.v2Kinds,.v2Starts,.templateGrid{display:grid;gap:12px}.v2Kinds{grid-template-columns:repeat(3,1fr);margin:26px 0 14px}.v2Kind,.v2Start,.tpl{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025);color:#fff;border-radius:18px;padding:20px;text-align:left;cursor:pointer}.v2Kind.active,.v2Start.active,.tpl.active{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.08)}.v2Kind b,.v2Start b,.tpl b{display:block;font-size:15px;letter-spacing:.08em}.v2Kind small,.v2Start small,.tpl small{display:block;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.45}.v2Starts{grid-template-columns:repeat(3,1fr);margin:14px 0}.v2TemplatePanel{margin:12px 0 24px;padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:20px}.templateGrid{grid-template-columns:repeat(4,1fr);margin-top:12px}.tpl{min-height:110px}.connectMusic{margin-top:18px;border-top:1px solid rgba(255,255,255,.1);padding-top:16px}.musicServices{display:flex;gap:8px;flex-wrap:wrap}.musicServices button{border:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;border-radius:999px;padding:10px 13px;cursor:pointer}.musicServices button:disabled{opacity:.42;cursor:not-allowed}.v2LiveSlot{margin-top:14px;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px;color:rgba(255,255,255,.62);font-size:11px;letter-spacing:.06em}.roomViewer{position:fixed;inset:0;z-index:9999;background:#050609;display:none;flex-direction:column}.roomViewer.open{display:flex}.viewerBar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.12)}.viewerBody{flex:1;display:grid;place-items:center;padding:18px}.viewerBody iframe{width:min(1180px,100%);height:min(72vw,76vh);border:0;background:#000}.viewerFallback{max-width:620px;text-align:center}.viewerClose,.viewerOriginal{border:1px solid rgba(255,255,255,.16);background:transparent;color:#fff;padding:10px 14px;border-radius:999px;cursor:pointer}.viewerOriginal{display:inline-block;margin-top:14px;text-decoration:none}.roomTag{z-index:4}
+@media(max-width:760px){.v2Kinds,.v2Starts{grid-template-columns:1fr}.templateGrid{grid-template-columns:1fr 1fr}.v2Kind,.v2Start{padding:16px}.roomViewer{position:fixed}.viewerBar{height:56px;padding:0 12px}.viewerBody{padding:8px}.viewerBody iframe{height:62vw}}
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
@@ -1032,6 +1078,98 @@ button,
           </div>
           <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO COLLECTIONS" data-ko="COLLECTIONS로 돌아가기">BACK TO COLLECTIONS</span></a>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="myRoomLab" id="create-my-room">
+    <div class="wrap">
+      <div class="myRoomHead">
+        <div>
+          <div class="myRoomEyebrow">OURBANG / STUDIO / CREATE MY ROOM</div>
+          <h2 data-en="CREATE YOUR ROOM" data-ko="나의 방을 만들어보세요">CREATE YOUR ROOM</h2>
+          <p data-en="Start with one photo. Add your media, work, shop and links directly inside your space."
+             data-ko="사진 한 장으로 시작하세요. 미디어, 작업, 상점과 링크를 공간 안에 직접 배치할 수 있습니다.">
+             Start with one photo. Add your media, work, shop and links directly inside your space.
+          </p>
+        </div>
+        <label class="startRoomBtn" for="roomPhoto">
+          <span>＋</span>
+          <b data-en="START WITH A PHOTO" data-ko="사진으로 시작">START WITH A PHOTO</b>
+        </label>
+        <input id="roomPhoto" type="file" accept="image/*" capture="environment" hidden>
+      </div>
+
+      <div class="v2Chooser" id="v2Chooser">
+  <h3 class="v2Title">CHOOSE YOUR SPACE</h3>
+  <p class="v2Sub">기본 유형을 고르면 OURBANG이 알맞은 요소를 먼저 준비합니다. 이후 + ADD에서 어떤 콘텐츠든 자유롭게 추가할 수 있습니다.</p>
+  <div class="v2Kinds">
+    <button class="v2Kind" data-kind="MUSIC"><b>MUSIC</b><small>DJ · MUSICIAN · PRODUCER · RADIO · LIVE</small></button>
+    <button class="v2Kind" data-kind="VISUAL"><b>VISUAL</b><small>ARTIST · DESIGNER · PHOTO · FILM · GALLERY</small></button>
+    <button class="v2Kind" data-kind="SPACE"><b>SPACE</b><small>CREATOR · PERSONAL · OFFICE · SHOP · SHOWROOM</small></button>
+  </div>
+  <button class="v2Start" id="noTemplate" style="width:100%"><b>START WITHOUT A TEMPLATE</b><small>분류와 기본 추천 없이 자유롭게 시작</small></button>
+  <div class="v2Starts" id="startMethods" hidden>
+    <button class="v2Start" data-start="template"><b>USE A TEMPLATE</b><small>OURBANG이 준비한 공간으로 시작</small></button>
+    <button class="v2Start" data-start="upload"><b>UPLOAD PHOTO</b><small>내 공간 사진을 불러오기</small></button>
+    <button class="v2Start" data-start="camera"><b>TAKE PHOTO</b><small>휴대폰 카메라로 촬영</small></button>
+  </div>
+  <div class="v2TemplatePanel" id="templatePanel" hidden><b>OURBANG TEMPLATES</b><div class="templateGrid" id="templateGrid"></div></div>
+</div>
+<div class="roomBuilder" id="roomBuilder">
+        <div class="roomStage" id="roomStage">
+          <div class="roomEmpty" id="roomEmpty">
+            <span class="roomEmptyIndex">01</span>
+            <strong data-en="YOUR ROOM STARTS HERE" data-ko="여기서 나의 방이 시작됩니다">YOUR ROOM STARTS HERE</strong>
+            <small data-en="Upload or take a photo" data-ko="사진을 촬영하거나 업로드하세요">Upload or take a photo</small>
+          </div>
+          <img id="roomImage" alt="My room preview">
+          <div id="roomTags"></div>
+          <div class="dragHint" id="dragHint">‹ &nbsp; DRAG TO EXPLORE &nbsp; ›</div>
+        </div>
+
+        <aside class="roomPanel">
+          <label class="field">
+            <span data-en="ROOM NAME" data-ko="방 이름">ROOM NAME</span>
+            <input id="roomName" maxlength="48" placeholder="MY ROOM">
+          </label>
+
+          <div class="panelLabel" data-en="ADD TO MY ROOM" data-ko="내 방에 추가">ADD TO MY ROOM</div>
+          <div class="platformGrid" id="platformGrid">
+            <button type="button" data-type="YOUTUBE">YouTube</button>
+            <button type="button" data-type="INSTAGRAM">Instagram</button>
+            <button type="button" data-type="TIKTOK">TikTok</button>
+            <button type="button" data-type="SPOTIFY">Spotify</button>
+            <button type="button" data-type="SOUNDCLOUD">SoundCloud</button>
+            <button type="button" data-type="APPLE_MUSIC">Apple Music</button>
+            <button type="button" data-type="LIVE">Live</button>
+            <button type="button" data-type="WORK">Work</button>
+            <button type="button" data-type="SHOP">Shop</button>
+            <button type="button" data-type="PORTFOLIO">Portfolio</button>
+            <button type="button" data-type="BOOKING">Booking</button>
+            <button type="button" data-type="TICKET">Ticket</button>
+            <button type="button" data-type="LINK">Other Link</button>
+          </div>
+
+          <div class="linkEditor" id="linkEditor" hidden>
+            <div class="selectedType" id="selectedType">LINK</div>
+            <input id="tagTitle" maxlength="36" placeholder="TITLE">
+            <input id="tagUrl" type="url" placeholder="https://">
+            <button type="button" id="placeTag" class="placeTag">PLACE ON ROOM</button>
+          </div>
+
+          <div class="connectMusic"><div class="panelLabel">CONNECT YOUR MUSIC</div><div class="musicServices"><button type="button" data-connect="spotify">Spotify</button><button type="button" data-connect="youtube">YouTube</button><button type="button" data-connect="soundcloud">SoundCloud</button><button type="button" data-connect="apple">Apple Music</button></div><div class="v2LiveSlot">NOW PLAYING / LIVE STATE · 계정 연결과 실시간 동기화 서버를 위한 준비 영역</div></div>
+          <div class="roomActions">
+            <button type="button" id="saveDraft" data-en="SAVE DRAFT" data-ko="임시 저장">SAVE DRAFT</button>
+            <button type="button" id="resetRoom" data-en="RESET" data-ko="초기화">RESET</button>
+          </div>
+          <p class="saveNote" id="saveNote"
+             data-en="V1 saves this room only in this browser. Publishing will be connected later."
+             data-ko="V1은 이 브라우저에만 방을 저장합니다. 공개 기능은 다음 단계에서 연결합니다.">
+             V1 saves this room only in this browser. Publishing will be connected later.
+          </p>
+        </aside>
       </div>
     </div>
   </section>
@@ -1707,5 +1845,78 @@ button,
   document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 
+
+<script id="ourbang-my-room-v1-js">
+(()=>{
+ const $=s=>document.querySelector(s);
+ const photo=$('#roomPhoto'),stage=$('#roomStage'),img=$('#roomImage'),empty=$('#roomEmpty'),tags=$('#roomTags');
+ const editor=$('#linkEditor'),typeLabel=$('#selectedType'),title=$('#tagTitle'),url=$('#tagUrl'),name=$('#roomName');
+ let selected='LINK', pending=false, data={name:'MY ROOM',image:'',tags:[]};
+
+ function youtubeEmbed(u){try{const x=new URL(u);let id='';if(x.hostname.includes('youtu.be')) id=x.pathname.slice(1);else id=x.searchParams.get('v')||((x.pathname.match(/\/(?:embed|shorts|live)\/([^/?]+)/)||[])[1]||'');return id?'https://www.youtube.com/embed/'+id+'?autoplay=1':''}catch(e){return ''}}
+ function openRoomViewer(t){const v=$('#roomViewer'),body=$('#viewerBody');$('#viewerTitle').textContent=t.title||t.type;body.innerHTML='';let embed='';if(t.type==='YOUTUBE'||t.type==='LIVE')embed=youtubeEmbed(t.url);if(embed){const f=document.createElement('iframe');f.src=embed;f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;body.appendChild(f)}else{const d=document.createElement('div');d.className='viewerFallback';d.innerHTML='<h2>'+((t.title||t.type).replace(/[<>]/g,''))+'</h2><p>이 서비스는 외부 사이트의 보안/임베드 정책에 따라 OURBANG 내부 전체화면 표시가 제한될 수 있습니다.</p><a class="viewerOriginal" target="_blank" rel="noopener">OPEN ORIGINAL ↗</a>';d.querySelector('a').href=t.url;body.appendChild(d)}v.classList.add('open');v.setAttribute('aria-hidden','false')}
+ $('#viewerClose')?.addEventListener('click',()=>{const v=$('#roomViewer');v.classList.remove('open');v.setAttribute('aria-hidden','true');$('#viewerBody').innerHTML=''});
+
+ function renderTags(){
+   tags.innerHTML='';
+   data.tags.forEach((t,i)=>{
+     const b=document.createElement('button'); b.type='button'; b.className='roomTag';
+     b.style.left=t.x+'%'; b.style.top=t.y+'%'; b.textContent=t.title||t.type;
+     b.title=t.url||'';
+     b.onclick=()=>{ if(t.url) openRoomViewer(t); };
+     tags.appendChild(b);
+   });
+ }
+ function loadImage(src){
+   data.image=src; img.src=src; img.style.display='block'; empty.style.display='none'; stage.classList.add('hasImage');
+ }
+ photo?.addEventListener('change',e=>{
+   const f=e.target.files?.[0]; if(!f)return;
+   const r=new FileReader(); r.onload=()=>loadImage(r.result); r.readAsDataURL(f);
+ });
+ document.querySelectorAll('#platformGrid button').forEach(b=>b.onclick=()=>{
+   document.querySelectorAll('#platformGrid button').forEach(x=>x.classList.remove('active'));
+   b.classList.add('active'); selected=b.dataset.type; typeLabel.textContent=selected; editor.hidden=false;
+ });
+ $('#placeTag')?.addEventListener('click',()=>{
+   if(!data.image){alert('먼저 방 사진을 촬영하거나 업로드해 주세요.');return}
+   if(!url.value.trim()){alert('연결할 주소를 입력해 주세요.');return}
+   pending=true; $('#placeTag').textContent='TAP THE ROOM TO PLACE';
+ });
+ stage?.addEventListener('click',e=>{
+   if(!pending)return;
+   const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*100,y=(e.clientY-r.top)/r.height*100;
+   data.tags.push({type:selected,title:title.value.trim()||selected,url:url.value.trim(),x,y});
+   pending=false; $('#placeTag').textContent='PLACE ON ROOM'; title.value='';url.value='';renderTags();
+ });
+ $('#saveDraft')?.addEventListener('click',()=>{
+   data.name=name.value.trim()||'MY ROOM';
+   try{localStorage.setItem('ourbang-my-room-v1',JSON.stringify(data));$('#saveNote').textContent='SAVED · 이 브라우저에 임시 저장되었습니다.'}catch(e){alert('저장할 수 없습니다.')}
+ });
+ $('#resetRoom')?.addEventListener('click',()=>{
+   if(!confirm('현재 방을 초기화할까요?'))return;
+   localStorage.removeItem('ourbang-my-room-v1'); data={name:'MY ROOM',image:'',tags:[]}; name.value='';img.removeAttribute('src');img.style.display='none';empty.style.display='grid';stage.classList.remove('hasImage');renderTags();
+ });
+ try{
+   const saved=JSON.parse(localStorage.getItem('ourbang-my-room-v1')||'null');
+   if(saved){data=saved;name.value=data.name||'';if(data.image)loadImage(data.image);renderTags()}
+ }catch(e){}
+})();
+</script>
+
+<div class="roomViewer" id="roomViewer" aria-hidden="true"><div class="viewerBar"><b id="viewerTitle">OURBANG PLAYER</b><button class="viewerClose" id="viewerClose" type="button">× &nbsp; BACK TO ROOM</button></div><div class="viewerBody" id="viewerBody"></div></div>
+<script id="ourbang-studio-v2-js">
+(()=>{
+ const kinds={MUSIC:['DJ ROOM','RECORDING STUDIO','LISTENING ROOM','LIVE STAGE'],VISUAL:['CONTEMPORARY GALLERY','PHOTO STUDIO','FILM ROOM','EXHIBITION SPACE'],SPACE:['MODERN ROOM','CREATOR ROOM','SHOWROOM','MINIMAL OFFICE']};
+ const gradients={MUSIC:['#080a10','#202945'],VISUAL:['#0a0a0c','#343039'],SPACE:['#080b0d','#263236']};
+ let kind='';
+ const methods=document.getElementById('startMethods'),panel=document.getElementById('templatePanel'),grid=document.getElementById('templateGrid'),photo=document.getElementById('roomPhoto');
+ function renderTemplates(){grid.innerHTML='';(kinds[kind]||['EMPTY ROOM','DARK ROOM','LIGHT ROOM','OPEN SPACE']).forEach((n,i)=>{const b=document.createElement('button');b.type='button';b.className='tpl';b.innerHTML='<b>'+n+'</b><small>OURBANG / '+(kind||'FREE')+'</small>';b.onclick=()=>{document.querySelectorAll('.tpl').forEach(x=>x.classList.remove('active'));b.classList.add('active');const c=document.createElement('canvas');c.width=1600;c.height=900;const ctx=c.getContext('2d'),g=ctx.createLinearGradient(0,0,1600,900),cs=gradients[kind]||['#090a0c','#30343a'];g.addColorStop(0,cs[0]);g.addColorStop(1,cs[1]);ctx.fillStyle=g;ctx.fillRect(0,0,1600,900);ctx.strokeStyle='rgba(255,255,255,.16)';ctx.lineWidth=2;for(let j=0;j<9;j++){ctx.strokeRect(90+j*35,90+j*22,1420-j*70,720-j*44)}ctx.fillStyle='rgba(255,255,255,.88)';ctx.font='700 48px Arial';ctx.fillText(n,110,760);ctx.font='18px Arial';ctx.fillStyle='rgba(255,255,255,.5)';ctx.fillText('OURBANG '+(kind||'FREE')+' TEMPLATE',112,800);const img=document.getElementById('roomImage'),empty=document.getElementById('roomEmpty'),stage=document.getElementById('roomStage');img.src=c.toDataURL('image/jpeg',.9);img.style.display='block';empty.style.display='none';stage.classList.add('hasImage');photo.dataset.template=img.src;};grid.appendChild(b)})}
+ document.querySelectorAll('.v2Kind').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.v2Kind').forEach(x=>x.classList.remove('active'));b.classList.add('active');kind=b.dataset.kind;methods.hidden=false;panel.hidden=true;}));
+ document.getElementById('noTemplate').addEventListener('click',()=>{kind='';methods.hidden=false;panel.hidden=true;document.querySelectorAll('.v2Kind').forEach(x=>x.classList.remove('active'))});
+ document.querySelectorAll('[data-start]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.start==='template'){panel.hidden=false;renderTemplates();panel.scrollIntoView({behavior:'smooth',block:'center'})}else{photo.removeAttribute('capture');if(b.dataset.start==='camera')photo.setAttribute('capture','environment');photo.click()}}));
+ document.querySelectorAll('[data-connect]').forEach(b=>b.addEventListener('click',()=>alert(b.textContent+' 계정 연결은 OAuth/API 서버 연결 단계에서 활성화됩니다. 지금 V2에서는 UI와 데이터 구조를 먼저 준비했습니다.')));
+})();
+</script>
 </body>
 </html>
