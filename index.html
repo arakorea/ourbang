@@ -1575,6 +1575,161 @@ body.ob-orientation-changing *{
 }
 </style>
 
+
+<style id="ourbang-responsive-v3">
+/* =========================================================
+   OURBANG RESPONSIVE V3
+   Hard overrides for the actual original selectors.
+   ========================================================= */
+
+/* PHONE PORTRAIT — original CSS uses .obx-rail as a vertical rail.
+   Override it with higher specificity and !important. */
+@media screen and (max-width: 640px) and (orientation: portrait) {
+  body #sixRooms.obx-shell .obx-rail{
+    position:absolute!important;
+    top:auto!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:max(8px, env(safe-area-inset-bottom, 8px))!important;
+    width:auto!important;
+    height:46px!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:stretch!important;
+    justify-content:space-between!important;
+    gap:3px!important;
+    transform:none!important;
+    z-index:50!important;
+  }
+  body #sixRooms.obx-shell .obx-railTitle{
+    display:none!important;
+  }
+  body #sixRooms.obx-shell .obx-roomButton{
+    flex:1 1 0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:46px!important;
+    min-height:46px!important;
+    padding:0!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:0!important;
+    border:1px solid rgba(255,255,255,.14)!important;
+    border-radius:9px!important;
+    background:rgba(3,5,10,.72)!important;
+  }
+  body #sixRooms.obx-shell .obx-roomButton span{
+    display:block!important;
+    position:static!important;
+    width:auto!important;
+    font-size:9px!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    text-align:center!important;
+  }
+  body #sixRooms.obx-shell .obx-roomButton i,
+  body #sixRooms.obx-shell .obx-roomButton em{
+    display:none!important;
+  }
+  body #sixRooms.obx-shell .obx-caption{
+    left:14px!important;
+    right:62px!important;
+    bottom:66px!important;
+    width:auto!important;
+  }
+  body #sixRooms.obx-shell .obx-preview,
+  body #sixRooms.obx-shell .obx-mode{
+    display:none!important;
+  }
+}
+
+/* PHONE LANDSCAPE — remove logo/ICE UNICORN collision.
+   Hide the room kicker in the very short landscape viewport and
+   reserve separate left/right zones. */
+@media screen and (max-width: 932px) and (max-height: 500px) and (orientation: landscape) {
+  body #sixRooms.obx-shell .obx-kicker{
+    display:none!important;
+  }
+  body #sixRooms.obx-shell .obx-caption{
+    left:138px!important;
+    right:68px!important;
+    bottom:10px!important;
+    width:auto!important;
+  }
+  body #sixRooms.obx-shell .obx-caption h2{
+    margin:0!important;
+    font-size:clamp(25px,5vw,40px)!important;
+    line-height:.86!important;
+  }
+  body #sixRooms.obx-shell .obx-actions{
+    margin-top:8px!important;
+  }
+  body #sixRooms.obx-shell .obx-preview,
+  body #sixRooms.obx-shell .obx-mode{
+    display:none!important;
+  }
+  body #sixRooms.obx-shell .obx-topline{
+    left:12px!important;
+    right:12px!important;
+  }
+}
+
+/* TABLET — provide a visible fallback poster behind WebGL.
+   If WebGL renders, canvas covers it. If Safari/WebGL fails,
+   the selected-room visual is still visible instead of a blank center. */
+@media screen and (min-width:641px) and (max-width:1366px) {
+  body #sixRooms.obx-shell{
+    background-color:#03050a!important;
+    background-image:
+      linear-gradient(90deg,rgba(3,5,10,.72),rgba(3,5,10,.08) 42%,rgba(3,5,10,.28)),
+      url("assets/rooms/room1.jpg")!important;
+    background-size:cover!important;
+    background-position:center!important;
+    background-repeat:no-repeat!important;
+  }
+  body #sixRooms.obx-shell #obxCanvas{
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    z-index:1!important;
+  }
+  body #sixRooms.obx-shell .obx-shade{z-index:2!important}
+  body #sixRooms.obx-shell .obx-topline,
+  body #sixRooms.obx-shell .obx-rail,
+  body #sixRooms.obx-shell .obx-caption,
+  body #sixRooms.obx-shell .obx-preview,
+  body #sixRooms.obx-shell .obx-controls,
+  body #sixRooms.obx-shell .obx-mode{z-index:5!important}
+}
+
+/* iPad landscape — avoid brand/title/control overlap */
+@media screen and (min-width:768px) and (max-width:1366px) and (orientation:landscape) {
+  body #sixRooms.obx-shell .obx-caption{
+    left:180px!important;
+    right:190px!important;
+    bottom:26px!important;
+  }
+  body #sixRooms.obx-shell .obx-caption h2{
+    font-size:clamp(36px,4.5vw,58px)!important;
+  }
+  body #sixRooms.obx-shell .obx-kicker{
+    margin-bottom:7px!important;
+  }
+  body #sixRooms.obx-shell .obx-preview{
+    right:16px!important;
+    bottom:24px!important;
+    width:142px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -2530,6 +2685,35 @@ body.ob-orientation-changing *{
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', viewportVars, {passive:true});
   }
+})();
+</script>
+
+
+<script id="ourbang-responsive-v3-js">
+(() => {
+  'use strict';
+  const shell = document.getElementById('sixRooms');
+  if (!shell) return;
+
+  const tablet = () => {
+    const w = window.innerWidth;
+    return w >= 641 && w <= 1366;
+  };
+
+  function setFallback(index){
+    if(!tablet()) return;
+    const n = Math.max(1, Math.min(6, Number(index) + 1));
+    shell.style.setProperty(
+      'background-image',
+      `linear-gradient(90deg,rgba(3,5,10,.72),rgba(3,5,10,.08) 42%,rgba(3,5,10,.28)),url("assets/rooms/room${n}.jpg")`,
+      'important'
+    );
+  }
+
+  const buttons = [...shell.querySelectorAll('.obx-roomButton')];
+  buttons.forEach((btn, i) => btn.addEventListener('click', () => setFallback(i), {passive:true}));
+
+  setFallback(0);
 })();
 </script>
 
