@@ -1730,6 +1730,151 @@ body.ob-orientation-changing *{
 }
 </style>
 
+
+<style id="ourbang-responsive-v4">
+/* V4 — actual-device width fix.
+   Some phones are reporting a layout viewport wider than 640px.
+   Use 900px portrait ceiling so the phone layout cannot fall back
+   to the tablet/desktop vertical rail. */
+
+/* PHONE / NARROW PORTRAIT */
+@media screen and (orientation:portrait) and (max-width:900px){
+  body #sixRooms.obx-shell .obx-rail{
+    position:absolute!important;
+    top:auto!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:max(8px,env(safe-area-inset-bottom,8px))!important;
+    width:auto!important;
+    height:44px!important;
+    display:flex!important;
+    flex-flow:row nowrap!important;
+    align-items:stretch!important;
+    gap:3px!important;
+    transform:none!important;
+    overflow:visible!important;
+    z-index:60!important;
+  }
+  body #sixRooms.obx-shell .obx-railTitle{display:none!important}
+  body #sixRooms.obx-shell .obx-roomButton{
+    position:relative!important;
+    flex:1 1 0!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:44px!important;
+    min-height:44px!important;
+    max-height:44px!important;
+    padding:0!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:hidden!important;
+    transform:none!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    border-radius:7px!important;
+    background:rgba(4,6,12,.74)!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+  }
+  body #sixRooms.obx-shell .obx-roomButton span{
+    display:block!important;
+    position:static!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+    font-size:9px!important;
+    line-height:1!important;
+    letter-spacing:.02em!important;
+    text-align:center!important;
+  }
+  body #sixRooms.obx-shell .obx-roomButton i,
+  body #sixRooms.obx-shell .obx-roomButton em{display:none!important}
+
+  body #sixRooms.obx-shell .obx-caption{
+    left:16px!important;
+    right:64px!important;
+    bottom:64px!important;
+    width:auto!important;
+    max-width:none!important;
+  }
+  body #sixRooms.obx-shell .obx-caption h2{
+    font-size:clamp(32px,9vw,48px)!important;
+    line-height:.9!important;
+    max-width:10ch!important;
+  }
+  body #sixRooms.obx-shell .obx-preview,
+  body #sixRooms.obx-shell .obx-mode{display:none!important}
+}
+
+/* SHORT LANDSCAPE: keep branding and room title in separate zones */
+@media screen and (orientation:landscape) and (max-height:600px) and (max-width:1366px){
+  body #sixRooms.obx-shell .obx-topline{display:none!important}
+  body #sixRooms.obx-shell .obx-kicker{display:none!important}
+  body #sixRooms.obx-shell .obx-preview{display:none!important}
+  body #sixRooms.obx-shell .obx-mode{display:none!important}
+
+  body #sixRooms.obx-shell .obx-caption{
+    left:150px!important;
+    right:72px!important;
+    bottom:12px!important;
+    width:auto!important;
+    max-width:none!important;
+  }
+  body #sixRooms.obx-shell .obx-caption h2{
+    margin:0!important;
+    max-width:11ch!important;
+    font-size:clamp(28px,5vw,52px)!important;
+    line-height:.86!important;
+  }
+  body #sixRooms.obx-shell .obx-actions{margin-top:8px!important}
+  body #sixRooms.obx-shell .obx-actions p{display:none!important}
+}
+
+/* iPad portrait: cleaner hierarchy, less overlay over the room */
+@media screen and (orientation:portrait) and (min-width:901px) and (max-width:1366px){
+  body #sixRooms.obx-shell .obx-rail{
+    left:18px!important;
+    width:126px!important;
+  }
+  body #sixRooms.obx-shell .obx-caption{
+    left:168px!important;
+    right:26px!important;
+    bottom:34px!important;
+    width:auto!important;
+  }
+  body #sixRooms.obx-shell .obx-preview{display:none!important}
+  body #sixRooms.obx-shell .obx-caption h2{
+    font-size:clamp(42px,6.8vw,64px)!important;
+  }
+}
+</style>
+
+<style id="ourbang-responsive-v4-class-fallback">
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-rail{
+  top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;
+  width:auto!important;height:44px!important;display:flex!important;
+  flex-direction:row!important;gap:3px!important;transform:none!important;z-index:70!important;
+}
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-railTitle{display:none!important}
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-roomButton{
+  flex:1 1 0!important;width:0!important;min-width:0!important;
+  height:44px!important;min-height:44px!important;max-height:44px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:0!important;transform:none!important;overflow:hidden!important;
+}
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-roomButton i,
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-roomButton em{display:none!important}
+html.ob-phone-portrait body #sixRooms.obx-shell .obx-roomButton span{
+  position:static!important;transform:none!important;font-size:9px!important;line-height:1!important;
+}
+html.ob-short-landscape body #sixRooms.obx-shell .obx-topline,
+html.ob-short-landscape body #sixRooms.obx-shell .obx-kicker{display:none!important}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -2714,6 +2859,22 @@ body.ob-orientation-changing *{
   buttons.forEach((btn, i) => btn.addEventListener('click', () => setFallback(i), {passive:true}));
 
   setFallback(0);
+})();
+</script>
+
+
+<script id="ourbang-responsive-v4-js">
+(() => {
+  const root = document.documentElement;
+  function classify(){
+    const w = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+    const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    root.classList.toggle('ob-phone-portrait', w <= 900 && h > w);
+    root.classList.toggle('ob-short-landscape', h <= 600 && w > h);
+  }
+  classify();
+  addEventListener('resize', classify, {passive:true});
+  addEventListener('orientationchange', () => setTimeout(classify,120), {passive:true});
 })();
 </script>
 
