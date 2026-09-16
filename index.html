@@ -1288,6 +1288,113 @@ button,a{touch-action:manipulation}
 }
 </style>
 
+
+<style id="ourbang-designer-v6">
+/* V6 — landscape room navigation.
+   Phone portrait V5 remains unchanged. */
+
+/* Landscape phones + iPads: room navigation becomes a clean bottom dock.
+   This prevents the room selector from disappearing beside the tag editor. */
+@media screen and (orientation:landscape) and (max-width:1366px){
+  #ourbangOrbit .obx-rail{
+    display:none!important;
+  }
+
+  #ourbangOrbit .obx-mobileRail{
+    position:absolute!important;
+    z-index:30!important;
+    left:50%!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:max(12px,calc(12px + env(safe-area-inset-bottom,0px)))!important;
+    width:min(430px,48vw)!important;
+    height:38px!important;
+    transform:translateX(-50%)!important;
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:3px!important;
+  }
+
+  #ourbangOrbit .obx-mobileRoom{
+    width:auto!important;
+    min-width:0!important;
+    height:38px!important;
+    min-height:38px!important;
+    padding:0!important;
+    display:grid!important;
+    place-items:center!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+    border-radius:7px!important;
+    background:rgba(5,7,13,.68)!important;
+    color:rgba(255,255,255,.42)!important;
+    font-size:8px!important;
+    font-weight:800!important;
+    letter-spacing:.04em!important;
+    -webkit-backdrop-filter:blur(9px)!important;
+    backdrop-filter:blur(9px)!important;
+  }
+
+  #ourbangOrbit .obx-mobileRoom.active{
+    color:#fff!important;
+    border-color:rgba(166,176,255,.65)!important;
+    background:rgba(79,88,184,.45)!important;
+  }
+
+  /* Keep tag editing and camera controls in their own top-right zone. */
+  #ourbangOrbit .obx-controls{
+    top:22px!important;
+    right:18px!important;
+    transform:none!important;
+    z-index:35!important;
+  }
+
+  /* Room title lives bottom-left, selector lives bottom-center. */
+  #ourbangOrbit .obx-caption{
+    left:28px!important;
+    right:auto!important;
+    bottom:58px!important;
+    width:min(430px,38vw)!important;
+  }
+
+  #ourbangOrbit .obx-caption h2{
+    font-size:clamp(32px,4.2vw,54px)!important;
+    max-width:10ch!important;
+  }
+
+  #ourbangOrbit .obx-preview,
+  #ourbangOrbit .obx-mode{
+    display:none!important;
+  }
+}
+
+/* Very short phone landscape: compact everything further. */
+@media screen and (orientation:landscape) and (max-height:500px) and (max-width:932px){
+  #ourbangOrbit .obx-mobileRail{
+    width:min(360px,54vw)!important;
+    height:34px!important;
+    bottom:8px!important;
+  }
+  #ourbangOrbit .obx-mobileRoom{
+    height:34px!important;
+    min-height:34px!important;
+  }
+  #ourbangOrbit .obx-caption{
+    left:18px!important;
+    bottom:50px!important;
+    width:34vw!important;
+  }
+  #ourbangOrbit .obx-caption h2{
+    font-size:clamp(25px,4.7vw,38px)!important;
+  }
+  #ourbangOrbit .obx-actions{margin-top:7px!important}
+  #ourbangOrbit .obx-enter,
+  #ourbangOrbit .obx-back{
+    width:160px!important;
+    height:38px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
