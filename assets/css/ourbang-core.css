@@ -1,0 +1,27 @@
+/* OURBANG COMMON CORE v1
+   Keep this file intentionally small.
+   Page-specific visual design belongs in each page stylesheet.
+*/
+:root{
+  --ob-bg:#050608;
+  --ob-fg:#f7f8fb;
+  --ob-muted:rgba(247,248,251,.62);
+  --ob-line:rgba(255,255,255,.12);
+  --ob-header-h:72px;
+  --ob-safe-top:env(safe-area-inset-top,0px);
+  --ob-safe-right:env(safe-area-inset-right,0px);
+  --ob-safe-bottom:env(safe-area-inset-bottom,0px);
+  --ob-safe-left:env(safe-area-inset-left,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--ob-bg)}
+body{margin:0;min-height:100%;background:var(--ob-bg);color:var(--ob-fg)}
+button,a,input,select,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+img,video,canvas{max-width:100%}
+[hidden]{display:none!important}
+.ob-sr-only{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
+  margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;border:0!important
+}
