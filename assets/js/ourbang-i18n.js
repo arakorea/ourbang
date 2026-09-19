@@ -1,41 +1,42 @@
-/* OURBANG COMMON LANGUAGE v1
-   Common language state only.
-   Page-specific translations remain on each page for now.
+/* OURBANG COMMON LANGUAGE STATE
+   GitHub path: assets/js/ourbang-i18n.js
+   Does not replace each page's translation dictionary.
 */
 (() => {
   'use strict';
   const KEY='ourbang-language';
-  const SUPPORTED=['en','ko','ja','zh'];
-  const HTML_LANG={en:'en',ko:'ko',ja:'ja',zh:'zh-CN'};
+  const supported=['en','ko','ja','zh'];
+  const htmlLang={en:'en',ko:'ko',ja:'ja',zh:'zh-CN'};
 
-  function normalize(v){
-    v=(v||'').toLowerCase();
-    if(v.startsWith('ko')) return 'ko';
-    if(v.startsWith('ja')) return 'ja';
-    if(v.startsWith('zh')) return 'zh';
+  function detected(){
+    const n=(navigator.language||'en').toLowerCase();
+    if(n.startsWith('ko')) return 'ko';
+    if(n.startsWith('ja')) return 'ja';
+    if(n.startsWith('zh')) return 'zh';
     return 'en';
   }
   function get(){
-    const saved=localStorage.getItem(KEY);
-    return SUPPORTED.includes(saved) ? saved : normalize(navigator.language);
+    const v=localStorage.getItem(KEY);
+    return supported.includes(v) ? v : detected();
   }
-  function apply(lang, notify=true){
-    if(!SUPPORTED.includes(lang)) lang='en';
-    localStorage.setItem(KEY,lang);
-    document.documentElement.lang=HTML_LANG[lang];
-    document.querySelectorAll('[data-ob-lang]').forEach(el=>{ el.value=lang; });
-    if(notify) window.dispatchEvent(new CustomEvent('ourbang:languagechange',{detail:{lang}}));
-    return lang;
-  }
-  function init(){
-    const lang=apply(get(),false);
-    document.querySelectorAll('[data-ob-lang]').forEach(el=>{
-      el.value=lang;
-      el.addEventListener('change',()=>apply(el.value,true));
+  function apply(lang, persist=true){
+    if(!supported.includes(lang)) lang='en';
+    if(persist) localStorage.setItem(KEY,lang);
+    document.documentElement.lang=htmlLang[lang];
+    document.querySelectorAll('.langBtn[data-lang]').forEach(b=>{
+      const active=b.dataset.lang===lang;
+      b.classList.toggle('active',active);
+      b.setAttribute('aria-pressed',String(active));
     });
     window.dispatchEvent(new CustomEvent('ourbang:languagechange',{detail:{lang}}));
   }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelectorAll('.langBtn[data-lang]').forEach(b=>{
+      b.addEventListener('click',()=>apply(b.dataset.lang));
+    });
+    apply(get(),false);
+  });
+
   window.OURBANG_I18N={get,apply};
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
-  else init();
 })();
