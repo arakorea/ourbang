@@ -1,18 +1,22 @@
-OURBANG COMMON NAV — HOME BASELINE
+OURBANG — GITHUB READY NAVIGATION SET
 
-GitHub에 그대로 올릴 경로:
+아래 HTML은 이름을 바꾸지 말고 GitHub 루트에 그대로 업로드/교체하세요.
+
+index.html
+create.html
+explore.html
+live.html
+vision.html
+contact.html
+
+공통 CSS:
 assets/css/ourbang-nav.css
-assets/js/ourbang-nav.js
-assets/js/ourbang-i18n.js
+
+이번 버전은 HOME 네비게이션을 기준으로 6개 핵심 페이지의 시각 규격을 공통화합니다.
+각 페이지의 기존 본문, ROOM, STUDIO, LIVE, 번역 데이터와 기존 JS는 유지했습니다.
 
 중요:
-1. HOME(index.html)의 현재 네비게이션 디자인을 기준으로 만든 공통 파일입니다.
-2. 기존 assets/templates/music 폴더는 그대로 둡니다.
-3. HTML 본문 디자인/ROOM/PLAYER/LIVE 기능은 건드리지 않습니다.
-4. 각 HTML <head>의 기존 페이지 CSS 뒤쪽에 다음을 연결:
-   <link rel="stylesheet" href="assets/css/ourbang-nav.css">
-5. </body> 바로 앞에 다음을 연결:
-   <script src="assets/js/ourbang-i18n.js"></script>
-   <script src="assets/js/ourbang-nav.js"></script>
-6. 페이지 자체에 기존 언어 번역 JS가 있으면 유지합니다.
-   ourbang-i18n.js는 공통 언어 상태와 버튼 active 상태만 담당합니다.
+- 기존 assets/templates/music/는 그대로 유지
+- assets/js 파일은 이번 HTML 교체에서 추가 수정할 필요 없음
+- 기존 페이지별 모바일 메뉴/언어 동작 JS는 보존
+- 이후 네비게이션의 크기/간격/언어 버튼/모바일 규격은 ourbang-nav.css 한 파일에서 수정 가능
