@@ -1482,6 +1482,8 @@ button,a{touch-action:manipulation}
 }
 </style>
 
+
+<link rel="stylesheet" href="assets/css/ourbang-nav.css"/>
 </head>
 <body>
 <header class="topbar">
@@ -2107,22 +2109,7 @@ button,a{touch-action:manipulation}
 
   langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
   setLanguage(localStorage.getItem('ourbang-language')||'ko');
-
-  const menuBtn=document.querySelector('.menuBtn');
-  const mobilePanel=document.getElementById('mobilePanel');
-
-  menuBtn.addEventListener('click',()=>{
-    const open=!mobilePanel.classList.contains('open');
-    mobilePanel.classList.toggle('open',open);
-    document.body.classList.toggle('menuOpen',open);
-    menuBtn.setAttribute('aria-expanded',String(open));
-  });
-
-  mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    mobilePanel.classList.remove('open');
-    document.body.classList.remove('menuOpen');
-    menuBtn.setAttribute('aria-expanded','false');
-  }));
+  // Mobile navigation is handled by assets/js/ourbang-nav.js
 
   const heroTitleRow=document.querySelector('.heroTitleRow');
   const reactiveOrb=document.querySelector('.reactiveOrb');
@@ -2407,5 +2394,7 @@ button,a{touch-action:manipulation}
 })();
 </script>
 
+
+<script src="assets/js/ourbang-nav.js" defer></script>
 </body>
 </html>
