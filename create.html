@@ -1118,7 +1118,7 @@ button,
       </div>
 
       <div class="v2Chooser" id="v2Chooser">
-  <h3 class="v2Title">CHOOSE YOUR SPACE</h3>
+  <h3 class="v2Title" id="choose-your-space">CHOOSE YOUR SPACE</h3>
   <p class="v2Sub">기본 유형을 고르면 OURBANG이 알맞은 요소를 먼저 준비합니다. 이후 + ADD에서 어떤 콘텐츠든 자유롭게 추가할 수 있습니다.</p>
   <div class="v2Kinds">
     <button class="v2Kind" data-kind="MUSIC"><b>MUSIC</b><small>DJ · MUSICIAN · PRODUCER · RADIO · LIVE</small></button>
@@ -1960,80 +1960,71 @@ button,
 </script>
 <script defer src="assets/js/ourbang-nav.js"></script>
 
-<script id="ourbang-professional-page-links">
+<script id="ourbang-single-page-studio">
 (() => {
   'use strict';
-  const targets = {
-    MUSIC: 'music',
-    VISUAL: 'visual',
-    SPACE: 'space'
+
+  const labels = {
+    MUSIC: ['MUSIC','음악'],
+    VISUAL: ['VISUAL','비주얼'],
+    SPACE: ['SPACE','공간']
   };
 
-  // Large professional cards in the ROOM COLLECTIONS / STUDIO section.
-  // Avoid the smaller .v2Kind template selectors in CHOOSE YOUR SPACE.
-  const candidates = [...document.querySelectorAll('section, .section, .studioCard, .categoryCard, article, div')];
-  const seen = new Set();
-
-  Object.entries(targets).forEach(([label, href]) => {
-    let best = null;
-    for (const el of candidates) {
-      if (el.classList && el.classList.contains('v2Kind')) continue;
-      const txt = (el.innerText || '').trim();
-      if (!txt) continue;
-      const hasLabel = txt === label || txt.includes(label === 'MUSIC' ? '음악' : label === 'VISUAL' ? '비주얼' : '공간');
-      const hasStudio = /STUDIO\s*\/\s*0[123]/i.test(txt);
-      const hasArrow = !!el.querySelector('a,button');
-      if (hasLabel && hasStudio && hasArrow) {
-        if (!best || el.getBoundingClientRect().height < best.getBoundingClientRect().height) best = el;
-      }
+  function choose(kind){
+    const btn=[...document.querySelectorAll('.v2Kind')]
+      .find(b => (b.dataset.kind||'').toUpperCase() === kind);
+    if(btn){
+      btn.click();
+      setTimeout(() => {
+        const target =
+          document.getElementById('templatePanel') ||
+          document.querySelector('.templatePanel') ||
+          btn.closest('section');
+        target?.scrollIntoView({behavior:'smooth',block:'start'});
+      }, 100);
     }
-    if (!best) return;
-    const key = label + href;
-    if (seen.has(key)) return;
-    seen.add(key);
+  }
 
-    best.style.cursor = 'pointer';
-    best.setAttribute('role','link');
+  // Convert the large legacy MUSIC/VISUAL/SPACE presentation cards
+  // into in-page category selectors. Never leave STUDIO.
+  const nodes=[...document.querySelectorAll('section,article,div')];
+  Object.keys(labels).forEach(kind => {
+    let best=null;
+    for(const el of nodes){
+      if(el.classList?.contains('v2Kind')) continue;
+      const txt=(el.innerText||'').trim();
+      if(!txt || !/STUDIO\s*\/\s*0[123]/i.test(txt)) continue;
+      if(!labels[kind].some(v => txt.includes(v))) continue;
+      if(!el.querySelector('a,button')) continue;
+      if(!best || el.getBoundingClientRect().height < best.getBoundingClientRect().height) best=el;
+    }
+    if(!best) return;
+    best.style.cursor='pointer';
+    best.setAttribute('role','button');
     best.setAttribute('tabindex','0');
-    best.setAttribute('aria-label', label + ' 전문 페이지 열기');
-
-    const go = (e) => {
-      const t = e.target.closest('a,button');
-      if (t) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      location.href = href;
+    best.setAttribute('aria-label',kind+' room templates');
+    const go=e=>{
+      e?.preventDefault?.();
+      e?.stopPropagation?.();
+      choose(kind);
     };
-    best.addEventListener('click', go);
-    best.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        location.href = href;
-      }
+    best.addEventListener('click',go);
+    best.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(kind);}
     });
-
-    best.querySelectorAll('a,button').forEach(control => {
-      control.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
-        location.href = href;
-      });
+    best.querySelectorAll('a,button').forEach(x=>{
+      x.removeAttribute('href');
+      x.addEventListener('click',go);
     });
   });
-})();
-</script>
 
-
-<script id="ourbang-create-kind-router">
-(() => {
+  // If an old bookmarked ?kind= URL is used, still open that category in-place.
   const requested=(new URLSearchParams(location.search).get('kind')||'').toUpperCase();
-  if(!['MUSIC','VISUAL','SPACE'].includes(requested)) return;
-  const run=()=>{
-    const btn=[...document.querySelectorAll('.v2Kind')].find(b=>(b.dataset.kind||'').toUpperCase()===requested);
-    if(btn){ btn.click(); setTimeout(()=>document.getElementById('templatePanel')?.scrollIntoView({behavior:'smooth',block:'start'}),160); }
-  };
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run,{once:true}); else setTimeout(run,0);
+  if(['MUSIC','VISUAL','SPACE'].includes(requested)){
+    const run=()=>setTimeout(()=>choose(requested),120);
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run,{once:true});
+    else run();
+  }
 })();
 </script>
 
