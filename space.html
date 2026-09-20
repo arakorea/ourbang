@@ -1630,10 +1630,11 @@ button,
   }
 })();
 </script>
+<link rel="stylesheet" href="assets/css/ourbang-nav.css"/>
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="./">OURBANG</a><nav class="links" aria-label="Primary"><a href="./" data-en="HOME" data-ko="홈">HOME</a><a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision" data-en="VISION" data-ko="비전">VISION</a><a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="./" data-en="HOME" data-ko="홈">HOME</a><a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision" data-en="VISION" data-ko="비전">VISION</a><a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 
 
@@ -1648,7 +1649,7 @@ button,
     <span class="spaceCore"></span>
   </div>
   <div class="wrap musicHeroInner">
-    <a class="backToStudio" href="create.html" data-en="← BACK TO STUDIO" data-ko="← STUDIO로 돌아가기">← STUDIO로 돌아가기</a>
+    <a class="backToStudio" href="create" data-en="← BACK TO STUDIO" data-ko="← STUDIO로 돌아가기">← STUDIO로 돌아가기</a>
     <div class="heroMeta">OURBANG / STUDIO / SPACE</div>
     <h1>SPACE</h1>
     <p class="heroLead composedCopy" data-copy="hero">
@@ -2336,5 +2337,6 @@ if(finePointer&&spaceHero&&installation){
 }
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+<script defer src="assets/js/ourbang-nav.js"></script>
 </body>
 </html>

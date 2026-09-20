@@ -1057,12 +1057,11 @@ button,
 @media(max-width:760px){.v2Kinds,.v2Starts{grid-template-columns:1fr}.templateGrid{grid-template-columns:1fr 1fr}.v2Kind,.v2Start{padding:16px}.roomViewer{position:fixed}.viewerBar{height:56px;padding:0 12px}.viewerBody{padding:8px}.viewerBody iframe{height:62vw}}
 </style>
 
-<!-- OURBANG shared navigation: HOME baseline -->
 <link rel="stylesheet" href="assets/css/ourbang-nav.css">
 </head>
 <body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html">OURBANG</a><nav class="links" aria-label="Primary"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<div class="mobilePanel" id="mobilePanel"><a href="index.html" data-en="HOME" data-ko="홈">HOME</a><a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision.html" data-en="VISION" data-ko="비전">VISION</a><a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="./">OURBANG</a><nav class="links" aria-label="Primary"><a href="./" data-en="HOME" data-ko="홈">HOME</a><a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision" data-en="VISION" data-ko="비전">VISION</a><a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
+<div class="mobilePanel" id="mobilePanel"><a href="./" data-en="HOME" data-ko="홈">HOME</a><a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision" data-en="VISION" data-ko="비전">VISION</a><a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a></div>
 
 <main>
   <section class="hero">
@@ -1081,7 +1080,7 @@ button,
             <h1>STUDIO</h1>
             <p class="lead" data-en="Build the future through music, visual and space." data-ko="음악, 비주얼, 공간으로 미래를 만듭니다.">Build the future through music, visual and space.</p>
           </div>
-          <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO COLLECTIONS" data-ko="COLLECTIONS로 돌아가기">BACK TO COLLECTIONS</span></a>
+          <a class="back" href="explore"><span>←</span><span data-en="BACK TO COLLECTIONS" data-ko="COLLECTIONS로 돌아가기">BACK TO COLLECTIONS</span></a>
         </div>
       </div>
     </div>
@@ -1909,17 +1908,29 @@ button,
   {name:'LISTENING ROOM',src:'assets/templates/music/listening-room.png'},
   {name:'PRODUCER ROOM',src:'assets/templates/music/producer-room.png'}
  ];
- const fallback={VISUAL:['CONTEMPORARY GALLERY','PHOTO STUDIO','FILM ROOM','EXHIBITION SPACE'],SPACE:['MODERN ROOM','CREATOR ROOM','SHOWROOM','MINIMAL OFFICE']};
+ const visual=[
+  {name:'CONTEMPORARY GALLERY',src:'assets/templates/visual/contemporary-gallery.png'},
+  {name:'PHOTO STUDIO',src:'assets/templates/visual/photo-studio.png'},
+  {name:'FILM ROOM',src:'assets/templates/visual/film-room.png'},
+  {name:'DIGITAL ART ROOM',src:'assets/templates/visual/digital-art-room.png'},
+  {name:'EXHIBITION SPACE',src:'assets/templates/visual/exhibition-space.png'},
+  {name:'DESIGN STUDIO',src:'assets/templates/visual/design-studio.png'}
+ ];
+ const space=[
+  {name:'PERSONAL ROOM',src:'assets/templates/space/personal-room.png'},
+  {name:'CREATOR ROOM',src:'assets/templates/space/creator-room.png'},
+  {name:'OFFICE',src:'assets/templates/space/office.png'},
+  {name:'SHOWROOM',src:'assets/templates/space/showroom.png'},
+  {name:'SHOP',src:'assets/templates/space/shop.png'},
+  {name:'MODERN SPACE',src:'assets/templates/space/modern-space.png'}
+ ];
  let kind='', selectedTemplate=null;
  const methods=document.getElementById('startMethods'),panel=document.getElementById('templatePanel'),grid=document.getElementById('templateGrid'),photo=document.getElementById('roomPhoto'),useBtn=document.getElementById('useTemplateBtn'),choice=document.getElementById('templateChoiceText'),heading=document.getElementById('templateHeading');
  function chooseCard(btn,item){document.querySelectorAll('.tpl').forEach(x=>x.classList.remove('active'));btn.classList.add('active');selectedTemplate=item;choice.textContent=item.name+' · READY';useBtn.disabled=false}
  function renderTemplates(){
   grid.innerHTML=''; selectedTemplate=null; useBtn.disabled=true; choice.textContent='SELECT A ROOM'; heading.textContent=(kind||'OURBANG')+' TEMPLATES';
-  if(kind==='MUSIC'){
-   music.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='tpl';b.style.backgroundImage=`url("${item.src}")`;b.innerHTML=`<span class="tplText"><b>${item.name}</b><small>OURBANG / MUSIC</small></span>`;b.addEventListener('click',()=>chooseCard(b,item));grid.appendChild(b)});
-  } else {
-   (fallback[kind]||[]).forEach(name=>{const b=document.createElement('button');b.type='button';b.className='tpl tplPlaceholder';b.innerHTML=`<span class="tplText"><b>${name}</b><small>${kind} · TEMPLATE COMING NEXT</small></span>`;b.addEventListener('click',()=>{document.querySelectorAll('.tpl').forEach(x=>x.classList.remove('active'));b.classList.add('active');selectedTemplate=null;choice.textContent=name+' · IMAGE TEMPLATE NOT ADDED YET';useBtn.disabled=true});grid.appendChild(b)});
-  }
+  const list=kind==='MUSIC'?music:kind==='VISUAL'?visual:kind==='SPACE'?space:[];
+  list.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='tpl';b.style.backgroundImage=`url("${item.src}")`;b.innerHTML=`<span class="tplText"><b>${item.name}</b><small>OURBANG / ${kind}</small></span>`;b.addEventListener('click',()=>chooseCard(b,item));grid.appendChild(b)});
  }
  useBtn.addEventListener('click',()=>{if(!selectedTemplate)return;try{photo.dispatchEvent(new CustomEvent('ourbang-template',{detail:{src:selectedTemplate.src}}))}catch(e){};document.getElementById('roomBuilder').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>{const vp=document.getElementById('roomStageViewport');if(vp&&window.innerWidth<=640)vp.scrollLeft=Math.max(0,(vp.scrollWidth-vp.clientWidth)/2)},450)});
  document.querySelectorAll('.v2Kind').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.v2Kind').forEach(x=>x.classList.remove('active'));b.classList.add('active');kind=b.dataset.kind;methods.hidden=false;panel.hidden=true;}));
@@ -1929,5 +1940,6 @@ button,
  document.querySelectorAll('[data-connect]').forEach(b=>b.addEventListener('click',()=>alert(b.textContent+' 계정 연결은 OAuth/API 서버 연결 단계에서 활성화됩니다.')));
 })();
 </script>
+<script defer src="assets/js/ourbang-nav.js"></script>
 </body>
 </html>

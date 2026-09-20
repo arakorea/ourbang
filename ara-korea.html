@@ -750,18 +750,19 @@ button,
   }
 })();
 </script>
+<link rel="stylesheet" href="assets/css/ourbang-nav.css"/>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap nav">
-    <a class="brand" href="index.html">OURBANG</a>
+    <a class="brand" href="./">OURBANG</a>
     <nav class="links" aria-label="Primary">
-      <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-      <a class="active" href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
-      <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
-      <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
-      <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
-      <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
+      <a href="./" data-en="HOME" data-ko="홈">HOME</a>
+      <a class="active" href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+      <a href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
+      <a href="live" data-en="LIVE" data-ko="라이브">LIVE</a>
+      <a href="vision" data-en="VISION" data-ko="비전">VISION</a>
+      <a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a>
     </nav>
     <div style="display:flex;align-items:center;gap:8px">
       <div class="langs" aria-label="Language">
@@ -776,12 +777,12 @@ button,
 </header>
 
 <div class="mobilePanel" id="mobilePanel">
-  <a href="index.html" data-en="HOME" data-ko="홈">HOME</a>
-  <a href="explore.html" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
-  <a href="create.html" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
-  <a href="live.html" data-en="LIVE" data-ko="라이브">LIVE</a>
-  <a href="vision.html" data-en="VISION" data-ko="비전">VISION</a>
-  <a href="contact.html" data-en="CONTACT" data-ko="문의">CONTACT</a>
+  <a href="./" data-en="HOME" data-ko="홈">HOME</a>
+  <a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a>
+  <a href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a>
+  <a href="live" data-en="LIVE" data-ko="라이브">LIVE</a>
+  <a href="vision" data-en="VISION" data-ko="비전">VISION</a>
+  <a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a>
 </div>
 
 <main>
@@ -800,7 +801,7 @@ button,
             <h1 data-outline="ARA KOREA">ARA KOREA</h1>
             <div class="descriptor">ART · PERFORMANCE</div>
           </div>
-          <a class="back" href="explore.html"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a>
+          <a class="back" href="explore"><span>←</span><span data-en="BACK TO EXPLORE" data-ko="EXPLORE로 돌아가기">BACK TO EXPLORE</span></a>
         </div>
       </div>
     </div>
@@ -843,7 +844,7 @@ button,
   </section>
 
   <div class="wrap backRow">
-    <a class="back" href="explore.html" data-en="← BACK TO EXPLORE" data-ko="← EXPLORE로 돌아가기">← BACK TO EXPLORE</a>
+    <a class="back" href="explore" data-en="← BACK TO EXPLORE" data-ko="← EXPLORE로 돌아가기">← BACK TO EXPLORE</a>
   </div>
 </main>
 
@@ -1451,5 +1452,6 @@ button,
 
   document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+<script defer src="assets/js/ourbang-nav.js"></script>
 </body>
 </html>
