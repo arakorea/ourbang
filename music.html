@@ -1241,7 +1241,21 @@ button,
   }
 })();
 </script>
-<link rel="stylesheet" href="assets/css/ourbang-nav.css"/>
+
+<style id="ourbang-professional-cta">
+.professionalCreate{
+  width:min(calc(100% - 48px),1180px);margin:42px auto 92px;padding:44px;
+  border:1px solid rgba(255,255,255,.12);border-radius:28px;
+  background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+}
+.professionalCreate .eyebrow{font-size:10px;letter-spacing:.22em;color:rgba(255,255,255,.48);font-weight:800}
+.professionalCreate h2{margin:9px 0 8px;font-size:clamp(30px,4vw,56px);letter-spacing:-.045em}
+.professionalCreate p{margin:0;color:rgba(255,255,255,.58);font-size:13px}
+.professionalCreate a{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;background:#fff;color:#05070c;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.08em}
+@media(max-width:700px){.professionalCreate{width:calc(100% - 28px);padding:28px 22px;margin:30px auto 64px;display:block}.professionalCreate a{margin-top:24px;width:100%}}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="./">OURBANG</a><nav class="links" aria-label="Primary"><a href="./" data-en="HOME" data-ko="홈">HOME</a><a href="explore" data-en="COLLECTIONS" data-ko="컬렉션">COLLECTIONS</a><a class="active" href="create" data-en="STUDIO" data-ko="스튜디오">STUDIO</a><a href="live" data-en="LIVE" data-ko="라이브">LIVE</a><a href="vision" data-en="VISION" data-ko="비전">VISION</a><a href="contact" data-en="CONTACT" data-ko="문의">CONTACT</a></nav><div style="display:flex;align-items:center;gap:8px"><div class="langs"><button class="langBtn" type="button" data-lang="en">EN</button><button class="langBtn" type="button" data-lang="ko">KO</button><button class="langBtn" type="button" data-lang="ja">JA</button><button class="langBtn" type="button" data-lang="zh">中文</button></div><button class="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button></div></div></header>
@@ -1342,6 +1356,16 @@ button,
   <a href="#performance"><span>03</span><b data-en="PERFORMANCE" data-ko="퍼포먼스">퍼포먼스</b></a>
 </nav>
 </main>
+
+<section class="professionalCreate" aria-label="MUSIC room creation">
+  <div>
+    <div class="eyebrow">OURBANG / STUDIO / MUSIC</div>
+    <h2>CREATE A MUSIC ROOM</h2>
+    <p>DJ · MUSICIAN · PRODUCER · RECORDING · RADIO · LIVE</p>
+  </div>
+  <a href="create?kind=music#choose-your-space">START MUSIC ROOM →</a>
+</section>
+
 <footer>
 <div class="wrap foot">
 <div>© <span id="year"></span> OURBANG</div>
@@ -1921,6 +1945,5 @@ mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 }));
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-<script defer src="assets/js/ourbang-nav.js"></script>
 </body>
 </html>

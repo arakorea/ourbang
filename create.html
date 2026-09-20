@@ -2024,5 +2024,18 @@ button,
 })();
 </script>
 
+
+<script id="ourbang-create-kind-router">
+(() => {
+  const requested=(new URLSearchParams(location.search).get('kind')||'').toUpperCase();
+  if(!['MUSIC','VISUAL','SPACE'].includes(requested)) return;
+  const run=()=>{
+    const btn=[...document.querySelectorAll('.v2Kind')].find(b=>(b.dataset.kind||'').toUpperCase()===requested);
+    if(btn){ btn.click(); setTimeout(()=>document.getElementById('templatePanel')?.scrollIntoView({behavior:'smooth',block:'start'}),160); }
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run,{once:true}); else setTimeout(run,0);
+})();
+</script>
+
 </body>
 </html>
