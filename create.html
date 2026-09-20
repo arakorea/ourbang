@@ -1192,64 +1192,7 @@ button,
       </div>
     </div>
   </section>
-
-  <section class="gallery" id="roomCategories">
-    <div class="wrap">
-      <div style="margin-bottom:28px">
-        <div class="myRoomEyebrow">OURBANG / ROOM COLLECTIONS</div>
-        <h2 style="font-size:clamp(34px,5vw,68px);margin:8px 0 10px">CHOOSE YOUR SPACE</h2>
-        <p style="color:rgba(255,255,255,.58);max-width:720px;line-height:1.65;margin:0">MUSIC, VISUAL, SPACE 중 하나를 선택하면 해당 유형의 OURBANG 방들을 바로 고를 수 있습니다.</p>
-      </div>
-      <div class="galleryGrid">
-      <a class="card musicCard" id="music" href="#create-my-room" data-room-category="MUSIC">
-        <div class="artwork musicArt" aria-hidden="true">
-          <span class="soundForm formA"></span>
-          <span class="soundForm formB"></span>
-          <span class="soundCut"></span>
-          <span class="soundGlow"></span>
-        </div>
-        <div class="cardBody">
-          <div class="num">STUDIO / 01</div>
-          <h2 data-en="MUSIC" data-ko="음악">MUSIC</h2>
-          <p data-en="DJ · MUSICIAN · PRODUCER · RECORDING · RADIO · LIVE" data-ko="DJ · 뮤지션 · 프로듀서 · 레코딩 · 라디오 · 라이브 방을 선택합니다.">DJ · MUSICIAN · PRODUCER · RECORDING · RADIO · LIVE</p>
-          <span class="action">→</span>
-        </div>
-      </a>
-
-      <a class="card visualCard" id="visual" href="#create-my-room" data-room-category="VISUAL">
-        <div class="artwork visualArt" aria-hidden="true">
-          <span class="filmPlane planeA"></span>
-          <span class="filmPlane planeB"></span>
-          <span class="aperture"></span>
-          <span class="lightSlice"></span>
-        </div>
-        <div class="cardBody">
-          <div class="num">STUDIO / 02</div>
-          <h2 data-en="VISUAL" data-ko="비주얼">VISUAL</h2>
-          <p data-en="ARTIST · DESIGNER · PHOTOGRAPHER · FILM · GALLERY" data-ko="아티스트 · 디자이너 · 사진 · 필름 · 갤러리 방을 선택합니다.">ARTIST · DESIGNER · PHOTOGRAPHER · FILM · GALLERY</p>
-          <span class="action">→</span>
-        </div>
-      </a>
-
-      <a class="card spaceCard" id="space" href="#create-my-room" data-room-category="SPACE">
-        <div class="artwork spaceArt" aria-hidden="true">
-          <span class="spaceMass massA"></span>
-          <span class="spaceMass massB"></span>
-          <span class="void"></span>
-          <span class="horizon"></span>
-        </div>
-        <div class="cardBody">
-          <div class="num">STUDIO / 03</div>
-          <h2 data-en="SPACE" data-ko="공간">SPACE</h2>
-          <p data-en="CREATOR · PERSONAL · OFFICE · SHOP · SHOWROOM" data-ko="크리에이터 · 개인 · 오피스 · 숍 · 쇼룸 방을 선택합니다.">CREATOR · PERSONAL · OFFICE · SHOP · SHOWROOM</p>
-          <span class="action">→</span>
-        </div>
-      </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="statement">
+<section class="statement">
     <div class="wrap statementBox">
       <div>
         <div class="statementLabel">OURBANG PHILOSOPHY</div>
@@ -1262,18 +1205,6 @@ button,
     </div>
   </section>
 </main>
-
-<div class="studioDock" aria-label="Studio quick navigation">
-  <a href="#music"><span>01</span><b data-en="MUSIC" data-ko="음악">MUSIC</b></a>
-  <a href="#visual"><span>02</span><b data-en="VISUAL" data-ko="비주얼">VISUAL</b></a>
-  <a href="#space"><span>03</span><b data-en="SPACE" data-ko="공간">SPACE</b></a>
-</div>
-
-<footer>
-<div class="wrap foot">
-<div>© <span id="year"></span> OURBANG</div>
-<div>STUDIO · MUSIC · VISUAL · SPACE</div>
-</div>
 </footer>
 <script id="ourbang-i18n-inline">
 (() => {
@@ -1959,74 +1890,5 @@ button,
 })();
 </script>
 <script defer src="assets/js/ourbang-nav.js"></script>
-
-<script id="ourbang-single-page-studio">
-(() => {
-  'use strict';
-
-  const labels = {
-    MUSIC: ['MUSIC','음악'],
-    VISUAL: ['VISUAL','비주얼'],
-    SPACE: ['SPACE','공간']
-  };
-
-  function choose(kind){
-    const btn=[...document.querySelectorAll('.v2Kind')]
-      .find(b => (b.dataset.kind||'').toUpperCase() === kind);
-    if(btn){
-      btn.click();
-      setTimeout(() => {
-        const target =
-          document.getElementById('templatePanel') ||
-          document.querySelector('.templatePanel') ||
-          btn.closest('section');
-        target?.scrollIntoView({behavior:'smooth',block:'start'});
-      }, 100);
-    }
-  }
-
-  // Convert the large legacy MUSIC/VISUAL/SPACE presentation cards
-  // into in-page category selectors. Never leave STUDIO.
-  const nodes=[...document.querySelectorAll('section,article,div')];
-  Object.keys(labels).forEach(kind => {
-    let best=null;
-    for(const el of nodes){
-      if(el.classList?.contains('v2Kind')) continue;
-      const txt=(el.innerText||'').trim();
-      if(!txt || !/STUDIO\s*\/\s*0[123]/i.test(txt)) continue;
-      if(!labels[kind].some(v => txt.includes(v))) continue;
-      if(!el.querySelector('a,button')) continue;
-      if(!best || el.getBoundingClientRect().height < best.getBoundingClientRect().height) best=el;
-    }
-    if(!best) return;
-    best.style.cursor='pointer';
-    best.setAttribute('role','button');
-    best.setAttribute('tabindex','0');
-    best.setAttribute('aria-label',kind+' room templates');
-    const go=e=>{
-      e?.preventDefault?.();
-      e?.stopPropagation?.();
-      choose(kind);
-    };
-    best.addEventListener('click',go);
-    best.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(kind);}
-    });
-    best.querySelectorAll('a,button').forEach(x=>{
-      x.removeAttribute('href');
-      x.addEventListener('click',go);
-    });
-  });
-
-  // If an old bookmarked ?kind= URL is used, still open that category in-place.
-  const requested=(new URLSearchParams(location.search).get('kind')||'').toUpperCase();
-  if(['MUSIC','VISUAL','SPACE'].includes(requested)){
-    const run=()=>setTimeout(()=>choose(requested),120);
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run,{once:true});
-    else run();
-  }
-})();
-</script>
-
 </body>
 </html>
