@@ -30,6 +30,26 @@
 .cta a{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;background:#fff;color:#05070b;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.08em;white-space:nowrap}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.heroBottom{grid-template-columns:1fr}.heroDesc{text-align:left}.hero{padding-top:48px}}
 @media(max-width:640px){.hero,.rooms,.cta{width:calc(100% - 28px)}.hero{padding:38px 0 32px}.hero h1{font-size:clamp(62px,24vw,100px);margin:22px 0 30px}.grid{grid-template-columns:1fr 1fr;gap:8px}.card{border-radius:13px}.cardText{left:12px;right:12px;bottom:11px}.cardText b{font-size:10px}.cardText small{font-size:7px}.cta{display:block;padding:28px 22px}.cta a{width:100%;margin-top:24px}}
+
+/* OURBANG VISUAL STUDIO — shared TIKOONZ engine */
+.visualStudio{width:min(calc(100% - 48px),var(--max));margin:0 auto 72px;border-top:1px solid var(--line);padding-top:26px}
+.vsFrame{position:relative;min-height:430px;border:1px solid var(--line);overflow:hidden;background:#000;display:grid;grid-template-columns:1.15fr .85fr}
+.vsVisual{position:relative;min-height:430px;background:#000;overflow:hidden}
+.vsVisual:before,.vsVisual:after{content:"";position:absolute;border:1px solid rgba(0,210,255,.58);border-radius:50%;filter:drop-shadow(0 0 18px rgba(0,190,255,.28));animation:vsOrbit 9s linear infinite}
+.vsVisual:before{width:54%;aspect-ratio:1;left:18%;top:5%;box-shadow:0 0 70px rgba(255,0,170,.12),inset 0 0 50px rgba(80,0,255,.12)}
+.vsVisual:after{width:34%;aspect-ratio:1;left:34%;top:23%;border-color:rgba(255,0,190,.62);animation-direction:reverse;animation-duration:6s}
+.vsCore{position:absolute;left:50%;top:50%;width:12%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(45deg);border:1px solid rgba(255,255,255,.75);box-shadow:0 0 32px rgba(120,80,255,.5);animation:vsPulse 2.4s ease-in-out infinite}
+.vsMeta{display:flex;flex-direction:column;justify-content:center;padding:48px;background:linear-gradient(135deg,#080a10,#05070b)}
+.vsEyebrow{font-size:9px;font-weight:900;letter-spacing:.22em;color:rgba(255,255,255,.45)}
+.vsMeta h2{font-size:clamp(34px,4.7vw,68px);line-height:.9;letter-spacing:-.055em;margin:16px 0 22px}
+.vsMeta p{margin:0;max-width:420px;color:var(--muted);font-size:11px;line-height:1.8;letter-spacing:.05em}
+.vsEnter{margin-top:30px;display:inline-flex;align-items:center;justify-content:center;width:max-content;min-height:52px;padding:0 22px;background:#fff;color:#05070b;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:.12em;border:0;cursor:pointer}
+.vsNote{margin-top:14px;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.34)}
+@keyframes vsOrbit{to{transform:rotate(360deg)}}@keyframes vsPulse{50%{transform:translate(-50%,-50%) rotate(135deg) scale(1.18);box-shadow:0 0 60px rgba(255,0,190,.45)}}
+.vsOverlay{position:fixed;inset:0;z-index:9999;background:#000;display:none}.vsOverlay.open{display:block}.vsOverlay iframe{width:100%;height:100%;border:0;background:#000}.vsClose{position:fixed;right:18px;top:18px;z-index:10001;border:1px solid rgba(255,255,255,.28);background:rgba(0,0,0,.72);color:#fff;padding:11px 14px;font-size:9px;font-weight:900;letter-spacing:.12em;cursor:pointer;backdrop-filter:blur(10px)}
+@media(max-width:900px){.vsFrame{grid-template-columns:1fr}.vsVisual{min-height:320px}.vsMeta{padding:34px 28px}}
+@media(max-width:640px){.visualStudio{width:calc(100% - 28px);margin-bottom:54px}.vsVisual{min-height:240px}.vsMeta h2{font-size:42px}.vsEnter{width:100%}}
+
 </style>
 
 </head><body>
@@ -72,6 +92,19 @@
 <h1>VISUAL</h1>
 <div class="heroBottom"><div class="heroLead">IMAGE BECOMES EXPERIENCE.</div><div class="heroDesc">ARTIST · DESIGNER · PHOTO · FILM · GALLERY · DIGITAL ART</div></div>
 </section>
+
+<section class="visualStudio" aria-label="OURBANG Visual Studio">
+  <div class="vsFrame">
+    <div class="vsVisual" aria-hidden="true"><div class="vsCore"></div></div>
+    <div class="vsMeta">
+      <div class="vsEyebrow">OURBANG × TIKOONZ / VISUAL ENGINE</div>
+      <h2>VISUAL<br>STUDIO</h2>
+      <p>MUSIC BECOMES VISUAL. SOUND BECOMES SPACE. Enter the shared TIKOONZ visual engine directly inside OURBANG.</p>
+      <button class="vsEnter" id="openVisualStudio" type="button">ENTER VISUAL STUDIO →</button>
+      <div class="vsNote">LANDSCAPE EXPERIENCE · DESKTOP / TABLET / MOBILE</div>
+    </div>
+  </div>
+</section>
 <section class="rooms">
 <div class="roomsHead"><h2>ROOM COLLECTION</h2><span>08 SPACES</span></div>
 <div class="grid"><a class="card" href="create?kind=visual#choose-your-space" aria-label="CONTEMPORARY GALLERY">
@@ -104,6 +137,12 @@
 <a href="create?kind=visual#choose-your-space">START VISUAL ROOM →</a>
 </section>
 </main>
+
+<div class="vsOverlay" id="visualStudioOverlay" aria-hidden="true">
+  <button class="vsClose" id="closeVisualStudio" type="button">CLOSE ×</button>
+  <iframe id="visualStudioFrame" title="OURBANG Visual Studio powered by TIKOONZ" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+
 <script defer src="assets/js/ourbang-nav.js"></script>
 
 <script>
@@ -122,6 +161,27 @@
  apply(saved);
  // These are STUDIO sub-pages, so keep STUDIO active after shared nav JS runs.
  setTimeout(()=>document.querySelectorAll('.links a,.mobilePanel a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='create')),20);
+})();
+</script>
+
+
+<script>
+(() => {
+  const overlay=document.getElementById('visualStudioOverlay');
+  const frame=document.getElementById('visualStudioFrame');
+  const openBtn=document.getElementById('openVisualStudio');
+  const closeBtn=document.getElementById('closeVisualStudio');
+  const studioURL='https://www.tikoonz.com/visual-studio.html';
+  const openStudio=()=>{
+    frame.src=studioURL; overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow='hidden'; document.body.style.overflow='hidden';
+  };
+  const closeStudio=()=>{
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); frame.src='about:blank';
+    document.documentElement.style.overflow=''; document.body.style.overflow='';
+  };
+  openBtn?.addEventListener('click',openStudio); closeBtn?.addEventListener('click',closeStudio);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open')) closeStudio();});
 })();
 </script>
 
