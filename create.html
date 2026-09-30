@@ -898,6 +898,26 @@ footer{padding-bottom:92px}
   .studioDock a{padding:9px 10px}
   .studioDock b{font-size:8px}
 }
+
+/* ===== OURBANG × TIKOONZ VISUAL STUDIO ===== */
+.obVisualStudio{padding:18px 0 54px}
+.obVisualStudioPanel{position:relative;min-height:420px;border:1px solid rgba(255,255,255,.10);border-radius:32px;overflow:hidden;background:radial-gradient(circle at 76% 42%,rgba(128,105,255,.16),transparent 24%),radial-gradient(circle at 67% 55%,rgba(64,188,255,.10),transparent 30%),#07080c}
+.obVisualStudioPanel:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.025),transparent 44%);pointer-events:none}
+.obVisualStudioCopy{position:relative;z-index:2;min-height:420px;padding:54px;display:flex;flex-direction:column;justify-content:flex-end;max-width:760px}
+.obVisualStudioEyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;color:rgba(255,255,255,.52);margin-bottom:18px}
+.obVisualStudioCopy h2{margin:0;font-size:clamp(48px,7vw,96px);line-height:.86;letter-spacing:-.055em}
+.obVisualStudioCopy p{max-width:590px;margin:24px 0 30px;color:rgba(255,255,255,.60);font-size:14px;line-height:1.75}
+.obVisualStudioEnter{width:max-content;display:inline-flex;align-items:center;gap:14px;padding:14px 19px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:#fff;font-size:10px;font-weight:800;letter-spacing:.13em;cursor:pointer;background:rgba(255,255,255,.045)}
+.obVisualStudioEnter:hover{background:#fff;color:#08090d}
+.obVisualStudioMark{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:min(28vw,360px);aspect-ratio:1;border:1px solid rgba(255,255,255,.09);border-radius:50%;box-shadow:0 0 80px rgba(126,105,255,.10) inset}
+.obVisualStudioMark:before,.obVisualStudioMark:after{content:"";position:absolute;inset:16%;border:1px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(28deg) scaleY(.42)}
+.obVisualStudioMark:after{transform:rotate(-35deg) scaleY(.58)}
+.obVisualStudioOverlay{position:fixed;inset:0;z-index:10050;background:#000;display:none}
+.obVisualStudioOverlay.open{display:block}
+.obVisualStudioFrame{width:100%;height:100%;border:0;background:#000}
+.obVisualStudioClose{position:absolute;z-index:3;right:18px;top:18px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.64);color:#fff;border-radius:999px;padding:10px 14px;font-size:10px;font-weight:800;letter-spacing:.12em;cursor:pointer;backdrop-filter:blur(14px)}
+@media(max-width:760px){.obVisualStudio{padding:8px 0 34px}.obVisualStudioPanel,.obVisualStudioCopy{min-height:370px}.obVisualStudioCopy{padding:30px}.obVisualStudioMark{width:250px;right:-70px;top:30%;opacity:.72}.obVisualStudioCopy h2{font-size:clamp(48px,15vw,72px)}.obVisualStudioCopy p{font-size:13px;max-width:85%}}
+
 </style>
 
 
@@ -1101,6 +1121,25 @@ button,
     </div>
   </section>
 
+
+  <section class="obVisualStudio" id="visual-studio">
+    <div class="wrap">
+      <div class="obVisualStudioPanel">
+        <div class="obVisualStudioMark" aria-hidden="true"></div>
+        <div class="obVisualStudioCopy">
+          <div class="obVisualStudioEyebrow">OURBANG / STUDIO / VISUAL</div>
+          <h2>VISUAL<br>STUDIO</h2>
+          <p data-en="Turn music into a living visual space. Enter the TIKOONZ-powered visual engine directly from OURBANG." data-ko="음악을 살아 움직이는 비주얼 공간으로 전환합니다. OURBANG에서 TIKOONZ 비주얼 엔진을 바로 실행하세요.">Turn music into a living visual space. Enter the TIKOONZ-powered visual engine directly from OURBANG.</p>
+          <button class="obVisualStudioEnter" id="obVisualStudioEnter" type="button">ENTER VISUAL STUDIO <span>↗</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="obVisualStudioOverlay" id="obVisualStudioOverlay" aria-hidden="true">
+    <button class="obVisualStudioClose" id="obVisualStudioClose" type="button">CLOSE ×</button>
+    <iframe class="obVisualStudioFrame" id="obVisualStudioFrame" title="TIKOONZ Visual Studio" data-src="https://www.tikoonz.com/visual-studio.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
 
   <section class="myRoomLab" id="create-my-room">
     <div class="wrap">
@@ -1895,5 +1934,30 @@ button,
 })();
 </script>
 <script defer src="assets/js/ourbang-nav.js"></script>
+
+<script>
+(function(){
+  const openBtn=document.getElementById('obVisualStudioEnter');
+  const overlay=document.getElementById('obVisualStudioOverlay');
+  const closeBtn=document.getElementById('obVisualStudioClose');
+  const frame=document.getElementById('obVisualStudioFrame');
+  if(!openBtn||!overlay||!closeBtn||!frame)return;
+  function openStudio(){
+    if(!frame.src) frame.src=frame.dataset.src;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow='hidden';
+  }
+  function closeStudio(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow='';
+  }
+  openBtn.addEventListener('click',openStudio);
+  closeBtn.addEventListener('click',closeStudio);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeStudio();});
+})();
+</script>
+
 </body>
 </html>
