@@ -1,13 +1,23 @@
 {
-  "isLive": false,
-  "liveCount": 0,
-  "streams": [],
-  "checkedAt": "2026-10-25T05:16:31.000741Z",
-  "videoId": "",
-  "title": "",
-  "channelKey": "",
-  "channelName": "",
-  "channelUrl": "",
-  "videoUrl": "",
-  "embedUrl": ""
+  "isLive": true,
+  "liveCount": 1,
+  "streams": [
+    {
+      "channelKey": "akenm",
+      "channelName": "AK ENM",
+      "channelUrl": "https://www.youtube.com/@akenm79",
+      "videoId": "tH6IYp8KE8g",
+      "videoUrl": "https://www.youtube.com/watch?v=tH6IYp8KE8g",
+      "embedUrl": "https://www.youtube.com/embed/tH6IYp8KE8g",
+      "title": "REDTONG 신곡"
+    }
+  ],
+  "checkedAt": "2026-10-25T09:54:58.726576Z",
+  "videoId": "tH6IYp8KE8g",
+  "title": "REDTONG 신곡",
+  "channelKey": "akenm",
+  "channelName": "AK ENM",
+  "channelUrl": "https://www.youtube.com/@akenm79",
+  "videoUrl": "https://www.youtube.com/watch?v=tH6IYp8KE8g",
+  "embedUrl": "https://www.youtube.com/embed/tH6IYp8KE8g"
 }
